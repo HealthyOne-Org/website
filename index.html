@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="HealthyOne - AI-powered nutrition tracking made simple. Track meals with voice, photos, or text. Powered by advanced AI analysis.">
+    <meta name="keywords" content="nutrition tracking, AI nutrition, food logging, calorie counter, diet tracker">
+    <meta name="author" content="Hardaway Labs LLC">
+    <meta property="og:title" content="HealthyOne - AI-Powered Nutrition Tracking">
+    <meta property="og:description" content="Simply speak, type, or snap a photo of your food. HealthyOne uses AI to log your meals and track nutrition effortlessly.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630?text=HealthyOne">
+    <meta name="theme-color" content="#2D6A2E">
+    <title>HealthyOne - AI-Powered Nutrition Tracking Made Simple</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        :root {
+            --primary: #2D6A2E; --primary-dark: #1e4620; --accent: #4CAF50;
+            --accent-light: #E8F5E9; --cta: #00BCD4; --text: #333333;
+            --text-light: #666666; --bg-light: #f8f8f8; --border: #e0e0e0;
+            --shadow: 0 2px 8px rgba(0,0,0,0.1); --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
+        }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: var(--text); line-height: 1.6; background: white; }
+        .navbar { position: sticky; top: 0; z-index: 1000; background: white; border-bottom: 1px solid var(--border); box-shadow: var(--shadow); padding: 1rem 0; }
+        .navbar-container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; font-weight: 700; font-size: 1.5rem; color: var(--text); }
+        .logo-square { width: 40px; height: 40px; background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 1.5rem; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--text); font-weight: 500; transition: color 0.3s ease; }
+        .nav-links a:hover { color: var(--accent); }
+        .cta-button { background: var(--cta); color: white; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 600; transition: background 0.3s ease, transform 0.2s ease; border: none; cursor: pointer; font-size: 1rem; }
+        .cta-button:hover { background: #00ACC1; transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+        .hamburger { display: none; flex-direction: column; cursor: pointer; }
+        .hamburger span { width: 25px; height: 3px; background: var(--text); margin: 5px 0; transition: all 0.3s ease; border-radius: 2px; }
+        .hero { background: linear-gradient(135deg, #f5fdf7 0%, #e8f5e9 100%); padding: 6rem 2rem; text-align: center; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: -50%; right: -10%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(76, 175, 80, 0.1) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
+        .hero-container { max-width: 800px; margin: 0 auto; position: relative; z-index: 1; }
+        .hero h1 { font-size: 3.5rem; font-weight: 700; color: var(--primary); margin-bottom: 1rem; line-height: 1.2; }
+        .hero p { font-size: 1.25rem; color: var(--text-light); margin-bottom: 2rem; line-height: 1.8; }
+        .hero-buttons { display: flex; gap: 1rem; justify-content: center; margin-bottom: 1.5rem; flex-wrap: wrap; }
+        .btn-primary { background: var(--cta); color: white; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; border: none; cursor: pointer; font-size: 1rem; display: inline-block; }
+        .btn-primary:hover { background: #00ACC1; transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+        .btn-secondary { background: white; color: var(--cta); padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; border: 2px solid var(--cta); cursor: pointer; font-size: 1rem; display: inline-block; }
+        .btn-secondary:hover { background: var(--cta); color: white; transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+        .trial-text { color: var(--text-light); font-size: 0.95rem; margin-top: 1rem; }
+        .phone-mockup { margin-top: 4rem; max-width: 400px; margin-left: auto; margin-right: auto; }
+        .phone-mockup-container { background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%); border-radius: 40px; padding: 12px; box-shadow: var(--shadow-lg); position: relative; opacity: 0; animation: fadeInUp 0.8s ease forwards 0.3s; }
+        .phone-mockup-screen { background: white; border-radius: 36px; padding: 2rem; height: 500px; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 1.5rem; }
+        .phone-mockup-screen h3 { color: var(--primary); font-size: 1.5rem; }
+        .phone-mockup-screen p { color: var(--text-light); font-size: 0.9rem; }
+        .phone-notch { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 150px; height: 25px; background: #000; border-radius: 0 0 20px 20px; z-index: 10; }
+        section { padding: 4rem 2rem; max-width: 1200px; margin: 0 auto; }
+        h2 { font-size: 2.5rem; font-weight: 700; color: var(--primary); margin-bottom: 1rem; text-align: center; }
+        .section-subtitle { text-align: center; color: var(--text-light); font-size: 1.1rem; margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 3rem; }
+        .feature-card { background: white; padding: 2rem; border-radius: 12px; border: 1px solid var(--border); text-align: center; transition: all 0.3s ease; opacity: 0; animation: fadeInUp 0.6s ease forwards; }
+        .feature-card:nth-child(1) { animation-delay: 0.1s; }
+        .feature-card:nth-child(2) { animation-delay: 0.2s; }
+        .feature-card:nth-child(3) { animation-delay: 0.3s; }
+        .feature-card:nth-child(4) { animation-delay: 0.4s; }
+        .feature-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-lg); border-color: var(--accent); }
+        .feature-icon { font-size: 3rem; margin-bottom: 1rem; }
+        .feature-card h3 { color: var(--primary); margin-bottom: 0.75rem; font-size: 1.3rem; }
+        .feature-card p { color: var(--text-light); line-height: 1.6; }
+        .how-it-works { background: var(--accent-light); }
+        .steps-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem; }
+        .step { background: white; padding: 2.5rem; border-radius: 12px; text-align: center; position: relative; opacity: 0; animation: fadeInUp 0.6s ease forwards; }
+        .step:nth-child(1) { animation-delay: 0.1s; }
+        .step:nth-child(2) { animation-delay: 0.2s; }
+        .step:nth-child(3) { animation-delay: 0.3s; }
+        .step-number { display: flex; align-items: center; justify-content: center; width: 60px; height: 60px; background: var(--accent); color: white; border-radius: 50%; font-size: 2rem; font-weight: 700; margin: 0 auto 1.5rem; }
+        .step h3 { color: var(--primary); margin-bottom: 1rem; font-size: 1.3rem; }
+        .step p { color: var(--text-light); line-height: 1.8; }
+        .pricing-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem; }
+        .pricing-card { background: white; border: 2px solid var(--border); border-radius: 12px; padding: 2.5rem; text-align: center; transition: all 0.3s ease; opacity: 0; animation: fadeInUp 0.6s ease forwards; position: relative; }
+        .pricing-card:nth-child(1) { animation-delay: 0.1s; }
+        .pricing-card:nth-child(2) { animation-delay: 0.2s; }
+        .pricing-card.featured { border-color: var(--cta); box-shadow: 0 0 0 4px rgba(0,188,212,0.1); transform: scale(1.05); }
+        .pricing-badge { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--cta); color: white; padding: 0.5rem 1.5rem; border-radius: 50px; font-size: 0.85rem; font-weight: 600; }
+        .pricing-card h3 { color: var(--primary); margin: 1rem 0; font-size: 1.5rem; }
+        .pricing-price { font-size: 2.5rem; color: var(--accent); font-weight: 700; margin: 1rem 0; }
+        .pricing-price span { font-size: 1rem; color: var(--text-light); }
+        .pricing-features { list-style: none; margin: 2rem 0; text-align: left; }
+        .pricing-features li { padding: 0.75rem 0; color: var(--text-light); border-bottom: 1px solid var(--border); }
+        .pricing-features li:last-child { border-bottom: none; }
+        .pricing-features li::before { content: '\2713 '; color: var(--accent); font-weight: 700; margin-right: 0.5rem; }
+        .pricing-cta { margin-top: 2rem; }
+        .pricing-note { font-size: 0.85rem; color: var(--text-light); margin-top: 1.5rem; }
+        .lead-magnet { background: linear-gradient(135deg, var(--accent-light) 0%, #f5fdf7 100%); padding: 4rem 2rem; }
+        .lead-magnet-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .lead-magnet-content h2 { text-align: left; margin-bottom: 1rem; }
+        .lead-magnet-content p { color: var(--text-light); font-size: 1.1rem; margin-bottom: 2rem; line-height: 1.8; }
+        .lead-magnet-form { display: flex; flex-direction: column; gap: 1rem; }
+        .lead-magnet-form input { padding: 1rem; border: 1px solid var(--border); border-radius: 8px; font-size: 1rem; font-family: 'Inter', sans-serif; transition: all 0.3s ease; }
+        .lead-magnet-form input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(76,175,80,0.1); }
+        .book-mockup { background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%); border-radius: 12px; padding: 2rem; color: white; text-align: center; box-shadow: var(--shadow-lg); transform: perspective(1000px) rotateY(-15deg); opacity: 0; animation: fadeInUp 0.8s ease forwards 0.2s; }
+        .book-mockup h4 { font-size: 1.5rem; margin-bottom: 1rem; }
+        .book-mockup p { font-size: 0.95rem; opacity: 0.9; }
+        footer { background: var(--primary); color: white; padding: 3rem 2rem; margin-top: 4rem; }
+        .footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem; }
+        .footer-section h4 { margin-bottom: 1rem; font-size: 1.1rem; }
+        .footer-section ul { list-style: none; }
+        .footer-section ul li { margin-bottom: 0.75rem; }
+        .footer-section a { color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s ease; }
+        .footer-section a:hover { color: white; }
+        .footer-contact { color: rgba(255,255,255,0.8); }
+        .social-icons { display: flex; gap: 1rem; margin-top: 1rem; font-size: 1.5rem; }
+        .social-icons a { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: rgba(255,255,255,0.2); border-radius: 50%; transition: all 0.3s ease; }
+        .social-icons a:hover { background: var(--cta); transform: translateY(-3px); }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.2); padding-top: 2rem; text-align: center; color: rgba(255,255,255,0.7); }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideInDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        @media (max-width: 768px) {
+            .hamburger { display: flex; }
+            .nav-links { display: none; position: absolute; top: 70px; left: 0; right: 0; background: white; flex-direction: column; padding: 2rem; gap: 1rem; border-bottom: 1px solid var(--border); z-index: 999; }
+            .nav-links.active { display: flex; }
+            .nav-links a { padding: 0.75rem 0; }
+            .hamburger.active span:nth-child(1) { transform: rotate(-45deg) translate(-8px, 8px); }
+            .hamburger.active span:nth-child(2) { opacity: 0; }
+            .hamburger.active span:nth-child(3) { transform: rotate(45deg) translate(-7px, -7px); }
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1rem; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+            .btn-primary, .btn-secondary { width: 100%; max-width: 300px; }
+            .lead-magnet-container { grid-template-columns: 1fr; gap: 2rem; }
+            .lead-magnet-form { order: 2; }
+            .book-mockup { order: 1; transform: perspective(1000px) rotateY(0deg); }
+            h2 { font-size: 2rem; }
+            .features-grid, .pricing-cards { grid-template-columns: 1fr; }
+            .pricing-card.featured { transform: scale(1); }
+            .steps-container { grid-template-columns: 1fr; }
+            section { padding: 3rem 1rem; }
+        }
+        @media (max-width: 480px) {
+            .navbar-container { padding: 0 1rem; }
+            .logo { gap: 0.5rem; font-size: 1.25rem; }
+            .logo-square { width: 35px; height: 35px; font-size: 1.25rem; }
+            .hero { padding: 3rem 1rem; }
+            .hero h1 { font-size: 1.75rem; }
+            .hero p { font-size: 0.95rem; }
+            h2 { font-size: 1.75rem; }
+            .section-subtitle { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar"><div class="navbar-container"><a href="#home" class="logo"><div class="logo-square">H</div><span>HealthyOne</span></a><ul class="nav-links" id="navLinks"><li><a href="#features">Features</a></li><li><a href="#how-it-works">How It Works</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#free-guide">Free Guide</a></li><li><a href="#download" class="cta-button">Download App</a></li></ul><div class="hamburger" id="hamburger"><span></span><span></span><span></span></div></div></nav>
+    <section class="hero" id="home"><div class="hero-container"><h1>AI-Powered Nutrition Tracking Made Simple</h1><p>Simply speak, type, or snap a photo of your food. HealthyOne uses AI to log your meals and track nutrition effortlessly.</p><div class="hero-buttons"><a href="#download" class="btn-primary">Download on App Store</a><a href="#download" class="btn-secondary">Get on Google Play</a></div><p class="trial-text">Start Your Free 7-Day Trial</p><div class="phone-mockup"><div class="phone-mockup-container"><div class="phone-notch"></div><div class="phone-mockup-screen"><div style="color: var(--accent); font-size: 2.5rem;">&#x1F4F1;</div><h3>Track Your Nutrition</h3><p>Voice, photo, or text input</p><p style="margin-top: 1rem; font-size: 0.85rem; color: var(--accent);">Powered by AI</p></div></div></div></div></section>
+    <section class="features" id="features"><h2>Powerful Features</h2><p class="section-subtitle">Everything you need to take control of your nutrition</p><div class="features-grid"><div class="feature-card"><div class="feature-icon">&#x1F3A4;</div><h3>Voice Logging</h3><p>Just say what you ate. Our AI understands your meals instantly and logs them automatically.</p></div><div class="feature-card"><div class="feature-icon">&#x1F4F8;</div><h3>Photo Recognition</h3><p>Snap a photo of your meal and let AI identify what you're eating. No typing required.</p></div><div class="feature-card"><div class="feature-icon">&#x1F4CA;</div><h3>Full Nutrition</h3><p>Get detailed breakdowns of calories, macros, vitamins, minerals, and more for every meal.</p></div><div class="feature-card"><div class="feature-icon">&#x1F957;</div><h3>Recipe Discovery</h3><p>Discover healthy meal ideas tailored to your nutrition goals and dietary preferences.</p></div></div></section>
+    <section class="how-it-works" id="how-it-works"><h2>How It Works</h2><p class="section-subtitle">Three simple steps to better nutrition</p><div class="steps-container"><div class="step"><div class="step-number">1</div><h3>Log Your Meal</h3><p>Speak, type, or snap a photo of your food. Choose whatever method works best for you in that moment.</p></div><div class="step"><div class="step-number">2</div><h3>AI Analyzes It</h3><p>Powered by advanced Gemini AI technology with Claude cross-validation for maximum accuracy and insights.</p></div><div class="step"><div class="step-number">3</div><h3>Track Your Progress</h3><p>See comprehensive nutrition breakdowns and trends over time. Achieve your health goals with data-driven insights.</p></div></div></section>
+    <section class="pricing" id="pricing"><h2>Simple, Transparent Pricing</h2><p class="section-subtitle">Choose the plan that is right for you</p><div class="pricing-cards"><div class="pricing-card"><h3>HealthyOne Free</h3><div class="pricing-price">$0<span>/forever</span></div><ul class="pricing-features"><li>5 meal logs per day</li><li>Basic nutrition tracking</li><li>Limited features</li><li>Community support</li></ul><div class="pricing-cta"><a href="#download" class="btn-secondary">Get Started Free</a></div></div><div class="pricing-card featured"><div class="pricing-badge">Most Popular</div><h3>HealthyOne Plus</h3><div class="pricing-price">$9.99<span>/month</span></div><ul class="pricing-features"><li>Unlimited meal logs</li><li>Full nutrition analysis</li><li>AI-powered insights</li><li>Recipe discovery</li><li>Advanced analytics</li><li>Priority support</li></ul><div class="pricing-cta"><a href="#download" class="btn-primary">Start Free 7-Day Trial</a></div><p class="pricing-note">Cancel anytime. No commitment.</p></div></div></section>
+    <section class="lead-magnet" id="free-guide"><div class="lead-magnet-container"><div class="lead-magnet-content"><h2>FREE: Superfoods for Super Health Guide</h2><p>Get our comprehensive guide to superfoods that boost energy, reduce disease risk, and support natural weight loss. Discover the science-backed nutrition strategies used by top health experts.</p><form class="lead-magnet-form" method="POST" action="#"><input type="email" placeholder="Enter your email address" required><button class="btn-primary" type="submit">Get My Free Guide</button></form></div><div class="book-mockup"><div style="font-size: 3rem; margin-bottom: 1rem;">&#x1F4DA;</div><h4>Superfoods for Super Health</h4><p>A complete guide to nutrient-dense foods that transform your health</p><p style="margin-top: 1rem; opacity: 0.7; font-size: 0.9rem;">100+ Pages | Expert Insights | Science-Backed</p></div></div></section>
+    <footer><div class="footer-container"><div class="footer-section"><div class="logo"><div class="logo-square">H</div><span>HealthyOne</span></div><p style="margin-top: 1rem; opacity: 0.8;">AI-powered nutrition tracking made simple.</p></div><div class="footer-section"><h4>Company</h4><ul><li><a href="https://healthyone-org.github.io/privacy-docs/about.html">About Us</a></li><li><a href="https://healthyone-org.github.io/privacy-docs/privacy.html">Privacy Policy</a></li><li><a href="https://healthyone-org.github.io/privacy-docs/terms.html">Terms of Service</a></li><li><a href="https://healthyone-org.github.io/privacy-docs/sms-privacy.html">SMS Privacy</a></li></ul></div><div class="footer-section"><h4>Contact</h4><p class="footer-contact"><a href="mailto:hardawayhealth25@gmail.com">hardawayhealth25@gmail.com</a></p><div class="social-icons"><a href="#" title="Facebook">f</a><a href="#" title="Instagram">&#x1F4F7;</a><a href="#" title="X/Twitter">&#x1D54F;</a><a href="#" title="TikTok">&#x266A;</a></div></div></div><div class="footer-bottom"><p>&copy; 2025 Hardaway Labs LLC. All rights reserved.</p></div></footer>
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        hamburger.addEventListener('click', () => { hamburger.classList.toggle('active'); navLinks.classList.toggle('active'); });
+        document.querySelectorAll('.nav-links a').forEach(link => { link.addEventListener('click', () => { hamburger.classList.remove('active'); navLinks.classList.remove('active'); }); });
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -100px 0px' };
+        const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.style.opacity = '1'; entry.target.style.transform = 'translateY(0)'; observer.unobserve(entry.target); } }); }, observerOptions);
+        document.querySelectorAll('.feature-card, .step, .pricing-card, .book-mockup').forEach(el => { observer.observe(el); });
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => { anchor.addEventListener('click', function (e) { e.preventDefault(); const target = document.querySelector(this.getAttribute('href')); if (target) { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); } }); });
+        const leadForm = document.querySelector('.lead-magnet-form');
+        if (leadForm) { leadForm.addEventListener('submit', function(e) { e.preventDefault(); const email = this.querySelector('input[type="email"]').value; if (email) { alert('Thank you for subscribing! Check your email for the free guide.'); this.reset(); } }); }
+    </script>
+</body>
+</html>
