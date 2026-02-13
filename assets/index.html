@@ -1,0 +1,1908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="HealthyOne - AI-powered nutrition tracking made simple. Track meals with voice, photos, or text. Powered by advanced AI analysis.">
+    <meta name="keywords" content="nutrition tracking, AI nutrition, food logging, calorie counter, diet tracker, healthy eating">
+    <meta name="author" content="Hardaway Labs LLC">
+    <meta property="og:title" content="HealthyOne - AI-Powered Nutrition Tracking">
+    <meta property="og:description" content="Simply speak, type, or snap a photo of your food. HealthyOne uses AI to log your meals and track nutrition effortlessly.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/logo.png">
+    <meta name="theme-color" content="#4ECDC4">
+    <title>HealthyOne - AI-Powered Nutrition Tracking Made Simple</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --primary: #4ECDC4;
+            --primary-dark: #3BA99C;
+            --primary-light: #A8E6CF;
+            --accent-coral: #FF6B6B;
+            --accent-orange: #FFA726;
+            --accent-purple: #B39DDB;
+            --text-dark: #1A2332;
+            --text-medium: #4A5568;
+            --text-light: #718096;
+            --bg-start: #E8FDF5;
+            --bg-end: #F0E6FF;
+            --white: #FFFFFF;
+            --card-shadow: 0 4px 20px rgba(78, 205, 196, 0.08);
+            --card-shadow-hover: 0 12px 40px rgba(78, 205, 196, 0.15);
+            --card-radius: 24px;
+            --btn-radius: 16px;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* ===== NAVIGATION ===== */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(78, 205, 196, 0.1);
+            padding: 0.75rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.4rem;
+            color: var(--text-dark);
+        }
+
+        .logo-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(78, 205, 196, 0.25);
+        }
+
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-medium);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:not(.cta-button):hover {
+            color: var(--primary);
+        }
+
+        .nav-links a:not(.cta-button)::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:not(.cta-button):hover::after {
+            width: 100%;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white !important;
+            padding: 0.7rem 1.5rem;
+            border-radius: var(--btn-radius);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 15px rgba(78, 205, 196, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(78, 205, 196, 0.4);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .hamburger span {
+            width: 24px;
+            height: 2.5px;
+            background: var(--text-dark);
+            margin: 3px 0;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            background: linear-gradient(160deg, #E8FDF5 0%, #F0F9FF 30%, #F5F0FF 60%, #FFF0F0 100%);
+            padding: 5rem 2rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -150px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(78, 205, 196, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            left: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(179, 157, 219, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero-container {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(78, 205, 196, 0.1);
+            border: 1px solid rgba(78, 205, 196, 0.2);
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--primary-dark);
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        .hero-badge .badge-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--primary);
+            border-radius: 50%;
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.8); }
+        }
+
+        .hero h1 {
+            font-size: 3.75rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 1.25rem;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+        }
+
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, var(--primary) 0%, #36B5A0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: var(--btn-radius);
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 4px 20px rgba(78, 205, 196, 0.35);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(78, 205, 196, 0.45);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--text-dark);
+            padding: 1rem 2rem;
+            border-radius: var(--btn-radius);
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(0, 0, 0, 0.08);
+            cursor: pointer;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(78, 205, 196, 0.15);
+        }
+
+        .trial-text {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-top: 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .trial-text svg {
+            color: var(--primary);
+        }
+
+        /* ===== PHONE MOCKUP ===== */
+        .phone-showcase {
+            margin-top: 4rem;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 1.5rem;
+            perspective: 1200px;
+        }
+
+        .phone-frame {
+            width: 260px;
+            background: linear-gradient(160deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: 36px;
+            padding: 8px;
+            box-shadow: 0 20px 60px rgba(78, 205, 196, 0.25), 0 8px 20px rgba(0, 0, 0, 0.08);
+            position: relative;
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .phone-frame:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 80px rgba(78, 205, 196, 0.3), 0 12px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .phone-frame.center {
+            width: 280px;
+            z-index: 2;
+        }
+
+        .phone-frame.side {
+            width: 230px;
+            opacity: 0.85;
+            transform: scale(0.92);
+        }
+
+        .phone-frame.side:hover {
+            opacity: 1;
+            transform: scale(0.95) translateY(-8px);
+        }
+
+        .phone-screen {
+            background: var(--white);
+            border-radius: 30px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .phone-screen img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .phone-notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 22px;
+            background: linear-gradient(160deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: 0 0 16px 16px;
+            z-index: 10;
+        }
+
+        /* ===== SECTIONS COMMON ===== */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--primary);
+            background: rgba(78, 205, 196, 0.1);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 2.75rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 0.75rem;
+            text-align: center;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 1.1rem;
+            max-width: 550px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* ===== FEATURES SECTION ===== */
+        .features {
+            background: var(--white);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 2rem 1.5rem;
+            border-radius: var(--card-radius);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--card-shadow-hover);
+            border-color: rgba(78, 205, 196, 0.15);
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-icon-wrap {
+            width: 64px;
+            height: 64px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.25rem;
+            font-size: 1.75rem;
+        }
+
+        .feature-icon-wrap.teal {
+            background: linear-gradient(135deg, rgba(78, 205, 196, 0.15) 0%, rgba(78, 205, 196, 0.05) 100%);
+        }
+        .feature-icon-wrap.coral {
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.15) 0%, rgba(255, 107, 107, 0.05) 100%);
+        }
+        .feature-icon-wrap.orange {
+            background: linear-gradient(135deg, rgba(255, 167, 38, 0.15) 0%, rgba(255, 167, 38, 0.05) 100%);
+        }
+        .feature-icon-wrap.purple {
+            background: linear-gradient(135deg, rgba(179, 157, 219, 0.15) 0%, rgba(179, 157, 219, 0.05) 100%);
+        }
+
+        .feature-card h3 {
+            color: var(--text-dark);
+            margin-bottom: 0.6rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+            line-height: 1.6;
+            font-size: 0.9rem;
+        }
+
+        /* ===== APP PREVIEW SECTION ===== */
+        .app-preview {
+            background: linear-gradient(160deg, #E8FDF5 0%, #F0F9FF 40%, #F8F0FF 100%);
+            padding: 5rem 2rem;
+            max-width: 100%;
+            overflow: hidden;
+        }
+
+        .app-preview-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .preview-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        .preview-grid.reverse {
+            grid-template-columns: 1.2fr 1fr;
+        }
+
+        .preview-text h3 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            line-height: 1.25;
+        }
+
+        .preview-text p {
+            color: var(--text-light);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .preview-features-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .preview-features-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--text-medium);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .preview-features-list .check-icon {
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, rgba(78, 205, 196, 0.15), rgba(78, 205, 196, 0.05));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+
+        .preview-phone {
+            display: flex;
+            justify-content: center;
+        }
+
+        .preview-phone .phone-frame {
+            width: 280px;
+        }
+
+        /* ===== HOW IT WORKS ===== */
+        .how-it-works {
+            background: var(--white);
+        }
+
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            position: relative;
+        }
+
+        .steps-container::before {
+            content: '';
+            position: absolute;
+            top: 50px;
+            left: 15%;
+            right: 15%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-light), var(--primary), var(--primary-light));
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .step {
+            background: var(--white);
+            padding: 2.5rem 2rem;
+            border-radius: var(--card-radius);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            transition: all 0.4s ease;
+        }
+
+        .step:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--card-shadow-hover);
+        }
+
+        .step-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            border-radius: 18px;
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 4px 15px rgba(78, 205, 196, 0.3);
+        }
+
+        .step h3 {
+            color: var(--text-dark);
+            margin-bottom: 0.75rem;
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .step p {
+            color: var(--text-light);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        /* ===== PRICING SECTION ===== */
+        .pricing {
+            background: linear-gradient(160deg, #F8FFFE 0%, #F5F0FF 100%);
+            padding: 5rem 2rem;
+            max-width: 100%;
+        }
+
+        .pricing-inner {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pricing-card {
+            background: var(--white);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            border-radius: var(--card-radius);
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--card-shadow-hover);
+        }
+
+        .pricing-card.featured {
+            border: 2px solid var(--primary);
+            box-shadow: 0 8px 30px rgba(78, 205, 196, 0.15);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 0.4rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            box-shadow: 0 4px 12px rgba(78, 205, 196, 0.3);
+        }
+
+        .pricing-card h3 {
+            color: var(--text-dark);
+            margin: 0.75rem 0 0.5rem;
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .pricing-price {
+            font-size: 3rem;
+            font-weight: 800;
+            margin: 0.5rem 0 1rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .pricing-price span {
+            font-size: 1rem;
+            font-weight: 500;
+            -webkit-text-fill-color: var(--text-light);
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 1.5rem 0;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            padding: 0.65rem 0;
+            color: var(--text-medium);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.95rem;
+        }
+
+        .pricing-features li .check {
+            width: 22px;
+            height: 22px;
+            background: rgba(78, 205, 196, 0.12);
+            border-radius: 7px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 0.75rem;
+            flex-shrink: 0;
+        }
+
+        .pricing-cta {
+            margin-top: 1.5rem;
+        }
+
+        .pricing-cta .btn-primary,
+        .pricing-cta .btn-secondary {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .pricing-note {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-top: 1rem;
+        }
+
+        /* ===== SOCIAL PROOF ===== */
+        .social-proof {
+            background: var(--white);
+            padding: 4rem 2rem;
+            max-width: 100%;
+        }
+
+        .social-proof-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 1.5rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-label {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* ===== LEAD MAGNET ===== */
+        .lead-magnet {
+            background: linear-gradient(160deg, #E8FDF5 0%, #F0F9FF 50%, #FFF5F5 100%);
+            padding: 5rem 2rem;
+            max-width: 100%;
+        }
+
+        .lead-magnet-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .lead-magnet-content h2 {
+            text-align: left;
+            font-size: 2.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .lead-magnet-content p {
+            color: var(--text-light);
+            font-size: 1.05rem;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .lead-magnet-form {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .lead-magnet-form input {
+            padding: 1rem 1.25rem;
+            border: 2px solid rgba(0, 0, 0, 0.06);
+            border-radius: var(--btn-radius);
+            font-size: 1rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            transition: all 0.3s ease;
+            background: var(--white);
+        }
+
+        .lead-magnet-form input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(78, 205, 196, 0.1);
+        }
+
+        .book-mockup {
+            background: linear-gradient(160deg, var(--primary) 0%, var(--primary-dark) 50%, #2A9D8F 100%);
+            border-radius: var(--card-radius);
+            padding: 3rem 2rem;
+            color: white;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(78, 205, 196, 0.25);
+            transform: perspective(1000px) rotateY(-8deg);
+            transition: all 0.5s ease;
+        }
+
+        .book-mockup:hover {
+            transform: perspective(1000px) rotateY(-2deg) translateY(-5px);
+            box-shadow: 0 25px 70px rgba(78, 205, 196, 0.3);
+        }
+
+        .book-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .book-mockup h4 {
+            font-size: 1.6rem;
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+        }
+
+        .book-mockup p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .book-meta {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            font-size: 0.8rem;
+            opacity: 0.75;
+        }
+
+        .book-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: linear-gradient(160deg, #1A2332 0%, #0F1923 100%);
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1.25rem;
+            font-size: 1rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary);
+        }
+
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .social-icons a:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.85rem;
+        }
+
+        /* ===== BETA BANNER ===== */
+        .beta-banner {
+            background: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);
+            color: white;
+            text-align: center;
+            padding: 0.75rem 1rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            position: relative;
+            z-index: 1001;
+        }
+
+        .beta-banner .beta-tag {
+            background: rgba(255,255,255,0.25);
+            padding: 0.2rem 0.6rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+            margin-right: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        /* ===== COUNTDOWN TIMER ===== */
+        .countdown-section {
+            background: linear-gradient(135deg, #1A2332 0%, #0F1923 100%);
+            padding: 3rem 2rem;
+            text-align: center;
+            max-width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .countdown-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -20%;
+            width: 140%;
+            height: 200%;
+            background: radial-gradient(ellipse, rgba(78, 205, 196, 0.08) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .countdown-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .countdown-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 107, 107, 0.2);
+            border: 1px solid rgba(255, 107, 107, 0.3);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            color: #FF6B6B;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1.25rem;
+        }
+
+        .countdown-title {
+            color: white;
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .countdown-subtitle {
+            color: rgba(255,255,255,0.6);
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .countdown-price-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .countdown-price-old {
+            font-size: 1.5rem;
+            color: rgba(255,255,255,0.4);
+            text-decoration: line-through;
+            font-weight: 600;
+        }
+
+        .countdown-price-new {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary) 0%, #A8E6CF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .countdown-price-new span {
+            font-size: 1rem;
+            font-weight: 500;
+            -webkit-text-fill-color: rgba(255,255,255,0.5);
+        }
+
+        .countdown-save-badge {
+            background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+            color: white;
+            padding: 0.3rem 0.75rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .countdown-unit {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 1rem 1.25rem;
+            min-width: 80px;
+        }
+
+        .countdown-number {
+            font-size: 2.25rem;
+            font-weight: 800;
+            color: white;
+            line-height: 1;
+            margin-bottom: 0.25rem;
+        }
+
+        .countdown-unit-label {
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.5);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+        }
+
+        .countdown-cta .btn-primary {
+            font-size: 1.1rem;
+            padding: 1rem 2.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .countdown-title { font-size: 1.5rem; }
+            .countdown-price-new { font-size: 2.25rem; }
+            .countdown-unit { min-width: 65px; padding: 0.75rem; }
+            .countdown-number { font-size: 1.75rem; }
+        }
+
+        @media (max-width: 480px) {
+            .countdown-timer { gap: 0.5rem; }
+            .countdown-unit { min-width: 55px; padding: 0.6rem; }
+            .countdown-number { font-size: 1.4rem; }
+            .countdown-price-row { flex-wrap: wrap; }
+        }
+
+        /* ===== ANIMATIONS ===== */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-up-delay-1 { transition-delay: 0.1s; }
+        .fade-up-delay-2 { transition-delay: 0.2s; }
+        .fade-up-delay-3 { transition-delay: 0.3s; }
+        .fade-up-delay-4 { transition-delay: 0.4s; }
+
+        /* ===== MOBILE RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .preview-grid,
+            .preview-grid.reverse {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                text-align: center;
+            }
+
+            .preview-text {
+                order: 2;
+            }
+
+            .preview-phone {
+                order: 1;
+            }
+
+            .preview-features-list {
+                align-items: center;
+            }
+
+            .stats-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 65px;
+                left: 0;
+                right: 0;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 1.5rem 2rem;
+                gap: 0.75rem;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                padding: 0.75rem 0;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(-45deg) translate(-6px, 6px);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(45deg) translate(-7px, -7px);
+            }
+
+            .hero {
+                padding: 3rem 1.5rem 3rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+
+            .phone-showcase {
+                gap: 0.75rem;
+            }
+
+            .phone-frame.center {
+                width: 200px;
+            }
+
+            .phone-frame.side {
+                width: 160px;
+            }
+
+            .lead-magnet-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .lead-magnet-content h2 {
+                text-align: center;
+            }
+
+            .book-mockup {
+                transform: perspective(1000px) rotateY(0deg);
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .steps-container {
+                grid-template-columns: 1fr;
+            }
+
+            .steps-container::before {
+                display: none;
+            }
+
+            .pricing-cards {
+                grid-template-columns: 1fr;
+                max-width: 420px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .pricing-card.featured {
+                transform: none;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            section {
+                padding: 3.5rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar-container {
+                padding: 0 1rem;
+            }
+
+            .logo {
+                gap: 0.5rem;
+                font-size: 1.2rem;
+            }
+
+            .logo-icon {
+                width: 38px;
+                height: 38px;
+            }
+
+            .hero {
+                padding: 2.5rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-badge {
+                font-size: 0.75rem;
+            }
+
+            .phone-showcase {
+                margin-top: 2.5rem;
+            }
+
+            .phone-frame.center {
+                width: 180px;
+            }
+
+            .phone-frame.side {
+                width: 140px;
+                display: none;
+            }
+
+            h2 {
+                font-size: 1.75rem;
+            }
+
+            .section-subtitle {
+                font-size: 0.95rem;
+            }
+
+            .stats-row {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Beta Banner -->
+    <div class="beta-banner">
+        <span class="beta-tag">BETA</span>
+        HealthyOne is in beta — Get early access at a special introductory price!
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-container">
+            <a href="#home" class="logo">
+                <div class="logo-icon">
+                    <img src="assets/logo.png" alt="HealthyOne Logo">
+                </div>
+                <span>HealthyOne</span>
+            </a>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#free-guide">Free Guide</a></li>
+                <li><a href="#download" class="cta-button">Download App</a></li>
+            </ul>
+
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                BETA — Now available on iOS & Android
+            </div>
+
+            <h1>
+                <span class="highlight">AI-Powered</span> Nutrition<br>
+                Tracking Made Simple
+            </h1>
+            <p>Simply speak, type, or snap a photo of your food. HealthyOne uses AI to log your meals and track nutrition effortlessly.</p>
+
+            <div class="hero-buttons" id="download">
+                <a href="https://apps.apple.com/app/healthyone" class="btn-primary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                    App Store
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.healthyone" class="btn-secondary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.61 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.5,12.92 20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/></svg>
+                    Google Play
+                </a>
+            </div>
+
+            <p class="trial-text">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                Start Your Free 7-Day Trial &mdash; No credit card required
+            </p>
+
+            <!-- Phone Showcase -->
+            <div class="phone-showcase">
+                <div class="phone-frame side fade-up fade-up-delay-1">
+                    <div class="phone-screen">
+                        <div class="phone-notch"></div>
+                        <img src="assets/screenshot2_recipes.png" alt="HealthyOne Recipe Discovery">
+                    </div>
+                </div>
+                <div class="phone-frame center fade-up fade-up-delay-2">
+                    <div class="phone-screen">
+                        <div class="phone-notch"></div>
+                        <img src="assets/screenshot1_dashboard.png" alt="HealthyOne Dashboard">
+                    </div>
+                </div>
+                <div class="phone-frame side fade-up fade-up-delay-3">
+                    <div class="phone-screen">
+                        <div class="phone-notch"></div>
+                        <img src="assets/screenshot3_logging.png" alt="HealthyOne Meal Logging">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof Stats -->
+    <div class="social-proof">
+        <div class="social-proof-inner">
+            <div class="stats-row">
+                <div class="stat-item fade-up fade-up-delay-1">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Nutrients Tracked</div>
+                </div>
+                <div class="stat-item fade-up fade-up-delay-2">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Ways to Log Meals</div>
+                </div>
+                <div class="stat-item fade-up fade-up-delay-3">
+                    <div class="stat-number">10s</div>
+                    <div class="stat-label">Average Log Time</div>
+                </div>
+                <div class="stat-item fade-up fade-up-delay-4">
+                    <div class="stat-number">AI</div>
+                    <div class="stat-label">Powered Analysis</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="section-header">
+            <span class="section-label">Features</span>
+            <h2>Everything You Need</h2>
+            <p class="section-subtitle">Powerful AI-driven tools to take full control of your nutrition journey</p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card fade-up fade-up-delay-1">
+                <div class="feature-icon-wrap teal">
+                    <span>🎤</span>
+                </div>
+                <h3>Voice Logging</h3>
+                <p>Just say what you ate. Our AI understands your meals instantly and logs them automatically.</p>
+            </div>
+
+            <div class="feature-card fade-up fade-up-delay-2">
+                <div class="feature-icon-wrap coral">
+                    <span>📸</span>
+                </div>
+                <h3>Photo Recognition</h3>
+                <p>Snap a photo of your meal and let AI identify what you're eating. No typing required.</p>
+            </div>
+
+            <div class="feature-card fade-up fade-up-delay-3">
+                <div class="feature-icon-wrap orange">
+                    <span>📊</span>
+                </div>
+                <h3>Full Nutrition Data</h3>
+                <p>Get detailed breakdowns of calories, macros, vitamins, minerals, and more for every meal.</p>
+            </div>
+
+            <div class="feature-card fade-up fade-up-delay-4">
+                <div class="feature-icon-wrap purple">
+                    <span>🥗</span>
+                </div>
+                <h3>Recipe Discovery</h3>
+                <p>Discover healthy meal ideas tailored to your nutrition goals and dietary preferences.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Preview: Logging -->
+    <div class="app-preview">
+        <div class="app-preview-inner">
+            <div class="section-header">
+                <span class="section-label">See It In Action</span>
+                <h2>Designed for Real Life</h2>
+                <p class="section-subtitle">Log meals your way &mdash; voice, text, or photo. It all takes under 10 seconds.</p>
+            </div>
+
+            <div class="preview-grid">
+                <div class="preview-phone fade-up">
+                    <div class="phone-frame">
+                        <div class="phone-screen">
+                            <div class="phone-notch"></div>
+                            <img src="assets/screenshot3_logging.png" alt="HealthyOne Meal Logging Interface">
+                        </div>
+                    </div>
+                </div>
+                <div class="preview-text fade-up fade-up-delay-2">
+                    <h3>Log Meals in Seconds,<br>Not Minutes</h3>
+                    <p>Choose from three effortless ways to log your food. Each method is powered by advanced AI to ensure accuracy without the hassle.</p>
+                    <ul class="preview-features-list">
+                        <li>
+                            <span class="check-icon">✓</span>
+                            Voice &mdash; just say what you ate
+                        </li>
+                        <li>
+                            <span class="check-icon">✓</span>
+                            Photo &mdash; snap a picture of your plate
+                        </li>
+                        <li>
+                            <span class="check-icon">✓</span>
+                            Text &mdash; quick-type your meal
+                        </li>
+                        <li>
+                            <span class="check-icon">✓</span>
+                            AI-powered accuracy with Gemini + Claude
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="section-header">
+            <span class="section-label">How It Works</span>
+            <h2>Three Simple Steps</h2>
+            <p class="section-subtitle">From meal to insights in seconds, not minutes</p>
+        </div>
+
+        <div class="steps-container">
+            <div class="step fade-up fade-up-delay-1">
+                <div class="step-number">1</div>
+                <h3>Log Your Meal</h3>
+                <p>Speak, type, or snap a photo of your food. Choose whatever method works best for you in that moment.</p>
+            </div>
+
+            <div class="step fade-up fade-up-delay-2">
+                <div class="step-number">2</div>
+                <h3>AI Analyzes It</h3>
+                <p>Powered by advanced Gemini AI with Claude cross-validation for maximum accuracy and detailed insights.</p>
+            </div>
+
+            <div class="step fade-up fade-up-delay-3">
+                <div class="step-number">3</div>
+                <h3>Track Progress</h3>
+                <p>See comprehensive nutrition breakdowns and trends over time. Achieve your goals with data-driven insights.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Countdown Timer Section -->
+    <div class="countdown-section">
+        <div class="countdown-inner">
+            <div class="countdown-label">Limited Time Offer</div>
+            <h2 class="countdown-title">Beta Launch Special — 50% Off</h2>
+            <p class="countdown-subtitle">Lock in $4.99/month before the price goes up to $9.99</p>
+
+            <div class="countdown-price-row">
+                <span class="countdown-price-old">$9.99/mo</span>
+                <span class="countdown-price-new">$4.99<span>/month</span></span>
+                <span class="countdown-save-badge">SAVE 50%</span>
+            </div>
+
+            <div class="countdown-timer" id="countdownTimer">
+                <div class="countdown-unit">
+                    <div class="countdown-number" id="cd-days">00</div>
+                    <div class="countdown-unit-label">Days</div>
+                </div>
+                <div class="countdown-unit">
+                    <div class="countdown-number" id="cd-hours">00</div>
+                    <div class="countdown-unit-label">Hours</div>
+                </div>
+                <div class="countdown-unit">
+                    <div class="countdown-number" id="cd-mins">00</div>
+                    <div class="countdown-unit-label">Minutes</div>
+                </div>
+                <div class="countdown-unit">
+                    <div class="countdown-number" id="cd-secs">00</div>
+                    <div class="countdown-unit-label">Seconds</div>
+                </div>
+            </div>
+
+            <div class="countdown-cta">
+                <a href="#download" class="btn-primary">Get Beta Pricing Now</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pricing Section -->
+    <div class="pricing" id="pricing">
+        <div class="pricing-inner">
+            <div class="section-header">
+                <span class="section-label">Pricing</span>
+                <h2>Simple, Transparent Pricing</h2>
+                <p class="section-subtitle">Start free, upgrade when you're ready</p>
+            </div>
+
+            <div class="pricing-cards">
+                <div class="pricing-card fade-up fade-up-delay-1">
+                    <h3>HealthyOne Free</h3>
+                    <div class="pricing-price">$0<span>/forever</span></div>
+                    <ul class="pricing-features">
+                        <li><span class="check">✓</span> 5 meal logs per day</li>
+                        <li><span class="check">✓</span> Basic nutrition tracking</li>
+                        <li><span class="check">✓</span> Limited features</li>
+                        <li><span class="check">✓</span> Community support</li>
+                    </ul>
+                    <div class="pricing-cta">
+                        <a href="#download" class="btn-secondary">Get Started Free</a>
+                    </div>
+                </div>
+
+                <div class="pricing-card featured fade-up fade-up-delay-2">
+                    <div class="pricing-badge">Beta Special</div>
+                    <h3>HealthyOne Plus</h3>
+                    <div class="pricing-price" style="position: relative;">
+                        <span style="font-size: 1.2rem; text-decoration: line-through; -webkit-text-fill-color: var(--text-light); opacity: 0.6; display: block; margin-bottom: -0.25rem;">$9.99</span>
+                        $4.99<span>/month</span>
+                    </div>
+                    <p style="color: #FF6B6B; font-weight: 700; font-size: 0.85rem; margin-top: -0.5rem; margin-bottom: 0.75rem;">Save 50% — Beta pricing for a limited time!</p>
+                    <ul class="pricing-features">
+                        <li><span class="check">✓</span> Unlimited meal logs</li>
+                        <li><span class="check">✓</span> Full nutrition analysis</li>
+                        <li><span class="check">✓</span> AI-powered insights</li>
+                        <li><span class="check">✓</span> Recipe discovery</li>
+                        <li><span class="check">✓</span> Advanced analytics</li>
+                        <li><span class="check">✓</span> Priority support</li>
+                    </ul>
+                    <div class="pricing-cta">
+                        <a href="#download" class="btn-primary">Start Free 7-Day Trial</a>
+                    </div>
+                    <p class="pricing-note">Cancel anytime. No commitment. Lock in beta price!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Free Guide Section -->
+    <section class="lead-magnet" id="free-guide">
+        <div class="lead-magnet-container">
+            <div class="lead-magnet-content">
+                <span class="section-label">Free Download</span>
+                <h2>Superfoods for Super Health Guide</h2>
+                <p>Get our comprehensive guide to superfoods that boost energy, reduce disease risk, and support natural weight loss. Discover science-backed nutrition strategies used by top health experts.</p>
+
+                <form class="lead-magnet-form" method="POST" action="#">
+                    <input type="email" placeholder="Enter your email address" required>
+                    <button class="btn-primary" type="submit" style="width: 100%; justify-content: center;">Get My Free Guide</button>
+                </form>
+            </div>
+
+            <div class="book-mockup fade-up">
+                <div class="book-icon">📚</div>
+                <h4>Superfoods for<br>Super Health</h4>
+                <p>A complete guide to nutrient-dense foods that transform your health</p>
+                <div class="book-meta">
+                    <span>📄 100+ Pages</span>
+                    <span>🧬 Science-Backed</span>
+                    <span>⭐ Expert Tips</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section footer-brand">
+                <a href="#home" class="logo" style="color: white;">
+                    <div class="logo-icon">
+                        <img src="assets/logo.png" alt="HealthyOne Logo">
+                    </div>
+                    <span>HealthyOne</span>
+                </a>
+                <p>AI-powered nutrition tracking made simple. Track your meals, discover recipes, and achieve your health goals.</p>
+                <div class="social-icons">
+                    <a href="#" title="Facebook">f</a>
+                    <a href="#" title="Instagram">📷</a>
+                    <a href="#" title="X/Twitter">𝕏</a>
+                    <a href="#" title="TikTok">♪</a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="https://healthyone-org.github.io/privacy-docs/about.html">About Us</a></li>
+                    <li><a href="https://healthyone-org.github.io/privacy-docs/privacy.html">Privacy Policy</a></li>
+                    <li><a href="https://healthyone-org.github.io/privacy-docs/terms.html">Terms of Service</a></li>
+                    <li><a href="https://healthyone-org.github.io/privacy-docs/sms-privacy.html">SMS Privacy</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="mailto:hardawayhealth25@gmail.com">hardawayhealth25@gmail.com</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Hardaway Labs LLC. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -60px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-up').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form handling
+        const leadForm = document.querySelector('.lead-magnet-form');
+        if (leadForm) {
+            leadForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = this.querySelector('input[type="email"]').value;
+                if (email) {
+                    alert('Thank you for subscribing! Check your email for the free guide.');
+                    this.reset();
+                }
+            });
+        }
+
+        // Countdown Timer — 30 days from now (auto-renewing)
+        (function() {
+            const COUNTDOWN_KEY = 'healthyone_beta_end';
+            let endTime = localStorage.getItem(COUNTDOWN_KEY);
+            if (!endTime || parseInt(endTime) < Date.now()) {
+                endTime = Date.now() + 30 * 24 * 60 * 60 * 1000;
+                try { localStorage.setItem(COUNTDOWN_KEY, endTime); } catch(e) {}
+            } else {
+                endTime = parseInt(endTime);
+            }
+
+            function updateCountdown() {
+                const now = Date.now();
+                let diff = endTime - now;
+                if (diff < 0) diff = 0;
+
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+                const dEl = document.getElementById('cd-days');
+                const hEl = document.getElementById('cd-hours');
+                const mEl = document.getElementById('cd-mins');
+                const sEl = document.getElementById('cd-secs');
+                if (dEl) dEl.textContent = String(days).padStart(2, '0');
+                if (hEl) hEl.textContent = String(hours).padStart(2, '0');
+                if (mEl) mEl.textContent = String(mins).padStart(2, '0');
+                if (sEl) sEl.textContent = String(secs).padStart(2, '0');
+            }
+
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        })();
+    </script>
+</body>
+</html>
