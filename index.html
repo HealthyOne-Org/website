@@ -1012,6 +1012,175 @@
             font-size: 0.85rem;
         }
 
+        /* ===== BETA BANNER ===== */
+        .beta-banner {
+            background: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);
+            color: white;
+            text-align: center;
+            padding: 0.75rem 1rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            position: relative;
+            z-index: 1001;
+        }
+
+        .beta-banner .beta-tag {
+            background: rgba(255,255,255,0.25);
+            padding: 0.2rem 0.6rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+            margin-right: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        /* ===== COUNTDOWN TIMER ===== */
+        .countdown-section {
+            background: linear-gradient(135deg, #1A2332 0%, #0F1923 100%);
+            padding: 3rem 2rem;
+            text-align: center;
+            max-width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .countdown-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -20%;
+            width: 140%;
+            height: 200%;
+            background: radial-gradient(ellipse, rgba(78, 205, 196, 0.08) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .countdown-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .countdown-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 107, 107, 0.2);
+            border: 1px solid rgba(255, 107, 107, 0.3);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            color: #FF6B6B;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1.25rem;
+        }
+
+        .countdown-title {
+            color: white;
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .countdown-subtitle {
+            color: rgba(255,255,255,0.6);
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .countdown-price-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .countdown-price-old {
+            font-size: 1.5rem;
+            color: rgba(255,255,255,0.4);
+            text-decoration: line-through;
+            font-weight: 600;
+        }
+
+        .countdown-price-new {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary) 0%, #A8E6CF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .countdown-price-new span {
+            font-size: 1rem;
+            font-weight: 500;
+            -webkit-text-fill-color: rgba(255,255,255,0.5);
+        }
+
+        .countdown-save-badge {
+            background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+            color: white;
+            padding: 0.3rem 0.75rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .countdown-unit {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 1rem 1.25rem;
+            min-width: 80px;
+        }
+
+        .countdown-number {
+            font-size: 2.25rem;
+            font-weight: 800;
+            color: white;
+            line-height: 1;
+            margin-bottom: 0.25rem;
+        }
+
+        .countdown-unit-label {
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.5);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+        }
+
+        .countdown-cta .btn-primary {
+            font-size: 1.1rem;
+            padding: 1rem 2.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .countdown-title { font-size: 1.5rem; }
+            .countdown-price-new { font-size: 2.25rem; }
+            .countdown-unit { min-width: 65px; padding: 0.75rem; }
+            .countdown-number { font-size: 1.75rem; }
+        }
+
+        @media (max-width: 480px) {
+            .countdown-timer { gap: 0.5rem; }
+            .countdown-unit { min-width: 55px; padding: 0.6rem; }
+            .countdown-number { font-size: 1.4rem; }
+            .countdown-price-row { flex-wrap: wrap; }
+        }
+
         /* ===== ANIMATIONS ===== */
         .fade-up {
             opacity: 0;
@@ -1244,6 +1413,12 @@
     </style>
 </head>
 <body>
+    <!-- Beta Banner -->
+    <div class="beta-banner">
+        <span class="beta-tag">BETA</span>
+        HealthyOne is in beta — Get early access at a special introductory price!
+    </div>
+
     <!-- Navigation Bar -->
     <nav class="navbar" id="navbar">
         <div class="navbar-container">
@@ -1275,7 +1450,7 @@
         <div class="hero-container">
             <div class="hero-badge">
                 <span class="badge-dot"></span>
-                Now available on iOS & Android
+                BETA — Now available on iOS & Android
             </div>
 
             <h1>
@@ -1464,6 +1639,44 @@
         </div>
     </section>
 
+    <!-- Countdown Timer Section -->
+    <div class="countdown-section">
+        <div class="countdown-inner">
+            <div class="countdown-label">Limited Time Offer</div>
+            <h2 class="countdown-title">Beta Launch Special — 50% Off</h2>
+            <p class="countdown-subtitle">Lock in $4.99/month before the price goes up to $9.99</p>
+
+            <div class="countdown-price-row">
+                <span class="countdown-price-old">$9.99/mo</span>
+                <span class="countdown-price-new">$4.99<span>/month</span></span>
+                <span class="countdown-save-badge">SAVE 50%</span>
+            </div>
+
+            <div class="countdown-timer" id="countdownTimer">
+                <div class="countdown-unit">
+                    <div class="countdown-number" id="cd-days">00</div>
+                    <div class="countdown-unit-label">Days</div>
+                </div>
+                <div class="countdown-unit">
+                    <div class="countdown-number" id="cd-hours">00</div>
+                    <div class="countdown-unit-label">Hours</div>
+                </div>
+                <div class="countdown-unit">
+                    <div class="countdown-number" id="cd-mins">00</div>
+                    <div class="countdown-unit-label">Minutes</div>
+                </div>
+                <div class="countdown-unit">
+                    <div class="countdown-number" id="cd-secs">00</div>
+                    <div class="countdown-unit-label">Seconds</div>
+                </div>
+            </div>
+
+            <div class="countdown-cta">
+                <a href="#download" class="btn-primary">Get Beta Pricing Now</a>
+            </div>
+        </div>
+    </div>
+
     <!-- Pricing Section -->
     <div class="pricing" id="pricing">
         <div class="pricing-inner">
@@ -1489,9 +1702,13 @@
                 </div>
 
                 <div class="pricing-card featured fade-up fade-up-delay-2">
-                    <div class="pricing-badge">Most Popular</div>
+                    <div class="pricing-badge">Beta Special</div>
                     <h3>HealthyOne Plus</h3>
-                    <div class="pricing-price">$9.99<span>/month</span></div>
+                    <div class="pricing-price" style="position: relative;">
+                        <span style="font-size: 1.2rem; text-decoration: line-through; -webkit-text-fill-color: var(--text-light); opacity: 0.6; display: block; margin-bottom: -0.25rem;">$9.99</span>
+                        $4.99<span>/month</span>
+                    </div>
+                    <p style="color: #FF6B6B; font-weight: 700; font-size: 0.85rem; margin-top: -0.5rem; margin-bottom: 0.75rem;">Save 50% — Beta pricing for a limited time!</p>
                     <ul class="pricing-features">
                         <li><span class="check">✓</span> Unlimited meal logs</li>
                         <li><span class="check">✓</span> Full nutrition analysis</li>
@@ -1503,7 +1720,7 @@
                     <div class="pricing-cta">
                         <a href="#download" class="btn-primary">Start Free 7-Day Trial</a>
                     </div>
-                    <p class="pricing-note">Cancel anytime. No commitment.</p>
+                    <p class="pricing-note">Cancel anytime. No commitment. Lock in beta price!</p>
                 </div>
             </div>
         </div>
@@ -1651,6 +1868,41 @@
                 }
             });
         }
+
+        // Countdown Timer — 30 days from now (auto-renewing)
+        (function() {
+            const COUNTDOWN_KEY = 'healthyone_beta_end';
+            let endTime = localStorage.getItem(COUNTDOWN_KEY);
+            if (!endTime || parseInt(endTime) < Date.now()) {
+                endTime = Date.now() + 30 * 24 * 60 * 60 * 1000;
+                try { localStorage.setItem(COUNTDOWN_KEY, endTime); } catch(e) {}
+            } else {
+                endTime = parseInt(endTime);
+            }
+
+            function updateCountdown() {
+                const now = Date.now();
+                let diff = endTime - now;
+                if (diff < 0) diff = 0;
+
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+                const dEl = document.getElementById('cd-days');
+                const hEl = document.getElementById('cd-hours');
+                const mEl = document.getElementById('cd-mins');
+                const sEl = document.getElementById('cd-secs');
+                if (dEl) dEl.textContent = String(days).padStart(2, '0');
+                if (hEl) hEl.textContent = String(hours).padStart(2, '0');
+                if (mEl) mEl.textContent = String(mins).padStart(2, '0');
+                if (sEl) sEl.textContent = String(secs).padStart(2, '0');
+            }
+
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        })();
     </script>
 </body>
 </html>
