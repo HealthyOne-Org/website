@@ -2305,7 +2305,7 @@
                         <li><span class="check">✓</span> Community support</li>
                     </ul>
                     <div class="pricing-cta">
-                        <a href="https://apps.apple.com/app/healthyone-nutrition-tracker/id6757052428" class="btn-secondary">Pre-Order Free</a>
+                        <a href="#free-guide" class="btn-secondary">Get Notified at Launch</a>
                     </div>
                     <p class="pricing-note">Upgrade anytime to unlock everything</p>
                 </div>
@@ -2328,7 +2328,7 @@
                         <li><span class="check">✓</span> Priority support</li>
                     </ul>
                     <div class="pricing-cta">
-                        <a href="https://apps.apple.com/app/healthyone-nutrition-tracker/id6757052428" class="btn-primary">Pre-Order Now — Start Free Trial →</a>
+                        <a href="#free-guide" class="btn-primary">Join the Waitlist — Get Early Access →</a>
                     </div>
                     <p class="pricing-note">✓ Cancel anytime · ✓ No credit card required · ✓ Lock in beta price</p>
                 </div>
@@ -2700,18 +2700,61 @@
             });
         });
 
-        // Form handling
+        // Form handling — HubSpot API integration
         const leadForm = document.querySelector('.lead-magnet-form');
         if (leadForm) {
             leadForm.addEventListener('submit', function(e) {
                 e.preventDefault();
-                const email = this.querySelector('input[type="email"]').value;
-                if (email) {
-                    // Track email signup in PostHog
-                    if (window.posthog) posthog.capture('email_signup', { email_provided: true });
-                    alert('Thank you for subscribing! Check your email for the free guide.');
-                    this.reset();
-                }
+                const emailInput = this.querySelector('input[type="email"]');
+                const submitBtn = this.querySelector('button[type="submit"]');
+                const email = emailInput.value;
+                if (!email) return;
+
+                // Disable button while submitting
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Sending...';
+
+                // Submit to HubSpot Forms API
+                var hubspotData = {
+                    fields: [
+                        { name: 'email', value: email }
+                    ],
+                    context: {
+                        pageUri: window.location.href,
+                        pageName: document.title
+                    }
+                };
+
+                fetch('https://api.hsforms.com/submissions/v3/integration/submit/243149802/d2799eb0-d41e-422f-9892-32e4670ccc1a', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(hubspotData)
+                })
+                .then(function(response) {
+                    if (response.ok) {
+                        // Track email signup in PostHog
+                        if (window.posthog) posthog.capture('email_signup', { email_provided: true, source: 'hubspot' });
+                        emailInput.value = '';
+                        submitBtn.textContent = 'You\'re In! Check Your Email';
+                        submitBtn.style.background = '#10B981';
+                        setTimeout(function() {
+                            submitBtn.textContent = 'Get My Free Guide →';
+                            submitBtn.style.background = '';
+                            submitBtn.disabled = false;
+                        }, 3000);
+                    } else {
+                        throw new Error('Submission failed');
+                    }
+                })
+                .catch(function() {
+                    submitBtn.textContent = 'Something went wrong — try again';
+                    submitBtn.style.background = '#EF4444';
+                    setTimeout(function() {
+                        submitBtn.textContent = 'Get My Free Guide →';
+                        submitBtn.style.background = '';
+                        submitBtn.disabled = false;
+                    }, 3000);
+                });
             });
         }
 
