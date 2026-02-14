@@ -863,7 +863,7 @@
 
         /* ===== LEAD MAGNET ===== */
         .lead-magnet {
-            background: linear-gradient(160deg, #E8FDF5 0%, #F0F9FF 50%, #FFF5F5 100%);
+            background: #E8FDF5;
             padding: 5rem 2rem;
             max-width: 100%;
         }
@@ -912,31 +912,49 @@
             box-shadow: 0 0 0 4px rgba(78, 205, 196, 0.1);
         }
 
+        @keyframes bookFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+        }
+
+        @keyframes bookFloatDelayed {
+            0%, 100% { transform: translateY(-4px); }
+            50% { transform: translateY(-16px); }
+        }
+
         .book-mockup {
             display: flex;
             justify-content: center;
-            align-items: flex-end;
-            gap: 0.5rem;
+            align-items: center;
+            gap: 1.5rem;
         }
 
         .book-mockup .book-item {
             position: relative;
             transition: all 0.4s ease;
+            animation: bookFloat 4s ease-in-out infinite;
+        }
+
+        .book-mockup .book-item:nth-child(2) {
+            animation: bookFloatDelayed 4s ease-in-out infinite;
+            animation-delay: 0.5s;
         }
 
         .book-mockup .book-item:hover {
-            transform: translateY(-8px);
+            animation-play-state: paused;
+            transform: translateY(-8px) scale(1.03);
         }
 
         .book-mockup .book-item img {
-            max-width: 220px;
+            max-width: 300px;
             width: 100%;
             height: auto;
-            filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.15));
+            filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.2));
+            transition: filter 0.4s ease;
         }
 
         .book-mockup .book-item:hover img {
-            filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.25));
+            filter: drop-shadow(0 30px 50px rgba(0, 0, 0, 0.3));
         }
 
         .book-label {
@@ -955,7 +973,7 @@
 
         @media (max-width: 768px) {
             .book-mockup .book-item img {
-                max-width: 150px;
+                max-width: 200px;
             }
         }
 
@@ -2532,11 +2550,11 @@
 
             <div class="book-mockup fade-up">
                 <div class="book-item">
-                    <img src="assets/Books/ebook-cover.jpg" alt="Superfoods for Super Health">
+                    <img src="assets/Books/superfoods-cover.png" alt="Superfoods for Super Health">
                 </div>
                 <div class="book-item">
                     <span class="book-label">NEW</span>
-                    <img src="assets/Books/forgiveness-cover_3d.png" alt="The Forgiveness-First Health Reset">
+                    <img src="assets/Books/forgiveness-cover.png" alt="The Forgiveness-First Health Reset">
                 </div>
             </div>
         </div>
