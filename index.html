@@ -913,51 +913,22 @@
         }
 
         .book-mockup {
-            background: linear-gradient(160deg, var(--primary) 0%, var(--primary-dark) 50%, #2A9D8F 100%);
-            border-radius: var(--card-radius);
-            padding: 3rem 2rem;
-            color: white;
-            text-align: center;
-            box-shadow: 0 20px 60px rgba(78, 205, 196, 0.25);
-            transform: perspective(1000px) rotateY(-8deg);
-            transition: all 0.5s ease;
-        }
-
-        .book-mockup:hover {
-            transform: perspective(1000px) rotateY(-2deg) translateY(-5px);
-            box-shadow: 0 25px 70px rgba(78, 205, 196, 0.3);
-        }
-
-        .book-icon {
-            font-size: 3.5rem;
-            margin-bottom: 1.25rem;
-        }
-
-        .book-mockup h4 {
-            font-size: 1.6rem;
-            margin-bottom: 0.75rem;
-            font-weight: 700;
-        }
-
-        .book-mockup p {
-            font-size: 0.95rem;
-            opacity: 0.9;
-            line-height: 1.6;
-        }
-
-        .book-meta {
-            margin-top: 1.5rem;
             display: flex;
             justify-content: center;
-            gap: 1.5rem;
-            font-size: 0.8rem;
-            opacity: 0.75;
+            align-items: center;
         }
 
-        .book-meta span {
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
+        .book-mockup img {
+            max-width: 320px;
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.2));
+            transition: all 0.4s ease;
+        }
+
+        .book-mockup:hover img {
+            transform: scale(1.03) translateY(-5px);
+            filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.25));
         }
 
         /* ===== FOOTER ===== */
@@ -2532,14 +2503,7 @@
             </div>
 
             <div class="book-mockup fade-up">
-                <div class="book-icon">📚</div>
-                <h4>Superfoods for<br>Super Health</h4>
-                <p>A complete guide to nutrient-dense foods that transform your health</p>
-                <div class="book-meta">
-                    <span>📄 15 Pages</span>
-                    <span>🧬 Science-Backed</span>
-                    <span>⭐ Expert Tips</span>
-                </div>
+                <img src="assets/Books/ssh-cover-750.jpg" alt="Superfoods for Super Health - Free Guide">
             </div>
         </div>
     </section>
