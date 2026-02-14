@@ -915,20 +915,57 @@
         .book-mockup {
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-end;
+            gap: 1.5rem;
         }
 
-        .book-mockup img {
-            max-width: 320px;
-            width: 100%;
-            height: auto;
-            filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.2));
+        .book-mockup .book-item {
+            position: relative;
             transition: all 0.4s ease;
         }
 
-        .book-mockup:hover img {
-            transform: scale(1.03) translateY(-5px);
-            filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.25));
+        .book-mockup .book-item:hover {
+            transform: translateY(-8px);
+        }
+
+        .book-mockup .book-item img {
+            max-width: 200px;
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.2));
+            border-radius: 4px;
+        }
+
+        .book-mockup .book-item:hover img {
+            filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3));
+        }
+
+        .book-mockup .book-item.featured img {
+            max-width: 240px;
+        }
+
+        .book-label {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            white-space: nowrap;
+            box-shadow: 0 2px 8px rgba(78, 205, 196, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .book-mockup .book-item img {
+                max-width: 140px;
+            }
+            .book-mockup .book-item.featured img {
+                max-width: 160px;
+            }
         }
 
         /* ===== FOOTER ===== */
@@ -2479,31 +2516,37 @@
     <section class="lead-magnet" id="free-guide">
         <div class="lead-magnet-container">
             <div class="lead-magnet-content">
-                <span class="section-label">Free Download</span>
-                <h2>Your Free 15-Page Superfoods Guide</h2>
-                <p>Discover the top 25 nutrient-dense foods that boost energy, support weight loss, and fight inflammation — backed by the latest nutrition science.</p>
+                <span class="section-label">Free Downloads</span>
+                <h2>Get 2 Free Health Guides</h2>
+                <p>Start your health transformation with these two guides from HealthyOne founder Chris Hardaway.</p>
 
                 <ul style="list-style: none; margin: 1.5rem 0; display: flex; flex-direction: column; gap: 0.5rem;">
                     <li style="display: flex; align-items: center; gap: 0.5rem; color: var(--text-medium); font-size: 0.95rem;">
-                        <span style="color: var(--primary);">✓</span> Complete nutrient breakdown for each superfood
+                        <span style="color: var(--primary);">✓</span> <strong>Superfoods Guide</strong> — Top 25 nutrient-dense foods
                     </li>
                     <li style="display: flex; align-items: center; gap: 0.5rem; color: var(--text-medium); font-size: 0.95rem;">
-                        <span style="color: var(--primary);">✓</span> Easy meal prep ideas and recipes
+                        <span style="color: var(--primary);">✓</span> <strong>Forgiveness-First Reset</strong> — Why calories aren't the answer
                     </li>
                     <li style="display: flex; align-items: center; gap: 0.5rem; color: var(--text-medium); font-size: 0.95rem;">
-                        <span style="color: var(--primary);">✓</span> Budget-friendly shopping list
+                        <span style="color: var(--primary);">✓</span> Science-backed strategies for lasting results
                     </li>
                 </ul>
 
                 <form class="lead-magnet-form" method="POST" action="#">
                     <input type="email" placeholder="Enter your email address" required>
-                    <button class="btn-primary" type="submit" style="width: 100%; justify-content: center;">Get My Free Guide →</button>
+                    <button class="btn-primary" type="submit" style="width: 100%; justify-content: center;">Get Both Guides Free →</button>
                 </form>
                 <p style="font-size: 0.8rem; color: var(--text-light); margin-top: 0.75rem; text-align: center;">Join 100+ health enthusiasts. No spam, unsubscribe anytime.</p>
             </div>
 
             <div class="book-mockup fade-up">
-                <img src="assets/Books/ebook-cover.jpg" alt="Superfoods for Super Health - Free Guide">
+                <div class="book-item">
+                    <img src="assets/Books/ebook-cover.jpg" alt="Superfoods for Super Health">
+                </div>
+                <div class="book-item featured">
+                    <span class="book-label">NEW</span>
+                    <img src="assets/Books/forgiveness-cover.png" alt="The Forgiveness-First Health Reset">
+                </div>
             </div>
         </div>
     </section>
