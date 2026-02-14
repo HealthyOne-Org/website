@@ -1861,16 +1861,33 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-container">
-            <div class="hero-badge">
-                <span class="badge-dot"></span>
-                BETA — Now available on iOS & Android
+            <!-- VERSION A: Fact-Based (Default) -->
+            <div id="variant-a-hero" class="ab-variant" data-variant="a">
+                <div class="hero-badge">
+                    <span class="badge-dot"></span>
+                    BETA — Now available on iOS & Android
+                </div>
+
+                <h1>
+                    Track Your Nutrition in<br>
+                    <span class="highlight">10 Seconds</span> — Not 10 Minutes
+                </h1>
+                <p>Just speak, snap, or type what you ate. HealthyOne's AI instantly logs your meals with full nutrition breakdowns — calories, macros, vitamins, and 50+ nutrients.</p>
             </div>
 
-            <h1>
-                Track Your Nutrition in<br>
-                <span class="highlight">10 Seconds</span> — Not 10 Minutes
-            </h1>
-            <p>Just speak, snap, or type what you ate. HealthyOne's AI instantly logs your meals with full nutrition breakdowns — calories, macros, vitamins, and 50+ nutrients.</p>
+            <!-- VERSION B: Emotional/User-Story -->
+            <div id="variant-b-hero" class="ab-variant" data-variant="b" style="display:none;">
+                <div class="hero-badge">
+                    <span class="badge-dot"></span>
+                    BETA — Join thousands starting their health journey
+                </div>
+
+                <h1>
+                    You Deserve to<br>
+                    <span class="highlight">Feel Amazing</span> About What You Eat
+                </h1>
+                <p>No more guilt. No more guessing. Just tell HealthyOne what you ate — by voice, photo, or text — and finally understand how your food makes you feel. It takes 10 seconds, and it changes everything.</p>
+            </div>
 
             <div class="hero-buttons" id="download">
                 <a href="#pricing" class="btn-primary">
@@ -1974,10 +1991,17 @@
 
     <!-- Features Section -->
     <section class="features" id="features">
-        <div class="section-header">
+        <!-- VERSION A: Fact-Based Header -->
+        <div class="section-header ab-variant" data-variant="a">
             <span class="section-label">Features</span>
             <h2>Everything You Need</h2>
             <p class="section-subtitle">Powerful AI-driven tools to take full control of your nutrition journey</p>
+        </div>
+        <!-- VERSION B: Emotional Header -->
+        <div class="section-header ab-variant" data-variant="b" style="display:none;">
+            <span class="section-label">Why People Love It</span>
+            <h2>Built for Real People, Not Fitness Pros</h2>
+            <p class="section-subtitle">You don't need to be a nutritionist to eat well. HealthyOne makes it feel effortless — like having a supportive friend who actually knows nutrition.</p>
         </div>
 
         <div class="features-grid">
@@ -2117,10 +2141,17 @@
 
     <!-- How It Works -->
     <section class="how-it-works" id="how-it-works">
-        <div class="section-header">
+        <!-- VERSION A: Fact-Based -->
+        <div class="section-header ab-variant" data-variant="a">
             <span class="section-label">How It Works</span>
             <h2>Three Simple Steps</h2>
             <p class="section-subtitle">From meal to insights in seconds, not minutes</p>
+        </div>
+        <!-- VERSION B: Emotional -->
+        <div class="section-header ab-variant" data-variant="b" style="display:none;">
+            <span class="section-label">Your Journey Starts Here</span>
+            <h2>So Easy You'll Actually Stick With It</h2>
+            <p class="section-subtitle">Most nutrition apps get abandoned in a week. HealthyOne is different — because it fits your life, not the other way around.</p>
         </div>
 
         <div class="steps-container">
@@ -2196,9 +2227,18 @@
     <!-- Countdown Timer Section -->
     <div class="countdown-section">
         <div class="countdown-inner">
-            <div class="countdown-label">Limited Time Offer</div>
-            <h2 class="countdown-title">Beta Launch Special — 50% Off</h2>
-            <p class="countdown-subtitle">Lock in $4.99/month before the price goes up to $9.99</p>
+            <!-- VERSION A: Fact-Based -->
+            <div class="ab-variant" data-variant="a">
+                <div class="countdown-label">Limited Time Offer</div>
+                <h2 class="countdown-title">Beta Launch Special — 50% Off</h2>
+                <p class="countdown-subtitle">Lock in $4.99/month before the price goes up to $9.99</p>
+            </div>
+            <!-- VERSION B: Emotional -->
+            <div class="ab-variant" data-variant="b" style="display:none;">
+                <div class="countdown-label">Your Health Is Worth It</div>
+                <h2 class="countdown-title">Start Feeling Better for Less Than a Coffee</h2>
+                <p class="countdown-subtitle">Early supporters get $4.99/month — that's less than one latte to transform how you eat, feel, and live. This price won't last.</p>
+            </div>
 
             <div class="countdown-price-row">
                 <span class="countdown-price-old">$9.99/mo</span>
@@ -2491,6 +2531,49 @@
     <script>
         !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug getPageviewId".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
         posthog.init('phc_jbeSYaK5OAsl5qbZbnsJYU3N3m5258lEZbVWoLWxPWo', {api_host: 'https://us.i.posthog.com', person_profiles: 'identified_only'});
+    </script>
+
+    <!-- A/B Test Logic: PostHog Feature Flags -->
+    <script>
+        // Wait for PostHog to load, then check feature flag
+        function applyABTest() {
+            if (!window.posthog) return;
+
+            posthog.onFeatureFlags(function() {
+                // Get the variant from PostHog feature flag "landing-page-variant"
+                // Returns "test" for Version B, or "control"/undefined for Version A
+                var variant = posthog.getFeatureFlag('landing-page-variant');
+                var showB = (variant === 'test');
+
+                // Track which variant was shown
+                posthog.capture('ab_test_shown', { variant: showB ? 'B_emotional' : 'A_factual' });
+
+                // Toggle all variant elements
+                document.querySelectorAll('.ab-variant').forEach(function(el) {
+                    var elVariant = el.getAttribute('data-variant');
+                    if (showB) {
+                        el.style.display = (elVariant === 'b') ? '' : 'none';
+                    } else {
+                        el.style.display = (elVariant === 'a') ? '' : 'none';
+                    }
+                });
+            });
+        }
+
+        // Run when PostHog is ready
+        if (window.posthog && window.posthog.onFeatureFlags) {
+            applyABTest();
+        } else {
+            // Wait for PostHog to initialize
+            var checkInterval = setInterval(function() {
+                if (window.posthog && window.posthog.onFeatureFlags) {
+                    clearInterval(checkInterval);
+                    applyABTest();
+                }
+            }, 100);
+            // Stop checking after 5 seconds (show Version A by default)
+            setTimeout(function() { clearInterval(checkInterval); }, 5000);
+        }
     </script>
 
     <!-- Scripts -->
