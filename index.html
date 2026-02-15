@@ -2826,10 +2826,10 @@
                         // Track email signup in PostHog
                         if (window.posthog) posthog.capture('email_signup', { email_provided: true, source: 'hubspot' });
                         emailInput.value = '';
-                        submitBtn.textContent = 'Downloading Your Guide...';
+                        submitBtn.textContent = 'Downloading Your Guides...';
                         submitBtn.style.background = '#10B981';
 
-                        // Trigger free guide PDF download
+                        // Trigger free guide PDF downloads
                         var downloadLink = document.createElement('a');
                         downloadLink.href = 'assets/superfoods-guide.pdf';
                         downloadLink.download = 'HealthyOne-Superfoods-Guide.pdf';
@@ -2837,10 +2837,20 @@
                         downloadLink.click();
                         document.body.removeChild(downloadLink);
 
+                        // Download second guide after a brief delay
+                        setTimeout(function() {
+                            var downloadLink2 = document.createElement('a');
+                            downloadLink2.href = 'assets/Books/THE FORGIVENESS-FIRST HEALTH RESET - COMPLETE eBOOK.pdf';
+                            downloadLink2.download = 'HealthyOne-Forgiveness-First-Health-Reset.pdf';
+                            document.body.appendChild(downloadLink2);
+                            downloadLink2.click();
+                            document.body.removeChild(downloadLink2);
+                        }, 1000);
+
                         setTimeout(function() {
                             submitBtn.textContent = 'Downloaded! Check Your Downloads';
                             setTimeout(function() {
-                                submitBtn.textContent = 'Get My Free Guide →';
+                                submitBtn.textContent = 'Get Both Guides Free →';
                                 submitBtn.style.background = '';
                                 submitBtn.disabled = false;
                             }, 3000);
@@ -2853,7 +2863,7 @@
                     submitBtn.textContent = 'Something went wrong — try again';
                     submitBtn.style.background = '#EF4444';
                     setTimeout(function() {
-                        submitBtn.textContent = 'Get My Free Guide →';
+                        submitBtn.textContent = 'Get Both Guides Free →';
                         submitBtn.style.background = '';
                         submitBtn.disabled = false;
                     }, 3000);
