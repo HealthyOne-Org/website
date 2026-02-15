@@ -2826,35 +2826,22 @@
                         // Track email signup in PostHog
                         if (window.posthog) posthog.capture('email_signup', { email_provided: true, source: 'hubspot' });
                         emailInput.value = '';
-                        submitBtn.textContent = 'Downloading Your Guides...';
+                        submitBtn.textContent = '✅ Success! Download your guides below';
                         submitBtn.style.background = '#10B981';
+                        submitBtn.disabled = true;
 
-                        // Trigger free guide PDF downloads
-                        var downloadLink = document.createElement('a');
-                        downloadLink.href = 'assets/superfoods-guide.pdf';
-                        downloadLink.download = 'HealthyOne-Superfoods-Guide.pdf';
-                        document.body.appendChild(downloadLink);
-                        downloadLink.click();
-                        document.body.removeChild(downloadLink);
-
-                        // Download second guide after a brief delay
-                        setTimeout(function() {
-                            var downloadLink2 = document.createElement('a');
-                            downloadLink2.href = 'assets/Books/THE FORGIVENESS-FIRST HEALTH RESET - COMPLETE eBOOK.pdf';
-                            downloadLink2.download = 'HealthyOne-Forgiveness-First-Health-Reset.pdf';
-                            document.body.appendChild(downloadLink2);
-                            downloadLink2.click();
-                            document.body.removeChild(downloadLink2);
-                        }, 1000);
+                        // Show download buttons for both guides
+                        var downloadContainer = document.createElement('div');
+                        downloadContainer.style.cssText = 'display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1rem;';
+                        downloadContainer.innerHTML = '<a href="assets/superfoods-guide.pdf" download="HealthyOne-Superfoods-Guide.pdf" style="display: flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1rem; background: linear-gradient(135deg, #10B981, #059669); color: white; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: transform 0.2s;">📗 Download Superfoods Guide</a>' +
+                            '<a href="assets/Books/THE FORGIVENESS-FIRST HEALTH RESET - COMPLETE eBOOK.pdf" download="HealthyOne-Forgiveness-First-Health-Reset.pdf" style="display: flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1rem; background: linear-gradient(135deg, #8B5CF6, #7C3AED); color: white; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: transform 0.2s;">💜 Download Forgiveness-First Reset</a>';
+                        leadForm.parentNode.insertBefore(downloadContainer, leadForm.nextSibling);
 
                         setTimeout(function() {
-                            submitBtn.textContent = 'Downloaded! Check Your Downloads';
-                            setTimeout(function() {
-                                submitBtn.textContent = 'Get Both Guides Free →';
-                                submitBtn.style.background = '';
-                                submitBtn.disabled = false;
-                            }, 3000);
-                        }, 1000);
+                            submitBtn.textContent = 'Get Both Guides Free →';
+                            submitBtn.style.background = '';
+                            submitBtn.disabled = false;
+                        }, 10000);
                     } else {
                         throw new Error('Submission failed');
                     }
