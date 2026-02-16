@@ -2078,6 +2078,30 @@
         </div>
     </div>
 
+    <!-- Lifestyle Banner -->
+    <style>
+        .lifestyle-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: center; }
+        .lifestyle-item { border-radius: 24px; overflow: hidden; box-shadow: 0 8px 30px rgba(0,0,0,0.1); }
+        .lifestyle-item img, .lifestyle-item video { width: 100%; height: 400px; object-fit: cover; display: block; }
+        @media (max-width: 768px) {
+            .lifestyle-grid { grid-template-columns: 1fr; }
+            .lifestyle-item img, .lifestyle-item video { height: 280px; }
+        }
+    </style>
+    <div style="max-width: 1200px; margin: 0 auto; padding: 3rem 2rem;">
+        <div class="lifestyle-grid">
+            <div class="lifestyle-item">
+                <img src="assets/lifestyle_friends_app.jpg" alt="Friends using HealthyOne together">
+            </div>
+            <div class="lifestyle-item">
+                <video autoplay muted loop playsinline>
+                    <source src="assets/hero_video.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+        <p style="text-align: center; margin-top: 1.5rem; color: var(--text-light); font-size: 0.95rem; font-weight: 500;">Join thousands tracking smarter with HealthyOne</p>
+    </div>
+
     <!-- Features Section -->
     <section class="features" id="features">
         <!-- VERSION A: Fact-Based Header -->
@@ -2215,12 +2239,8 @@
                         </li>
                     </ul>
                 </div>
-                <div class="preview-phone fade-up fade-up-delay-2">
-                    <div class="phone-frame">
-                        <div class="phone-screen">
-                            <img src="assets/screenshot1_dashboard.jpg" alt="HealthyOne Dashboard">
-                        </div>
-                    </div>
+                <div class="preview-phone fade-up fade-up-delay-2" style="display: flex; justify-content: center;">
+                    <img src="assets/lifestyle_weekly_dashboard.jpg" alt="HealthyOne Weekly Dashboard" style="max-height: 580px; border-radius: 24px; box-shadow: 0 12px 40px rgba(0,0,0,0.15);">
                 </div>
             </div>
 
@@ -2728,18 +2748,19 @@
             });
         }
 
-        // Run when PostHog is ready
+        // Always run immediately for URL param override
+        applyABTest();
+
+        // Also run when PostHog is ready (for normal visitors without URL param)
         if (window.posthog && window.posthog.onFeatureFlags) {
             applyABTest();
         } else {
-            // Wait for PostHog to initialize
             var checkInterval = setInterval(function() {
                 if (window.posthog && window.posthog.onFeatureFlags) {
                     clearInterval(checkInterval);
                     applyABTest();
                 }
             }, 100);
-            // Stop checking after 5 seconds (show Version A by default)
             setTimeout(function() { clearInterval(checkInterval); }, 5000);
         }
     </script>
