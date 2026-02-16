@@ -2016,21 +2016,18 @@
             <div class="phone-showcase">
                 <div class="phone-frame side fade-up fade-up-delay-1" style="position: relative;">
                     <div class="phone-screen">
-                        <div class="phone-notch"></div>
                         <img src="assets/screenshot2_recipes.png" alt="HealthyOne Recipe Discovery">
                     </div>
                     <span style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #B39DDB, #9575CD); color: white; padding: 0.3rem 0.75rem; border-radius: 20px; font-size: 0.7rem; font-weight: 700; white-space: nowrap; box-shadow: 0 2px 8px rgba(179, 157, 219, 0.4);">🥗 Recipes</span>
                 </div>
                 <div class="phone-frame center fade-up fade-up-delay-2" style="position: relative;">
                     <div class="phone-screen">
-                        <div class="phone-notch"></div>
                         <img src="assets/screenshot1_dashboard.jpg" alt="HealthyOne Dashboard">
                     </div>
                     <span style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; padding: 0.3rem 0.75rem; border-radius: 20px; font-size: 0.7rem; font-weight: 700; white-space: nowrap; box-shadow: 0 2px 8px rgba(78, 205, 196, 0.4);">📊 Dashboard</span>
                 </div>
                 <div class="phone-frame side fade-up fade-up-delay-3" style="position: relative;">
                     <div class="phone-screen">
-                        <div class="phone-notch"></div>
                         <img src="assets/screenshot3_logging.png" alt="HealthyOne Meal Logging">
                     </div>
                     <span style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #FF6B6B, #FF5252); color: white; padding: 0.3rem 0.75rem; border-radius: 20px; font-size: 0.7rem; font-weight: 700; white-space: nowrap; box-shadow: 0 2px 8px rgba(255, 107, 107, 0.4);">🎤 Voice Log</span>
@@ -2166,7 +2163,6 @@
                 <div class="preview-phone fade-up">
                     <div class="phone-frame">
                         <div class="phone-screen">
-                            <div class="phone-notch"></div>
                             <img src="assets/screenshot3_logging.png" alt="HealthyOne Meal Logging Interface">
                         </div>
                     </div>
@@ -2222,7 +2218,6 @@
                 <div class="preview-phone fade-up fade-up-delay-2">
                     <div class="phone-frame">
                         <div class="phone-screen">
-                            <div class="phone-notch"></div>
                             <img src="assets/screenshot1_dashboard.jpg" alt="HealthyOne Dashboard">
                         </div>
                     </div>
@@ -2234,7 +2229,6 @@
                 <div class="preview-phone fade-up">
                     <div class="phone-frame">
                         <div class="phone-screen">
-                            <div class="phone-notch"></div>
                             <img src="assets/screenshot6_photo_analysis.png" alt="HealthyOne AI Photo Analysis">
                         </div>
                     </div>
@@ -2290,7 +2284,6 @@
                 <div class="preview-phone fade-up fade-up-delay-2">
                     <div class="phone-frame">
                         <div class="phone-screen">
-                            <div class="phone-notch"></div>
                             <img src="assets/screenshot5_health_sync.jpg" alt="HealthyOne Apple Health Sync">
                         </div>
                     </div>
@@ -2473,7 +2466,7 @@
                         <span style="font-size: 1.2rem; text-decoration: line-through; -webkit-text-fill-color: var(--text-light); opacity: 0.6; display: block; margin-bottom: -0.25rem;">$9.99</span>
                         $4.99<span>/month</span>
                     </div>
-                    <p style="color: #FF6B6B; font-weight: 700; font-size: 0.85rem; margin-top: -0.5rem; margin-bottom: 0.5rem;">Beta Special — 50% off forever!</p>
+                    <p style="color: #FF6B6B; font-weight: 700; font-size: 0.85rem; margin-top: -0.5rem; margin-bottom: 0.5rem;">Beta Special — 50% off until timer ends!</p>
                     <p style="color: var(--text-light); font-size: 0.8rem; margin-bottom: 0.75rem;">Less than one coffee per week ☕</p>
                     <ul class="pricing-features">
                         <li><span class="check">✓</span> <strong>Unlimited</strong> meal logs</li>
@@ -2581,7 +2574,7 @@
                     </button>
                     <div class="faq-answer">
                         <div class="faq-answer-inner">
-                            Beta users who subscribe keep their discounted $4.99/month price forever — even after we raise the price to $9.99/month at launch. This is our thank you for being an early adopter and helping us improve HealthyOne.
+                            Beta users who subscribe during the launch countdown get the discounted $4.99/month price. After the timer ends, the price goes up to $9.99/month. This is our thank you for being an early adopter and helping us improve HealthyOne.
                         </div>
                     </div>
                 </div>
@@ -2698,7 +2691,20 @@
     <!-- A/B Test Logic: PostHog Feature Flags -->
     <script>
         // Wait for PostHog to load, then check feature flag
+        // Manual override: add ?variant=a or ?variant=b to URL to preview either version
         function applyABTest() {
+            var urlParams = new URLSearchParams(window.location.search);
+            var manualVariant = urlParams.get('variant');
+
+            if (manualVariant === 'a' || manualVariant === 'b') {
+                var showB = (manualVariant === 'b');
+                document.querySelectorAll('.ab-variant').forEach(function(el) {
+                    var elVariant = el.getAttribute('data-variant');
+                    el.style.display = (elVariant === (showB ? 'b' : 'a')) ? '' : 'none';
+                });
+                return;
+            }
+
             if (!window.posthog) return;
 
             posthog.onFeatureFlags(function() {
