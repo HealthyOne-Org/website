@@ -726,8 +726,8 @@
         }
 
         .pricing-cards {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
+            justify-content: center;
             gap: 2rem;
             margin-top: 3rem;
         }
@@ -736,10 +736,12 @@
             background: var(--white);
             border: 1px solid rgba(0, 0, 0, 0.04);
             border-radius: var(--card-radius);
-            padding: 2.5rem;
+            padding: 2.5rem 3rem;
             text-align: center;
             transition: all 0.4s ease;
             position: relative;
+            max-width: 480px;
+            width: 100%;
         }
 
         .pricing-card:hover {
@@ -1838,10 +1840,12 @@
             }
 
             .pricing-cards {
-                grid-template-columns: 1fr;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .pricing-card {
                 max-width: 420px;
-                margin-left: auto;
-                margin-right: auto;
             }
 
             .pricing-card.featured {
@@ -2474,17 +2478,19 @@
                 <p class="section-subtitle">One plan. Everything included. No hidden fees.</p>
             </div>
 
-            <div class="pricing-cards" style="justify-content: center;">
+            <div class="pricing-cards">
                 <div class="pricing-card featured fade-up fade-up-delay-1">
                     <div class="pricing-badge">🔥 Launch Special</div>
                     <h3>HealthyOne Plus</h3>
+                    <p style="color: var(--primary); font-weight: 700; font-size: 0.9rem; margin-top: 0.25rem; margin-bottom: 0.5rem;">Start with a 7-day free trial</p>
                     <div class="pricing-price" style="position: relative;">
                         <span style="font-size: 1.2rem; text-decoration: line-through; -webkit-text-fill-color: var(--text-light); opacity: 0.6; display: block; margin-bottom: -0.25rem;">$9.99</span>
                         $4.99<span>/month</span>
                     </div>
-                    <p style="color: #FF6B6B; font-weight: 700; font-size: 0.85rem; margin-top: -0.5rem; margin-bottom: 0.5rem;">Beta Special — 50% off until timer ends!</p>
-                    <p style="color: var(--text-light); font-size: 0.8rem; margin-bottom: 0.75rem;">Less than one coffee per week ☕</p>
+                    <p style="color: #FF6B6B; font-weight: 700; font-size: 0.85rem; margin-top: -0.5rem; margin-bottom: 0.5rem;">Launch price — 50% off for 3 months!</p>
+                    <p style="color: var(--text-light); font-size: 0.8rem; margin-bottom: 0.75rem;">Then $9.99/month · Less than one coffee per week</p>
                     <ul class="pricing-features">
+                        <li><span class="check">✓</span> <strong>7-day free trial</strong> — full access, no card needed</li>
                         <li><span class="check">✓</span> <strong>Unlimited</strong> meal logs</li>
                         <li><span class="check">✓</span> <strong>50+ nutrients</strong> tracked</li>
                         <li><span class="check">✓</span> AI-powered insights</li>
@@ -2493,9 +2499,9 @@
                         <li><span class="check">✓</span> Priority support</li>
                     </ul>
                     <div class="pricing-cta">
-                        <a href="#early-access" class="btn-primary">Lock In Beta Price — Join Waitlist →</a>
+                        <a href="#early-access" class="btn-primary">Start Free Trial →</a>
                     </div>
-                    <p class="pricing-note">✓ Cancel anytime · ✓ No credit card required · ✓ Lock in beta price</p>
+                    <p class="pricing-note">✓ 7-day free trial · ✓ Cancel anytime · ✓ $4.99/mo for 3 months, then $9.99/mo</p>
                 </div>
             </div>
 
