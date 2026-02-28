@@ -3468,7 +3468,7 @@
                     .then(function(response) {
                         if (response.ok) {
                             if (window.posthog) posthog.capture('discount_popup_signup', { email_provided: true });
-                            submitBtn.textContent = '✅ You\'re In! Check your inbox';
+                            submitBtn.textContent = '✅ You\'re In! Discount locked 🔒';
                             submitBtn.style.background = '#10B981';
                             emailInput.value = '';
                             setTimeout(function() { closePopup(); }, 2500);
