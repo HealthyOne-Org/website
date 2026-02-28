@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - HealthyOne Nutrition Tracker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #10B981;
+            --primary-dark: #059669;
+            --primary-light: #34D399;
+            --accent: #0D9488;
+            --bg-dark: #0F1419;
+            --bg-card: #1A2332;
+            --bg-card-hover: #243044;
+            --text-primary: #F9FAFB;
+            --text-secondary: #9CA3AF;
+            --text-muted: #6B7280;
+            --border: rgba(255,255,255,0.08);
+            --glow: rgba(16, 185, 129, 0.4);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated gradient background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 50%, rgba(16, 185, 129, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 50%, rgba(13, 148, 136, 0.1) 0%, transparent 50%);
+            animation: gradientShift 15s ease infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% {
+                transform: translate(0, 0);
+            }
+            50% {
+                transform: translate(50px, 50px);
+            }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 40px;
+            box-shadow: 0 20px 40px var(--glow);
+        }
+
+        .header h1 {
+            font-size: 44px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: var(--primary-light);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* Intro section */
+        .intro {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--primary);
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 48px;
+            backdrop-filter: blur(10px);
+        }
+
+        .intro p {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* Content sections */
+        .section {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--primary);
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 32px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .section:hover {
+            background: var(--bg-card-hover);
+            border-color: rgba(16, 185, 129, 0.3);
+            box-shadow: 0 8px 32px var(--glow);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .section-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(16, 185, 129, 0.2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .section h2 {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .section h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--primary-light);
+            margin-top: 20px;
+            margin-bottom: 12px;
+        }
+
+        .section p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            line-height: 1.8;
+        }
+
+        .section ul {
+            list-style: none;
+            margin-bottom: 16px;
+        }
+
+        .section li {
+            font-size: 15px;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            padding-left: 28px;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .section li::before {
+            content: '•';
+            position: absolute;
+            left: 8px;
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .section strong {
+            color: var(--primary-light);
+            font-weight: 600;
+        }
+
+        /* SMS section special styling */
+        .section.sms-section {
+            border-left-color: var(--primary-light);
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(13, 148, 136, 0.04) 100%);
+        }
+
+        .section.sms-section .section-icon {
+            background: rgba(16, 185, 129, 0.3);
+        }
+
+        .sms-subsection {
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 3px solid var(--accent);
+            padding: 16px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .sms-subsection h4 {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--primary-light);
+            margin-bottom: 12px;
+        }
+
+        .sms-subsection p {
+            margin-bottom: 12px;
+        }
+
+        .sms-subsection ul {
+            margin-bottom: 0;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 80px;
+            padding-top: 40px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--primary-light);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-copyright {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 24px 16px;
+            }
+
+            .header h1 {
+                font-size: 32px;
+            }
+
+            .header p {
+                font-size: 16px;
+            }
+
+            .header-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 32px;
+            }
+
+            .section {
+                padding: 24px;
+            }
+
+            .section h2 {
+                font-size: 20px;
+            }
+
+            .footer-links {
+                gap: 16px;
+                font-size: 14px;
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            body::before {
+                display: none;
+            }
+
+            .section {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-icon">⚖️</div>
+            <h1>Terms of Service</h1>
+            <p>The rules and conditions for using HealthyOne.</p>
+            <span class="header-badge">Last Updated: February 2026</span>
+        </div>
+
+        <!-- Intro -->
+        <div class="intro">
+            <p>By downloading, installing, or using HealthyOne ("the App", "we", "our", or "us"), you agree to be bound by these Terms of Service. If you disagree with any part of these terms, please do not use the App. These terms are effective as of the date last updated above.</p>
+        </div>
+
+        <!-- Section 1: Acceptance of Terms -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">✋</div>
+                <h2>Acceptance of Terms</h2>
+            </div>
+
+            <p>By downloading, installing, or using HealthyOne, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service. If you do not agree to these terms, or if you are not legally able to enter into an agreement, you must not download, install, or use the App. Your continued use of HealthyOne constitutes acceptance of any updates or changes to these terms.</p>
+        </div>
+
+        <!-- Section 2: Description of Service -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">📱</div>
+                <h2>Description of Service</h2>
+            </div>
+
+            <p>HealthyOne is a meal logging and nutrition tracking application available on iOS and Android. The App provides tools and features to help you monitor your nutrition and health, including:</p>
+
+            <ul>
+                <li><strong>Voice & Text Logging:</strong> Log meals by speaking, typing, or searching our food database</li>
+                <li><strong>Photo Analysis:</strong> Photograph your meals to automatically extract nutritional information</li>
+                <li><strong>Calorie & Macro Tracking:</strong> Track calories, protein, carbohydrates, fat, and other macronutrients</li>
+                <li><strong>Heart Health Tracking:</strong> Monitor cardiovascular metrics and health indicators</li>
+                <li><strong>Recipe Discovery & Saving:</strong> Search, discover, and save recipes for future reference</li>
+                <li><strong>Progress Monitoring:</strong> View charts and analytics of your nutrition and health progress</li>
+            </ul>
+
+            <p style="margin-top: 16px;">HealthyOne is intended as a personal health and wellness tool. The features and services provided are "as is" and may be updated or modified at our discretion.</p>
+        </div>
+
+        <!-- Section 3: User Accounts -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">👤</div>
+                <h2>User Accounts</h2>
+            </div>
+
+            <p>To use certain features of HealthyOne, you must create an account. You agree to:</p>
+
+            <ul>
+                <li><strong>Accurate Information:</strong> Provide accurate, current, and complete information when creating or updating your account</li>
+                <li><strong>Account Security:</strong> Be responsible for maintaining the confidentiality of your password and account credentials. Do not share your password with others</li>
+                <li><strong>Age Requirement:</strong> You must be at least 13 years old to use HealthyOne. By creating an account, you represent that you meet this age requirement</li>
+                <li><strong>Unauthorized Use:</strong> Notify us immediately of any unauthorized access to your account</li>
+                <li><strong>Account Responsibility:</strong> You are fully responsible for all activities that occur under your account, whether authorized by you or not</li>
+            </ul>
+        </div>
+
+        <!-- Section 4: Subscription & Payments -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">💳</div>
+                <h2>Subscription & Payments</h2>
+            </div>
+
+            <p>HealthyOne offers both free and premium features:</p>
+
+            <h3>Free Features</h3>
+            <ul>
+                <li>Basic meal logging and calorie tracking</li>
+                <li>Access to our food database</li>
+                <li>Progress charts and analytics</li>
+            </ul>
+
+            <h3>Premium Subscription</h3>
+            <ul>
+                <li><strong>Price:</strong> $9.99 USD per month</li>
+                <li><strong>Billing Cycle:</strong> Charged monthly on the same day of each month</li>
+                <li><strong>Auto-Renewal:</strong> Your subscription will automatically renew each billing period unless you cancel at least 24 hours before the end of the current period</li>
+                <li><strong>Charge Method:</strong> Charges are billed to your Apple ID (iOS) or Google Play account (Android) on file</li>
+                <li><strong>Manage Subscription:</strong> You can manage, modify, or cancel your subscription anytime through the App Store (iOS) or Google Play Store (Android) settings</li>
+                <li><strong>No Refunds:</strong> HealthyOne does not offer refunds for partial billing periods. Cancellations take effect at the end of your current billing cycle</li>
+            </ul>
+
+            <p style="margin-top: 16px;">By subscribing, you authorize us to charge your selected payment method for the subscription price and any applicable taxes. You are responsible for keeping your payment information current.</p>
+        </div>
+
+        <!-- Section 5: User Content -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">📝</div>
+                <h2>User Content</h2>
+            </div>
+
+            <p>Any content you create, upload, or enter into HealthyOne (such as meal logs, photos, recipes, and health data) is "User Content." You agree to:</p>
+
+            <ul>
+                <li><strong>Ownership:</strong> You retain all ownership rights to your User Content</li>
+                <li><strong>License Grant:</strong> You grant HealthyOne a limited license to store, process, and display your User Content solely for the purpose of providing the App's services to you</li>
+                <li><strong>No Harmful Content:</strong> You agree not to upload or submit content that is illegal, offensive, harmful, discriminatory, or violates third-party rights</li>
+                <li><strong>Privacy:</strong> Do not include personal information of others in your User Content without their consent</li>
+            </ul>
+        </div>
+
+        <!-- Section 6: Intellectual Property -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">©️</div>
+                <h2>Intellectual Property</h2>
+            </div>
+
+            <p>HealthyOne, including its design, features, functionality, and content, is protected by copyright, trademark, and other intellectual property laws. You agree to:</p>
+
+            <ul>
+                <li><strong>No Reproduction:</strong> You may not copy, modify, distribute, or republish any part of HealthyOne without our written consent</li>
+                <li><strong>Limited License:</strong> We grant you a limited, non-exclusive, non-transferable license to use HealthyOne solely for your personal, non-commercial purposes</li>
+                <li><strong>Respect IP Rights:</strong> Do not reverse-engineer, decompile, or attempt to derive the source code or underlying technology of HealthyOne</li>
+                <li><strong>Attribution:</strong> All food database content, recipe information, and nutritional data are provided under license from third-party sources and remain their intellectual property</li>
+            </ul>
+        </div>
+
+        <!-- Section 7: Health Disclaimer -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">⚠️</div>
+                <h2>Health Disclaimer</h2>
+            </div>
+
+            <p><strong>IMPORTANT:</strong> HealthyOne is a personal wellness and informational tool. It is NOT a substitute for professional medical advice, diagnosis, or treatment. Please be aware of the following:</p>
+
+            <ul>
+                <li><strong>Informational Only:</strong> All content, recommendations, and features in HealthyOne are for informational purposes only and do not constitute medical advice</li>
+                <li><strong>Calorie & Nutrition Estimates:</strong> Calorie, macro, and micronutrient estimates provided by HealthyOne are approximations based on food database information. Actual nutritional values may vary based on portion size, preparation method, and ingredients</li>
+                <li><strong>Consult Healthcare Provider:</strong> Before making any dietary changes, starting a new fitness regimen, or taking supplements, consult with a qualified healthcare provider or registered dietitian</li>
+                <li><strong>Individual Variation:</strong> Your individual nutritional needs, calorie requirements, and health goals vary based on age, gender, activity level, and medical history. HealthyOne does not replace personalized nutritional counseling</li>
+                <li><strong>Medical Conditions:</strong> If you have a medical condition, food allergies, or take medications, consult a healthcare professional before making dietary changes</li>
+            </ul>
+        </div>
+
+        <!-- Section 8: SMS Communications -->
+        <div class="section sms-section">
+            <div class="section-header">
+                <div class="section-icon">📱</div>
+                <h2>SMS Communications</h2>
+            </div>
+
+            <p>By opting in to SMS notifications through the HealthyOne app, you agree to receive text messages related to meal reminders, account notifications, and return-to-habit nudges. Here's what you need to know:</p>
+
+            <div class="sms-subsection">
+                <h4>Message Types & Frequency</h4>
+                <ul>
+                    <li>SMS messages are <strong>optional</strong> and low frequency (typically 1-3 per week maximum)</li>
+                    <li>Messages include meal logging reminders, account notifications, and motivational nudges</li>
+                    <li>Messages are <strong>non-promotional</strong> and transactional in nature</li>
+                    <li>You control message frequency in your app settings</li>
+                </ul>
+            </div>
+
+            <div class="sms-subsection">
+                <h4>How to Opt Out</h4>
+                <ul>
+                    <li>Reply <strong>STOP</strong> to any message to immediately unsubscribe from all SMS communications</li>
+                    <li>Or disable SMS reminders in the app: <strong>Settings → Notifications → SMS Reminders</strong></li>
+                    <li>You can also email <strong>support@healthyoneapp.com</strong> to request removal from SMS messaging</li>
+                </ul>
+            </div>
+
+            <div class="sms-subsection">
+                <h4>Costs & Carriers</h4>
+                <ul>
+                    <li>Message and data rates may apply depending on your mobile carrier and plan</li>
+                    <li>HealthyOne does not charge any additional fees for SMS messages</li>
+                    <li>Contact your carrier for details about your message and data rates</li>
+                </ul>
+            </div>
+
+            <div class="sms-subsection">
+                <h4>Privacy & Data Security</h4>
+                <ul>
+                    <li>Your phone number is used solely for sending SMS messages you've opted into</li>
+                    <li>SMS delivery is handled by Twilio, a trusted SMS service provider</li>
+                    <li>See our Privacy Policy for full details on how we handle SMS data</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Section 9: Limitation of Liability -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">⚖️</div>
+                <h2>Limitation of Liability</h2>
+            </div>
+
+            <p>TO THE MAXIMUM EXTENT PERMITTED BY LAW:</p>
+
+            <ul>
+                <li><strong>No Indirect Damages:</strong> HealthyOne shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use of or inability to use the App, even if we have been advised of the possibility of such damages</li>
+                <li><strong>Limited Liability:</strong> Our total liability to you shall not exceed the amount you paid for premium features in the 12 months preceding the claim</li>
+                <li><strong>Service Availability:</strong> HealthyOne is provided "as is" without warranty. We do not guarantee uninterrupted, error-free service</li>
+                <li><strong>Data Loss:</strong> While we take reasonable precautions to protect your data, we are not liable for any loss, corruption, or unauthorized access to your User Content</li>
+            </ul>
+        </div>
+
+        <!-- Section 10: Changes to Terms -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">🔄</div>
+                <h2>Changes to Terms</h2>
+            </div>
+
+            <p>HealthyOne reserves the right to update, modify, or change these Terms of Service at any time. Changes will be effective when posted to the App or our website (healthyoneapp.com). Your continued use of HealthyOne following any such changes constitutes your acceptance of the updated terms.</p>
+
+            <p>We recommend reviewing these Terms of Service periodically to stay informed of any updates. If you do not agree with any changes, you may discontinue your use of HealthyOne.</p>
+        </div>
+
+        <!-- Section 11: Contact Us -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">📧</div>
+                <h2>Contact Us</h2>
+            </div>
+
+            <p>If you have questions, concerns, or feedback regarding these Terms of Service, please contact us:</p>
+
+            <p style="margin-top: 20px; color: var(--primary-light);">
+                <strong>support@healthyoneapp.com</strong>
+            </p>
+
+            <p style="margin-top: 16px; color: var(--text-secondary);">
+                We aim to respond to all inquiries within 7 business days.
+            </p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/privacy.html">Privacy Policy</a>
+            <a href="/terms.html">Terms of Service</a>
+        </div>
+        <div class="footer-copyright">
+            © 2026 Hardaway Labs LLC. All rights reserved.
+        </div>
+    </footer>
+</body>
+</html>
