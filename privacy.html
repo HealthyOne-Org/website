@@ -3,706 +3,606 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy - HealthyOne Nutrition Tracker</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Privacy Policy - HealthyOne</title>
+    <meta name="description" content="HealthyOne Privacy Policy. Learn how we collect, use, and protect your data.">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
 
         :root {
-            --primary: #10B981;
-            --primary-dark: #059669;
-            --primary-light: #34D399;
-            --accent: #0D9488;
-            --bg-dark: #0F1419;
-            --bg-card: #1A2332;
-            --bg-card-hover: #243044;
-            --text-primary: #F9FAFB;
-            --text-secondary: #9CA3AF;
-            --text-muted: #6B7280;
-            --border: rgba(255,255,255,0.08);
-            --glow: rgba(16, 185, 129, 0.4);
+            --primary: #4ECDC4;
+            --primary-dark: #3BA99C;
+            --primary-light: #A8E6CF;
+            --text-dark: #1A2332;
+            --text-medium: #4A5568;
+            --text-light: #718096;
+            --white: #FFFFFF;
+            --card-radius: 24px;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-dark);
+            line-height: 1.7;
+            background: var(--white);
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* Animated gradient background */
-        body::before {
-            content: '';
-            position: fixed;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 30% 50%, rgba(16, 185, 129, 0.15) 0%, transparent 50%),
-                        radial-gradient(circle at 70% 50%, rgba(13, 148, 136, 0.1) 0%, transparent 50%);
-            animation: gradientShift 15s ease infinite;
-            pointer-events: none;
-            z-index: 0;
+        /* Navbar — matches homepage */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(78,205,196,0.1);
+            padding: 0.75rem 0;
         }
-
-        @keyframes gradientShift {
-            0%, 100% {
-                transform: translate(0, 0);
-            }
-            50% {
-                transform: translate(50px, 50px);
-            }
-        }
-
-        .container {
-            position: relative;
-            z-index: 1;
-            max-width: 900px;
+        .navbar-container {
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-
-        /* Header */
-        .header {
-            text-align: center;
-            margin-bottom: 60px;
-            padding-bottom: 40px;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .header-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-            border-radius: 20px;
+        .logo {
             display: flex;
             align-items: center;
-            justify-content: center;
-            margin: 0 auto 24px;
-            font-size: 40px;
-            box-shadow: 0 20px 40px var(--glow);
+            gap: 0.75rem;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.4rem;
+            color: var(--text-dark);
         }
-
-        .header h1 {
-            font-size: 44px;
-            font-weight: 700;
-            margin-bottom: 12px;
-            background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .logo-icon {
+            width: 44px; height: 44px;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(78,205,196,0.25);
         }
-
-        .header p {
-            font-size: 18px;
-            color: var(--text-secondary);
-            margin-bottom: 16px;
+        .logo-icon img { width: 100%; height: 100%; object-fit: cover; }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            list-style: none;
         }
-
-        .header-badge {
-            display: inline-block;
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px solid rgba(16, 185, 129, 0.3);
-            color: var(--primary-light);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 14px;
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-medium);
             font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--primary); }
+
+        /* Hero header area */
+        .page-hero {
+            background: linear-gradient(160deg, #E8FDF5 0%, #F0F9FF 30%, #F5F0FF 60%, #FFF5F0 100%);
+            padding: 4rem 2rem 3rem;
+            text-align: center;
+        }
+        .page-hero h1 {
+            font-size: 2.75rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            letter-spacing: -0.02em;
+            margin-bottom: 0.75rem;
+        }
+        .page-hero .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto 1rem;
+        }
+        .page-hero .meta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(78,205,196,0.1);
+            border: 1px solid rgba(78,205,196,0.2);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--primary-dark);
+            font-weight: 600;
         }
 
-        /* Intro section */
-        .intro {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-left: 4px solid var(--primary);
-            border-radius: 12px;
-            padding: 32px;
-            margin-bottom: 48px;
-            backdrop-filter: blur(10px);
+        /* Content */
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 2rem 5rem;
         }
 
-        .intro p {
-            font-size: 16px;
-            color: var(--text-secondary);
-            line-height: 1.8;
+        /* Table of contents */
+        .toc {
+            background: #F7FFFE;
+            border: 1px solid rgba(78,205,196,0.2);
+            border-radius: var(--card-radius);
+            padding: 2rem 2.5rem;
+            margin-bottom: 3rem;
         }
+        .toc-title {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+        .toc ol {
+            padding-left: 1.25rem;
+            columns: 2;
+            column-gap: 2rem;
+        }
+        .toc li {
+            margin-bottom: 0.5rem;
+            break-inside: avoid;
+        }
+        .toc a {
+            color: var(--text-medium);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .toc a:hover { color: var(--primary-dark); }
 
-        /* Content sections */
+        /* Sections */
         .section {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-left: 4px solid var(--primary);
-            border-radius: 12px;
-            padding: 32px;
-            margin-bottom: 32px;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
+            margin-bottom: 2.5rem;
+            padding-bottom: 2.5rem;
+            border-bottom: 1px solid #EDF2F7;
         }
-
-        .section:hover {
-            background: var(--bg-card-hover);
-            border-color: rgba(16, 185, 129, 0.3);
-            box-shadow: 0 8px 32px var(--glow);
-        }
-
-        .section-header {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 20px;
-        }
-
-        .section-icon {
-            width: 50px;
-            height: 50px;
-            background: rgba(16, 185, 129, 0.2);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            flex-shrink: 0;
-        }
-
+        .section:last-child { border-bottom: none; }
         .section h2 {
-            font-size: 24px;
-            font-weight: 600;
-            color: var(--text-primary);
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
         }
-
+        .section h2 .num {
+            color: var(--primary-dark);
+            margin-right: 0.25rem;
+        }
         .section h3 {
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--primary-light);
-            margin-top: 20px;
-            margin-bottom: 12px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-top: 1.25rem;
+            margin-bottom: 0.5rem;
         }
-
         .section p {
-            font-size: 15px;
-            color: var(--text-secondary);
-            margin-bottom: 16px;
+            font-size: 0.95rem;
+            color: var(--text-medium);
+            margin-bottom: 0.75rem;
             line-height: 1.8;
         }
-
         .section ul {
             list-style: none;
-            margin-bottom: 16px;
+            margin-bottom: 0.75rem;
+        }
+        .section li {
+            font-size: 0.95rem;
+            color: var(--text-medium);
+            margin-bottom: 0.5rem;
+            padding-left: 1.25rem;
+            position: relative;
+            line-height: 1.7;
+        }
+        .section li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.6em;
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: var(--primary);
+        }
+        .section strong {
+            color: var(--text-dark);
+            font-weight: 600;
         }
 
-        .section li {
-            font-size: 15px;
-            color: var(--text-secondary);
-            margin-bottom: 12px;
-            padding-left: 28px;
-            position: relative;
+        /* Callout boxes */
+        .callout {
+            background: #F7FFFE;
+            border: 1px solid rgba(78,205,196,0.2);
+            border-radius: 16px;
+            padding: 1.25rem 1.5rem;
+            margin: 1rem 0;
+        }
+        .callout h4 {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--primary-dark);
+            margin-bottom: 0.75rem;
+        }
+        .callout p, .callout li { font-size: 0.9rem; }
+
+        /* Consent box */
+        .consent-box {
+            background: #F0FDF9;
+            border: 1px solid var(--primary);
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+            color: var(--text-medium);
+            line-height: 1.7;
+        }
+        .consent-box a { color: var(--primary-dark); }
+
+        /* Footer — matches homepage */
+        footer {
+            background: linear-gradient(160deg, #1A2332 0%, #0F1923 100%);
+            color: white;
+            padding: 3rem 2rem 2rem;
+        }
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+        .footer-section ul { list-style: none; }
+        .footer-section ul li { margin-bottom: 0.6rem; }
+        .footer-section a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+        .footer-section a:hover { color: var(--primary); }
+        .footer-brand p {
+            color: rgba(255,255,255,0.5);
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
             line-height: 1.6;
         }
-
-        .section li::before {
-            content: '•';
-            position: absolute;
-            left: 8px;
+        .footer-slogan {
             color: var(--primary);
-            font-weight: bold;
-            font-size: 18px;
-        }
-
-        .section strong {
-            color: var(--primary-light);
             font-weight: 600;
+            font-size: 0.95rem;
+            margin-top: 0.5rem;
         }
-
-        /* SMS section special styling */
-        .section.sms-section {
-            border-left-color: var(--primary-light);
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(13, 148, 136, 0.04) 100%);
-        }
-
-        .section.sms-section .section-icon {
-            background: rgba(16, 185, 129, 0.3);
-        }
-
-        .sms-subsection {
-            background: rgba(255, 255, 255, 0.03);
-            border-left: 3px solid var(--accent);
-            padding: 16px 20px;
-            margin: 20px 0;
-            border-radius: 8px;
-        }
-
-        .sms-subsection h4 {
-            font-size: 15px;
-            font-weight: 600;
-            color: var(--primary-light);
-            margin-bottom: 12px;
-        }
-
-        .sms-subsection p {
-            margin-bottom: 12px;
-        }
-
-        .sms-subsection ul {
-            margin-bottom: 0;
-        }
-
-        /* Footer */
-        footer {
-            margin-top: 80px;
-            padding-top: 40px;
-            border-top: 1px solid var(--border);
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 1.5rem;
             text-align: center;
+            color: rgba(255,255,255,0.4);
+            font-size: 0.85rem;
         }
 
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 32px;
-            margin-bottom: 24px;
-            flex-wrap: wrap;
-        }
-
-        .footer-links a {
-            color: var(--primary-light);
-            text-decoration: none;
-            font-size: 15px;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--primary);
-        }
-
-        .footer-copyright {
-            color: var(--text-muted);
-            font-size: 14px;
-        }
-
-        /* Responsive */
         @media (max-width: 768px) {
-            .container {
-                padding: 24px 16px;
-            }
-
-            .header h1 {
-                font-size: 32px;
-            }
-
-            .header p {
-                font-size: 16px;
-            }
-
-            .header-icon {
-                width: 60px;
-                height: 60px;
-                font-size: 32px;
-            }
-
-            .section {
-                padding: 24px;
-            }
-
-            .section h2 {
-                font-size: 20px;
-            }
-
-            .footer-links {
-                gap: 16px;
-                font-size: 14px;
-            }
+            .page-hero { padding: 3rem 1.5rem 2rem; }
+            .page-hero h1 { font-size: 2rem; }
+            .content { padding: 2rem 1.25rem 3rem; }
+            .toc ol { columns: 1; }
+            .navbar-container { padding: 0 1.25rem; }
+            .nav-links { gap: 1rem; }
+            .nav-links a { font-size: 0.85rem; }
+            .footer-container { grid-template-columns: 1fr; gap: 2rem; }
         }
 
-        /* Print styles */
         @media print {
-            body::before {
-                display: none;
-            }
-
-            .section {
-                page-break-inside: avoid;
-            }
+            .navbar, footer { display: none; }
+            .page-hero { background: none; padding: 1rem 0; }
+            .content { max-width: 100%; padding: 0; }
+            .section { page-break-inside: avoid; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Header -->
-        <div class="header">
-            <div class="header-icon">🔒</div>
-            <h1>Privacy Policy</h1>
-            <p>Your privacy matters. Here's how we protect it.</p>
-            <span class="header-badge">Last Updated: February 2026</span>
+
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="/" class="logo">
+                <div class="logo-icon"><img src="assets/logo.png" alt="HealthyOne Logo"></div>
+                <span>HealthyOne</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/about.html">About</a></li>
+                <li><a href="/terms.html">Terms</a></li>
+                <li><a href="/privacy.html" style="color: var(--primary-dark);">Privacy</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="page-hero">
+        <h1>Privacy Policy</h1>
+        <p class="subtitle">How we collect, use, and protect your information.</p>
+        <span class="meta">Last updated: March 2026</span>
+    </div>
+
+    <div class="content">
+        <p style="font-size: 0.95rem; color: var(--text-medium); margin-bottom: 2.5rem; line-height: 1.8;">
+            HealthyOne ("we," "our," or "us") operates the HealthyOne mobile application. This Privacy Policy describes how we collect, use, store, and protect your personal information when you use our app and related services. By using HealthyOne, you agree to the practices described in this policy.
+        </p>
+
+        <div class="toc">
+            <div class="toc-title">Contents</div>
+            <ol>
+                <li><a href="#s1">Information We Collect</a></li>
+                <li><a href="#s2">How We Use Your Information</a></li>
+                <li><a href="#s3">Data Storage &amp; Security</a></li>
+                <li><a href="#s4">Third-Party Services</a></li>
+                <li><a href="#s5">Data Sharing</a></li>
+                <li><a href="#s6">SMS &amp; Text Messaging</a></li>
+                <li><a href="#s7">Your Rights</a></li>
+                <li><a href="#s8">Apple HealthKit (iOS)</a></li>
+                <li><a href="#s9">Google Health Connect (Android)</a></li>
+                <li><a href="#s10">Data Retention</a></li>
+                <li><a href="#s11">Data Deletion</a></li>
+                <li><a href="#s12">Children's Privacy</a></li>
+                <li><a href="#s13">Contact Us</a></li>
+            </ol>
         </div>
 
-        <!-- Intro -->
-        <div class="intro">
-            <p>HealthyOne ("we", "our", or "us") respects your privacy. This Privacy Policy explains how we collect, use, and protect your information when you use the HealthyOne app and related services.</p>
-        </div>
-
-        <!-- Section 1: Information We Collect -->
-        <div class="section">
-            <div class="section-header">
-                <div class="section-icon">📱</div>
-                <h2>Information We Collect</h2>
-            </div>
-
+        <div class="section" id="s1">
+            <h2><span class="num">1.</span> Information We Collect</h2>
             <h3>Account Information</h3>
             <ul>
-                <li>Email address</li>
-                <li>Password (encrypted)</li>
-                <li>Profile information (optional)</li>
+                <li>Email address and password (encrypted)</li>
+                <li>Profile information you choose to provide</li>
             </ul>
-
-            <h3>Health & Nutrition Data</h3>
+            <h3>Health &amp; Nutrition Data</h3>
             <ul>
                 <li>Meal logs and food items you record</li>
-                <li>Calories, macronutrients (protein, carbs, fat), and micronutrients (vitamins, minerals)</li>
+                <li>Calories, macronutrients (protein, carbs, fat), and micronutrients</li>
                 <li>Dietary preferences and restrictions</li>
                 <li>Health metrics you manually enter</li>
-                <li>Data from voice logging and photo analysis</li>
+                <li>Data derived from voice logging and photo analysis</li>
             </ul>
-
-            <h3>Fitness & Activity Data</h3>
+            <h3>Fitness &amp; Activity Data</h3>
             <ul>
-                <li>Active calories burned (from HealthKit/Health Connect)</li>
-                <li>Exercise sessions and duration</li>
-                <li>Steps and total daily calories burned</li>
-                <li>Only collected with your explicit permission</li>
+                <li>Active calories burned (via HealthKit or Health Connect)</li>
+                <li>Exercise sessions, duration, and step count</li>
+                <li>Collected only with your explicit permission</li>
             </ul>
-
             <h3>Device Information</h3>
             <ul>
-                <li>Device type and operating system</li>
-                <li>App version and crash logs</li>
-                <li>Unique device identifier</li>
+                <li>Device type, operating system, and app version</li>
+                <li>Crash logs and performance data</li>
+                <li>Anonymous device identifier</li>
             </ul>
-
-            <h3>Camera Access</h3>
+            <h3>Camera &amp; Photo Data</h3>
             <ul>
-                <li>Photos are processed locally on your device to extract nutrition information</li>
-                <li>Photos are never stored on our servers</li>
-                <li>Photo analysis is performed using on-device AI processing</li>
+                <li>Photos you take for meal logging are processed using AI to extract nutrition information</li>
+                <li>Photos are <strong>not</strong> stored on our servers</li>
             </ul>
         </div>
 
-        <!-- Section 2: How We Use Your Information -->
-        <div class="section">
-            <div class="section-header">
-                <div class="section-icon">🤖</div>
-                <h2>How We Use Your Information</h2>
-            </div>
-
+        <div class="section" id="s2">
+            <h2><span class="num">2.</span> How We Use Your Information</h2>
             <ul>
-                <li><strong>Provide & Improve Service:</strong> To deliver HealthyOne features, sync your data across devices, and improve app performance</li>
-                <li><strong>Nutrition Recommendations:</strong> To calculate personalized nutrition recommendations and health insights based on your logged meals and activity</li>
-                <li><strong>Service Updates:</strong> To send you important account and service notifications (separately from optional SMS reminders)</li>
-                <li><strong>AI Processing:</strong> Your meals and photos are processed by AI to extract nutritional information. This data is used only to improve your in-app experience and is never used to train global AI models or shared with external AI services</li>
-                <li><strong>Analytics:</strong> To understand how the app is used and identify areas for improvement (anonymized and aggregated)</li>
+                <li><strong>Provide services:</strong> Deliver core app features, sync data across devices, and calculate personalized nutrition recommendations</li>
+                <li><strong>Improve the app:</strong> Analyze usage patterns (anonymized and aggregated) to identify areas for improvement</li>
+                <li><strong>Communicate:</strong> Send account notifications, security alerts, and optional meal reminders</li>
+                <li><strong>AI processing:</strong> Analyze meals and photos to extract nutritional information. This data is never used to train external AI models</li>
             </ul>
         </div>
 
-        <!-- Section 3: Data Storage & Security -->
-        <div class="section">
-            <div class="section-header">
-                <div class="section-icon">🔒</div>
-                <h2>Data Storage & Security</h2>
-            </div>
-
+        <div class="section" id="s3">
+            <h2><span class="num">3.</span> Data Storage &amp; Security</h2>
             <ul>
-                <li><strong>Encryption:</strong> All data transmitted to our servers uses industry-standard TLS encryption</li>
-                <li><strong>Local Storage:</strong> Your health and nutrition data is stored locally on your device by default</li>
-                <li><strong>Cloud Backup (Optional):</strong> You may optionally enable cloud backup via Supabase to sync data across devices. You control this setting</li>
-                <li><strong>Security Audits:</strong> We conduct regular security audits and follow OWASP best practices</li>
-                <li><strong>Sensitive Data Protection:</strong> Health and fitness data is never transmitted to our servers unless you explicitly enable cloud backup</li>
-                <li><strong>Password Security:</strong> Passwords are hashed using industry-standard algorithms and never stored in plain text</li>
+                <li><strong>Encryption:</strong> All data in transit uses TLS encryption. Data at rest is encrypted using industry-standard methods</li>
+                <li><strong>Local-first:</strong> Health and nutrition data is stored on your device by default</li>
+                <li><strong>Cloud backup:</strong> Optional. You may enable cloud sync via Supabase. You control this setting at all times</li>
+                <li><strong>Password security:</strong> Passwords are hashed using bcrypt and never stored in plain text</li>
+                <li><strong>No server storage without consent:</strong> Health data is never transmitted to our servers unless you explicitly enable cloud backup</li>
             </ul>
         </div>
 
-        <!-- Section 4: Third-Party Services -->
-        <div class="section">
-            <div class="section-header">
-                <div class="section-icon">🌐</div>
-                <h2>Third-Party Services</h2>
-            </div>
-
-            <p>HealthyOne uses the following third-party services:</p>
-
+        <div class="section" id="s4">
+            <h2><span class="num">4.</span> Third-Party Services</h2>
+            <p>HealthyOne integrates with the following services to provide its features:</p>
             <ul>
-                <li><strong>Supabase:</strong> PostgreSQL database for cloud backup (optional)</li>
-                <li><strong>Edamam API:</strong> Nutrition database for food lookup</li>
-                <li><strong>USDA Food Database:</strong> Nutritional information</li>
-                <li><strong>Google ML Kit:</strong> On-device AI processing for photo analysis</li>
-                <li><strong>Twilio:</strong> SMS delivery for optional text message reminders</li>
+                <li><strong>Supabase</strong> &mdash; Cloud database for optional backup and sync</li>
+                <li><strong>Edamam &amp; USDA</strong> &mdash; Nutrition databases for food lookup</li>
+                <li><strong>Google AI</strong> &mdash; AI processing for photo and voice analysis</li>
+                <li><strong>Twilio</strong> &mdash; SMS delivery for optional text message reminders</li>
+                <li><strong>PostHog</strong> &mdash; Privacy-focused product analytics</li>
+                <li><strong>Sentry</strong> &mdash; Error tracking and crash reporting</li>
             </ul>
-
-            <p style="margin-top: 16px;">These services have their own privacy policies. We encourage you to review them. We only share data necessary to provide the services you've requested.</p>
+            <p>Each service operates under its own privacy policy. We share only the minimum data necessary to provide the features you use.</p>
         </div>
 
-        <!-- Section 5: Data Sharing -->
-        <div class="section">
-            <div class="section-header">
-                <div class="section-icon">🚫</div>
-                <h2>Data Sharing</h2>
-            </div>
-
+        <div class="section" id="s5">
+            <h2><span class="num">5.</span> Data Sharing</h2>
             <ul>
-                <li><strong>No Data Sales:</strong> We never sell your personal or health data to third parties for marketing or any other purpose</li>
-                <li><strong>Consent-Based Sharing:</strong> We only share data with third parties with your explicit consent or as required by law</li>
-                <li><strong>Service Providers:</strong> We may share data with service providers (like Supabase) only to the extent necessary to provide HealthyOne services</li>
-                <li><strong>Legal Requirements:</strong> We may disclose data if required by law, court order, or government request</li>
+                <li><strong>We do not sell your data.</strong> Your personal and health information is never sold to third parties for marketing, advertising, or any other purpose</li>
+                <li><strong>Consent-based sharing:</strong> Data is shared with third-party services only to the extent necessary to provide features you have enabled</li>
+                <li><strong>Legal requirements:</strong> We may disclose data if required by law, court order, or government request</li>
             </ul>
         </div>
 
-        <!-- Section 6: SMS & Text Messaging (CRITICAL) -->
-        <div class="section sms-section">
-            <div class="section-header">
-                <div class="section-icon">📱</div>
-                <h2>SMS & Text Messaging</h2>
-            </div>
+        <div class="section" id="s6">
+            <h2><span class="num">6.</span> SMS &amp; Text Messaging</h2>
+            <p>HealthyOne offers optional SMS reminders to help you stay on track with your nutrition goals.</p>
 
-            <p>HealthyOne offers <strong>optional</strong> SMS text message notifications to help you stay on track with your nutrition goals. Here's how our SMS service works:</p>
-
-            <div class="sms-subsection">
-                <h4>What Messages You'll Receive</h4>
+            <div class="callout">
+                <h4>What Messages You Receive</h4>
                 <ul>
-                    <li>Optional meal logging reminders to help you remember to track your nutrition</li>
-                    <li>Return-to-habit nudges if you haven't logged in for a while</li>
-                    <li>Account-related notifications (verification codes, security alerts)</li>
-                    <li>Messages are never promotional or spammy</li>
+                    <li>Meal logging reminders if you forget to track</li>
+                    <li>Return-to-habit nudges after periods of inactivity</li>
+                    <li>Account verification codes</li>
                 </ul>
+                <p style="margin-top: 0.5rem;">Messages are transactional only. We do not send promotional or marketing messages via SMS.</p>
             </div>
 
-            <div class="sms-subsection">
+            <div class="callout">
                 <h4>How You Opt In</h4>
                 <ul>
-                    <li><strong>SMS reminders are OFF by default</strong> — you must explicitly enable them</li>
-                    <li>In the HealthyOne app, go to <strong>Settings → Notifications → SMS Reminders</strong></li>
-                    <li>Enter your mobile phone number and verify it with a one-time code</li>
-                    <li>A consent disclosure is displayed with the following language before you can enable SMS:</li>
-                </ul>
-                <div style="background: #f0f4f0; border: 2px solid #4CAF50; border-radius: 8px; padding: 16px; margin: 12px 0; font-style: italic;">
-                    <p style="margin: 0; font-weight: bold; color: #333;">"By enabling SMS Reminders, you consent to receive recurring automated nutrition reminder text messages from HealthyOne at the phone number you provided. Message frequency varies (typically 1-3 per week). Message and data rates may apply. Reply STOP to unsubscribe at any time. Reply HELP for help. Consent is not a condition of purchase or use of the app. View our <a href="https://healthyoneapp.com/privacy.html">Privacy Policy</a> and <a href="https://healthyoneapp.com/terms.html">Terms of Service</a>."</p>
-                </div>
-                <ul>
-                    <li>You must tap the <strong>"Enable SMS Reminders"</strong> button to confirm your consent</li>
-                    <li>No messages are sent until you explicitly opt in by tapping this button</li>
-                    <li>You may also opt in by texting <strong>START</strong> to our messaging number</li>
+                    <li>SMS reminders are <strong>off by default</strong>. You must explicitly enable them</li>
+                    <li>Navigate to <strong>Settings &rarr; SMS Notifications</strong> and enter your phone number</li>
+                    <li>Verify your number with a one-time code sent via text</li>
+                    <li>No messages are sent until you complete verification</li>
                 </ul>
             </div>
 
-            <div class="sms-subsection">
+            <div class="consent-box">
+                <strong>Consent disclosure:</strong> By enabling SMS Reminders, you consent to receive recurring automated nutrition reminder text messages from HealthyOne at the phone number you provided. Message frequency varies (typically 1&ndash;3 per week). Message and data rates may apply. Reply STOP to unsubscribe at any time. Reply HELP for help. Consent is not a condition of purchase or use of the app. See our <a href="/privacy.html">Privacy Policy</a> and <a href="/terms.html">Terms of Service</a>.
+            </div>
+
+            <div class="callout">
                 <h4>Message Frequency</h4>
-                <ul>
-                    <li>Messages are <strong>low frequency</strong> (typically 1-3 per week maximum)</li>
-                    <li>Messages are transactional and not promotional</li>
-                    <li>Message frequency may vary based on your app usage patterns and settings</li>
-                    <li>You control the frequency in app settings</li>
-                </ul>
+                <p>Typically 1&ndash;3 messages per week. Frequency may vary based on your usage and reminder settings.</p>
             </div>
 
-            <div class="sms-subsection">
-                <h4>Opt-In Confirmation</h4>
-                <p>After you enable SMS Reminders, you will receive the following confirmation message:</p>
-                <div style="background: #f0f4f0; border: 2px solid #4CAF50; border-radius: 8px; padding: 16px; margin: 12px 0; font-style: italic;">
-                    <p style="margin: 0; color: #333;">"HealthyOne: You're now subscribed to SMS reminders! We'll send you meal logging nudges to help you stay on track. Reply STOP to opt out anytime. Reply HELP for help. Msg&data rates may apply."</p>
-                </div>
-            </div>
-
-            <div class="sms-subsection">
+            <div class="callout">
                 <h4>How to Opt Out</h4>
                 <ul>
-                    <li>Reply <strong>STOP</strong> to any message to immediately unsubscribe from all SMS</li>
-                    <li>Or disable SMS Reminders in the app: <strong>Settings → Notifications → SMS Reminders → OFF</strong></li>
-                    <li>You can also email <strong>support@healthyoneapp.com</strong> to request removal from SMS messaging</li>
-                    <li>Opting out is immediate and does not affect other app notifications</li>
-                    <li>After opting out, you will receive a confirmation: <em>"HealthyOne: You've been unsubscribed and will no longer receive SMS reminders. Reply START to re-subscribe."</em></li>
+                    <li>Reply <strong>STOP</strong> to any message to immediately unsubscribe</li>
+                    <li>Or disable SMS in the app: <strong>Settings &rarr; SMS Notifications &rarr; Remove Phone Number</strong></li>
+                    <li>Or email <strong>chris@healthyoneapp.com</strong></li>
                 </ul>
+                <p style="margin-top: 0.5rem;">After opting out you will receive: <em>"You've been unsubscribed and will no longer receive SMS reminders. Reply START to re-subscribe."</em></p>
             </div>
 
-            <div class="sms-subsection">
+            <div class="callout">
                 <h4>HELP Response</h4>
-                <p>If you reply <strong>HELP</strong> to any message, you will receive:</p>
-                <div style="background: #f0f4f0; border: 2px solid #4CAF50; border-radius: 8px; padding: 16px; margin: 12px 0; font-style: italic;">
-                    <p style="margin: 0; color: #333;">"HealthyOne SMS Help: For support, visit https://healthyoneapp.com or email support@healthyoneapp.com. Reply STOP to unsubscribe. Msg&data rates may apply."</p>
-                </div>
+                <p>Reply <strong>HELP</strong> to receive: <em>"HealthyOne SMS Help: For support, visit healthyoneapp.com or email chris@healthyoneapp.com. Reply STOP to unsubscribe. Msg&amp;data rates may apply."</em></p>
             </div>
 
-            <div class="sms-subsection">
-                <h4>Costs</h4>
+            <div class="callout">
+                <h4>Costs &amp; Phone Number Protection</h4>
                 <ul>
-                    <li>Message and data rates may apply depending on your mobile carrier and plan</li>
-                    <li>HealthyOne does not charge any additional fees for SMS messages</li>
-                    <li>Contact your carrier for details about your message and data rates</li>
-                </ul>
-            </div>
-
-            <div class="sms-subsection">
-                <h4>Privacy & Phone Number Protection</h4>
-                <ul>
-                    <li>Your phone number is used <strong>solely</strong> for sending the notifications you opted into</li>
-                    <li>We never share your phone number with third parties for marketing purposes</li>
+                    <li>Message and data rates may apply depending on your carrier</li>
+                    <li>HealthyOne does not charge fees for SMS messages</li>
+                    <li>Your phone number is used solely for delivering notifications you opted into</li>
+                    <li>We never share your phone number with third parties for marketing</li>
                     <li>Phone numbers are stored securely and deleted when you opt out or delete your account</li>
-                    <li>SMS delivery is handled by Twilio, a trusted third-party SMS provider</li>
-                    <li>Your phone number is transmitted securely to Twilio only for message delivery</li>
                 </ul>
             </div>
-
-            <p style="margin-top: 20px;"><strong>Questions about SMS?</strong> Contact <strong>support@healthyoneapp.com</strong> with any questions about our SMS service, including how to manage your preferences or opt out.</p>
         </div>
 
-        <!-- Section 7: Your Rights -->
-        <div class="section">
-            <div class="section-header">
-                <div class="section-icon">✅</div>
-                <h2>Your Rights</h2>
-            </div>
-
+        <div class="section" id="s7">
+            <h2><span class="num">7.</span> Your Rights</h2>
             <p>You have the right to:</p>
-
             <ul>
-                <li><strong>Access Your Data:</strong> Request a copy of all data we hold about you</li>
-                <li><strong>Request Deletion:</strong> Ask us to delete your account and associated data</li>
-                <li><strong>Export Your History:</strong> Export your meal logs and health data</li>
-                <li><strong>Opt Out of Cloud Backup:</strong> Disable cloud sync at any time (data remains on your device)</li>
-                <li><strong>Revoke Health Permissions:</strong> Disconnect HealthKit (iOS) or Health Connect (Android) at any time through your device settings</li>
-                <li><strong>Opt Out of Analytics:</strong> Disable analytics tracking in app settings</li>
+                <li><strong>Access:</strong> Request a copy of all data we hold about you</li>
+                <li><strong>Deletion:</strong> Request deletion of your account and all associated data</li>
+                <li><strong>Export:</strong> Export your meal logs and health data from the app</li>
+                <li><strong>Opt out of cloud sync:</strong> Disable cloud backup at any time; data remains on your device</li>
+                <li><strong>Revoke permissions:</strong> Disconnect HealthKit or Health Connect through your device settings</li>
+                <li><strong>Opt out of analytics:</strong> Disable analytics tracking in app settings</li>
             </ul>
-
-            <p style="margin-top: 16px;">To exercise any of these rights, contact <strong>support@healthyoneapp.com</strong>.</p>
+            <p>To exercise any of these rights, contact <strong>chris@healthyoneapp.com</strong>.</p>
         </div>
 
-        <!-- Section 8: Apple HealthKit Integration (iOS) -->
-        <div class="section">
-            <div class="section-header">
-                <div class="section-icon">❤️</div>
-                <h2>Apple HealthKit Integration (iOS)</h2>
-            </div>
-
+        <div class="section" id="s8">
+            <h2><span class="num">8.</span> Apple HealthKit (iOS)</h2>
             <ul>
-                <li><strong>Permissions:</strong> HealthyOne reads active calories burned and writes dietary calories/macros to your HealthKit</li>
-                <li><strong>Local Storage:</strong> HealthKit data stays on your device unless you enable cloud backup</li>
-                <li><strong>Never Sold:</strong> HealthKit data is never sold, shared with marketers, or used for any purpose other than improving your HealthyOne experience</li>
-                <li><strong>User Control:</strong> You can revoke HealthKit access at any time in iOS Settings → Health → Data Access & Devices</li>
-                <li><strong>Apple Compliance:</strong> We comply fully with Apple's HealthKit requirements and never access restricted health categories</li>
+                <li>HealthyOne reads active calories and writes dietary data to HealthKit with your permission</li>
+                <li>HealthKit data stays on your device unless you enable cloud backup</li>
+                <li>HealthKit data is <strong>never sold, shared with advertisers, or used for marketing</strong></li>
+                <li>You can revoke access at any time in iOS Settings &rarr; Health &rarr; Data Access &amp; Devices</li>
+                <li>We comply with Apple's HealthKit developer guidelines</li>
             </ul>
         </div>
 
-        <!-- Section 9: Google Health Connect Integration (Android) -->
-        <div class="section">
-            <div class="section-header">
-                <div class="section-icon">🤖</div>
-                <h2>Google Health Connect Integration (Android)</h2>
-            </div>
-
+        <div class="section" id="s9">
+            <h2><span class="num">9.</span> Google Health Connect (Android)</h2>
             <ul>
-                <li><strong>Data Read:</strong> Active calories burned, exercise sessions, steps, and total daily calories</li>
-                <li><strong>Purpose:</strong> Used exclusively for in-app features to provide personalized nutrition and activity insights</li>
-                <li><strong>Never Shared:</strong> Health Connect data is not shared with third parties for any reason</li>
-                <li><strong>User Control:</strong> You can disconnect Health Connect at any time in Android Settings → Health → Manage apps & device access</li>
-                <li><strong>Google Compliance:</strong> We comply with Google's Health Connect policies and data handling requirements</li>
+                <li>We read active calories, exercise sessions, steps, and daily energy totals</li>
+                <li>This data is used exclusively for in-app nutrition and activity features</li>
+                <li>Health Connect data is <strong>not shared with third parties</strong></li>
+                <li>You can disconnect at any time in Android Settings &rarr; Health &rarr; Manage apps</li>
+                <li>We comply with Google's Health Connect developer policies</li>
             </ul>
         </div>
 
-        <!-- Section 10: Data Retention -->
-        <div class="section">
-            <div class="section-header">
-                <div class="section-icon">🕐</div>
-                <h2>Data Retention</h2>
-            </div>
-
+        <div class="section" id="s10">
+            <h2><span class="num">10.</span> Data Retention</h2>
             <ul>
-                <li><strong>Account Data:</strong> Retained while your account is active. Deleted 30 days after you request account deletion</li>
-                <li><strong>Meal Logs:</strong> Stored locally on your device indefinitely. If cloud backup is enabled, stored in Supabase and synced</li>
-                <li><strong>Health Data:</strong> Real-time sync only. Not stored on our servers unless cloud backup is explicitly enabled</li>
-                <li><strong>Analytics:</strong> Aggregated analytics data retained for 24 months to track app improvements</li>
-                <li><strong>Post-Deletion:</strong> We retain minimal data for 30 days to finalize account closure, then permanently delete all records</li>
-                <li><strong>Local Device Data:</strong> Deleted when you uninstall the app (unless you backed up data to iCloud/Google Drive)</li>
+                <li><strong>Account data:</strong> Retained while your account is active. Deleted within 30 days of account deletion request</li>
+                <li><strong>Meal logs:</strong> Stored on your device indefinitely. Cloud copies (if enabled) are deleted with your account</li>
+                <li><strong>Analytics:</strong> Aggregated, anonymized data retained for up to 24 months</li>
+                <li><strong>Local data:</strong> Removed when you uninstall the app</li>
             </ul>
         </div>
 
-        <!-- Section 11: Data Deletion -->
-        <div class="section">
-            <div class="section-header">
-                <div class="section-icon">🗑️</div>
-                <h2>Data Deletion</h2>
-            </div>
-
-            <h3>Delete Your Account In-App</h3>
+        <div class="section" id="s11">
+            <h2><span class="num">11.</span> Data Deletion</h2>
+            <h3>In-App Deletion</h3>
+            <p>Go to <strong>Settings &rarr; Account &rarr; Delete Account</strong>. Confirm with your password. Your account and all cloud data will be permanently deleted within 30 days.</p>
+            <h3>Email Request</h3>
+            <p>Email <strong>chris@healthyoneapp.com</strong> from your registered email address. We will verify your identity and process the deletion.</p>
+            <h3>What Gets Deleted</h3>
             <ul>
-                <li>Open the HealthyOne app</li>
-                <li>Go to <strong>Settings → Account → Delete Account</strong></li>
-                <li>Enter your password and confirm deletion</li>
-                <li>Your account will be marked for deletion immediately</li>
-            </ul>
-
-            <h3>Email Deletion Request</h3>
-            <ul>
-                <li>Email <strong>support@healthyoneapp.com</strong> with your account email and request to delete</li>
-                <li>We'll verify your identity and process the deletion</li>
-            </ul>
-
-            <h3>What Happens After Deletion</h3>
-            <ul>
-                <li>Local app data is removed from your device</li>
-                <li>Cloud backup data (if enabled) is permanently deleted from Supabase</li>
-                <li>Your HealthKit/Health Connect permissions remain under your device's control</li>
-                <li>Processing takes up to 30 days due to backup systems</li>
-            </ul>
-
-            <h3>Disconnect HealthKit/Health Connect</h3>
-            <ul>
-                <li><strong>iOS:</strong> Settings → Health → Data Access & Devices → Find HealthyOne → Toggle off permissions</li>
-                <li><strong>Android:</strong> Settings → Health → Manage apps & device access → Find HealthyOne → Disconnect</li>
+                <li>All cloud-stored account data, meal logs, and preferences</li>
+                <li>Phone number and SMS preferences (if applicable)</li>
+                <li>HealthKit/Health Connect permissions remain under your device's control</li>
             </ul>
         </div>
 
-        <!-- Section 12: Children's Privacy -->
-        <div class="section">
-            <div class="section-header">
-                <div class="section-icon">👶</div>
-                <h2>Children's Privacy</h2>
-            </div>
-
-            <p>HealthyOne is not intended for users under 13 years old. We do not knowingly collect information from children under 13. If we become aware that a child under 13 has provided us with personal information, we will delete such information and terminate the child's account immediately.</p>
-
-            <p>If you believe a child under 13 has created an account, please contact <strong>support@healthyoneapp.com</strong> immediately.</p>
+        <div class="section" id="s12">
+            <h2><span class="num">12.</span> Children's Privacy</h2>
+            <p>HealthyOne is not intended for users under the age of 13. We do not knowingly collect personal information from children under 13. If we learn that we have collected data from a child under 13, we will delete it promptly. Contact us at <strong>chris@healthyoneapp.com</strong> if you believe a child has provided personal information.</p>
         </div>
 
-        <!-- Section 13: Contact Us -->
-        <div class="section">
-            <div class="section-header">
-                <div class="section-icon">📧</div>
-                <h2>Contact Us</h2>
-            </div>
-
-            <p>If you have questions, concerns, or requests regarding this Privacy Policy or our privacy practices, please contact us:</p>
-
-            <p style="margin-top: 20px; color: var(--primary-light);">
-                <strong>support@healthyoneapp.com</strong>
+        <div class="section" id="s13">
+            <h2><span class="num">13.</span> Contact Us</h2>
+            <p>If you have questions about this Privacy Policy or our data practices:</p>
+            <p style="margin-top: 0.75rem;">
+                <strong>Hardaway Labs LLC</strong><br>
+                Email: <strong>chris@healthyoneapp.com</strong><br>
+                Website: <a href="https://healthyoneapp.com" style="color: var(--primary-dark); text-decoration: none;">healthyoneapp.com</a>
             </p>
-
-            <p style="margin-top: 16px; color: var(--text-secondary);">
-                We aim to respond to all privacy inquiries within 7 business days.
-            </p>
+            <p style="margin-top: 0.75rem;">We respond to all privacy inquiries within 7 business days.</p>
         </div>
     </div>
 
-    <!-- Footer -->
     <footer>
-        <div class="footer-links">
-            <a href="/">Home</a>
-            <a href="/about.html">About Us</a>
-            <a href="/terms.html">Terms of Service</a>
-            <a href="/privacy.html">Privacy Policy</a>
+        <div class="footer-container">
+            <div class="footer-section footer-brand">
+                <a href="/" class="logo" style="color: white;">
+                    <div class="logo-icon"><img src="assets/logo.png" alt="HealthyOne Logo"></div>
+                    <span>HealthyOne</span>
+                </a>
+                <div class="footer-slogan">Be In Good Health</div>
+                <p>AI-powered nutrition tracking made simple. Track your meals, discover recipes, and achieve your health goals.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="/#features">Features</a></li>
+                    <li><a href="/#pricing">Pricing</a></li>
+                    <li><a href="/#faq">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="/about.html">About Us</a></li>
+                    <li><a href="/privacy.html">Privacy Policy</a></li>
+                    <li><a href="/terms.html">Terms of Service</a></li>
+                    <li><a href="mailto:chris@healthyoneapp.com">Contact Us</a></li>
+                </ul>
+            </div>
         </div>
-        <div class="footer-copyright">
-            © 2026 Hardaway Labs LLC. All rights reserved.
+        <div class="footer-bottom">
+            <p>&copy; 2026 Hardaway Labs LLC. All rights reserved.</p>
         </div>
     </footer>
 </body>
