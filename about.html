@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - HealthyOne Nutrition Tracker</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #10B981;
+            --primary-dark: #059669;
+            --primary-light: #34D399;
+            --accent: #0D9488;
+            --bg-dark: #0F1419;
+            --bg-card: #1A2332;
+            --bg-card-hover: #243044;
+            --text-primary: #F9FAFB;
+            --text-secondary: #9CA3AF;
+            --text-muted: #6B7280;
+            --border: rgba(255,255,255,0.08);
+            --glow: rgba(16, 185, 129, 0.4);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 50%, rgba(16, 185, 129, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 50%, rgba(13, 148, 136, 0.1) 0%, transparent 50%);
+            animation: gradientShift 15s ease infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(3deg); }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding: 48px 0 32px;
+        }
+
+        .header-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 0 30px var(--glow);
+        }
+
+        .header-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .header h1 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Sections */
+        .section {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 24px;
+            transition: border-color 0.3s ease;
+        }
+
+        .section:hover {
+            border-color: rgba(16, 185, 129, 0.2);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .section-icon {
+            font-size: 1.5rem;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(16, 185, 129, 0.1);
+            border-radius: 10px;
+        }
+
+        .section h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .section h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-light);
+            margin: 20px 0 10px;
+        }
+
+        .section p {
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            line-height: 1.7;
+        }
+
+        .section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .section ul li {
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+            color: var(--text-secondary);
+        }
+
+        .section ul li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* Values grid */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            margin-top: 16px;
+        }
+
+        .value-card {
+            background: rgba(16, 185, 129, 0.05);
+            border: 1px solid rgba(16, 185, 129, 0.15);
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+        }
+
+        .value-card .icon {
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+
+        .value-card h4 {
+            color: var(--primary-light);
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+
+        .value-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+
+        /* CTA section */
+        .cta-section {
+            text-align: center;
+            padding: 48px 32px;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(13, 148, 136, 0.1));
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .cta-section h2 {
+            margin-bottom: 12px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 24px;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .cta-btn.primary {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+        }
+
+        .cta-btn.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px var(--glow);
+        }
+
+        .cta-btn.secondary {
+            background: var(--bg-card);
+            color: var(--primary-light);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .cta-btn.secondary:hover {
+            border-color: var(--primary);
+            background: rgba(16, 185, 129, 0.1);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 32px 20px;
+            border-top: 1px solid var(--border);
+            margin-top: 48px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-light);
+        }
+
+        .footer-copyright {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            .header p {
+                font-size: 1rem;
+            }
+            .header-icon {
+                width: 64px;
+                height: 64px;
+            }
+            .section {
+                padding: 24px 20px;
+            }
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-links {
+                flex-direction: column;
+                gap: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-icon">
+                <img src="assets/logo.png" alt="HealthyOne Logo">
+            </div>
+            <h1>About HealthyOne</h1>
+            <p>AI-powered nutrition tracking that makes healthy eating effortless — built by Hardaway Labs</p>
+        </div>
+
+        <!-- Our Mission -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">🎯</div>
+                <h2>Our Mission</h2>
+            </div>
+            <p>HealthyOne exists to make nutrition tracking so simple that anyone can do it — and actually stick with it. We believe that understanding what you eat shouldn't require a nutrition degree, hours of manual logging, or expensive coaching.</p>
+            <p>Our AI-powered app lets you track meals in seconds using just your voice or a photo. No more searching food databases or guessing portion sizes. Just speak or snap, and HealthyOne does the rest.</p>
+        </div>
+
+        <!-- The Story -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">📖</div>
+                <h2>Our Story</h2>
+            </div>
+            <p>HealthyOne was created by Christopher Hardaway, founder of Hardaway Labs. After years of trying every nutrition app on the market and finding them all tedious to use, Chris set out to build something better — an app that removes the friction from food tracking using the latest in AI technology.</p>
+            <p>The result is HealthyOne: a nutrition tracker that listens when you talk, sees when you snap a photo, and learns your habits to help you build a healthier relationship with food. No judgment, no guilt — just smart, effortless tracking.</p>
+        </div>
+
+        <!-- What Makes Us Different -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">✨</div>
+                <h2>What Makes Us Different</h2>
+            </div>
+            <ul>
+                <li><strong>Voice Logging:</strong> Say what you ate and our AI instantly logs the nutrition — calories, macros, sodium, and more</li>
+                <li><strong>Photo Analysis:</strong> Snap a photo of your meal and get a full nutritional breakdown in seconds</li>
+                <li><strong>Heart Health Tracking:</strong> Monitor sodium intake and heart health metrics alongside your nutrition</li>
+                <li><strong>No Manual Entry:</strong> We eliminate the tedious part of food tracking so you can focus on eating well</li>
+                <li><strong>Privacy First:</strong> Your data is encrypted, never sold, and you can delete it anytime</li>
+            </ul>
+        </div>
+
+        <!-- Our Values -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">💚</div>
+                <h2>Our Values</h2>
+            </div>
+
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="icon">🔒</div>
+                    <h4>Privacy</h4>
+                    <p>Your health data is yours. We never sell it, share it with advertisers, or use it for anything other than your experience.</p>
+                </div>
+                <div class="value-card">
+                    <div class="icon">⚡</div>
+                    <h4>Simplicity</h4>
+                    <p>Tracking a meal should take seconds, not minutes. We obsess over making every interaction effortless.</p>
+                </div>
+                <div class="value-card">
+                    <div class="icon">🤝</div>
+                    <h4>No Judgment</h4>
+                    <p>We don't shame you for what you eat. HealthyOne helps you understand your nutrition without guilt or pressure.</p>
+                </div>
+                <div class="value-card">
+                    <div class="icon">🔬</div>
+                    <h4>AI-Powered Accuracy</h4>
+                    <p>We use cutting-edge AI to deliver precise nutrition data — no more guessing or approximating.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- About Hardaway Labs -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">🏢</div>
+                <h2>Hardaway Labs</h2>
+            </div>
+            <p>Hardaway Labs is the company behind HealthyOne and a growing suite of "Healthy" apps designed for total wellness. Based in Georgia, we're focused on building tools that use AI to make healthy living accessible to everyone.</p>
+
+            <h3>Our Apps</h3>
+            <ul>
+                <li><strong>HealthyOne:</strong> AI-powered nutrition tracking with voice logging, photo analysis, and heart health monitoring</li>
+                <li><strong>More coming soon:</strong> We're building a suite of wellness apps to help you live your healthiest life</li>
+            </ul>
+        </div>
+
+        <!-- Where to Find Us -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">📱</div>
+                <h2>Download HealthyOne</h2>
+            </div>
+            <p>HealthyOne is available on both iOS and Android:</p>
+            <ul>
+                <li><strong>iOS:</strong> <a href="https://apps.apple.com/app/healthyone-nutrition-tracker/id6738030801" style="color: var(--primary-light);">Download on the App Store</a></li>
+                <li><strong>Android:</strong> <a href="https://play.google.com/store/apps/details?id=com.healthyone.app" style="color: var(--primary-light);">Get it on Google Play</a></li>
+            </ul>
+        </div>
+
+        <!-- Contact -->
+        <div class="section cta-section">
+            <div class="section-header" style="justify-content: center;">
+                <div class="section-icon">📧</div>
+                <h2>Get in Touch</h2>
+            </div>
+            <p style="max-width: 500px; margin: 0 auto 8px;">Have questions, feedback, or want to partner with us? We'd love to hear from you.</p>
+
+            <div class="cta-buttons">
+                <a href="mailto:support@healthyoneapp.com" class="cta-btn primary">Email Us</a>
+                <a href="/" class="cta-btn secondary">Visit Our Website</a>
+            </div>
+
+            <p style="margin-top: 20px; font-size: 0.9rem; color: var(--text-muted);">
+                <strong>Hardaway Labs LLC</strong><br>
+                Locust Grove, Georgia<br>
+                support@healthyoneapp.com
+            </p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/about.html">About Us</a>
+            <a href="/privacy.html">Privacy Policy</a>
+            <a href="/terms.html">Terms of Service</a>
+        </div>
+        <div class="footer-copyright">
+            &copy; 2026 Hardaway Labs LLC. All rights reserved.
+        </div>
+    </footer>
+</body>
+</html>

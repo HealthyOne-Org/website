@@ -1,0 +1,3493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="HealthyOne - AI-powered nutrition tracking made simple. Track meals with voice, photos, or text. Powered by advanced AI analysis.">
+    <meta name="keywords" content="nutrition tracking, AI nutrition, food logging, calorie counter, diet tracker, healthy eating">
+    <meta name="author" content="Hardaway Labs LLC">
+    <meta property="og:title" content="HealthyOne - AI-Powered Nutrition Tracking">
+    <meta property="og:description" content="Simply speak, type, or snap a photo of your food. HealthyOne uses AI to log your meals and track nutrition effortlessly.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.healthyoneapp.com/">
+    <meta property="og:image" content="https://www.healthyoneapp.com/assets/logo.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="HealthyOne - Track Nutrition in 10 Seconds">
+    <meta name="twitter:description" content="AI-powered meal tracking by voice, photo, or text. 50+ nutrients tracked instantly.">
+    <meta name="twitter:image" content="https://www.healthyoneapp.com/assets/logo.png">
+    <meta name="twitter:site" content="@HealthyOne88">
+    <link rel="canonical" href="https://www.healthyoneapp.com/">
+    <meta name="theme-color" content="#4ECDC4">
+    <meta name="robots" content="index, follow">
+    <title>HealthyOne - AI-Powered Nutrition Tracking Made Simple</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "HealthyOne",
+        "applicationCategory": "HealthApplication",
+        "operatingSystem": ["iOS", "Android"],
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "description": "HealthyOne Plus subscription at $4.99/month (beta price)"
+        },
+        "description": "AI-powered nutrition tracking app. Log meals with voice, photos, or text. Track 50+ nutrients with USDA-verified data.",
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "5",
+            "ratingCount": "3",
+            "bestRating": "5"
+        },
+        "author": {
+            "@type": "Organization",
+            "name": "Hardaway Labs LLC"
+        }
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --primary: #4ECDC4;
+            --primary-dark: #3BA99C;
+            --primary-light: #A8E6CF;
+            --accent-coral: #FF6B6B;
+            --accent-orange: #FFA726;
+            --accent-purple: #B39DDB;
+            --text-dark: #1A2332;
+            --text-medium: #4A5568;
+            --text-light: #718096;
+            --bg-start: #E8FDF5;
+            --bg-end: #F0E6FF;
+            --white: #FFFFFF;
+            --card-shadow: 0 4px 20px rgba(78, 205, 196, 0.08);
+            --card-shadow-hover: 0 12px 40px rgba(78, 205, 196, 0.15);
+            --card-radius: 24px;
+            --btn-radius: 16px;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* ===== NAVIGATION ===== */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(78, 205, 196, 0.1);
+            padding: 0.75rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.4rem;
+            color: var(--text-dark);
+        }
+
+        .logo-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(78, 205, 196, 0.25);
+        }
+
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-medium);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:not(.cta-button):hover {
+            color: var(--primary);
+        }
+
+        .nav-links a:not(.cta-button)::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:not(.cta-button):hover::after {
+            width: 100%;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white !important;
+            padding: 0.7rem 1.5rem;
+            border-radius: var(--btn-radius);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 15px rgba(78, 205, 196, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(78, 205, 196, 0.4);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .hamburger span {
+            width: 24px;
+            height: 2.5px;
+            background: var(--text-dark);
+            margin: 3px 0;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            background: linear-gradient(160deg, #E8FDF5 0%, #F0F9FF 30%, #F5F0FF 60%, #FFF0F0 100%);
+            padding: 5rem 2rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -150px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(78, 205, 196, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            left: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(179, 157, 219, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero-container {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(78, 205, 196, 0.1);
+            border: 1px solid rgba(78, 205, 196, 0.2);
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--primary-dark);
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        .hero-badge .badge-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--primary);
+            border-radius: 50%;
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.8); }
+        }
+
+        .hero h1 {
+            font-size: 3.75rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 1.25rem;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+        }
+
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, var(--primary) 0%, #36B5A0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: var(--btn-radius);
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 4px 20px rgba(78, 205, 196, 0.35);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(78, 205, 196, 0.45);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--text-dark);
+            padding: 1rem 2rem;
+            border-radius: var(--btn-radius);
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(0, 0, 0, 0.08);
+            cursor: pointer;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(78, 205, 196, 0.15);
+        }
+
+        .trial-text {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-top: 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .trial-text svg {
+            color: var(--primary);
+        }
+
+        /* ===== PHONE MOCKUP ===== */
+        .phone-showcase {
+            margin-top: 4rem;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 1.5rem;
+            perspective: 1200px;
+        }
+
+        .phone-frame {
+            width: 260px;
+            background: linear-gradient(160deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: 36px;
+            padding: 8px;
+            box-shadow: 0 20px 60px rgba(78, 205, 196, 0.25), 0 8px 20px rgba(0, 0, 0, 0.08);
+            position: relative;
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .phone-frame:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 80px rgba(78, 205, 196, 0.3), 0 12px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .phone-frame.center {
+            width: 280px;
+            z-index: 2;
+        }
+
+        .phone-frame.side {
+            width: 230px;
+            opacity: 0.85;
+            transform: scale(0.92);
+        }
+
+        .phone-frame.side:hover {
+            opacity: 1;
+            transform: scale(0.95) translateY(-8px);
+        }
+
+        .phone-screen {
+            background: var(--white);
+            border-radius: 30px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .phone-screen img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .phone-notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 22px;
+            background: linear-gradient(160deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: 0 0 16px 16px;
+            z-index: 10;
+        }
+
+        /* ===== SECTIONS COMMON ===== */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--primary);
+            background: rgba(78, 205, 196, 0.1);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 2.75rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 0.75rem;
+            text-align: center;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 1.1rem;
+            max-width: 550px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* ===== FEATURES SECTION ===== */
+        .features {
+            background: var(--white);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 2rem 1.5rem;
+            border-radius: var(--card-radius);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--card-shadow-hover);
+            border-color: rgba(78, 205, 196, 0.15);
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-icon-wrap {
+            width: 64px;
+            height: 64px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.25rem;
+            font-size: 1.75rem;
+        }
+
+        .feature-icon-wrap.teal {
+            background: linear-gradient(135deg, rgba(78, 205, 196, 0.15) 0%, rgba(78, 205, 196, 0.05) 100%);
+        }
+        .feature-icon-wrap.coral {
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.15) 0%, rgba(255, 107, 107, 0.05) 100%);
+        }
+        .feature-icon-wrap.orange {
+            background: linear-gradient(135deg, rgba(255, 167, 38, 0.15) 0%, rgba(255, 167, 38, 0.05) 100%);
+        }
+        .feature-icon-wrap.purple {
+            background: linear-gradient(135deg, rgba(179, 157, 219, 0.15) 0%, rgba(179, 157, 219, 0.05) 100%);
+        }
+
+        .feature-card h3 {
+            color: var(--text-dark);
+            margin-bottom: 0.6rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+            line-height: 1.6;
+            font-size: 0.9rem;
+        }
+
+        /* ===== APP PREVIEW SECTION ===== */
+        .app-preview {
+            background: linear-gradient(160deg, #E8FDF5 0%, #F0F9FF 40%, #F8F0FF 100%);
+            padding: 5rem 2rem;
+            max-width: 100%;
+            overflow: hidden;
+        }
+
+        .app-preview-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .preview-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        .preview-grid.reverse {
+            grid-template-columns: 1.2fr 1fr;
+        }
+
+        .preview-text h3 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            line-height: 1.25;
+        }
+
+        .preview-text p {
+            color: var(--text-light);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .preview-features-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .preview-features-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--text-medium);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .preview-features-list .check-icon {
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, rgba(78, 205, 196, 0.15), rgba(78, 205, 196, 0.05));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+
+        .preview-phone {
+            display: flex;
+            justify-content: center;
+        }
+
+        .preview-phone .phone-frame {
+            width: 280px;
+        }
+
+        /* ===== HOW IT WORKS ===== */
+        .how-it-works {
+            background: var(--white);
+        }
+
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            position: relative;
+        }
+
+        .steps-container::before {
+            content: '';
+            position: absolute;
+            top: 50px;
+            left: 15%;
+            right: 15%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-light), var(--primary), var(--primary-light));
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .step {
+            background: var(--white);
+            padding: 2.5rem 2rem;
+            border-radius: var(--card-radius);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            transition: all 0.4s ease;
+        }
+
+        .step:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--card-shadow-hover);
+        }
+
+        .step-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            border-radius: 18px;
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 4px 15px rgba(78, 205, 196, 0.3);
+        }
+
+        .step h3 {
+            color: var(--text-dark);
+            margin-bottom: 0.75rem;
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .step p {
+            color: var(--text-light);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        /* ===== PRICING SECTION ===== */
+        .pricing {
+            background: linear-gradient(160deg, #F8FFFE 0%, #F5F0FF 100%);
+            padding: 5rem 2rem;
+            max-width: 100%;
+        }
+
+        .pricing-inner {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .pricing-cards {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pricing-card {
+            background: var(--white);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            border-radius: var(--card-radius);
+            padding: 2.5rem 3rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            max-width: 480px;
+            width: 100%;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--card-shadow-hover);
+        }
+
+        .pricing-card.featured {
+            border: 2px solid var(--primary);
+            box-shadow: 0 8px 30px rgba(78, 205, 196, 0.15);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 0.4rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            box-shadow: 0 4px 12px rgba(78, 205, 196, 0.3);
+        }
+
+        .pricing-card h3 {
+            color: var(--text-dark);
+            margin: 0.75rem 0 0.5rem;
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .pricing-price {
+            font-size: 3rem;
+            font-weight: 800;
+            margin: 0.5rem 0 1rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .pricing-price span {
+            font-size: 1rem;
+            font-weight: 500;
+            -webkit-text-fill-color: var(--text-light);
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 1.5rem 0;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            padding: 0.65rem 0;
+            color: var(--text-medium);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.95rem;
+        }
+
+        .pricing-features li .check {
+            width: 22px;
+            height: 22px;
+            background: rgba(78, 205, 196, 0.12);
+            border-radius: 7px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 0.75rem;
+            flex-shrink: 0;
+        }
+
+        .pricing-cta {
+            margin-top: 1.5rem;
+        }
+
+        .pricing-cta .btn-primary,
+        .pricing-cta .btn-secondary {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .pricing-note {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-top: 1rem;
+        }
+
+        /* ===== SOCIAL PROOF ===== */
+        .social-proof {
+            background: var(--white);
+            padding: 4rem 2rem;
+            max-width: 100%;
+        }
+
+        .social-proof-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 1.5rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-label {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* ===== LEAD MAGNET ===== */
+        .lead-magnet {
+            background: #E8FDF5;
+            padding: 5rem 2rem;
+            max-width: 100%;
+        }
+
+        .lead-magnet-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .lead-magnet-content h2 {
+            text-align: left;
+            font-size: 2.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .lead-magnet-content p {
+            color: var(--text-light);
+            font-size: 1.05rem;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .lead-magnet-form {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .lead-magnet-form input {
+            padding: 1rem 1.25rem;
+            border: 2px solid rgba(0, 0, 0, 0.06);
+            border-radius: var(--btn-radius);
+            font-size: 1rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            transition: all 0.3s ease;
+            background: var(--white);
+        }
+
+        .lead-magnet-form input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(78, 205, 196, 0.1);
+        }
+
+        @keyframes bookFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+        }
+
+        @keyframes bookFloatDelayed {
+            0%, 100% { transform: translateY(-4px); }
+            50% { transform: translateY(-16px); }
+        }
+
+        .book-mockup {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .book-mockup .book-item {
+            position: relative;
+            transition: all 0.4s ease;
+            animation: bookFloat 4s ease-in-out infinite;
+        }
+
+        .book-mockup .book-item:nth-child(2) {
+            animation: bookFloatDelayed 4s ease-in-out infinite;
+            animation-delay: 0.5s;
+        }
+
+        .book-mockup .book-item:hover {
+            animation-play-state: paused;
+            transform: translateY(-8px) scale(1.03);
+        }
+
+        .book-mockup .book-item img {
+            max-width: 300px;
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.2));
+            transition: filter 0.4s ease;
+        }
+
+        .book-mockup .book-item:hover img {
+            filter: drop-shadow(0 30px 50px rgba(0, 0, 0, 0.3));
+        }
+
+        .book-label {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: linear-gradient(135deg, #FF6B6B, #FF5252);
+            color: white;
+            padding: 0.3rem 0.6rem;
+            border-radius: 6px;
+            font-size: 0.6rem;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+            box-shadow: 0 2px 8px rgba(255, 107, 107, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .book-mockup .book-item img {
+                max-width: 200px;
+            }
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: linear-gradient(160deg, #1A2332 0%, #0F1923 100%);
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1.25rem;
+            font-size: 1rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary);
+        }
+
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .social-icons a:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.85rem;
+        }
+
+        /* ===== BETA BANNER ===== */
+        .beta-banner {
+            background: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);
+            color: white;
+            text-align: center;
+            padding: 0.75rem 1rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            position: relative;
+            z-index: 1001;
+        }
+
+        .beta-banner .beta-tag {
+            background: rgba(255,255,255,0.25);
+            padding: 0.2rem 0.6rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+            margin-right: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        /* ===== COUNTDOWN TIMER ===== */
+        .countdown-section {
+            background: linear-gradient(135deg, #1A2332 0%, #0F1923 100%);
+            padding: 3rem 2rem;
+            text-align: center;
+            max-width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .countdown-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -20%;
+            width: 140%;
+            height: 200%;
+            background: radial-gradient(ellipse, rgba(78, 205, 196, 0.08) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .countdown-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .countdown-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 107, 107, 0.2);
+            border: 1px solid rgba(255, 107, 107, 0.3);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            color: #FF6B6B;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1.25rem;
+        }
+
+        .countdown-title {
+            color: white;
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .countdown-subtitle {
+            color: rgba(255,255,255,0.6);
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .countdown-price-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .countdown-price-old {
+            font-size: 1.5rem;
+            color: rgba(255,255,255,0.4);
+            text-decoration: line-through;
+            font-weight: 600;
+        }
+
+        .countdown-price-new {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary) 0%, #A8E6CF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .countdown-price-new span {
+            font-size: 1rem;
+            font-weight: 500;
+            -webkit-text-fill-color: rgba(255,255,255,0.5);
+        }
+
+        .countdown-save-badge {
+            background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+            color: white;
+            padding: 0.3rem 0.75rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .countdown-unit {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 1rem 1.25rem;
+            min-width: 80px;
+        }
+
+        .countdown-number {
+            font-size: 2.25rem;
+            font-weight: 800;
+            color: white;
+            line-height: 1;
+            margin-bottom: 0.25rem;
+        }
+
+        .countdown-unit-label {
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.5);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+        }
+
+        .countdown-cta .btn-primary {
+            font-size: 1.1rem;
+            padding: 1rem 2.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .countdown-title { font-size: 1.5rem; }
+            .countdown-price-new { font-size: 2.25rem; }
+            .countdown-unit { min-width: 65px; padding: 0.75rem; }
+            .countdown-number { font-size: 1.75rem; }
+        }
+
+        @media (max-width: 480px) {
+            .countdown-timer { gap: 0.5rem; }
+            .countdown-unit { min-width: 55px; padding: 0.6rem; }
+            .countdown-number { font-size: 1.4rem; }
+            .countdown-price-row { flex-wrap: wrap; }
+        }
+
+        /* ===== ANIMATIONS ===== */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            will-change: transform, opacity;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-up-delay-1 { transition-delay: 0.1s; }
+        .fade-up-delay-2 { transition-delay: 0.2s; }
+        .fade-up-delay-3 { transition-delay: 0.3s; }
+        .fade-up-delay-4 { transition-delay: 0.4s; }
+
+        /* Fallback for reduced motion and JS failures */
+        @media (prefers-reduced-motion: reduce) {
+            .fade-up { opacity: 1; transform: none; transition: none; }
+        }
+
+        /* Phone floating animation */
+        @keyframes phone-float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .phone-frame.center {
+            animation: phone-float 4s ease-in-out infinite;
+        }
+
+        .phone-frame.side {
+            animation: phone-float 4s ease-in-out infinite;
+            animation-delay: 0.5s;
+        }
+
+        /* ===== STICKY MOBILE CTA ===== */
+        .sticky-cta-bar {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 0.75rem 1rem;
+            z-index: 999;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .sticky-cta-bar.visible {
+            transform: translateY(0);
+        }
+
+        .sticky-cta-bar span {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .sticky-cta-bar .btn-primary {
+            padding: 0.6rem 1.25rem;
+            font-size: 0.85rem;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 768px) {
+            .sticky-cta-bar {
+                display: flex;
+            }
+        }
+
+        /* ===== TRUST BAR ===== */
+        .trust-bar {
+            background: rgba(78, 205, 196, 0.05);
+            border-top: 1px solid rgba(78, 205, 196, 0.1);
+            border-bottom: 1px solid rgba(78, 205, 196, 0.1);
+            padding: 1rem 2rem;
+            text-align: center;
+        }
+
+        .trust-bar-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-light);
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .trust-item svg {
+            width: 18px;
+            height: 18px;
+            color: var(--primary);
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials {
+            background: var(--white);
+            padding: 5rem 2rem;
+            max-width: 100%;
+        }
+
+        .testimonials-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            border-radius: var(--card-radius);
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--card-shadow-hover);
+        }
+
+        .testimonial-stars {
+            color: #FFA726;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-text {
+            color: var(--text-medium);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .testimonial-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            color: white;
+        }
+
+        .testimonial-avatar.teal { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+        .testimonial-avatar.coral { background: linear-gradient(135deg, #FF6B6B, #FF5252); }
+        .testimonial-avatar.purple { background: linear-gradient(135deg, #B39DDB, #9575CD); }
+
+        .testimonial-info h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.1rem;
+        }
+
+        .testimonial-info span {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        @media (max-width: 1024px) {
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+
+        /* ===== FAQ SECTION ===== */
+        .faq {
+            background: linear-gradient(160deg, #F8FFFE 0%, #F5F0FF 100%);
+            padding: 5rem 2rem;
+            max-width: 100%;
+        }
+
+        .faq-inner {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-list {
+            margin-top: 3rem;
+        }
+
+        .faq-item {
+            background: var(--white);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            border-radius: 16px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            box-shadow: var(--card-shadow);
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 1.25rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            text-align: left;
+        }
+
+        .faq-question:hover {
+            color: var(--primary-dark);
+        }
+
+        .faq-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: rgba(78, 205, 196, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.25rem;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+        }
+
+        .faq-answer-inner {
+            padding: 0 1.5rem 1.25rem;
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* ===== BETA BANNER IMPROVEMENTS ===== */
+        .beta-banner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            position: relative;
+        }
+
+        .beta-banner .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+
+        .beta-banner-close {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            transition: background 0.3s ease;
+        }
+
+        .beta-banner-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .beta-banner.hidden {
+            display: none;
+        }
+
+        /* ===== HERO TRUST LINE ===== */
+        .hero-trust-line {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-trust-item {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+            color: var(--text-light);
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .hero-trust-item svg {
+            width: 16px;
+            height: 16px;
+            color: var(--primary);
+        }
+
+        /* ===== FEATURE CARD IMPROVEMENTS ===== */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 1024px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .feature-card .feature-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            color: var(--primary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 0.75rem;
+            text-decoration: none;
+            transition: gap 0.3s ease;
+        }
+
+        .feature-card:hover .feature-link {
+            gap: 0.5rem;
+        }
+
+        .feature-icon-wrap.blue {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(59, 130, 246, 0.05) 100%);
+        }
+
+        .feature-icon-wrap.green {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, rgba(34, 197, 94, 0.05) 100%);
+        }
+
+        /* ===== MOBILE RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .preview-grid,
+            .preview-grid.reverse {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                text-align: center;
+            }
+
+            .preview-text {
+                order: 2;
+            }
+
+            .preview-phone {
+                order: 1;
+            }
+
+            .preview-features-list {
+                align-items: center;
+            }
+
+            .stats-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 65px;
+                left: 0;
+                right: 0;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 1.5rem 2rem;
+                gap: 0.75rem;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                padding: 0.75rem 0;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(-45deg) translate(-6px, 6px);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(45deg) translate(-7px, -7px);
+            }
+
+            .hero {
+                padding: 3rem 1.5rem 3rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+                line-height: 1.15;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+                line-height: 1.7;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                max-width: 340px;
+                justify-content: center;
+                font-size: 1.05rem;
+                padding: 1rem 1.75rem;
+            }
+
+            .phone-showcase {
+                gap: 0.75rem;
+            }
+
+            .phone-frame.center {
+                width: 200px;
+            }
+
+            .phone-frame.side {
+                width: 160px;
+            }
+
+            .lead-magnet-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .lead-magnet-content h2 {
+                text-align: center;
+                font-size: 1.75rem;
+            }
+
+            .lead-magnet-content p {
+                font-size: 1.05rem;
+                line-height: 1.7;
+            }
+
+            .lead-magnet-form input {
+                font-size: 1rem;
+                padding: 0.9rem 1rem;
+            }
+
+            .lead-magnet-form button {
+                font-size: 1.05rem;
+                padding: 0.9rem 1rem;
+            }
+
+            .book-mockup {
+                transform: perspective(1000px) rotateY(0deg);
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .section-label {
+                font-size: 0.85rem;
+            }
+
+            p, .feature-card p, .step-card p, .testimonial-text {
+                font-size: 1.05rem;
+                line-height: 1.7;
+            }
+
+            .feature-card h3, .step-card h3 {
+                font-size: 1.2rem;
+            }
+
+            .preview-text h2 {
+                font-size: 1.75rem;
+            }
+
+            .preview-text p {
+                font-size: 1.05rem;
+            }
+
+            .preview-features-list li {
+                font-size: 1rem;
+            }
+
+            .faq-question {
+                font-size: 1.05rem;
+            }
+
+            .faq-answer {
+                font-size: 1rem;
+                line-height: 1.7;
+            }
+
+            .pricing-card h3 {
+                font-size: 1.3rem;
+            }
+
+            .pricing-card li {
+                font-size: 1rem;
+            }
+
+            .footer-section p, .footer-section a, .footer-section li a {
+                font-size: 0.95rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .steps-container {
+                grid-template-columns: 1fr;
+            }
+
+            .steps-container::before {
+                display: none;
+            }
+
+            .pricing-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .pricing-card {
+                max-width: 420px;
+            }
+
+            .pricing-card.featured {
+                transform: none;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            section {
+                padding: 3.5rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar-container {
+                padding: 0 1rem;
+            }
+
+            .logo {
+                gap: 0.5rem;
+                font-size: 1.2rem;
+            }
+
+            .logo-icon {
+                width: 38px;
+                height: 38px;
+            }
+
+            .hero {
+                padding: 2.5rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.1rem;
+            }
+
+            .hero p {
+                font-size: 1.05rem;
+            }
+
+            .hero-badge {
+                font-size: 0.8rem;
+            }
+
+            .phone-showcase {
+                margin-top: 2.5rem;
+            }
+
+            .phone-frame.center {
+                width: 180px;
+            }
+
+            .phone-frame.side {
+                width: 140px;
+                display: none;
+            }
+
+            h2 {
+                font-size: 1.75rem;
+            }
+
+            p {
+                font-size: 1rem;
+                line-height: 1.7;
+            }
+
+            .section-subtitle {
+                font-size: 1rem;
+            }
+
+            .stats-row {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+
+        /* ===== SLOGAN ===== */
+        .slogan {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, var(--primary) 0%, #36B5A0 50%, #B39DDB 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-top: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-slogan {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(78, 205, 196, 0.8);
+            margin-top: 0.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        /* ===== DISCOUNT POPUP MODAL ===== */
+        .discount-popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.55);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            z-index: 10000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .discount-popup-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .discount-popup-overlay.fade-out {
+            opacity: 0;
+        }
+
+        .discount-popup {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.97) 0%, rgba(245, 250, 249, 0.97) 100%);
+            border-radius: 24px;
+            padding: 2.5rem;
+            max-width: 480px;
+            width: 100%;
+            position: relative;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(78, 205, 196, 0.15);
+            transform: translateY(30px) scale(0.95);
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .discount-popup-overlay.active .discount-popup {
+            transform: translateY(0) scale(1);
+        }
+
+        .discount-popup::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), #36B5A0, #B39DDB, #FF6B6B);
+        }
+
+        .discount-popup-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(0, 0, 0, 0.06);
+            color: var(--text-light);
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            line-height: 1;
+        }
+
+        .discount-popup-close:hover {
+            background: rgba(0, 0, 0, 0.12);
+            color: var(--text-dark);
+            transform: rotate(90deg);
+        }
+
+        .discount-popup-emoji {
+            font-size: 3rem;
+            margin-bottom: 0.75rem;
+            display: block;
+            animation: popupBounce 0.6s ease 0.3s both;
+        }
+
+        @keyframes popupBounce {
+            0% { transform: scale(0); }
+            60% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        .discount-popup h3 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .discount-popup h3 .popup-highlight {
+            background: linear-gradient(135deg, var(--primary) 0%, #36B5A0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .discount-popup .popup-slogan {
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .discount-popup .popup-desc {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .discount-popup .popup-price-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .discount-popup .popup-price-old {
+            font-size: 1.1rem;
+            text-decoration: line-through;
+            color: var(--text-light);
+            opacity: 0.6;
+        }
+
+        .discount-popup .popup-price-new {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), #36B5A0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .discount-popup .popup-price-new span {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .discount-popup .popup-save-badge {
+            background: linear-gradient(135deg, #FF6B6B, #FF5252);
+            color: white;
+            padding: 0.25rem 0.65rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+
+        .discount-popup-form {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .discount-popup-form input[type="email"] {
+            width: 100%;
+            padding: 0.9rem 1.2rem;
+            border: 2px solid #E2E8F0;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            outline: none;
+        }
+
+        .discount-popup-form input[type="email"]:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(78, 205, 196, 0.15);
+        }
+
+        .discount-popup-form .popup-submit {
+            width: 100%;
+            padding: 0.9rem;
+            background: linear-gradient(135deg, var(--primary) 0%, #36B5A0 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 700;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(78, 205, 196, 0.35);
+        }
+
+        .discount-popup-form .popup-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(78, 205, 196, 0.45);
+        }
+
+        .discount-popup .popup-note {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            margin-top: 0.75rem;
+        }
+
+        .discount-popup .popup-trust {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .discount-popup .popup-trust span {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-size: 0.75rem;
+            color: var(--text-light);
+        }
+
+        .discount-popup .popup-trust svg {
+            width: 14px;
+            height: 14px;
+            color: var(--primary);
+        }
+
+        @media (max-width: 480px) {
+            .discount-popup {
+                padding: 2rem 1.5rem;
+            }
+
+            .discount-popup h3 {
+                font-size: 1.3rem;
+            }
+
+            .discount-popup .popup-price-new {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Beta Banner -->
+    <div class="beta-banner" id="betaBanner">
+        <span class="pulse-dot"></span>
+        <span class="beta-tag">BETA</span>
+        🔥 Beta Launch — <strong>50% off</strong> for early adopters. Limited spots remaining!
+        <button class="beta-banner-close" onclick="closeBetaBanner()" aria-label="Close banner">×</button>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-container">
+            <a href="#home" class="logo">
+                <div class="logo-icon">
+                    <img src="assets/logo.png" alt="HealthyOne Logo">
+                </div>
+                <span>HealthyOne</span>
+            </a>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#early-access">Early Access</a></li>
+                <li><a href="#download" class="cta-button">Start Free Trial</a></li>
+            </ul>
+
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <!-- VERSION A: Fact-Based (Default) -->
+            <div id="variant-a-hero" class="ab-variant" data-variant="a">
+                <div class="hero-badge">
+                    <span class="badge-dot"></span>
+                    BETA — Now available on iOS & Android
+                </div>
+
+                <h1>
+                    Track Your Nutrition in<br>
+                    <span class="highlight">10 Seconds</span> — Not 10 Minutes
+                </h1>
+                <p>Just speak, snap, or type what you ate. HealthyOne's AI instantly logs your meals with full nutrition breakdowns — calories, macros, vitamins, and 50+ nutrients.</p>
+                <div class="slogan">Be In Good Health</div>
+            </div>
+
+            <!-- VERSION B: Emotional/User-Story -->
+            <div id="variant-b-hero" class="ab-variant" data-variant="b" style="display:none;">
+                <div class="hero-badge">
+                    <span class="badge-dot"></span>
+                    BETA — Join thousands starting their health journey
+                </div>
+
+                <h2 style="font-size: inherit;">
+                    You Deserve to<br>
+                    <span class="highlight">Feel Amazing</span> About What You Eat
+                </h2>
+                <p>No more guilt. No more guessing. Just tell HealthyOne what you ate — by voice, photo, or text — and finally understand how your food makes you feel. It takes 10 seconds, and it changes everything.</p>
+                <div class="slogan">Be In Good Health</div>
+            </div>
+
+            <div class="hero-buttons" id="download">
+                <a href="#pricing" class="btn-primary">
+                    Start Free Trial →
+                </a>
+                <a href="#how-it-works" class="btn-secondary">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    See How It Works
+                </a>
+            </div>
+
+            <div class="hero-trust-line">
+                <span class="hero-trust-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    Free 7-day trial
+                </span>
+                <span class="hero-trust-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    No credit card
+                </span>
+                <span class="hero-trust-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    Cancel anytime
+                </span>
+            </div>
+
+            <div style="margin-top: 1.5rem; display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                <a href="https://play.google.com/store/apps/details?id=com.hardawaylabs.healthyone" target="_blank" rel="noopener" id="hero-google-play" style="display: inline-flex; align-items: center; gap: 0.5rem; background: #000; color: #fff; padding: 0.6rem 1.25rem; border-radius: 10px; text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: transform 0.2s;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.61 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.5,12.92 20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/></svg>
+                    Get it on Google Play
+                </a>
+                <span style="color: #888; font-size: 0.85rem;">iOS coming soon</span>
+            </div>
+
+            <!-- Phone Showcase -->
+            <div class="phone-showcase">
+                <div class="phone-frame side fade-up fade-up-delay-1" style="position: relative;">
+                    <div class="phone-screen">
+                        <img src="assets/screenshot2_recipes.png" alt="HealthyOne Recipe Discovery">
+                    </div>
+                    <span style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #B39DDB, #9575CD); color: white; padding: 0.3rem 0.75rem; border-radius: 20px; font-size: 0.7rem; font-weight: 700; white-space: nowrap; box-shadow: 0 2px 8px rgba(179, 157, 219, 0.4);">🥗 Recipes</span>
+                </div>
+                <div class="phone-frame center fade-up fade-up-delay-2" style="position: relative;">
+                    <div class="phone-screen">
+                        <img src="assets/screenshot1_dashboard.jpg" alt="HealthyOne Dashboard">
+                    </div>
+                    <span style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; padding: 0.3rem 0.75rem; border-radius: 20px; font-size: 0.7rem; font-weight: 700; white-space: nowrap; box-shadow: 0 2px 8px rgba(78, 205, 196, 0.4);">📊 Dashboard</span>
+                </div>
+                <div class="phone-frame side fade-up fade-up-delay-3" style="position: relative;">
+                    <div class="phone-screen">
+                        <img src="assets/screenshot3_logging.png" alt="HealthyOne Meal Logging">
+                    </div>
+                    <span style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #FF6B6B, #FF5252); color: white; padding: 0.3rem 0.75rem; border-radius: 20px; font-size: 0.7rem; font-weight: 700; white-space: nowrap; box-shadow: 0 2px 8px rgba(255, 107, 107, 0.4);">🎤 Voice Log</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Bar -->
+    <div class="trust-bar">
+        <div class="trust-bar-inner">
+            <div class="trust-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                End-to-end encrypted
+            </div>
+            <div class="trust-item">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                Powered by Gemini AI
+            </div>
+            <div class="trust-item">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                USDA verified nutrition data
+            </div>
+        </div>
+    </div>
+
+    <!-- Social Proof Stats -->
+    <div class="social-proof">
+        <div class="social-proof-inner">
+            <div class="stats-row">
+                <div class="stat-item fade-up fade-up-delay-1">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Nutrients Tracked</div>
+                </div>
+                <div class="stat-item fade-up fade-up-delay-2">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Ways to Log Meals</div>
+                </div>
+                <div class="stat-item fade-up fade-up-delay-3">
+                    <div class="stat-number">&lt;10s</div>
+                    <div class="stat-label">Average Log Time</div>
+                </div>
+                <div class="stat-item fade-up fade-up-delay-4">
+                    <div class="stat-number">AI</div>
+                    <div class="stat-label">Powered Analysis</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lifestyle Banner -->
+    <style>
+        .lifestyle-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: center; }
+        .lifestyle-item { border-radius: 24px; overflow: hidden; box-shadow: 0 8px 30px rgba(0,0,0,0.1); }
+        .lifestyle-item img, .lifestyle-item video { width: 100%; height: 700px; object-fit: cover; object-position: center 10%; display: block; }
+        @media (max-width: 768px) {
+            .lifestyle-grid { grid-template-columns: 1fr; }
+            .lifestyle-item img, .lifestyle-item video { height: 500px; }
+        }
+    </style>
+    <div style="max-width: 1200px; margin: 0 auto; padding: 3rem 2rem;">
+        <div class="lifestyle-grid">
+            <div class="lifestyle-item">
+                <img src="assets/lifestyle_couple_meal.jpg" alt="Couple using HealthyOne to photograph their meal">
+            </div>
+            <div class="lifestyle-item">
+                <img src="assets/lifestyle_voice_cooking.jpg" alt="Woman voice logging a meal while cooking">
+            </div>
+        </div>
+        <p style="text-align: center; margin-top: 1.5rem; color: var(--text-light); font-size: 0.95rem; font-weight: 500;">Join thousands tracking smarter with HealthyOne</p>
+    </div>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <!-- VERSION A: Fact-Based Header -->
+        <div class="section-header ab-variant" data-variant="a">
+            <span class="section-label">Features</span>
+            <h2>Everything You Need</h2>
+            <p class="section-subtitle">Powerful AI-driven tools to take full control of your nutrition journey</p>
+        </div>
+        <!-- VERSION B: Emotional Header -->
+        <div class="section-header ab-variant" data-variant="b" style="display:none;">
+            <span class="section-label">Why People Love It</span>
+            <h2>Built for Real People, Not Fitness Pros</h2>
+            <p class="section-subtitle">You don't need to be a nutritionist to eat well. HealthyOne makes it feel effortless — like having a supportive friend who actually knows nutrition.</p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card fade-up fade-up-delay-1">
+                <div class="feature-icon-wrap teal">
+                    <span>🎤</span>
+                </div>
+                <h3>Voice Logging</h3>
+                <p>Just say what you ate. Our AI understands your meals instantly and logs them automatically.</p>
+                <a href="#how-it-works" class="feature-link">Learn more →</a>
+            </div>
+
+            <div class="feature-card fade-up fade-up-delay-2">
+                <div class="feature-icon-wrap coral">
+                    <span>📸</span>
+                </div>
+                <h3>Photo Recognition</h3>
+                <p>Snap a photo of your meal and let AI identify what you're eating. No typing required.</p>
+                <a href="#how-it-works" class="feature-link">Learn more →</a>
+            </div>
+
+            <div class="feature-card fade-up fade-up-delay-3">
+                <div class="feature-icon-wrap orange">
+                    <span>📊</span>
+                </div>
+                <h3>Full Nutrition Data</h3>
+                <p>Get detailed breakdowns of calories, macros, vitamins, minerals, and more for every meal.</p>
+                <a href="#app-preview" class="feature-link">Learn more →</a>
+            </div>
+
+            <div class="feature-card fade-up fade-up-delay-4">
+                <div class="feature-icon-wrap purple">
+                    <span>🥗</span>
+                </div>
+                <h3>Recipe Discovery</h3>
+                <p>Discover healthy meal ideas tailored to your nutrition goals and dietary preferences.</p>
+                <a href="#app-preview" class="feature-link">Learn more →</a>
+            </div>
+
+            <div class="feature-card fade-up fade-up-delay-1">
+                <div class="feature-icon-wrap blue">
+                    <span>🏋️</span>
+                </div>
+                <h3>Activity Tracking</h3>
+                <p>Sync with Apple Health & Google Health Connect. Track steps, workouts, and active calories.</p>
+                <a href="#app-preview" class="feature-link">Learn more →</a>
+            </div>
+
+            <div class="feature-card fade-up fade-up-delay-2">
+                <div class="feature-icon-wrap green">
+                    <span>👥</span>
+                </div>
+                <h3>Squad System</h3>
+                <p>Join squads, compete with friends, and earn XP for healthy habits. Gamified wellness.</p>
+                <a href="#pricing" class="feature-link">Learn more →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Preview: Logging -->
+    <div class="app-preview">
+        <div class="app-preview-inner">
+            <div class="section-header">
+                <span class="section-label">See It In Action</span>
+                <h2>Designed for Real Life</h2>
+                <p class="section-subtitle">Log meals your way &mdash; voice, text, or photo. Get AI-powered nutrition analysis in seconds.</p>
+            </div>
+
+            <div class="preview-grid" id="app-preview">
+                <div class="preview-phone fade-up">
+                    <div class="phone-frame">
+                        <div class="phone-screen">
+                            <img src="assets/screenshot3_logging.png" alt="HealthyOne Meal Logging Interface">
+                        </div>
+                    </div>
+                </div>
+                <div class="preview-text fade-up fade-up-delay-2">
+                    <h3>Log Meals in Seconds,<br>Not Minutes</h3>
+                    <p>Choose from three effortless ways to log your food. Each method is powered by advanced AI to ensure accuracy without the hassle.</p>
+                    <ul class="preview-features-list">
+                        <li>
+                            <span class="check-icon">✓</span>
+                            Voice &mdash; just say what you ate
+                        </li>
+                        <li>
+                            <span class="check-icon">✓</span>
+                            Photo &mdash; snap a picture of your plate
+                        </li>
+                        <li>
+                            <span class="check-icon">✓</span>
+                            Text &mdash; quick-type your meal
+                        </li>
+                        <li>
+                            <span class="check-icon">✓</span>
+                            AI-powered accuracy with USDA data
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Second Preview Block: Dashboard -->
+            <div class="preview-grid reverse" style="margin-top: 5rem;">
+                <div class="preview-text fade-up">
+                    <h3>See Your Full Picture</h3>
+                    <p>Your personalized nutrition dashboard gives you complete visibility into your daily intake, trends, and progress toward your health goals.</p>
+                    <ul class="preview-features-list">
+                        <li>
+                            <span class="check-icon">✓</span>
+                            Daily nutrition dashboard at a glance
+                        </li>
+                        <li>
+                            <span class="check-icon">✓</span>
+                            50+ nutrient breakdown per meal
+                        </li>
+                        <li>
+                            <span class="check-icon">✓</span>
+                            Weekly trends & streak tracking
+                        </li>
+                        <li>
+                            <span class="check-icon">✓</span>
+                            Personalized AI-powered insights
+                        </li>
+                    </ul>
+                </div>
+                <div class="preview-phone fade-up fade-up-delay-2" style="display: flex; justify-content: center;">
+                    <img src="assets/lifestyle_weekly_dashboard.jpg" alt="HealthyOne Weekly Dashboard" style="max-height: 580px; border-radius: 24px; box-shadow: 0 12px 40px rgba(0,0,0,0.15);">
+                </div>
+            </div>
+
+            <!-- Third Preview Block: Photo Analysis -->
+            <div class="preview-grid" style="margin-top: 5rem;">
+                <div class="preview-phone fade-up">
+                    <div class="phone-frame">
+                        <div class="phone-screen">
+                            <img src="assets/screenshot6_photo_analysis.png" alt="HealthyOne AI Photo Analysis">
+                        </div>
+                    </div>
+                </div>
+                <div class="preview-text fade-up fade-up-delay-2">
+                    <h3>AI-Powered Photo<br>Nutrition Analysis</h3>
+                    <p>Snap a photo of any meal and our AI instantly identifies every item, calculates calories, macros, and micronutrients with incredible accuracy.</p>
+                    <ul class="preview-features-list">
+                        <li>
+                            <span class="check-icon">✓</span>
+                            Instant food recognition from photos
+                        </li>
+                        <li>
+                            <span class="check-icon">✓</span>
+                            Detailed calorie & macro breakdown
+                        </li>
+                        <li>
+                            <span class="check-icon">✓</span>
+                            Individual item nutrition analysis
+                        </li>
+                        <li>
+                            <span class="check-icon">✓</span>
+                            Vitamins & minerals tracking
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Fourth Preview Block: Apple Health Sync -->
+            <div class="preview-grid reverse" style="margin-top: 5rem;">
+                <div class="preview-text fade-up">
+                    <h3>Seamlessly Synced<br>With Apple Health</h3>
+                    <p>Connect with Apple Health to get a complete picture of your wellness. Track steps, calories burned, and activity alongside your nutrition data.</p>
+                    <ul class="preview-features-list">
+                        <li>
+                            <span class="check-icon">✓</span>
+                            Apple Health & Google Health Connect
+                        </li>
+                        <li>
+                            <span class="check-icon">✓</span>
+                            Body stats tracking & goals
+                        </li>
+                        <li>
+                            <span class="check-icon">✓</span>
+                            Diabetes support features
+                        </li>
+                        <li>
+                            <span class="check-icon">✓</span>
+                            Personalized avatar & profile
+                        </li>
+                    </ul>
+                </div>
+                <div class="preview-phone fade-up fade-up-delay-2">
+                    <div class="phone-frame">
+                        <div class="phone-screen">
+                            <img src="assets/screenshot5_health_sync.jpg" alt="HealthyOne Apple Health Sync">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="how-it-works">
+        <!-- VERSION A: Fact-Based -->
+        <div class="section-header ab-variant" data-variant="a">
+            <span class="section-label">How It Works</span>
+            <h2>Three Simple Steps</h2>
+            <p class="section-subtitle">From meal to insights in seconds, not minutes</p>
+        </div>
+        <!-- VERSION B: Emotional -->
+        <div class="section-header ab-variant" data-variant="b" style="display:none;">
+            <span class="section-label">Your Journey Starts Here</span>
+            <h2>So Easy You'll Actually Stick With It</h2>
+            <p class="section-subtitle">Most nutrition apps get abandoned in a week. HealthyOne is different — because it fits your life, not the other way around.</p>
+        </div>
+
+        <div class="steps-container">
+            <div class="step fade-up fade-up-delay-1">
+                <div class="step-number">1</div>
+                <h3>Log Your Meal</h3>
+                <p>Speak, type, or snap a photo of your food. Choose whatever method works best for you in that moment.</p>
+            </div>
+
+            <div class="step fade-up fade-up-delay-2">
+                <div class="step-number">2</div>
+                <h3>AI Analyzes It</h3>
+                <p>Gemini AI parses your meal, then we look up nutrition from verified USDA and food databases.</p>
+            </div>
+
+            <div class="step fade-up fade-up-delay-3">
+                <div class="step-number">3</div>
+                <h3>Track Progress</h3>
+                <p>See comprehensive nutrition breakdowns and trends over time. Achieve your goals with data-driven insights.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <div class="testimonials">
+        <div class="testimonials-inner">
+            <div class="section-header">
+                <span class="section-label">Early Users</span>
+                <h2>What Beta Testers Say</h2>
+                <p class="section-subtitle">Join our growing community of health-conscious early adopters</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card fade-up fade-up-delay-1">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"I've tried every nutrition app out there. HealthyOne is the first one that actually sticks. Voice logging changed everything — I can track meals while cooking or on the go."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar teal">MK</div>
+                        <div class="testimonial-info">
+                            <h4>Michael K.</h4>
+                            <span>Beta Tester • Busy Parent</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card fade-up fade-up-delay-2">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"The AI accuracy is impressive. I snapped a photo of my homemade stir-fry and it identified each ingredient. Way better than searching a database for 10 minutes."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar coral">ST</div>
+                        <div class="testimonial-info">
+                            <h4>Sarah T.</h4>
+                            <span>Beta Tester • Fitness Enthusiast</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card fade-up fade-up-delay-3">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"Finally, an app that tracks micronutrients, not just calories. I can see if I'm getting enough iron, B12, omega-3s — things other apps completely ignore."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar purple">JL</div>
+                        <div class="testimonial-info">
+                            <h4>James L.</h4>
+                            <span>Beta Tester • Health Coach</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Countdown Timer Section -->
+    <div class="countdown-section">
+        <div class="countdown-inner">
+            <!-- VERSION A: Fact-Based -->
+            <div class="ab-variant" data-variant="a">
+                <div class="countdown-label">Limited Time Offer</div>
+                <h2 class="countdown-title">Beta Launch Special — 50% Off</h2>
+                <p class="countdown-subtitle">Lock in $4.99/month before the price goes up to $9.99</p>
+            </div>
+            <!-- VERSION B: Emotional -->
+            <div class="ab-variant" data-variant="b" style="display:none;">
+                <div class="countdown-label">Your Health Is Worth It</div>
+                <h2 class="countdown-title">Start Feeling Better for Less Than a Coffee</h2>
+                <p class="countdown-subtitle">Early supporters get $4.99/month — that's less than one latte to transform how you eat, feel, and live. This price won't last.</p>
+            </div>
+
+            <div class="countdown-price-row">
+                <span class="countdown-price-old">$9.99/mo</span>
+                <span class="countdown-price-new">$4.99<span>/month</span></span>
+                <span class="countdown-save-badge">SAVE 50%</span>
+            </div>
+
+            <div class="countdown-timer" id="countdownTimer">
+                <div class="countdown-unit">
+                    <div class="countdown-number" id="cd-days">00</div>
+                    <div class="countdown-unit-label">Days</div>
+                </div>
+                <div class="countdown-unit">
+                    <div class="countdown-number" id="cd-hours">00</div>
+                    <div class="countdown-unit-label">Hours</div>
+                </div>
+                <div class="countdown-unit">
+                    <div class="countdown-number" id="cd-mins">00</div>
+                    <div class="countdown-unit-label">Minutes</div>
+                </div>
+                <div class="countdown-unit">
+                    <div class="countdown-number" id="cd-secs">00</div>
+                    <div class="countdown-unit-label">Seconds</div>
+                </div>
+            </div>
+
+            <div class="countdown-cta">
+                <a href="#pricing" class="btn-primary">Get Beta Pricing Now →</a>
+                <div style="margin-top: 1.5rem; display: flex; flex-wrap: wrap; justify-content: center; gap: 1.25rem;">
+                    <span style="display: flex; align-items: center; gap: 0.4rem; color: rgba(255,255,255,0.7); font-size: 0.85rem;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        7-day free trial included
+                    </span>
+                    <span style="display: flex; align-items: center; gap: 0.4rem; color: rgba(255,255,255,0.7); font-size: 0.85rem;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        Cancel anytime
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pricing Section -->
+    <div class="pricing" id="pricing">
+        <div class="pricing-inner">
+            <div class="section-header">
+                <span class="section-label">Pricing</span>
+                <h2>Simple, Transparent Pricing</h2>
+                <p class="section-subtitle">One plan. Everything included. No hidden fees.</p>
+            </div>
+
+            <div class="pricing-cards">
+                <div class="pricing-card featured fade-up fade-up-delay-1">
+                    <div class="pricing-badge">🔥 Launch Special</div>
+                    <h3>HealthyOne Plus</h3>
+                    <p style="color: var(--primary); font-weight: 700; font-size: 0.9rem; margin-top: 0.25rem; margin-bottom: 0.5rem;">Start with a 7-day free trial</p>
+                    <div class="pricing-price" style="position: relative;">
+                        <span style="font-size: 1.2rem; text-decoration: line-through; -webkit-text-fill-color: var(--text-light); opacity: 0.6; display: block; margin-bottom: -0.25rem;">$9.99</span>
+                        $4.99<span>/month</span>
+                    </div>
+                    <p style="color: #FF6B6B; font-weight: 700; font-size: 0.85rem; margin-top: -0.5rem; margin-bottom: 0.5rem;">Launch price — 50% off for 3 months!</p>
+                    <p style="color: var(--text-light); font-size: 0.8rem; margin-bottom: 0.75rem;">Then $9.99/month · Less than one coffee per week</p>
+                    <ul class="pricing-features">
+                        <li><span class="check">✓</span> <strong>7-day free trial</strong> — full access, no card needed</li>
+                        <li><span class="check">✓</span> <strong>Unlimited</strong> meal logs</li>
+                        <li><span class="check">✓</span> <strong>50+ nutrients</strong> tracked</li>
+                        <li><span class="check">✓</span> AI-powered insights</li>
+                        <li><span class="check">✓</span> Recipe discovery</li>
+                        <li><span class="check">✓</span> Squad competitions & XP</li>
+                        <li><span class="check">✓</span> Priority support</li>
+                    </ul>
+                    <div class="pricing-cta">
+                        <a href="#early-access" class="btn-primary">Start Free Trial →</a>
+                    </div>
+                    <p class="pricing-note">✓ 7-day free trial · ✓ Cancel anytime · ✓ $4.99/mo for 3 months, then $9.99/mo</p>
+                </div>
+            </div>
+
+            <!-- Bridge text connecting pricing to waitlist -->
+            <div style="text-align: center; margin-top: 2.5rem; padding: 0 1rem;">
+                <p style="color: var(--text-light); font-size: 0.95rem; max-width: 600px; margin: 0 auto; line-height: 1.7;">
+                    👇 <strong style="color: var(--text-medium);">Here's how it works:</strong> Drop your email below to reserve your spot. You'll get early access before the public launch <em>plus</em> 2 free health guides to start your journey today.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="faq" id="faq">
+        <div class="faq-inner">
+            <div class="section-header">
+                <span class="section-label">FAQ</span>
+                <h2>Frequently Asked Questions</h2>
+                <p class="section-subtitle">Everything you need to know about HealthyOne</p>
+            </div>
+
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        How accurate is the AI nutrition tracking?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            HealthyOne uses Gemini AI to understand what you ate, then looks up accurate nutrition data from the USDA FoodData Central database and other verified sources. This gives you reliable, science-backed nutrition information you can trust.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        What's included in the free trial?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            The 7-day free trial gives you full access to HealthyOne Plus — unlimited meal logs, 50+ nutrient tracking, AI insights, recipe discovery, and squad features. No credit card required to start. If you love it, you'll automatically continue at the beta price of $4.99/month.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Can I cancel anytime?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Yes, absolutely. You can cancel your subscription at any time through the App Store or Google Play. There are no cancellation fees, no questions asked. If you cancel during the free trial, you won't be charged anything.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        What devices are supported?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            HealthyOne is available on iOS (iPhone, iPad) and Android. We also sync with Apple Health and Google Health Connect for activity tracking, so your steps, workouts, and active calories are automatically integrated into your dashboard.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        How does voice logging work?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Just tap the microphone and speak naturally — "I had two eggs, toast with butter, and a glass of orange juice for breakfast." Our AI understands context, portions, and cooking methods. It's like texting a nutritionist, but instant.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Is my health data secure?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Your privacy is our top priority. All data is end-to-end encrypted and stored securely. We never sell your data to third parties. You can export or delete your data at any time. Read our full <a href="https://healthyone-org.github.io/privacy-docs/privacy.html" style="color: var(--primary);">Privacy Policy</a> for details.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        What happens after the beta ends?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Beta users who subscribe during the launch countdown get the discounted $4.99/month price. After the timer ends, the price goes up to $9.99/month. This is our thank you for being an early adopter and helping us improve HealthyOne.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Free Guide Section -->
+    <section class="lead-magnet" id="early-access">
+        <div class="lead-magnet-container">
+            <div class="lead-magnet-content">
+                <span class="section-label">Early Access</span>
+                <h2>Join the Waitlist & Get 2 Free Guides</h2>
+                <p>Reserve your spot for early access to HealthyOne. As a thank you, we'll send you two guides to start your health transformation today — before the app even launches.</p>
+
+                <ul style="list-style: none; margin: 1.5rem 0; display: flex; flex-direction: column; gap: 0.5rem;">
+                    <li style="display: flex; align-items: center; gap: 0.5rem; color: var(--text-medium); font-size: 0.95rem;">
+                        <span style="color: var(--primary);">✓</span> <strong>Early access</strong> — Be first to try HealthyOne when we launch
+                    </li>
+                    <li style="display: flex; align-items: center; gap: 0.5rem; color: var(--text-medium); font-size: 0.95rem;">
+                        <span style="color: var(--primary);">✓</span> <strong>Beta pricing locked in</strong> — $4.99/mo instead of $9.99
+                    </li>
+                    <li style="display: flex; align-items: center; gap: 0.5rem; color: var(--text-medium); font-size: 0.95rem;">
+                        <span style="color: var(--primary);">✓</span> <strong>Superfoods Guide</strong> — Top 25 nutrient-dense foods (instant download)
+                    </li>
+                    <li style="display: flex; align-items: center; gap: 0.5rem; color: var(--text-medium); font-size: 0.95rem;">
+                        <span style="color: var(--primary);">✓</span> <strong>Forgiveness-First Reset</strong> — A better way to think about food (instant download)
+                    </li>
+                </ul>
+
+                <form class="lead-magnet-form" method="POST" action="#">
+                    <input type="email" placeholder="Enter your email for early access" required>
+                    <button class="btn-primary" type="submit" style="width: 100%; justify-content: center;">Join the Waitlist — Get Instant Access →</button>
+                </form>
+                <p style="font-size: 0.8rem; color: var(--text-light); margin-top: 0.75rem; text-align: center;">Join 100+ health enthusiasts. No spam, unsubscribe anytime.</p>
+            </div>
+
+            <div class="book-mockup fade-up">
+                <div class="book-item">
+                    <img src="assets/Books/superfoods-cover.png" alt="Superfoods for Super Health">
+                </div>
+                <div class="book-item">
+                    <span class="book-label">NEW</span>
+                    <img src="assets/Books/forgiveness-cover.png" alt="The Forgiveness-First Health Reset">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sticky Mobile CTA Bar -->
+    <div class="sticky-cta-bar" id="stickyCta">
+        <span>Get early access + 2 free guides</span>
+        <a href="#early-access" class="btn-primary">Join Waitlist →</a>
+    </div>
+
+    <!-- Discount Signup Popup -->
+    <div class="discount-popup-overlay" id="discountPopup">
+        <div class="discount-popup">
+            <button class="discount-popup-close" id="discountPopupClose" aria-label="Close popup">×</button>
+            <span class="discount-popup-emoji">🎉</span>
+            <div class="popup-slogan">Be In Good Health</div>
+            <h3>Wait! Get <span class="popup-highlight">50% Off</span></h3>
+            <p class="popup-desc">Sign up now and lock in our exclusive beta price. Start your health transformation for less than a coffee per week.</p>
+            <div class="popup-price-row">
+                <span class="popup-price-old">$9.99/mo</span>
+                <span class="popup-price-new">$4.99<span>/mo</span></span>
+                <span class="popup-save-badge">SAVE 50%</span>
+            </div>
+            <form class="discount-popup-form" id="discountPopupForm">
+                <input type="email" placeholder="Enter your email address" required id="discountPopupEmail">
+                <button type="submit" class="popup-submit">Claim My 50% Discount →</button>
+            </form>
+            <p class="popup-note">🔒 No spam. Unsubscribe anytime. Includes 7-day free trial.</p>
+            <div class="popup-trust">
+                <span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    Free 7-day trial
+                </span>
+                <span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    Cancel anytime
+                </span>
+                <span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    2 free health guides
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section footer-brand">
+                <a href="#home" class="logo" style="color: white;">
+                    <div class="logo-icon">
+                        <img src="assets/logo.png" alt="HealthyOne Logo">
+                    </div>
+                    <span>HealthyOne</span>
+                </a>
+                <div class="footer-slogan">Be In Good Health</div>
+                <p>AI-powered nutrition tracking made simple. Track your meals, discover recipes, and achieve your health goals.</p>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/healthyoneapp" title="Instagram" target="_blank" rel="noopener">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    </a>
+                    <a href="https://www.facebook.com/profile.php?id=61586978237912" title="Facebook" target="_blank" rel="noopener">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    </a>
+                    <a href="https://www.tiktok.com/@reelhealthycj88" title="TikTok" target="_blank" rel="noopener">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+                    </a>
+                    <a href="https://www.pinterest.com/healthyoneapp" title="Pinterest" target="_blank" rel="noopener">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/></svg>
+                    </a>
+                    <a href="https://x.com/Christophe43101" title="X / Twitter" target="_blank" rel="noopener">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="https://play.google.com/store/apps/details?id=com.hardawaylabs.healthyone" target="_blank" rel="noopener">Download on Google Play</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="https://healthyone-org.github.io/privacy-docs/about.html">About Us</a></li>
+                    <li><a href="https://healthyone-org.github.io/privacy-docs/privacy.html">Privacy Policy</a></li>
+                    <li><a href="https://healthyone-org.github.io/privacy-docs/terms.html">Terms of Service</a></li>
+                    <li><a href="mailto:hardawayhealth25@gmail.com">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Hardaway Labs LLC. All rights reserved. Made with ❤️</p>
+        </div>
+    </footer>
+
+    <!-- Vercel Analytics -->
+    <script defer src="/_vercel/insights/script.js"></script>
+    <!-- Vercel Speed Insights -->
+    <script defer src="/_vercel/speed-insights/script.js"></script>
+
+    <!-- PostHog Analytics -->
+    <script>
+        !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug getPageviewId".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+        posthog.init('phc_jbeSYaK5OAsl5qbZbnsJYU3N3m5258lEZbVWoLWxPWo', {api_host: 'https://us.i.posthog.com', person_profiles: 'identified_only'});
+    </script>
+
+    <!-- A/B Test Logic: PostHog Feature Flags -->
+    <script>
+        // Wait for PostHog to load, then check feature flag
+        // Manual override: add ?variant=a or ?variant=b to URL to preview either version
+        function applyABTest() {
+            var urlParams = new URLSearchParams(window.location.search);
+            var manualVariant = urlParams.get('variant');
+
+            if (manualVariant === 'a' || manualVariant === 'b') {
+                var showB = (manualVariant === 'b');
+                document.querySelectorAll('.ab-variant').forEach(function(el) {
+                    var elVariant = el.getAttribute('data-variant');
+                    el.style.display = (elVariant === (showB ? 'b' : 'a')) ? '' : 'none';
+                });
+                return;
+            }
+
+            if (!window.posthog) return;
+
+            posthog.onFeatureFlags(function() {
+                // Get the variant from PostHog feature flag "landing-page-variant"
+                // Returns "test" for Version B, or "control"/undefined for Version A
+                var variant = posthog.getFeatureFlag('landing-page-variant');
+                var showB = (variant === 'test');
+
+                // Track which variant was shown
+                posthog.capture('ab_test_shown', { variant: showB ? 'B_emotional' : 'A_factual' });
+
+                // Toggle all variant elements
+                document.querySelectorAll('.ab-variant').forEach(function(el) {
+                    var elVariant = el.getAttribute('data-variant');
+                    if (showB) {
+                        el.style.display = (elVariant === 'b') ? '' : 'none';
+                    } else {
+                        el.style.display = (elVariant === 'a') ? '' : 'none';
+                    }
+                });
+            });
+        }
+
+        // Always run immediately for URL param override
+        applyABTest();
+
+        // Also run when PostHog is ready (for normal visitors without URL param)
+        if (window.posthog && window.posthog.onFeatureFlags) {
+            applyABTest();
+        } else {
+            var checkInterval = setInterval(function() {
+                if (window.posthog && window.posthog.onFeatureFlags) {
+                    clearInterval(checkInterval);
+                    applyABTest();
+                }
+            }, 100);
+            setTimeout(function() { clearInterval(checkInterval); }, 5000);
+        }
+    </script>
+
+    <!-- Scripts -->
+    <script>
+        // Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.05,
+            rootMargin: '0px 0px -30px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-up').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Fallback: Force show all fade-up elements after 2 seconds
+        setTimeout(() => {
+            document.querySelectorAll('.fade-up:not(.visible)').forEach(el => {
+                el.classList.add('visible');
+            });
+        }, 2000);
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Beta Banner Dismiss
+        function closeBetaBanner() {
+            const banner = document.getElementById('betaBanner');
+            if (banner) {
+                banner.classList.add('hidden');
+                try { localStorage.setItem('healthyone_beta_banner_closed', 'true'); } catch(e) {}
+            }
+        }
+
+        // Check if banner was previously closed
+        (function() {
+            try {
+                if (localStorage.getItem('healthyone_beta_banner_closed') === 'true') {
+                    const banner = document.getElementById('betaBanner');
+                    if (banner) banner.classList.add('hidden');
+                }
+            } catch(e) {}
+        })();
+
+        // Sticky Mobile CTA Bar
+        (function() {
+            const stickyCta = document.getElementById('stickyCta');
+            const pricingSection = document.getElementById('pricing');
+            if (!stickyCta) return;
+
+            let lastScrollY = 0;
+            window.addEventListener('scroll', () => {
+                const scrollY = window.scrollY;
+                const pricingTop = pricingSection ? pricingSection.getBoundingClientRect().top : Infinity;
+
+                // Show after scrolling 500px, hide when near pricing section
+                if (scrollY > 500 && pricingTop > 200) {
+                    stickyCta.classList.add('visible');
+                } else {
+                    stickyCta.classList.remove('visible');
+                }
+                lastScrollY = scrollY;
+            });
+        })();
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const faqItem = button.parentElement;
+                const isActive = faqItem.classList.contains('active');
+
+                // Close all other FAQs
+                document.querySelectorAll('.faq-item.active').forEach(item => {
+                    if (item !== faqItem) item.classList.remove('active');
+                });
+
+                // Toggle current FAQ
+                faqItem.classList.toggle('active', !isActive);
+            });
+        });
+
+        // Form handling — HubSpot API integration
+        const leadForm = document.querySelector('.lead-magnet-form');
+        if (leadForm) {
+            leadForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const emailInput = this.querySelector('input[type="email"]');
+                const submitBtn = this.querySelector('button[type="submit"]');
+                const email = emailInput.value;
+                if (!email) return;
+
+                // Disable button while submitting
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Sending...';
+
+                // Submit to HubSpot Forms API
+                var hubspotData = {
+                    fields: [
+                        { name: 'email', value: email }
+                    ],
+                    context: {
+                        pageUri: window.location.href,
+                        pageName: document.title
+                    }
+                };
+
+                fetch('https://api.hsforms.com/submissions/v3/integration/submit/243149802/d2799eb0-d41e-422f-9892-32e4670ccc1a', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(hubspotData)
+                })
+                .then(function(response) {
+                    if (response.ok) {
+                        // Track email signup in PostHog
+                        if (window.posthog) posthog.capture('email_signup', { email_provided: true, source: 'hubspot' });
+                        emailInput.value = '';
+                        submitBtn.textContent = '✅ Success! Download your guides below';
+                        submitBtn.style.background = '#10B981';
+                        submitBtn.disabled = true;
+
+                        // Show download buttons for both guides
+                        var downloadContainer = document.createElement('div');
+                        downloadContainer.style.cssText = 'display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1rem;';
+                        downloadContainer.innerHTML = '<a href="assets/superfoods-guide.pdf" download="HealthyOne-Superfoods-Guide.pdf" style="display: flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1rem; background: linear-gradient(135deg, #10B981, #059669); color: white; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: transform 0.2s;">📗 Download Superfoods Guide</a>' +
+                            '<a href="assets/Books/THE FORGIVENESS-FIRST HEALTH RESET - COMPLETE eBOOK.pdf" download="HealthyOne-Forgiveness-First-Health-Reset.pdf" style="display: flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1rem; background: linear-gradient(135deg, #8B5CF6, #7C3AED); color: white; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: transform 0.2s;">💜 Download Forgiveness-First Reset</a>';
+                        leadForm.parentNode.insertBefore(downloadContainer, leadForm.nextSibling);
+
+                        setTimeout(function() {
+                            submitBtn.textContent = 'Get Both Guides Free →';
+                            submitBtn.style.background = '';
+                            submitBtn.disabled = false;
+                        }, 10000);
+                    } else {
+                        throw new Error('Submission failed');
+                    }
+                })
+                .catch(function() {
+                    submitBtn.textContent = 'Something went wrong — try again';
+                    submitBtn.style.background = '#EF4444';
+                    setTimeout(function() {
+                        submitBtn.textContent = 'Get Both Guides Free →';
+                        submitBtn.style.background = '';
+                        submitBtn.disabled = false;
+                    }, 3000);
+                });
+            });
+        }
+
+        // PostHog Conversion Tracking
+        (function() {
+            if (!window.posthog) return;
+
+            // Track App Store / Play Store clicks
+            document.querySelectorAll('a[href*="apps.apple.com"]').forEach(function(el) {
+                el.addEventListener('click', function() {
+                    posthog.capture('clicked_app_store', { store: 'apple' });
+                });
+            });
+            document.querySelectorAll('a[href*="play.google.com"]').forEach(function(el) {
+                el.addEventListener('click', function() {
+                    posthog.capture('clicked_app_store', { store: 'google_play' });
+                });
+            });
+
+            // Track CTA button clicks
+            document.querySelectorAll('.countdown-cta .btn-primary').forEach(function(el) {
+                el.addEventListener('click', function() {
+                    posthog.capture('clicked_beta_cta', { section: 'countdown' });
+                });
+            });
+            document.querySelectorAll('.pricing-cta .btn-primary').forEach(function(el) {
+                el.addEventListener('click', function() {
+                    posthog.capture('clicked_pricing_cta', { plan: 'plus' });
+                });
+            });
+            document.querySelectorAll('.pricing-cta .btn-secondary').forEach(function(el) {
+                el.addEventListener('click', function() {
+                    posthog.capture('clicked_pricing_cta', { plan: 'free' });
+                });
+            });
+
+            // Track scroll depth
+            var scrollMilestones = { 25: false, 50: false, 75: false, 100: false };
+            window.addEventListener('scroll', function() {
+                var scrollPct = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+                for (var m in scrollMilestones) {
+                    if (!scrollMilestones[m] && scrollPct >= parseInt(m)) {
+                        scrollMilestones[m] = true;
+                        posthog.capture('scroll_depth', { percent: parseInt(m) });
+                    }
+                }
+            });
+        })();
+
+        // Countdown Timer — 30 days from now (auto-renewing)
+        (function() {
+            const COUNTDOWN_KEY = 'healthyone_beta_end';
+            let endTime = localStorage.getItem(COUNTDOWN_KEY);
+            if (!endTime || parseInt(endTime) < Date.now()) {
+                endTime = Date.now() + 30 * 24 * 60 * 60 * 1000;
+                try { localStorage.setItem(COUNTDOWN_KEY, endTime); } catch(e) {}
+            } else {
+                endTime = parseInt(endTime);
+            }
+
+            function updateCountdown() {
+                const now = Date.now();
+                let diff = endTime - now;
+                if (diff < 0) diff = 0;
+
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+                const dEl = document.getElementById('cd-days');
+                const hEl = document.getElementById('cd-hours');
+                const mEl = document.getElementById('cd-mins');
+                const sEl = document.getElementById('cd-secs');
+                if (dEl) dEl.textContent = String(days).padStart(2, '0');
+                if (hEl) hEl.textContent = String(hours).padStart(2, '0');
+                if (mEl) mEl.textContent = String(mins).padStart(2, '0');
+                if (sEl) sEl.textContent = String(secs).padStart(2, '0');
+            }
+
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        })();
+
+        // ===== DISCOUNT POPUP — Triggers at 50% scroll =====
+        (function() {
+            var popupShown = false;
+            var POPUP_STORAGE_KEY = 'healthyone_discount_popup_dismissed';
+
+            // Don't show if previously dismissed (within 7 days)
+            try {
+                var dismissed = localStorage.getItem(POPUP_STORAGE_KEY);
+                if (dismissed) {
+                    var dismissedAt = parseInt(dismissed);
+                    if (Date.now() - dismissedAt < 7 * 24 * 60 * 60 * 1000) {
+                        popupShown = true; // treat as already shown
+                    }
+                }
+            } catch(e) {}
+
+            var overlay = document.getElementById('discountPopup');
+            var closeBtn = document.getElementById('discountPopupClose');
+            var popupForm = document.getElementById('discountPopupForm');
+
+            function showPopup() {
+                if (popupShown || !overlay) return;
+                popupShown = true;
+                overlay.style.display = 'flex';
+                // Trigger reflow for animation
+                void overlay.offsetWidth;
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                if (window.posthog) posthog.capture('discount_popup_shown', { trigger: 'scroll_50pct' });
+            }
+
+            function closePopup() {
+                if (!overlay) return;
+                overlay.classList.add('fade-out');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+                try { localStorage.setItem(POPUP_STORAGE_KEY, String(Date.now())); } catch(e) {}
+                setTimeout(function() {
+                    overlay.style.display = 'none';
+                    overlay.classList.remove('fade-out');
+                }, 400);
+                if (window.posthog) posthog.capture('discount_popup_dismissed');
+            }
+
+            // Close button
+            if (closeBtn) closeBtn.addEventListener('click', closePopup);
+
+            // Click outside to close
+            if (overlay) {
+                overlay.addEventListener('click', function(e) {
+                    if (e.target === overlay) closePopup();
+                });
+            }
+
+            // ESC key to close
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && overlay && overlay.classList.contains('active')) {
+                    closePopup();
+                }
+            });
+
+            // Trigger at 50% scroll depth
+            window.addEventListener('scroll', function() {
+                if (popupShown) return;
+                var scrollPct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+                if (scrollPct >= 0.5) {
+                    showPopup();
+                }
+            });
+
+            // Handle form submission
+            if (popupForm) {
+                popupForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    var emailInput = document.getElementById('discountPopupEmail');
+                    var submitBtn = popupForm.querySelector('.popup-submit');
+                    var email = emailInput.value;
+                    if (!email) return;
+
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = 'Sending...';
+
+                    var hubspotData = {
+                        fields: [
+                            { name: 'email', value: email }
+                        ],
+                        context: {
+                            pageUri: window.location.href,
+                            pageName: 'Discount Popup - ' + document.title
+                        }
+                    };
+
+                    fetch('https://api.hsforms.com/submissions/v3/integration/submit/243149802/d2799eb0-d41e-422f-9892-32e4670ccc1a', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(hubspotData)
+                    })
+                    .then(function(response) {
+                        if (response.ok) {
+                            if (window.posthog) posthog.capture('discount_popup_signup', { email_provided: true });
+                            submitBtn.textContent = '✅ You\'re In! Discount locked 🔒';
+                            submitBtn.style.background = '#10B981';
+                            emailInput.value = '';
+                            setTimeout(function() { closePopup(); }, 2500);
+                        } else {
+                            throw new Error('Failed');
+                        }
+                    })
+                    .catch(function() {
+                        submitBtn.textContent = 'Something went wrong — try again';
+                        submitBtn.style.background = '#EF4444';
+                        setTimeout(function() {
+                            submitBtn.textContent = 'Claim My 50% Discount →';
+                            submitBtn.style.background = '';
+                            submitBtn.disabled = false;
+                        }, 3000);
+                    });
+                });
+            }
+        })();
+    </script>
+</body>
+</html>

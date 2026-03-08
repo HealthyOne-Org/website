@@ -483,8 +483,15 @@
                 <ul>
                     <li><strong>SMS reminders are OFF by default</strong> — you must explicitly enable them</li>
                     <li>In the HealthyOne app, go to <strong>Settings → Notifications → SMS Reminders</strong></li>
-                    <li>When you tap to enable, a disclosure screen appears explaining message types and frequency</li>
-                    <li>You must tap <strong>"Enable SMS Reminders"</strong> to confirm your consent</li>
+                    <li>Enter your mobile phone number and verify it with a one-time code</li>
+                    <li>A consent disclosure is displayed with the following language before you can enable SMS:</li>
+                </ul>
+                <div style="background: #f0f4f0; border: 2px solid #4CAF50; border-radius: 8px; padding: 16px; margin: 12px 0; font-style: italic;">
+                    <p style="margin: 0; font-weight: bold; color: #333;">"By enabling SMS Reminders, you consent to receive recurring automated nutrition reminder text messages from HealthyOne at the phone number you provided. Message frequency varies (typically 1-3 per week). Message and data rates may apply. Reply STOP to unsubscribe at any time. Reply HELP for help. Consent is not a condition of purchase or use of the app. View our <a href="https://healthyoneapp.com/privacy.html">Privacy Policy</a> and <a href="https://healthyoneapp.com/terms.html">Terms of Service</a>."</p>
+                </div>
+                <ul>
+                    <li>You must tap the <strong>"Enable SMS Reminders"</strong> button to confirm your consent</li>
+                    <li>No messages are sent until you explicitly opt in by tapping this button</li>
                     <li>You may also opt in by texting <strong>START</strong> to our messaging number</li>
                 </ul>
             </div>
@@ -500,13 +507,30 @@
             </div>
 
             <div class="sms-subsection">
+                <h4>Opt-In Confirmation</h4>
+                <p>After you enable SMS Reminders, you will receive the following confirmation message:</p>
+                <div style="background: #f0f4f0; border: 2px solid #4CAF50; border-radius: 8px; padding: 16px; margin: 12px 0; font-style: italic;">
+                    <p style="margin: 0; color: #333;">"HealthyOne: You're now subscribed to SMS reminders! We'll send you meal logging nudges to help you stay on track. Reply STOP to opt out anytime. Reply HELP for help. Msg&data rates may apply."</p>
+                </div>
+            </div>
+
+            <div class="sms-subsection">
                 <h4>How to Opt Out</h4>
                 <ul>
                     <li>Reply <strong>STOP</strong> to any message to immediately unsubscribe from all SMS</li>
                     <li>Or disable SMS Reminders in the app: <strong>Settings → Notifications → SMS Reminders → OFF</strong></li>
                     <li>You can also email <strong>support@healthyoneapp.com</strong> to request removal from SMS messaging</li>
                     <li>Opting out is immediate and does not affect other app notifications</li>
+                    <li>After opting out, you will receive a confirmation: <em>"HealthyOne: You've been unsubscribed and will no longer receive SMS reminders. Reply START to re-subscribe."</em></li>
                 </ul>
+            </div>
+
+            <div class="sms-subsection">
+                <h4>HELP Response</h4>
+                <p>If you reply <strong>HELP</strong> to any message, you will receive:</p>
+                <div style="background: #f0f4f0; border: 2px solid #4CAF50; border-radius: 8px; padding: 16px; margin: 12px 0; font-style: italic;">
+                    <p style="margin: 0; color: #333;">"HealthyOne SMS Help: For support, visit https://healthyoneapp.com or email support@healthyoneapp.com. Reply STOP to unsubscribe. Msg&data rates may apply."</p>
+                </div>
             </div>
 
             <div class="sms-subsection">
@@ -673,6 +697,7 @@
     <footer>
         <div class="footer-links">
             <a href="/">Home</a>
+            <a href="/about.html">About Us</a>
             <a href="/terms.html">Terms of Service</a>
             <a href="/privacy.html">Privacy Policy</a>
         </div>
