@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mission Control — HealthyOne Analytics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <meta name="robots" content="noindex, nofollow" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: #0a0f1a; color: #e2e8f0; min-height: 100vh; }
+    .mono { font-family: 'JetBrains Mono', Menlo, monospace; font-variant-numeric: tabular-nums; }
+
+    /* Auth screen */
+    #auth-screen { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; padding: 24px; }
+    .auth-card { background: #111827; border: 1px solid rgba(16,185,129,0.2); border-radius: 16px; padding: 40px 32px; max-width: 400px; width: 100%; box-shadow: 0 0 30px rgba(16,185,129,0.08); }
+    .auth-card h2 { font-size: 22px; font-weight: 700; margin-bottom: 4px; text-align: center; }
+    .auth-card .accent { color: #10b981; }
+    .auth-card .sub { font-size: 13px; color: #64748b; text-align: center; margin-bottom: 24px; }
+    .auth-card label { font-size: 12px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; display: block; margin-bottom: 6px; }
+    .auth-card input { width: 100%; padding: 12px 14px; background: #0a0f1a; border: 1px solid #1e3a5f; border-radius: 8px; color: #e2e8f0; font-size: 16px; outline: none; font-family: 'JetBrains Mono', monospace; }
+    .auth-card input:focus { border-color: #10b981; box-shadow: 0 0 0 3px rgba(16,185,129,0.15); }
+    .auth-card input::placeholder { color: #475569; }
+    .auth-btn { width: 100%; padding: 12px; border: none; border-radius: 8px; background: #10b981; color: #0a0f1a; font-weight: 600; font-size: 15px; cursor: pointer; margin-top: 16px; transition: background 0.2s; }
+    .auth-btn:hover { background: #059669; }
+    .auth-btn:disabled { background: #1e3a5f; color: #64748b; cursor: not-allowed; }
+    .auth-error { color: #f87171; font-size: 13px; text-align: center; margin-top: 12px; min-height: 20px; }
+    .auth-step { display: none; }
+    .auth-step.active { display: block; }
+    .step-indicator { display: flex; gap: 8px; justify-content: center; margin-bottom: 20px; }
+    .step-dot { width: 10px; height: 10px; border-radius: 50%; background: #1e3a5f; transition: background 0.3s; }
+    .step-dot.active { background: #10b981; }
+    .setup-info { background: #0a0f1a; border: 1px solid #1e3a5f; border-radius: 8px; padding: 16px; margin-bottom: 16px; }
+    .setup-info p { font-size: 12px; color: #94a3b8; margin-bottom: 8px; line-height: 1.5; }
+    .setup-info .secret-code { font-family: 'JetBrains Mono', monospace; font-size: 14px; color: #10b981; letter-spacing: 2px; word-break: break-all; text-align: center; padding: 8px; background: rgba(16,185,129,0.08); border-radius: 4px; cursor: pointer; user-select: all; }
+    .setup-info .copy-hint { font-size: 11px; color: #475569; text-align: center; margin-top: 4px; }
+    #qr-container { text-align: center; margin: 12px 0; }
+    #qr-container img { border-radius: 8px; background: white; padding: 8px; }
+    .lock-icon { font-size: 40px; text-align: center; margin-bottom: 12px; }
+
+    /* Loading screen */
+    #loading-screen { display: none; flex-direction: column; align-items: center; justify-content: center; height: 100vh; gap: 16px; }
+    #loading-screen .spinner { width: 40px; height: 40px; border: 3px solid #1e3a5f; border-top-color: #10b981; border-radius: 50%; animation: spin 0.8s linear infinite; }
+    #loading-screen p { color: #64748b; font-size: 14px; }
+    #error-display { display: none; margin: 20px auto; max-width: 600px; padding: 16px; background: #450a0a; border: 1px solid #dc2626; border-radius: 8px; color: #fca5a5; font-size: 13px; white-space: pre-wrap; word-break: break-word; }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+    /* Layout */
+    .header { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; border-bottom: 1px solid rgba(30,58,95,0.5); flex-wrap: wrap; gap: 8px; }
+    .header h1 { font-size: 20px; font-weight: 700; }
+    .header .accent { color: #10b981; }
+    .header .meta { display: flex; align-items: center; gap: 12px; font-size: 13px; color: #64748b; }
+    .header .dot { width: 10px; height: 10px; border-radius: 50%; background: #10b981; animation: pulse 2s infinite; margin-right: 8px; display: inline-block; }
+    .refresh-btn { padding: 4px 12px; border-radius: 6px; border: 1px solid #1e3a5f; background: transparent; color: #94a3b8; cursor: pointer; font-size: 13px; }
+    .refresh-btn:hover { border-color: rgba(16,185,129,0.5); color: #10b981; }
+    .logout-btn { padding: 4px 12px; border-radius: 6px; border: 1px solid #7f1d1d; background: transparent; color: #f87171; cursor: pointer; font-size: 13px; }
+    .logout-btn:hover { background: rgba(127,29,29,0.3); }
+
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; padding: 16px 24px; }
+    @media (max-width: 768px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    .stat-card { background: #111827; border: 1px solid rgba(16,185,129,0.2); border-radius: 10px; padding: 16px; box-shadow: 0 0 15px rgba(16,185,129,0.08); }
+    .stat-card .label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: #64748b; margin-bottom: 4px; }
+    .stat-card .value { font-size: 28px; font-weight: 700; color: #10b981; }
+    .stat-card .sub { font-size: 11px; color: #64748b; margin-top: 2px; }
+    @media (max-width: 480px) { .stat-card .value { font-size: 22px; } }
+
+    .content { padding: 0 24px 24px; }
+    .row { display: grid; gap: 16px; margin-bottom: 16px; }
+    .row-2 { grid-template-columns: 3fr 2fr; }
+    .row-3 { grid-template-columns: 1fr 1fr 1fr; }
+    .row-half { grid-template-columns: 1fr 1fr; }
+    @media (max-width: 900px) { .row-2, .row-3, .row-half { grid-template-columns: 1fr; } }
+
+    .card { background: #111827; border: 1px solid rgba(16,185,129,0.15); border-radius: 10px; padding: 20px; overflow: hidden; }
+    .card h3 { font-size: 14px; font-weight: 600; margin-bottom: 2px; }
+    .card .subtitle { font-size: 11px; color: #64748b; margin-bottom: 16px; }
+
+    /* Bar chart via CSS */
+    .bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+    .bar-label { width: 140px; font-size: 12px; color: #94a3b8; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex-shrink: 0; }
+    .bar-track { flex: 1; height: 26px; background: #0a0f1a; border-radius: 6px; overflow: hidden; position: relative; }
+    .bar-fill { height: 100%; border-radius: 6px; display: flex; align-items: center; padding-left: 8px; font-size: 11px; font-weight: 600; color: #fff; min-width: 30px; transition: width 0.5s ease; }
+    .bar-pct { width: 50px; text-align: right; font-size: 12px; color: #64748b; flex-shrink: 0; }
+    @media (max-width: 480px) { .bar-label { width: 90px; font-size: 11px; } }
+
+    /* Donut legend */
+    .donut-legend { display: flex; flex-direction: column; gap: 8px; }
+    .donut-item { display: flex; align-items: center; gap: 8px; font-size: 13px; }
+    .donut-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+    .donut-wrap { display: flex; align-items: center; justify-content: center; gap: 24px; flex-wrap: wrap; }
+
+    /* SVG donut */
+    .donut-svg { transform: rotate(-90deg); }
+
+    /* Feed */
+    .feed { max-height: 320px; overflow-y: auto; }
+    .feed::-webkit-scrollbar { width: 5px; }
+    .feed::-webkit-scrollbar-track { background: #111827; }
+    .feed::-webkit-scrollbar-thumb { background: #1e3a5f; border-radius: 3px; }
+    .feed-item { display: flex; align-items: center; gap: 10px; padding: 6px 8px; border-radius: 6px; font-size: 13px; }
+    .feed-item:hover { background: rgba(255,255,255,0.03); }
+    .feed-event { flex: 1; font-size: 12px; color: #e2e8f0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .feed-url { font-size: 11px; color: #64748b; max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .feed-time { font-size: 11px; color: #64748b; white-space: nowrap; flex-shrink: 0; }
+
+    .empty { text-align: center; padding: 32px 0; color: #64748b; font-size: 13px; }
+
+    footer { padding: 12px 24px; border-top: 1px solid rgba(30,58,95,0.3); text-align: center; font-size: 11px; color: #475569; }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════ AUTH SCREEN ═══════════ -->
+<div id="auth-screen">
+  <div class="auth-card">
+    <div class="lock-icon">&#x1F512;</div>
+    <h2><span class="accent">HealthyOne</span> Mission Control</h2>
+    <p class="sub">Two-step verification required</p>
+    <div class="step-indicator">
+      <div class="step-dot active" id="dot1"></div>
+      <div class="step-dot" id="dot2"></div>
+    </div>
+
+    <!-- Step 1: Password -->
+    <div class="auth-step active" id="step1">
+      <label for="pw-input">Step 1 &mdash; Password</label>
+      <input type="password" id="pw-input" placeholder="Enter password" autocomplete="off" />
+      <button class="auth-btn" id="pw-btn" onclick="checkPassword()">Continue</button>
+      <div class="auth-error" id="pw-error"></div>
+    </div>
+
+    <!-- Step 2: TOTP -->
+    <div class="auth-step" id="step2">
+      <div id="totp-setup" style="display:none;">
+        <div class="setup-info">
+          <p><strong>First time?</strong> Scan this QR code with your authenticator app (Google Authenticator, Apple Passwords, Authy, etc.):</p>
+          <div id="qr-container"></div>
+          <p>Or manually enter this secret key:</p>
+          <div class="secret-code" id="totp-secret-display"></div>
+          <div class="copy-hint">Tap to select, then copy</div>
+        </div>
+      </div>
+      <label for="totp-input">Step 2 &mdash; Authenticator Code</label>
+      <input type="text" id="totp-input" placeholder="6-digit code" maxlength="6" inputmode="numeric" pattern="[0-9]*" autocomplete="one-time-code" />
+      <button class="auth-btn" id="totp-btn" onclick="checkTOTP()">Verify &amp; Enter</button>
+      <button class="auth-btn" style="background:transparent;color:#64748b;border:1px solid #1e3a5f;margin-top:8px;" onclick="toggleSetup()">First time? Show setup</button>
+      <div class="auth-error" id="totp-error"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ DASHBOARD ═══════════ -->
+<div id="loading-screen">
+  <div class="spinner"></div>
+  <p>Loading Mission Control...</p>
+</div>
+<div id="error-display"></div>
+<div id="app" style="display:none;"></div>
+
+<script>
+// ══════════════════════════════════════════════════════════
+// AUTH: Step 1 (Password) + Step 2 (TOTP)
+// ══════════════════════════════════════════════════════════
+
+var PASSWORD_HASH = '409bd0912c8d6b90704729708b5b92cc75dc3327a81ba5912da7ed8e96eac8fa';
+var TOTP_SECRET_B32 = 'QMTSILUYOSAL6UZKSU4NOOG6YJIZNX6S';
+var SESSION_KEY = 'ho_mc_session';
+var SESSION_DURATION = 4 * 60 * 60 * 1000; // 4 hours
+
+// ── SHA-256 hash ──
+async function sha256(message) {
+  var msgBuffer = new TextEncoder().encode(message);
+  var hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+  var hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map(function(b) { return b.toString(16).padStart(2, '0'); }).join('');
+}
+
+// ── Base32 decode ──
+function base32Decode(encoded) {
+  var alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
+  encoded = encoded.replace(/=+$/, '').toUpperCase();
+  var bits = '';
+  for (var i = 0; i < encoded.length; i++) {
+    var val = alphabet.indexOf(encoded[i]);
+    if (val === -1) continue;
+    bits += val.toString(2).padStart(5, '0');
+  }
+  var bytes = new Uint8Array(Math.floor(bits.length / 8));
+  for (var j = 0; j < bytes.length; j++) {
+    bytes[j] = parseInt(bits.substr(j * 8, 8), 2);
+  }
+  return bytes;
+}
+
+// ── HMAC-SHA1 for TOTP ──
+async function hmacSha1(keyBytes, msgBytes) {
+  var key = await crypto.subtle.importKey('raw', keyBytes, { name: 'HMAC', hash: 'SHA-1' }, false, ['sign']);
+  var sig = await crypto.subtle.sign('HMAC', key, msgBytes);
+  return new Uint8Array(sig);
+}
+
+// ── Generate TOTP code ──
+async function generateTOTP(secretB32, timeStep) {
+  timeStep = timeStep || 30;
+  var keyBytes = base32Decode(secretB32);
+  var epoch = Math.floor(Date.now() / 1000);
+  var counter = Math.floor(epoch / timeStep);
+
+  // Convert counter to 8-byte big-endian
+  var counterBytes = new Uint8Array(8);
+  for (var i = 7; i >= 0; i--) {
+    counterBytes[i] = counter & 0xff;
+    counter = Math.floor(counter / 256);
+  }
+
+  var hmac = await hmacSha1(keyBytes, counterBytes);
+  var offset = hmac[hmac.length - 1] & 0x0f;
+  var code = ((hmac[offset] & 0x7f) << 24 | (hmac[offset+1] & 0xff) << 16 | (hmac[offset+2] & 0xff) << 8 | (hmac[offset+3] & 0xff)) % 1000000;
+  return code.toString().padStart(6, '0');
+}
+
+// ── Session management ──
+function setSession() {
+  try {
+    var data = JSON.stringify({ ts: Date.now() });
+    sessionStorage.setItem(SESSION_KEY, data);
+  } catch(e) {}
+}
+
+function hasValidSession() {
+  try {
+    var raw = sessionStorage.getItem(SESSION_KEY);
+    if (!raw) return false;
+    var data = JSON.parse(raw);
+    return (Date.now() - data.ts) < SESSION_DURATION;
+  } catch(e) { return false; }
+}
+
+function clearSession() {
+  try { sessionStorage.removeItem(SESSION_KEY); } catch(e) {}
+  location.reload();
+}
+
+// ── Auth flow ──
+async function checkPassword() {
+  var pw = document.getElementById('pw-input').value;
+  var hash = await sha256(pw);
+  if (hash === PASSWORD_HASH) {
+    document.getElementById('step1').classList.remove('active');
+    document.getElementById('step2').classList.add('active');
+    document.getElementById('dot2').classList.add('active');
+    document.getElementById('totp-input').focus();
+    document.getElementById('pw-error').textContent = '';
+  } else {
+    document.getElementById('pw-error').textContent = 'Incorrect password';
+    document.getElementById('pw-input').value = '';
+    document.getElementById('pw-input').focus();
+  }
+}
+
+async function checkTOTP() {
+  var input = document.getElementById('totp-input').value.replace(/\s/g, '');
+  if (input.length !== 6 || !/^\d{6}$/.test(input)) {
+    document.getElementById('totp-error').textContent = 'Enter a 6-digit code';
+    return;
+  }
+
+  // Check current window and +/- 1 step (allows 30s drift)
+  var valid = false;
+  var secretB32 = TOTP_SECRET_B32;
+  for (var offset = -1; offset <= 1; offset++) {
+    var epoch = Math.floor(Date.now() / 1000);
+    var counter = Math.floor(epoch / 30) + offset;
+    // Generate code for this counter
+    var keyBytes = base32Decode(secretB32);
+    var counterBytes = new Uint8Array(8);
+    var c = counter;
+    for (var i = 7; i >= 0; i--) { counterBytes[i] = c & 0xff; c = Math.floor(c / 256); }
+    var hmac = await hmacSha1(keyBytes, counterBytes);
+    var off = hmac[hmac.length - 1] & 0x0f;
+    var code = ((hmac[off] & 0x7f) << 24 | (hmac[off+1] & 0xff) << 16 | (hmac[off+2] & 0xff) << 8 | (hmac[off+3] & 0xff)) % 1000000;
+    if (input === code.toString().padStart(6, '0')) { valid = true; break; }
+  }
+
+  if (valid) {
+    setSession();
+    showDashboard();
+  } else {
+    document.getElementById('totp-error').textContent = 'Invalid code. Check your authenticator app.';
+    document.getElementById('totp-input').value = '';
+    document.getElementById('totp-input').focus();
+  }
+}
+
+function toggleSetup() {
+  var el = document.getElementById('totp-setup');
+  if (el.style.display === 'none') {
+    el.style.display = 'block';
+    document.getElementById('totp-secret-display').textContent = TOTP_SECRET_B32;
+    // Generate QR code URL via Google Charts API
+    var otpUri = 'otpauth://totp/HealthyOne%20Mission%20Control?secret=' + TOTP_SECRET_B32 + '&issuer=HealthyOne&digits=6&period=30';
+    var qrUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' + encodeURIComponent(otpUri);
+    document.getElementById('qr-container').innerHTML = '<img src="' + qrUrl + '" width="200" height="200" alt="QR Code" />';
+  } else {
+    el.style.display = 'none';
+  }
+}
+
+function showDashboard() {
+  document.getElementById('auth-screen').style.display = 'none';
+  document.getElementById('loading-screen').style.display = 'flex';
+  setTimeout(function() {
+    document.getElementById('loading-screen').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+    fetchAll();
+    setInterval(fetchAll, 60000);
+  }, 500);
+}
+
+// Enter key support
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') {
+    if (document.getElementById('step1').classList.contains('active') && document.activeElement.id === 'pw-input') {
+      checkPassword();
+    } else if (document.getElementById('step2').classList.contains('active') && document.activeElement.id === 'totp-input') {
+      checkTOTP();
+    }
+  }
+});
+
+// ══════════════════════════════════════════════════════════
+// DASHBOARD
+// ══════════════════════════════════════════════════════════
+
+// ── Error handler ──
+window.onerror = function(msg, src, line, col, err) {
+  var el = document.getElementById('error-display');
+  el.style.display = 'block';
+  el.textContent = 'Error: ' + msg + '\nSource: ' + src + ' (line ' + line + ')\n' + (err ? err.stack : '');
+};
+
+// ── Config ──
+var SUPABASE_URL = 'https://raynkqardrhrmopmthcu.supabase.co';
+var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJheW5rcWFyZHJocm1vcG10aGN1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU2NjMzMTIsImV4cCI6MjA4MTIzOTMxMn0.u-Z1qya1JtTF0YI2QL6j2kUNJf16JtfK1MG82gOWXzk';
+
+var COLORS = ['#10b981','#3b82f6','#f59e0b','#ef4444','#8b5cf6','#ec4899','#14b8a6','#f97316'];
+var PLAT_COLORS = { web:'#3b82f6', ios:'#f59e0b', android:'#10b981', unknown:'#64748b' };
+var PLAT_ICON = { web:'\uD83C\uDF10', ios:'\uD83C\uDF4E', android:'\uD83E\uDD16', unknown:'\u2753' };
+
+// ── Helpers ──
+function fmt(n) { return n == null ? '\u2014' : Number(n).toLocaleString(); }
+function pct(n) { return n == null ? '\u2014' : Number(n).toFixed(1) + '%'; }
+function timeAgo(mins) {
+  if (mins < 1) return 'just now';
+  if (mins < 60) return mins + 'm ago';
+  if (mins < 1440) return Math.floor(mins/60) + 'h ago';
+  return Math.floor(mins/1440) + 'd ago';
+}
+function esc(s) { var d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+
+// ── RPC ──
+function rpc(fnName, params) {
+  params = params || {};
+  return fetch(SUPABASE_URL + '/rest/v1/rpc/' + fnName, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'apikey': SUPABASE_ANON_KEY,
+      'Authorization': 'Bearer ' + SUPABASE_ANON_KEY
+    },
+    body: JSON.stringify(params)
+  }).then(function(res) {
+    if (!res.ok) throw new Error('RPC ' + fnName + ' failed: ' + res.status);
+    return res.json();
+  });
+}
+
+// ── Render Functions ──
+
+function renderHeader(lastUpdated, loading) {
+  return '<div class="header">' +
+    '<div style="display:flex;align-items:center;gap:10px">' +
+      '<span class="dot"></span>' +
+      '<h1><span class="accent">HealthyOne</span> Mission Control</h1>' +
+    '</div>' +
+    '<div class="meta">' +
+      '<span>' + (lastUpdated ? 'Updated ' + lastUpdated.toLocaleTimeString() : 'Loading...') + '</span>' +
+      '<button class="refresh-btn" onclick="fetchAll()">' + (loading ? '\u21BB ...' : '\u21BB Refresh') + '</button>' +
+      '<button class="logout-btn" onclick="clearSession()">Logout</button>' +
+    '</div>' +
+  '</div>';
+}
+
+function renderStatCard(label, value, sub) {
+  return '<div class="stat-card">' +
+    '<div class="label">' + esc(label) + '</div>' +
+    '<div class="value mono">' + esc(String(value)) + '</div>' +
+    (sub ? '<div class="sub">' + esc(sub) + '</div>' : '') +
+  '</div>';
+}
+
+function renderLiveStats(data) {
+  if (!data || !data.length) return '';
+  var d = data[0] || {};
+  var plats = (d.active_platforms || []).filter(Boolean);
+  return '<div class="stats-grid">' +
+    renderStatCard('Events (30 Days)', fmt(d.total_events), 'total tracked events') +
+    renderStatCard('Unique Visitors (30d)', fmt(d.unique_visitors), 'distinct users') +
+    renderStatCard('Platforms Active', plats.length, plats.join(', ') || 'none') +
+    renderStatCard('Last Hour', fmt(d.events_last_hour), 'events in past 60 min') +
+  '</div>';
+}
+
+function renderBarChart(title, subtitle, data, labelKey, valueKey, pctKey, colors) {
+  if (!data || !data.length) return renderCard(title, '<div class="empty">No data yet</div>');
+  var maxVal = Math.max.apply(null, data.map(function(d) { return d[valueKey] || 0; }).concat([1]));
+  var bars = '';
+  data.forEach(function(d, i) {
+    var w = Math.max((d[valueKey] / maxVal) * 100, 5);
+    var color = colors ? (colors[i % colors.length]) : COLORS[i % COLORS.length];
+    bars += '<div class="bar-row">' +
+      '<span class="bar-label" title="' + esc(d[labelKey]) + '">' + esc(d[labelKey]) + '</span>' +
+      '<div class="bar-track"><div class="bar-fill" style="width:' + w + '%;background:' + color + '">' + fmt(d[valueKey]) + '</div></div>' +
+      (pctKey ? '<span class="bar-pct mono">' + pct(d[pctKey]) + '</span>' : '') +
+    '</div>';
+  });
+  return renderCard(title, bars, subtitle);
+}
+
+function renderCard(title, content, subtitle) {
+  return '<div class="card">' +
+    '<h3>' + esc(title) + '</h3>' +
+    (subtitle ? '<div class="subtitle">' + esc(subtitle) + '</div>' : '') +
+    content +
+  '</div>';
+}
+
+function renderTrafficChart(data) {
+  if (!data || !data.length) return renderCard('Traffic Trend', '<div class="empty">No traffic data yet</div>', 'Last 30 days');
+  var maxE = Math.max.apply(null, data.map(function(d) { return d.event_count || 0; }).concat([1]));
+  var maxU = Math.max.apply(null, data.map(function(d) { return d.unique_users || 0; }).concat([1]));
+  var maxVal = Math.max(maxE, maxU);
+  var h = 200;
+  var w = 600;
+  var points1 = data.map(function(d, i) {
+    return (i / Math.max(data.length-1, 1)) * w + ',' + (h - (d.event_count / maxVal) * (h - 20));
+  }).join(' ');
+  var points2 = data.map(function(d, i) {
+    return (i / Math.max(data.length-1, 1)) * w + ',' + (h - (d.unique_users / maxVal) * (h - 20));
+  }).join(' ');
+  var area1 = 'M0,' + h + ' L' + points1 + ' L' + w + ',' + h + ' Z';
+  var area2 = 'M0,' + h + ' L' + points2 + ' L' + w + ',' + h + ' Z';
+  var svg = '<svg viewBox="0 0 ' + w + ' ' + (h+10) + '" style="width:100%;height:220px" preserveAspectRatio="none">' +
+    '<path d="' + area1 + '" fill="rgba(16,185,129,0.15)" />' +
+    '<polyline points="' + points1 + '" fill="none" stroke="#10b981" stroke-width="2" />' +
+    '<path d="' + area2 + '" fill="rgba(59,130,246,0.1)" />' +
+    '<polyline points="' + points2 + '" fill="none" stroke="#3b82f6" stroke-width="2" />' +
+  '</svg>';
+  var first = data[0].day;
+  var last = data[data.length-1].day;
+  var dateLine = '<div style="display:flex;justify-content:space-between;font-size:11px;color:#64748b;margin-top:4px">' +
+    '<span>' + new Date(first).toLocaleDateString('en',{month:'short',day:'numeric'}) + '</span>' +
+    '<span>' + new Date(last).toLocaleDateString('en',{month:'short',day:'numeric'}) + '</span>' +
+  '</div>';
+  var legend = '<div style="display:flex;gap:16px;margin-top:8px;font-size:12px">' +
+    '<span style="display:flex;align-items:center;gap:4px"><span style="width:12px;height:3px;background:#10b981;display:inline-block;border-radius:2px"></span> Events</span>' +
+    '<span style="display:flex;align-items:center;gap:4px"><span style="width:12px;height:3px;background:#3b82f6;display:inline-block;border-radius:2px"></span> Visitors</span>' +
+  '</div>';
+  var totalEvents = data.reduce(function(s,d){ return s + (d.event_count||0); }, 0);
+  var totalUsers = data.reduce(function(s,d){ return s + (d.unique_users||0); }, 0);
+  var summary = '<div style="display:flex;gap:24px;margin-top:8px;font-size:12px;color:#94a3b8">' +
+    '<span>Total events: <strong class="mono" style="color:#10b981">' + fmt(totalEvents) + '</strong></span>' +
+    '<span>Total visitors: <strong class="mono" style="color:#3b82f6">' + fmt(totalUsers) + '</strong></span>' +
+  '</div>';
+  return renderCard('Traffic Trend', svg + dateLine + legend + summary, 'Last 30 days');
+}
+
+function renderPlatforms(data) {
+  if (!data || !data.length) return renderCard('Platform Breakdown', '<div class="empty">No data yet</div>', 'Last 30 days');
+  var total = data.reduce(function(s,d) { return s + (d.event_count || 0); }, 0) || 1;
+  var r = 70, cx = 90, cy = 90;
+  var startAngle = 0;
+  var paths = '';
+  data.forEach(function(d, i) {
+    var slice = (d.event_count / total) * 360;
+    var endAngle = startAngle + slice;
+    var startRad = (startAngle - 90) * Math.PI / 180;
+    var endRad = (endAngle - 90) * Math.PI / 180;
+    var largeArc = slice > 180 ? 1 : 0;
+    var x1 = cx + r * Math.cos(startRad);
+    var y1 = cy + r * Math.sin(startRad);
+    var x2 = cx + r * Math.cos(endRad);
+    var y2 = cy + r * Math.sin(endRad);
+    var color = PLAT_COLORS[d.platform_name] || COLORS[i];
+    if (data.length === 1) {
+      paths += '<circle cx="' + cx + '" cy="' + cy + '" r="' + r + '" fill="' + color + '" />';
+    } else {
+      paths += '<path d="M' + cx + ',' + cy + ' L' + x1 + ',' + y1 + ' A' + r + ',' + r + ' 0 ' + largeArc + ',1 ' + x2 + ',' + y2 + ' Z" fill="' + color + '" />';
+    }
+    startAngle = endAngle;
+  });
+  var svg = '<svg viewBox="0 0 180 180" style="width:160px;height:160px">' + paths +
+    '<circle cx="' + cx + '" cy="' + cy + '" r="42" fill="#111827" />' +
+  '</svg>';
+  var legend = '<div class="donut-legend">';
+  data.forEach(function(d, i) {
+    var color = PLAT_COLORS[d.platform_name] || COLORS[i];
+    legend += '<div class="donut-item">' +
+      '<span class="donut-dot" style="background:' + color + '"></span>' +
+      '<span style="text-transform:capitalize">' + esc(d.platform_name) + '</span>' +
+      '<span class="mono" style="color:#64748b">' + pct(d.percentage) + '</span>' +
+    '</div>';
+  });
+  legend += '</div>';
+  return renderCard('Platform Breakdown', '<div class="donut-wrap">' + svg + legend + '</div>', 'Last 30 days');
+}
+
+function renderFunnel(data) {
+  if (!data || !data.length) return renderCard('Conversion Funnel', '<div class="empty">No funnel data yet</div>', 'Discount popup, last 30 days');
+  var funnelColors = ['#10b981', '#3b82f6', '#ef4444'];
+  return renderBarChart('Conversion Funnel', 'Discount popup, last 30 days', data, 'step_name', 'unique_users', 'conversion_pct', funnelColors);
+}
+
+function renderHourly(data) {
+  if (!data || !data.length) return renderCard('Peak Hours (30 Days)', '<div class="empty">No events yet</div>', 'Events by hour of day');
+  var full = [];
+  for (var h = 0; h < 24; h++) {
+    var found = null;
+    for (var j = 0; j < data.length; j++) {
+      if (data[j].hour_of_day === h) { found = data[j]; break; }
+    }
+    full.push({ hour: h + ':00', event_count: found ? found.event_count : 0 });
+  }
+  var maxVal = Math.max.apply(null, full.map(function(d) { return d.event_count; }).concat([1]));
+  var barW = Math.floor(600 / 24) - 2;
+  var chartH = 140;
+  var bars = '';
+  full.forEach(function(d, i) {
+    var bh = Math.max((d.event_count / maxVal) * chartH, 1);
+    var x = i * (barW + 2);
+    bars += '<rect x="' + x + '" y="' + (chartH - bh) + '" width="' + barW + '" height="' + bh + '" rx="2" fill="#14b8a6" opacity="0.8" />';
+  });
+  var labels = '';
+  for (var i = 0; i < 24; i += 3) {
+    labels += '<text x="' + (i * (barW + 2) + barW/2) + '" y="' + (chartH + 14) + '" fill="#64748b" font-size="9" text-anchor="middle">' + i + ':00</text>';
+  }
+  var svg = '<svg viewBox="0 0 ' + (24 * (barW + 2)) + ' ' + (chartH + 20) + '" style="width:100%;height:170px">' +
+    bars + labels +
+  '</svg>';
+  return renderCard('Peak Hours (30 Days)', svg, 'Total events by hour of day (UTC)');
+}
+
+function renderFeed(data) {
+  if (!data || !data.length) return renderCard('Recent Events Feed', '<div class="empty">No events in the last 30 days</div>', 'Last 30 days');
+  var items = '';
+  data.forEach(function(evt) {
+    var icon = PLAT_ICON[evt.event_platform] || '\u2753';
+    var url = evt.page_url ? evt.page_url.replace(/^https?:\/\/(www\.)?/, '') : '';
+    items += '<div class="feed-item">' +
+      '<span style="font-size:14px">' + icon + '</span>' +
+      '<span class="feed-event mono">' + esc(evt.event_name) + '</span>' +
+      (url ? '<span class="feed-url">' + esc(url) + '</span>' : '') +
+      '<span class="feed-time">' + timeAgo(evt.minutes_ago) + '</span>' +
+    '</div>';
+  });
+  return renderCard('Recent Events Feed', '<div class="feed">' + items + '</div>', 'Last 30 days (most recent first)');
+}
+
+// ── State ──
+var state = {
+  liveStats: null, traffic: null, topEvents: null, platforms: null,
+  attribution: null, funnel: null, hourly: null, feed: null,
+  lastUpdated: null, loading: false, error: null
+};
+
+// ── Render ──
+function render() {
+  var app = document.getElementById('app');
+  var html = renderHeader(state.lastUpdated, state.loading);
+  if (state.error) {
+    html += '<div style="margin:16px 24px;padding:12px;background:rgba(127,29,29,0.3);border:1px solid #b91c1c;border-radius:8px;color:#fca5a5;font-size:13px">' + esc(state.error) + '</div>';
+  }
+  html += renderLiveStats(state.liveStats);
+  html += '<div class="content">';
+  html += '<div class="row row-2">';
+  html += renderTrafficChart(state.traffic);
+  html += renderBarChart('Top Events', 'Last 30 days', state.topEvents, 'event_name', 'event_count', 'percentage', COLORS);
+  html += '</div>';
+  html += '<div class="row row-3">';
+  html += renderPlatforms(state.platforms);
+  html += renderBarChart('Traffic Sources', 'Top referrers, last 30 days', state.attribution, 'source_name', 'visit_count', null, ['#8b5cf6','#7c3aed','#6d28d9','#5b21b6','#4c1d95','#a78bfa','#c4b5fd','#ddd6fe']);
+  html += renderHourly(state.hourly);
+  html += '</div>';
+  html += '<div class="row row-half">';
+  html += renderFunnel(state.funnel);
+  html += renderFeed(state.feed);
+  html += '</div>';
+  html += '</div>';
+  html += '<footer>HealthyOne Mission Control \u2014 Auto-refreshes every 60s \u2014 Data from PostHog via Supabase</footer>';
+  app.innerHTML = html;
+}
+
+// ── Fetch ──
+function fetchAll() {
+  state.loading = true;
+  state.error = null;
+  render();
+  var calls = [
+    rpc('get_today_live_stats').then(function(d) { state.liveStats = d; }),
+    rpc('get_traffic_trend', { p_days: 30 }).then(function(d) { state.traffic = d; }),
+    rpc('get_top_events', { p_limit: 10 }).then(function(d) { state.topEvents = d; }),
+    rpc('get_platform_breakdown').then(function(d) { state.platforms = d; }),
+    rpc('get_content_attribution', { p_limit: 8 }).then(function(d) { state.attribution = d; }),
+    rpc('get_conversion_funnel').then(function(d) { state.funnel = d; }),
+    rpc('get_hourly_breakdown').then(function(d) { state.hourly = d; }),
+    rpc('get_recent_events_feed', { p_limit: 50 }).then(function(d) { state.feed = d; })
+  ];
+  var settled = calls.map(function(p) {
+    return p.then(
+      function(v) { return { status: 'ok' }; },
+      function(e) { return { status: 'fail', reason: e.message }; }
+    );
+  });
+  Promise.all(settled).then(function(results) {
+    var fails = results.filter(function(r) { return r.status === 'fail'; });
+    if (fails.length === 8) {
+      state.error = 'All data sources failed. Check that the SQL functions were deployed. Error: ' + fails[0].reason;
+    } else if (fails.length > 0) {
+      console.warn('Some calls failed:', fails.map(function(f) { return f.reason; }));
+    }
+    state.lastUpdated = new Date();
+    state.loading = false;
+    render();
+  });
+}
+
+// ── Init ──
+document.addEventListener('DOMContentLoaded', function() {
+  if (hasValidSession()) {
+    showDashboard();
+  } else {
+    document.getElementById('pw-input').focus();
+  }
+});
+</script>
+</body>
+</html>
