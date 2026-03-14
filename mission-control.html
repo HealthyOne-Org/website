@@ -169,7 +169,7 @@
 var PASSWORD_HASH = '409bd0912c8d6b90704729708b5b92cc75dc3327a81ba5912da7ed8e96eac8fa';
 var TOTP_SECRET_B32 = 'QMTSILUYOSAL6UZKSU4NOOG6YJIZNX6S';
 var SESSION_KEY = 'ho_mc_session';
-var SESSION_DURATION = 30 * 24 * 60 * 60 * 1000; // 30 days
+var SESSION_DURATION = 4 * 60 * 60 * 1000; // 4 hours
 
 // ── SHA-256 hash ──
 async function sha256(message) {
@@ -227,13 +227,13 @@ async function generateTOTP(secretB32, timeStep) {
 function setSession() {
   try {
     var data = JSON.stringify({ ts: Date.now() });
-    localStorage.setItem(SESSION_KEY, data);
+    sessionStorage.setItem(SESSION_KEY, data);
   } catch(e) {}
 }
 
 function hasValidSession() {
   try {
-    var raw = localStorage.getItem(SESSION_KEY);
+    var raw = sessionStorage.getItem(SESSION_KEY);
     if (!raw) return false;
     var data = JSON.parse(raw);
     return (Date.now() - data.ts) < SESSION_DURATION;
@@ -241,7 +241,7 @@ function hasValidSession() {
 }
 
 function clearSession() {
-  try { localStorage.removeItem(SESSION_KEY); } catch(e) {}
+  try { sessionStorage.removeItem(SESSION_KEY); } catch(e) {}
   location.reload();
 }
 
