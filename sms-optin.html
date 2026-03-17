@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMS Opt-In - HealthyOne</title>
+    <meta name="description" content="HealthyOne SMS Opt-In. Learn how to enable optional SMS nutrition reminders in the HealthyOne app.">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        :root {
+            --primary: #4ECDC4;
+            --primary-dark: #3BA99C;
+            --primary-light: #A8E6CF;
+            --text-dark: #1A2332;
+            --text-medium: #4A5568;
+            --text-light: #718096;
+            --white: #FFFFFF;
+            --card-radius: 24px;
+            --card-shadow: 0 4px 20px rgba(78,205,196,0.08);
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-dark);
+            line-height: 1.7;
+            background: var(--white);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(78,205,196,0.1);
+            padding: 0.75rem 0;
+        }
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.4rem;
+            color: var(--text-dark);
+        }
+        .logo-icon {
+            width: 44px; height: 44px;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(78,205,196,0.25);
+        }
+        .logo-icon img { width: 100%; height: 100%; object-fit: cover; }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            list-style: none;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-medium);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--primary-dark); }
+
+        /* Main Content */
+        .content-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 2rem 4rem;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        p, li {
+            color: var(--text-medium);
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        ul {
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        li { margin-bottom: 0.5rem; }
+
+        a { color: var(--primary-dark); }
+
+        /* Opt-In Demo Form */
+        .optin-demo {
+            background: linear-gradient(135deg, #f0faf9 0%, #e8f8f5 100%);
+            border: 2px solid var(--primary);
+            border-radius: var(--card-radius);
+            padding: 2.5rem;
+            margin: 2rem 0;
+        }
+
+        .optin-demo h2 {
+            margin-top: 0;
+            color: var(--text-dark);
+            font-size: 1.4rem;
+        }
+
+        .optin-demo .brand-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .optin-demo .brand-header .brand-logo {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(78,205,196,0.25);
+        }
+
+        .optin-demo .brand-header .brand-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .optin-demo .brand-header .brand-name {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--text-dark);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .form-group input[type="tel"] {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: inherit;
+            background: var(--white);
+            transition: border-color 0.3s;
+        }
+
+        .form-group input[type="tel"]:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background: var(--white);
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            margin-top: 0.3rem;
+            width: 20px;
+            height: 20px;
+            accent-color: var(--primary);
+            flex-shrink: 0;
+        }
+
+        .checkbox-group label {
+            font-size: 0.92rem;
+            color: var(--text-medium);
+            line-height: 1.6;
+            cursor: pointer;
+        }
+
+        .consent-text {
+            font-size: 0.92rem;
+            color: var(--text-medium);
+            line-height: 1.7;
+            background: var(--white);
+            border-radius: 12px;
+            padding: 1.25rem;
+            border: 1px solid #e2e8f0;
+            margin: 1rem 0;
+        }
+
+        .btn-submit {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--white);
+            padding: 0.85rem 2rem;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-submit:hover {
+            background: var(--primary-dark);
+        }
+
+        .note-box {
+            background: #fff9e6;
+            border-left: 4px solid #f6c23e;
+            border-radius: 8px;
+            padding: 1rem 1.25rem;
+            margin: 1.5rem 0;
+            font-size: 0.92rem;
+            color: var(--text-medium);
+        }
+
+        .info-card {
+            background: #f7fafc;
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border: 1px solid #e2e8f0;
+        }
+
+        .info-card h3 {
+            margin-top: 0;
+        }
+
+        /* Screenshot mockup */
+        .app-screenshot {
+            background: #1a1a2e;
+            border-radius: 24px;
+            padding: 1rem;
+            max-width: 320px;
+            margin: 2rem auto;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+        }
+
+        .app-screenshot-inner {
+            background: var(--white);
+            border-radius: 18px;
+            padding: 1.5rem;
+        }
+
+        .app-screenshot-inner h4 {
+            font-size: 1rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .mock-input {
+            background: #f7fafc;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 0.7rem 0.85rem;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 0.75rem;
+        }
+
+        .mock-checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            margin: 0.75rem 0;
+            font-size: 0.78rem;
+            color: var(--text-medium);
+            line-height: 1.5;
+        }
+
+        .mock-checkbox .box {
+            width: 16px;
+            height: 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 4px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .mock-btn {
+            background: var(--primary);
+            color: var(--white);
+            text-align: center;
+            padding: 0.65rem;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-top: 0.75rem;
+        }
+
+        .mock-caption {
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-top: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #1A2332 0%, #2D3748 100%);
+            color: rgba(255,255,255,0.7);
+            padding: 3rem 0 1.5rem;
+            font-size: 0.9rem;
+        }
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 3rem;
+        }
+        .footer-brand p { margin-top: 0.75rem; }
+        .footer-slogan {
+            font-style: italic;
+            color: var(--primary-light);
+            margin-top: 0.5rem;
+        }
+        footer h4 {
+            color: var(--white);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        footer ul { list-style: none; }
+        footer ul li { margin-bottom: 0.5rem; }
+        footer a { color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.3s; }
+        footer a:hover { color: var(--primary-light); }
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            padding: 1.5rem 2rem 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .navbar-container { padding: 0 1rem; }
+            .nav-links { display: none; }
+            .content-container { padding: 2rem 1rem 3rem; }
+            h1 { font-size: 1.6rem; }
+            .optin-demo { padding: 1.5rem; }
+            .footer-container { grid-template-columns: 1fr; gap: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="/" class="logo">
+                <div class="logo-icon"><img src="assets/logo.png" alt="HealthyOne Logo"></div>
+                <span>HealthyOne</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/about.html">About</a></li>
+                <li><a href="/privacy.html">Privacy</a></li>
+                <li><a href="/terms.html">Terms</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="content-container">
+        <h1>SMS Text Message Opt-In</h1>
+        <p>HealthyOne offers <strong>optional</strong> SMS nutrition reminders to help you stay on track with your health goals. SMS messaging is entirely voluntary and is not required to use the HealthyOne app.</p>
+
+        <div class="note-box">
+            <strong>Important:</strong> SMS reminders are completely optional. You can sign up for HealthyOne and use all app features without ever providing a phone number or enabling text messages. Consent to receive SMS is not a condition of purchase or use of the app.
+        </div>
+
+        <h2>How You Opt In to SMS Reminders</h2>
+        <p>To receive SMS nutrition reminders from HealthyOne, you must take the following steps inside the app:</p>
+        <ul>
+            <li><strong>Step 1:</strong> Open the HealthyOne app and go to <strong>Settings &rarr; SMS Notifications</strong>.</li>
+            <li><strong>Step 2:</strong> Enter your mobile phone number in the phone number field.</li>
+            <li><strong>Step 3:</strong> Check the consent checkbox to agree to receive text messages from HealthyOne. <em>This checkbox is unchecked by default.</em></li>
+            <li><strong>Step 4:</strong> Tap "Enable SMS Reminders" to submit.</li>
+            <li><strong>Step 5:</strong> Verify your phone number by entering the one-time verification code sent to your phone via text.</li>
+        </ul>
+        <p>No messages are sent until you complete all steps above, including phone number verification.</p>
+
+        <!-- Visual representation of the in-app opt-in form -->
+        <h2>In-App Opt-In Screen</h2>
+        <p>Below is a representation of the SMS opt-in screen users see inside the HealthyOne app when enabling text message reminders:</p>
+
+        <div class="app-screenshot">
+            <div class="app-screenshot-inner">
+                <h4>Settings &rarr; SMS Notifications</h4>
+                <div class="mock-input">+1 (___) ___-____</div>
+                <div class="mock-checkbox">
+                    <div class="box"></div>
+                    <span>I agree to receive recurring automated nutrition reminder text messages from <strong>HealthyOne</strong> at the phone number provided. Message frequency varies (approx. 1&ndash;3 per week). Message and data rates may apply. Reply STOP to cancel. Reply HELP for help. Consent is not required to use the app. <a href="/privacy.html">Privacy Policy</a> &amp; <a href="/terms.html">Terms of Service</a>.</span>
+                </div>
+                <div class="mock-btn">Enable SMS Reminders</div>
+            </div>
+            <div class="mock-caption">HealthyOne App &mdash; SMS Opt-In Screen</div>
+        </div>
+
+        <!-- Explicit consent disclosure box -->
+        <div class="optin-demo">
+            <div class="brand-header">
+                <div class="brand-logo"><img src="assets/logo.png" alt="HealthyOne Logo"></div>
+                <div class="brand-name">HealthyOne SMS Consent Disclosure</div>
+            </div>
+
+            <p style="margin-bottom: 1rem;">When you enable SMS Notifications in the HealthyOne app, you will see the following consent language before any messages are sent:</p>
+
+            <div class="consent-text">
+                <strong>By checking this box and tapping "Enable SMS Reminders," I agree to receive recurring automated nutrition reminder text messages from HealthyOne at the mobile phone number I provided.</strong><br><br>
+                <strong>Message frequency:</strong> Approximately 1&ndash;3 messages per week.<br>
+                <strong>Message and data rates may apply.</strong><br>
+                <strong>Reply STOP</strong> to any message to opt out at any time.<br>
+                <strong>Reply HELP</strong> for help.<br><br>
+                Consent to receive text messages is <strong>not required</strong> as a condition of purchasing any goods or services, or using the HealthyOne app. You can use all features of the app without enabling SMS reminders.<br><br>
+                View our <a href="/privacy.html">Privacy Policy</a> and <a href="/terms.html">Terms of Service</a>.
+            </div>
+        </div>
+
+        <h2>What Messages Will You Receive?</h2>
+        <p>If you opt in, you will receive <strong>transactional nutrition reminder messages only</strong>. These include:</p>
+        <ul>
+            <li>Meal logging reminders (e.g., "You haven't logged a meal today")</li>
+            <li>Return-to-habit nudges after periods of inactivity</li>
+            <li>Account verification codes</li>
+        </ul>
+        <p><strong>We do not send promotional, marketing, or advertising messages via SMS.</strong></p>
+
+        <div class="info-card">
+            <h3>Sample Message</h3>
+            <p style="font-style: italic; margin-bottom: 0;">"HealthyOne Reminder: You haven't logged a meal today. Open the app to track your nutrition! Reply STOP to opt out. Reply HELP for help."</p>
+        </div>
+
+        <h2>How to Opt Out</h2>
+        <p>You can stop receiving messages at any time using any of these methods:</p>
+        <ul>
+            <li><strong>Reply STOP</strong> to any text message from HealthyOne</li>
+            <li>In the app: Go to <strong>Settings &rarr; SMS Notifications &rarr; Remove Phone Number</strong></li>
+            <li>Email <a href="mailto:support@healthyoneapp.com">support@healthyoneapp.com</a></li>
+        </ul>
+        <p>After opting out, you will receive a confirmation: <em>"You've been unsubscribed and will no longer receive SMS reminders from HealthyOne. Reply START to re-subscribe."</em></p>
+
+        <h2>HELP Response</h2>
+        <p>Reply <strong>HELP</strong> to any message to receive:</p>
+        <p style="font-style: italic;">"HealthyOne SMS Help: For support, visit <a href="https://healthyoneapp.com">healthyoneapp.com</a> or email <a href="mailto:support@healthyoneapp.com">support@healthyoneapp.com</a>. Reply STOP to opt out of messages. Msg &amp; data rates may apply."</p>
+
+        <h2>Message Frequency &amp; Costs</h2>
+        <ul>
+            <li><strong>Frequency:</strong> Approximately 1&ndash;3 messages per week. Frequency varies based on your usage and reminder settings.</li>
+            <li><strong>Costs:</strong> Message and data rates may apply depending on your mobile carrier. HealthyOne does not charge any fees for SMS messages.</li>
+        </ul>
+
+        <h2>Your Privacy</h2>
+        <ul>
+            <li>Your phone number is used solely for delivering the SMS notifications you opted into.</li>
+            <li>We never share your phone number with third parties for marketing or any other purpose.</li>
+            <li>Phone numbers are stored securely and deleted when you opt out or delete your account.</li>
+            <li>For full details, see our <a href="/privacy.html">Privacy Policy</a>.</li>
+        </ul>
+
+        <h2>Contact Us</h2>
+        <p><strong>Hardaway Labs LLC</strong><br>
+        Email: <a href="mailto:support@healthyoneapp.com">support@healthyoneapp.com</a><br>
+        Website: <a href="https://healthyoneapp.com">healthyoneapp.com</a></p>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section footer-brand">
+                <a href="/" class="logo" style="color: white;">
+                    <div class="logo-icon"><img src="assets/logo.png" alt="HealthyOne Logo"></div>
+                    <span>HealthyOne</span>
+                </a>
+                <div class="footer-slogan">Be In Good Health</div>
+                <p>AI-powered nutrition tracking made simple. Track your meals, discover recipes, and achieve your health goals.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="/#features">Features</a></li>
+                    <li><a href="/#pricing">Pricing</a></li>
+                    <li><a href="/#faq">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="/about.html">About Us</a></li>
+                    <li><a href="/privacy.html">Privacy Policy</a></li>
+                    <li><a href="/terms.html">Terms of Service</a></li>
+                    <li><a href="/sms-optin.html">SMS Opt-In</a></li>
+                    <li><a href="mailto:support@healthyoneapp.com">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Hardaway Labs LLC. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
