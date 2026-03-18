@@ -570,10 +570,120 @@ function renderFeed(data) {
   return renderCard('Recent Events Feed', '<div class="feed">' + items + '</div>', 'Last 30 days (most recent first)');
 }
 
+// ── App Engagement Renders ──
+
+function renderAppEngagement(data) {
+  if (!data || !data.length) return '';
+  var d = data[0] || {};
+  var totalAppUsers = (d.app_users_ios || 0) + (d.app_users_android || 0);
+  return '<div class="stats-grid">' +
+    renderStatCard('Meals Logged (30d)', fmt(d.meals_logged), d.unique_loggers + ' unique users') +
+    renderStatCard('Onboarding Done', fmt(d.onboarding_completions), 'completions (30d)') +
+    renderStatCard('Subscriptions', fmt(d.subscriptions), 'purchase events (30d)') +
+    renderStatCard('App Users (30d)', fmt(totalAppUsers), '\uD83C\uDF4E ' + fmt(d.app_users_ios) + ' iOS \u00B7 \uD83E\uDD16 ' + fmt(d.app_users_android) + ' Android') +
+  '</div>';
+}
+
+function renderAppDAU(data) {
+  if (!data || !data.length) return renderCard('Daily Active App Users', '<div class="empty">No app data yet \u2014 deploy new builds with PostHog tracking</div>', 'iOS + Android, last 30 days');
+  var maxVal = Math.max.apply(null, data.map(function(d) { return d.total_users || 0; }).concat([1]));
+  var h = 200, w = 600;
+  // iOS line
+  var iosPoints = data.map(function(d, i) {
+    return (i / Math.max(data.length-1, 1)) * w + ',' + (h - ((d.ios_users || 0) / maxVal) * (h - 20));
+  }).join(' ');
+  // Android line
+  var androidPoints = data.map(function(d, i) {
+    return (i / Math.max(data.length-1, 1)) * w + ',' + (h - ((d.android_users || 0) / maxVal) * (h - 20));
+  }).join(' ');
+  // Total area
+  var totalPoints = data.map(function(d, i) {
+    return (i / Math.max(data.length-1, 1)) * w + ',' + (h - ((d.total_users || 0) / maxVal) * (h - 20));
+  }).join(' ');
+  var totalArea = 'M0,' + h + ' L' + totalPoints + ' L' + w + ',' + h + ' Z';
+
+  var svg = '<svg viewBox="0 0 ' + w + ' ' + (h+10) + '" style="width:100%;height:220px" preserveAspectRatio="none">' +
+    '<path d="' + totalArea + '" fill="rgba(139,92,246,0.1)" />' +
+    '<polyline points="' + totalPoints + '" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-dasharray="4,2" />' +
+    '<polyline points="' + iosPoints + '" fill="none" stroke="#f59e0b" stroke-width="2" />' +
+    '<polyline points="' + androidPoints + '" fill="none" stroke="#10b981" stroke-width="2" />' +
+  '</svg>';
+  var first = data[0].day;
+  var last = data[data.length-1].day;
+  var dateLine = '<div style="display:flex;justify-content:space-between;font-size:11px;color:#64748b;margin-top:4px">' +
+    '<span>' + new Date(first).toLocaleDateString('en',{month:'short',day:'numeric'}) + '</span>' +
+    '<span>' + new Date(last).toLocaleDateString('en',{month:'short',day:'numeric'}) + '</span>' +
+  '</div>';
+  var legend = '<div style="display:flex;gap:16px;margin-top:8px;font-size:12px">' +
+    '<span style="display:flex;align-items:center;gap:4px"><span style="width:12px;height:3px;background:#f59e0b;display:inline-block;border-radius:2px"></span> iOS</span>' +
+    '<span style="display:flex;align-items:center;gap:4px"><span style="width:12px;height:3px;background:#10b981;display:inline-block;border-radius:2px"></span> Android</span>' +
+    '<span style="display:flex;align-items:center;gap:4px"><span style="width:12px;height:3px;background:#8b5cf6;display:inline-block;border-radius:2px;border-top:1px dashed #8b5cf6"></span> Total</span>' +
+  '</div>';
+  return renderCard('Daily Active App Users', svg + dateLine + legend, 'iOS + Android, last 30 days');
+}
+
+function renderAppEvents(data) {
+  if (!data || !data.length) return renderCard('In-App Events', '<div class="empty">No app events yet</div>', 'Custom events from iOS + Android (30d)');
+  var maxVal = Math.max.apply(null, data.map(function(d) { return d.event_count || 0; }).concat([1]));
+  var bars = '';
+  var appColors = ['#10b981','#f59e0b','#3b82f6','#ef4444','#8b5cf6','#ec4899','#14b8a6','#f97316'];
+  data.forEach(function(d, i) {
+    var w = Math.max((d.event_count / maxVal) * 100, 5);
+    bars += '<div class="bar-row">' +
+      '<span class="bar-label" title="' + esc(d.event_name) + '">' + esc(d.event_name) + '</span>' +
+      '<div class="bar-track"><div class="bar-fill" style="width:' + w + '%;background:' + appColors[i % appColors.length] + '">' + fmt(d.event_count) + '</div></div>' +
+      '<span class="bar-pct mono">' + fmt(d.unique_users) + ' users</span>' +
+    '</div>';
+  });
+  return renderCard('In-App Events', bars, 'Custom events from iOS + Android (30d)');
+}
+
+function renderMealMethods(data) {
+  if (!data || !data.length) return renderCard('Meal Logging Methods', '<div class="empty">No meal data yet</div>', 'How users log meals (30d)');
+  var methodColors = { voice:'#10b981', photo:'#3b82f6', barcode:'#f59e0b', label:'#8b5cf6', estimated:'#14b8a6', text:'#ec4899', unknown:'#64748b' };
+  var total = data.reduce(function(s,d) { return s + (d.meal_count || 0); }, 0) || 1;
+  var r = 70, cx = 90, cy = 90;
+  var startAngle = 0;
+  var paths = '';
+  data.forEach(function(d, i) {
+    var slice = (d.meal_count / total) * 360;
+    var endAngle = startAngle + slice;
+    var startRad = (startAngle - 90) * Math.PI / 180;
+    var endRad = (endAngle - 90) * Math.PI / 180;
+    var largeArc = slice > 180 ? 1 : 0;
+    var x1 = cx + r * Math.cos(startRad);
+    var y1 = cy + r * Math.sin(startRad);
+    var x2 = cx + r * Math.cos(endRad);
+    var y2 = cy + r * Math.sin(endRad);
+    var color = methodColors[d.method] || COLORS[i];
+    if (data.length === 1) {
+      paths += '<circle cx="' + cx + '" cy="' + cy + '" r="' + r + '" fill="' + color + '" />';
+    } else {
+      paths += '<path d="M' + cx + ',' + cy + ' L' + x1 + ',' + y1 + ' A' + r + ',' + r + ' 0 ' + largeArc + ',1 ' + x2 + ',' + y2 + ' Z" fill="' + color + '" />';
+    }
+    startAngle = endAngle;
+  });
+  var svg = '<svg viewBox="0 0 180 180" style="width:160px;height:160px">' + paths +
+    '<circle cx="' + cx + '" cy="' + cy + '" r="42" fill="#111827" />' +
+  '</svg>';
+  var legend = '<div class="donut-legend">';
+  data.forEach(function(d, i) {
+    var color = methodColors[d.method] || COLORS[i];
+    legend += '<div class="donut-item">' +
+      '<span class="donut-dot" style="background:' + color + '"></span>' +
+      '<span style="text-transform:capitalize">' + esc(d.method) + '</span>' +
+      '<span class="mono" style="color:#64748b">' + fmt(d.meal_count) + ' (' + pct(d.percentage) + ')</span>' +
+    '</div>';
+  });
+  legend += '</div>';
+  return renderCard('Meal Logging Methods', '<div class="donut-wrap">' + svg + legend + '</div>', 'Voice vs Photo vs Barcode (30d)');
+}
+
 // ── State ──
 var state = {
   liveStats: null, traffic: null, topEvents: null, platforms: null,
   attribution: null, funnel: null, hourly: null, feed: null,
+  appEngagement: null, appDAU: null, appEvents: null, mealMethods: null,
   lastUpdated: null, loading: false, error: null
 };
 
@@ -586,6 +696,21 @@ function render() {
   }
   html += renderLiveStats(state.liveStats);
   html += '<div class="content">';
+
+  // App Engagement Section
+  html += '<div style="margin-bottom:4px;margin-top:8px"><h2 style="font-size:16px;color:#f59e0b;font-weight:700;display:flex;align-items:center;gap:8px">\uD83D\uDCF1 App Engagement</h2></div>';
+  html += renderAppEngagement(state.appEngagement);
+  html += '<div class="row row-2">';
+  html += renderAppDAU(state.appDAU);
+  html += renderAppEvents(state.appEvents);
+  html += '</div>';
+  html += '<div class="row row-half">';
+  html += renderMealMethods(state.mealMethods);
+  html += renderCard('App Onboarding Funnel', '<div class="empty">Coming soon \u2014 track onboarding step completion</div>', 'Step-by-step drop-off');
+  html += '</div>';
+
+  // Website Section
+  html += '<div style="margin-bottom:4px;margin-top:16px"><h2 style="font-size:16px;color:#3b82f6;font-weight:700;display:flex;align-items:center;gap:8px">\uD83C\uDF10 Website Analytics</h2></div>';
   html += '<div class="row row-2">';
   html += renderTrafficChart(state.traffic);
   html += renderBarChart('Top Events', 'Last 30 days', state.topEvents, 'event_name', 'event_count', 'percentage', COLORS);
@@ -617,7 +742,11 @@ function fetchAll() {
     rpc('get_content_attribution', { p_limit: 8 }).then(function(d) { state.attribution = d; }),
     rpc('get_conversion_funnel').then(function(d) { state.funnel = d; }),
     rpc('get_hourly_breakdown').then(function(d) { state.hourly = d; }),
-    rpc('get_recent_events_feed', { p_limit: 50 }).then(function(d) { state.feed = d; })
+    rpc('get_recent_events_feed', { p_limit: 50 }).then(function(d) { state.feed = d; }),
+    rpc('get_app_engagement_stats').then(function(d) { state.appEngagement = d; }),
+    rpc('get_app_daily_active_users', { p_days: 30 }).then(function(d) { state.appDAU = d; }),
+    rpc('get_app_events_breakdown', { p_limit: 10 }).then(function(d) { state.appEvents = d; }),
+    rpc('get_meal_logging_methods').then(function(d) { state.mealMethods = d; })
   ];
   var settled = calls.map(function(p) {
     return p.then(
@@ -627,7 +756,7 @@ function fetchAll() {
   });
   Promise.all(settled).then(function(results) {
     var fails = results.filter(function(r) { return r.status === 'fail'; });
-    if (fails.length === 8) {
+    if (fails.length === 12) {
       state.error = 'All data sources failed. Check that the SQL functions were deployed. Error: ' + fails[0].reason;
     } else if (fails.length > 0) {
       console.warn('Some calls failed:', fails.map(function(f) { return f.reason; }));
