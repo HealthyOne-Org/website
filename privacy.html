@@ -322,6 +322,7 @@
             <ul class="nav-links">
                 <li><a href="/">Home</a></li>
                 <li><a href="/about.html">About</a></li>
+                <li><a href="/hardawaylabs.html">Hardaway Labs</a></li>
                 <li><a href="/terms.html">Terms</a></li>
                 <li><a href="/privacy.html" style="color: var(--primary-dark);">Privacy</a></li>
             </ul>
@@ -346,15 +347,16 @@
                 <li><a href="#s2">How We Use Your Information</a></li>
                 <li><a href="#s3">Data Storage &amp; Security</a></li>
                 <li><a href="#s4">Third-Party Services</a></li>
-                <li><a href="#s5">Data Sharing</a></li>
-                <li><a href="#s6">SMS &amp; Text Messaging</a></li>
-                <li><a href="#s7">Your Rights</a></li>
-                <li><a href="#s8">Apple HealthKit (iOS)</a></li>
-                <li><a href="#s9">Google Health Connect (Android)</a></li>
-                <li><a href="#s10">Data Retention</a></li>
-                <li><a href="#s11">Data Deletion</a></li>
-                <li><a href="#s12">Children's Privacy</a></li>
-                <li><a href="#s13">Contact Us</a></li>
+                <li><a href="#s5">Social Media Platform Integrations</a></li>
+                <li><a href="#s6">Data Sharing</a></li>
+                <li><a href="#s7">SMS &amp; Text Messaging</a></li>
+                <li><a href="#s8">Your Rights</a></li>
+                <li><a href="#s9">Apple HealthKit (iOS)</a></li>
+                <li><a href="#s10">Google Health Connect (Android)</a></li>
+                <li><a href="#s11">Data Retention</a></li>
+                <li><a href="#s12">Data Deletion</a></li>
+                <li><a href="#s13">Children's Privacy</a></li>
+                <li><a href="#s14">Contact Us</a></li>
             </ol>
         </div>
 
@@ -428,7 +430,54 @@
         </div>
 
         <div class="section" id="s5">
-            <h2><span class="num">5.</span> Data Sharing</h2>
+            <h2><span class="num">5.</span> Social Media Platform Integrations</h2>
+            <p>Hardaway Labs LLC also operates <strong>Hardaway Labs Social</strong>, a web-based social media management platform that allows users to connect their social media accounts and schedule or publish content. This section describes how we handle data when you use social media integration features.</p>
+
+            <h3>What We Collect When You Connect a Social Media Account</h3>
+            <ul>
+                <li>Your public profile information (display name, username, avatar) from the connected platform</li>
+                <li>An authentication token (OAuth) that allows our platform to act on your behalf</li>
+                <li>Video or media files you upload through our platform for publishing</li>
+                <li>Posting preferences and scheduling settings you configure</li>
+            </ul>
+
+            <h3>TikTok Integration</h3>
+            <p>When you connect your TikTok account through Hardaway Labs Social, we use TikTok's Login Kit and Content Posting API. Specifically:</p>
+            <ul>
+                <li><strong>user.info.basic:</strong> We access your TikTok open ID, display name, and avatar to identify your connected account in our dashboard</li>
+                <li><strong>video.publish:</strong> We use this permission to post video content directly to your TikTok profile on your behalf, at times you schedule</li>
+                <li><strong>video.upload:</strong> We use this permission to upload video content as a draft to your TikTok account for you to review before publishing</li>
+            </ul>
+
+            <h3>How We Use Social Media Data</h3>
+            <ul>
+                <li>To display your connected account information in our dashboard</li>
+                <li>To publish or schedule content to your connected social media accounts at your direction</li>
+                <li>To provide posting status updates and confirmations</li>
+            </ul>
+
+            <h3>How We Store Social Media Data</h3>
+            <ul>
+                <li><strong>OAuth tokens</strong> are encrypted at rest and stored securely on our servers. Tokens are used only to perform actions you have authorized.</li>
+                <li><strong>Video files</strong> you upload are temporarily stored for the purpose of publishing to the connected platform. Files are deleted from our servers within 30 days of successful posting.</li>
+                <li>We do <strong>not</strong> download, store, or access your existing TikTok videos or other content on the platform.</li>
+            </ul>
+
+            <h3>Disconnecting Your Social Media Account</h3>
+            <p>You may disconnect any social media account at any time through the Hardaway Labs Social dashboard. When you disconnect:</p>
+            <ul>
+                <li>Your OAuth token is immediately revoked and deleted from our servers</li>
+                <li>Any unpublished scheduled content for that account is cancelled</li>
+                <li>Your profile information from that platform is removed from our system</li>
+                <li>You can also revoke access directly from TikTok's settings at any time</li>
+            </ul>
+
+            <h3>Data Sharing with Social Media Platforms</h3>
+            <p>When you use our platform to publish content, the video and caption you provide are transmitted directly to the social media platform (e.g., TikTok) via their official API. We do not share any other personal data with these platforms beyond what is required to complete the posting action you initiated.</p>
+        </div>
+
+        <div class="section" id="s6">
+            <h2><span class="num">6.</span> Data Sharing</h2>
             <ul>
                 <li><strong>We do not sell your data.</strong> Your personal and health information is never sold to third parties for marketing, advertising, or any other purpose</li>
                 <li><strong>Consent-based sharing:</strong> Data is shared with third-party services only to the extent necessary to provide features you have enabled</li>
@@ -436,8 +485,8 @@
             </ul>
         </div>
 
-        <div class="section" id="s6">
-            <h2><span class="num">6.</span> SMS &amp; Text Messaging</h2>
+        <div class="section" id="s7">
+            <h2><span class="num">7.</span> SMS &amp; Text Messaging</h2>
             <p>HealthyOne offers optional SMS reminders to help you stay on track with your nutrition goals.</p>
 
             <div class="callout">
@@ -496,8 +545,8 @@
             </div>
         </div>
 
-        <div class="section" id="s7">
-            <h2><span class="num">7.</span> Your Rights</h2>
+        <div class="section" id="s8">
+            <h2><span class="num">8.</span> Your Rights</h2>
             <p>You have the right to:</p>
             <ul>
                 <li><strong>Access:</strong> Request a copy of all data we hold about you</li>
@@ -510,8 +559,8 @@
             <p>To exercise any of these rights, contact <strong>support@healthyoneapp.com</strong>.</p>
         </div>
 
-        <div class="section" id="s8">
-            <h2><span class="num">8.</span> Apple HealthKit (iOS)</h2>
+        <div class="section" id="s9">
+            <h2><span class="num">9.</span> Apple HealthKit (iOS)</h2>
             <ul>
                 <li>HealthyOne reads active calories and writes dietary data to HealthKit with your permission</li>
                 <li>HealthKit data stays on your device unless you enable cloud backup</li>
@@ -521,8 +570,8 @@
             </ul>
         </div>
 
-        <div class="section" id="s9">
-            <h2><span class="num">9.</span> Google Health Connect (Android)</h2>
+        <div class="section" id="s10">
+            <h2><span class="num">10.</span> Google Health Connect (Android)</h2>
             <ul>
                 <li>We read active calories, exercise sessions, steps, and daily energy totals</li>
                 <li>This data is used exclusively for in-app nutrition and activity features</li>
@@ -532,8 +581,8 @@
             </ul>
         </div>
 
-        <div class="section" id="s10">
-            <h2><span class="num">10.</span> Data Retention</h2>
+        <div class="section" id="s11">
+            <h2><span class="num">11.</span> Data Retention</h2>
             <ul>
                 <li><strong>Account data:</strong> Retained while your account is active. Deleted within 30 days of account deletion request</li>
                 <li><strong>Meal logs:</strong> Stored on your device indefinitely. Cloud copies (if enabled) are deleted with your account</li>
@@ -542,8 +591,8 @@
             </ul>
         </div>
 
-        <div class="section" id="s11">
-            <h2><span class="num">11.</span> Data Deletion</h2>
+        <div class="section" id="s12">
+            <h2><span class="num">12.</span> Data Deletion</h2>
             <h3>In-App Deletion</h3>
             <p>Go to <strong>Settings &rarr; Account &rarr; Delete Account</strong>. Confirm with your password. Your account and all cloud data will be permanently deleted within 30 days.</p>
             <h3>Email Request</h3>
@@ -556,13 +605,13 @@
             </ul>
         </div>
 
-        <div class="section" id="s12">
-            <h2><span class="num">12.</span> Children's Privacy</h2>
+        <div class="section" id="s13">
+            <h2><span class="num">13.</span> Children's Privacy</h2>
             <p>HealthyOne is not intended for users under the age of 13. We do not knowingly collect personal information from children under 13. If we learn that we have collected data from a child under 13, we will delete it promptly. Contact us at <strong>support@healthyoneapp.com</strong> if you believe a child has provided personal information.</p>
         </div>
 
-        <div class="section" id="s13">
-            <h2><span class="num">13.</span> Contact Us</h2>
+        <div class="section" id="s14">
+            <h2><span class="num">14.</span> Contact Us</h2>
             <p>If you have questions about this Privacy Policy or our data practices:</p>
             <p style="margin-top: 0.75rem;">
                 <strong>Hardaway Labs LLC</strong><br>
@@ -595,6 +644,7 @@
                 <h4>Company</h4>
                 <ul>
                     <li><a href="/about.html">About Us</a></li>
+                    <li><a href="/hardawaylabs.html">Hardaway Labs</a></li>
                     <li><a href="/privacy.html">Privacy Policy</a></li>
                     <li><a href="/terms.html">Terms of Service</a></li>
                     <li><a href="/security.html">Security</a></li>
