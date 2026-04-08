@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Log a Meal — HealthyOne</title>
+  <style>
+    body { font-family: -apple-system, system-ui, sans-serif; text-align: center; padding: 40px 20px; background: #0a0a0a; color: #fff; }
+    h1 { font-size: 24px; margin-bottom: 8px; }
+    p { color: #999; margin-bottom: 24px; }
+    .btn { display: inline-block; padding: 16px 32px; background: #34C759; color: #fff; text-decoration: none; border-radius: 12px; font-weight: 600; font-size: 18px; }
+    .btn:hover { background: #2db84e; }
+    .stores { margin-top: 24px; }
+    .stores a { color: #34C759; text-decoration: none; margin: 0 8px; }
+  </style>
+  <script>
+    // Try to open the app via custom URL scheme
+    var isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent);
+    var isAndroid = /Android/.test(navigator.userAgent);
+
+    if (isIOS) {
+      window.location.href = "HardawayHealth.HealthyOne://log";
+      // Fallback to App Store after 1.5s if app didn't open
+      setTimeout(function() {
+        window.location.href = "https://apps.apple.com/app/healthyone-nutrition-tracker/id6738030801";
+      }, 1500);
+    } else if (isAndroid) {
+      window.location.href = "healthyone://log";
+      // Fallback to Play Store after 1.5s
+      setTimeout(function() {
+        window.location.href = "https://play.google.com/store/apps/details?id=com.hardawaylabs.healthyone";
+      }, 1500);
+    }
+  </script>
+</head>
+<body>
+  <h1>Log a Meal</h1>
+  <p>Opening HealthyOne...</p>
+  <a class="btn" href="https://apps.apple.com/app/healthyone-nutrition-tracker/id6738030801">Open HealthyOne</a>
+  <div class="stores">
+    <a href="https://apps.apple.com/app/healthyone-nutrition-tracker/id6738030801">App Store</a> |
+    <a href="https://play.google.com/store/apps/details?id=com.hardawaylabs.healthyone">Google Play</a>
+  </div>
+</body>
+</html>
