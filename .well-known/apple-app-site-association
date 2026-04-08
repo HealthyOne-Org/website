@@ -1,0 +1,11 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "979PXNPYQ3.HardawayHealth.HealthyOne",
+        "paths": ["/log", "/log.html"]
+      }
+    ]
+  }
+}
