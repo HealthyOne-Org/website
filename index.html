@@ -3421,15 +3421,25 @@
         (function() {
             if (!window.posthog) return;
 
-            // Track App Store / Play Store clicks
+            // Capture traffic source from URL params (e.g. ?src=tiktok)
+            var params = new URLSearchParams(window.location.search);
+            var trafficSource = params.get('src') || params.get('utm_source') || 'direct';
+            var campaign = params.get('c') || params.get('utm_campaign') || 'none';
+            posthog.capture('page_visit', {
+                traffic_source: trafficSource,
+                campaign: campaign,
+                referrer: document.referrer || 'direct'
+            });
+
+            // Track App Store / Play Store clicks (with source)
             document.querySelectorAll('a[href*="apps.apple.com"]').forEach(function(el) {
                 el.addEventListener('click', function() {
-                    posthog.capture('clicked_app_store', { store: 'apple' });
+                    posthog.capture('clicked_app_store', { store: 'apple', traffic_source: trafficSource });
                 });
             });
             document.querySelectorAll('a[href*="play.google.com"]').forEach(function(el) {
                 el.addEventListener('click', function() {
-                    posthog.capture('clicked_app_store', { store: 'google_play' });
+                    posthog.capture('clicked_app_store', { store: 'google_play', traffic_source: trafficSource });
                 });
             });
 
