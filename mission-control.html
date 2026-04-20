@@ -166,8 +166,10 @@
 // AUTH: Step 1 (Password) + Step 2 (TOTP)
 // ══════════════════════════════════════════════════════════
 
-var PASSWORD_HASH = '409bd0912c8d6b90704729708b5b92cc75dc3327a81ba5912da7ed8e96eac8fa';
-var TOTP_SECRET_B32 = 'QMTSILUYOSAL6UZKSU4NOOG6YJIZNX6S';
+// SECURITY: These values are injected at deploy time. See deploy_website.sh.
+// Do NOT hardcode real secrets here — they will be committed to git.
+var PASSWORD_HASH = '__MC_PASSWORD_HASH__';
+var TOTP_SECRET_B32 = '__MC_TOTP_SECRET__';
 var SESSION_KEY = 'ho_mc_session';
 var SESSION_DURATION = 4 * 60 * 60 * 1000; // 4 hours
 
