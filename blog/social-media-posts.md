@@ -135,7 +135,7 @@ What's the best nutrition app if you're a busy parent?
 
 We tested 5 apps and ranked them:
 
-1. HealthyOne — fastest logging (under 10 sec), family sharing, $4.99/mo
+1. HealthyOne — fastest logging (under 10 sec), family sharing, $7.99/mo
 2. MyFitnessPal — biggest database, but slow and $19.99/mo
 3. Cronometer — most accurate data, but manual entry only
 4. Lose It! — best budget option at $3.33/mo
