@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /mission-control
+Disallow: /log
+Disallow: /sms-optin
+Disallow: /home/freeguide
+Disallow: /called
+
+Sitemap: https://www.healthyoneapp.com/sitemap.xml
