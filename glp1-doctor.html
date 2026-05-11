@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talk to a Doctor About GLP-1 — HealthyOne</title>
+    <meta name="description" content="Compare licensed telehealth providers that can evaluate you for Ozempic, Wegovy, Mounjaro, or Zepbound. Online appointments, no insurance required.">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Talk to a Doctor About GLP-1 — HealthyOne">
+    <meta property="og:description" content="Compare licensed telehealth providers that can evaluate you for GLP-1 medications.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://healthyoneapp.com/glp1-doctor.html">
+
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        :root {
+            --primary: #4ECDC4;
+            --primary-dark: #3BA99C;
+            --primary-light: #A8E6CF;
+            --accent-coral: #FF6B6B;
+            --accent-purple: #B39DDB;
+            --accent-amber: #FFA726;
+            --text-dark: #1A2332;
+            --text-medium: #4A5568;
+            --text-light: #718096;
+            --white: #FFFFFF;
+            --card-radius: 24px;
+            --card-shadow: 0 4px 20px rgba(78,205,196,0.08);
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-dark);
+            line-height: 1.7;
+            background: var(--white);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(78,205,196,0.1);
+            padding: 0.75rem 0;
+        }
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.4rem;
+            color: var(--text-dark);
+        }
+        .logo-icon {
+            width: 44px; height: 44px;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(78,205,196,0.25);
+        }
+        .logo-icon img { width: 100%; height: 100%; object-fit: cover; }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            list-style: none;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-medium);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--primary); }
+
+        /* Disclosure banner */
+        .disclosure-banner {
+            background: #FFF8E6;
+            border-bottom: 1px solid #F5E0A8;
+            padding: 0.75rem 1.5rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #6B5418;
+            line-height: 1.5;
+        }
+        .disclosure-banner strong { color: #4A3A0F; }
+
+        /* Hero */
+        .page-hero {
+            background: linear-gradient(160deg, #E8FDF5 0%, #F0F9FF 30%, #F5F0FF 60%, #FFF5F0 100%);
+            padding: 4rem 2rem 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: -200px; right: -150px;
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(78,205,196,0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .page-hero .eyebrow {
+            display: inline-block;
+            padding: 0.3rem 0.9rem;
+            background: rgba(78,205,196,0.12);
+            color: var(--primary-dark);
+            border-radius: 999px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        .page-hero h1 {
+            font-size: 2.75rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+            position: relative;
+            max-width: 760px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .page-hero h1 .highlight {
+            background: linear-gradient(135deg, var(--primary) 0%, #36B5A0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .page-hero .subtitle {
+            font-size: 1.15rem;
+            color: var(--text-medium);
+            max-width: 640px;
+            margin: 0 auto;
+            line-height: 1.7;
+            position: relative;
+        }
+
+        /* Content */
+        .content {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 3rem 2rem 4rem;
+        }
+
+        /* How it works strip */
+        .how-strip {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        .how-step {
+            text-align: center;
+            padding: 1.25rem 1rem;
+        }
+        .how-step .num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px; height: 36px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            font-weight: 800;
+            border-radius: 50%;
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+        }
+        .how-step h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.35rem;
+            color: var(--text-dark);
+        }
+        .how-step p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin: 0;
+            line-height: 1.55;
+        }
+
+        /* Partner cards */
+        .partners-section h2 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            text-align: center;
+            letter-spacing: -0.01em;
+        }
+        .partners-section .lead {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+        .partner-card {
+            background: var(--white);
+            border: 1px solid #EDF2F7;
+            border-radius: var(--card-radius);
+            padding: 1.75rem;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s;
+            position: relative;
+        }
+        .partner-card:hover {
+            box-shadow: 0 12px 40px rgba(78,205,196,0.12);
+            border-color: rgba(78,205,196,0.3);
+            transform: translateY(-4px);
+        }
+        .partner-card .tag {
+            position: absolute;
+            top: 1.25rem; right: 1.25rem;
+            background: rgba(78,205,196,0.12);
+            color: var(--primary-dark);
+            padding: 0.25rem 0.7rem;
+            border-radius: 999px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        .partner-card .name {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 0.35rem;
+            letter-spacing: -0.01em;
+        }
+        .partner-card .tagline {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 1.25rem;
+        }
+        .partner-card .bullets {
+            list-style: none;
+            margin-bottom: 1.5rem;
+            flex: 1;
+        }
+        .partner-card .bullets li {
+            font-size: 0.9rem;
+            color: var(--text-medium);
+            padding: 0.4rem 0 0.4rem 1.5rem;
+            position: relative;
+            line-height: 1.5;
+        }
+        .partner-card .bullets li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: 800;
+        }
+        .partner-card .price {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #EDF2F7;
+        }
+        .partner-card .price strong { color: var(--text-dark); font-weight: 700; }
+        .partner-card .cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 0.85rem 1rem;
+            border-radius: 14px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 16px rgba(78,205,196,0.3);
+            transition: all 0.3s;
+        }
+        .partner-card .cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(78,205,196,0.45); }
+        .partner-card .cta-note {
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--text-light);
+            margin-top: 0.6rem;
+        }
+
+        /* Why section */
+        .why-section {
+            margin-top: 4rem;
+            background: linear-gradient(160deg, #E8FDF5 0%, #F0F9FF 100%);
+            border-radius: var(--card-radius);
+            padding: 2.5rem 2rem;
+        }
+        .why-section h2 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        .why-section p {
+            font-size: 1rem;
+            color: var(--text-medium);
+            max-width: 760px;
+            margin: 0 auto 1rem;
+            text-align: center;
+            line-height: 1.8;
+        }
+
+        /* FAQ */
+        .faq-section {
+            margin-top: 4rem;
+        }
+        .faq-section h2 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .faq-item {
+            border: 1px solid #EDF2F7;
+            border-radius: 16px;
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 0.85rem;
+        }
+        .faq-item summary {
+            font-weight: 700;
+            color: var(--text-dark);
+            cursor: pointer;
+            font-size: 1rem;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary::after {
+            content: '+';
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: var(--primary-dark);
+            transition: transform 0.3s;
+        }
+        .faq-item[open] summary::after {
+            content: '−';
+        }
+        .faq-item p {
+            margin-top: 0.85rem;
+            color: var(--text-medium);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* App CTA */
+        .app-cta {
+            margin-top: 4rem;
+            text-align: center;
+            background: linear-gradient(160deg, #FFF5F0 0%, #F0F9FF 100%);
+            border-radius: var(--card-radius);
+            padding: 3rem 2rem;
+        }
+        .app-cta h2 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            margin-bottom: 0.75rem;
+        }
+        .app-cta p {
+            color: var(--text-medium);
+            margin-bottom: 1.5rem;
+            max-width: 540px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 0.85rem 2rem;
+            border-radius: 16px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 4px 20px rgba(78,205,196,0.35);
+            transition: all 0.3s;
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(78,205,196,0.45); }
+        .btn-secondary {
+            background: var(--white);
+            color: var(--text-dark);
+            padding: 0.85rem 2rem;
+            border-radius: 16px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            border: 2px solid #EDF2F7;
+            transition: all 0.3s;
+        }
+        .btn-secondary:hover { border-color: var(--primary); transform: translateY(-2px); }
+
+        /* Footer disclaimer */
+        .full-disclaimer {
+            background: #F7FAFC;
+            border-top: 1px solid #EDF2F7;
+            border-bottom: 1px solid #EDF2F7;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        .full-disclaimer-container {
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+        .full-disclaimer-container strong { color: var(--text-medium); }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(160deg, #1A2332 0%, #0F1923 100%);
+            color: white;
+            padding: 3rem 2rem 2rem;
+        }
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+        .footer-section h4 { margin-bottom: 1rem; font-size: 1rem; font-weight: 700; }
+        .footer-section ul { list-style: none; }
+        .footer-section ul li { margin-bottom: 0.6rem; }
+        .footer-section a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+        .footer-section a:hover { color: var(--primary); }
+        .footer-brand p {
+            color: rgba(255,255,255,0.5);
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        .footer-slogan {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-top: 0.5rem;
+        }
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 1.5rem;
+            text-align: center;
+            color: rgba(255,255,255,0.4);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .page-hero { padding: 3rem 1.5rem; }
+            .page-hero h1 { font-size: 2rem; }
+            .content { padding: 2rem 1.25rem 3rem; }
+            .how-strip { grid-template-columns: 1fr; gap: 0.5rem; }
+            .partners-grid { grid-template-columns: 1fr; }
+            .navbar-container { padding: 0 1.25rem; }
+            .nav-links { gap: 1rem; }
+            .nav-links a { font-size: 0.85rem; }
+            .footer-container { grid-template-columns: 1fr; gap: 2rem; }
+            .partner-card .tag { position: static; align-self: flex-start; margin-bottom: 0.85rem; }
+        }
+    </style>
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "wganbv4d5v");
+    </script>
+    <!-- /Microsoft Clarity -->
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="/" class="logo">
+                <div class="logo-icon"><img src="assets/logo.png" alt="HealthyOne Logo"></div>
+                <span>HealthyOne</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/about.html">About</a></li>
+                <li><a href="/hardawaylabs.html">Hardaway Labs</a></li>
+                <li><a href="/terms.html">Terms</a></li>
+                <li><a href="/privacy.html">Privacy</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="disclosure-banner">
+        <strong>Affiliate disclosure:</strong> Some links on this page are affiliate links. If you sign up with a partner, HealthyOne may receive a commission at no extra cost to you. We only list partners we've vetted and would consider ourselves.
+    </div>
+
+    <div class="page-hero">
+        <span class="eyebrow">GLP-1 Resources</span>
+        <h1>Talk to a Licensed Doctor About <span class="highlight">GLP-1</span></h1>
+        <p class="subtitle">HealthyOne works best when you're already on Ozempic, Wegovy, Mounjaro, or Zepbound. If you're not yet — here are three telehealth providers that handle the evaluation 100% online.</p>
+    </div>
+
+    <div class="content">
+
+        <!-- How it works -->
+        <div class="how-strip">
+            <div class="how-step">
+                <div class="num">1</div>
+                <h4>Pick a provider below</h4>
+                <p>Three vetted telehealth options. Each lists what it's best for.</p>
+            </div>
+            <div class="how-step">
+                <div class="num">2</div>
+                <h4>Complete an online visit</h4>
+                <p>15-minute health questionnaire. A licensed doctor reviews and decides if GLP-1 is right for you.</p>
+            </div>
+            <div class="how-step">
+                <div class="num">3</div>
+                <h4>Track with HealthyOne</h4>
+                <p>If prescribed, log meals by voice or photo. The app auto-adjusts your protein target for GLP-1 muscle protection.</p>
+            </div>
+        </div>
+
+        <!-- Partner cards -->
+        <div class="partners-section">
+            <h2>Three providers worth comparing</h2>
+            <p class="lead">All three operate in most US states, offer video or messaging visits, and don't require insurance.</p>
+
+            <div class="partners-grid">
+
+                <!-- Hims -->
+                <div class="partner-card">
+                    <div class="tag">Most popular</div>
+                    <div class="name">Hims &amp; Hers</div>
+                    <div class="tagline">Largest telehealth brand. Fast onboarding.</div>
+                    <ul class="bullets">
+                        <li>15-minute online visit</li>
+                        <li>Compounded &amp; brand-name GLP-1 options</li>
+                        <li>Monthly subscription, cancel anytime</li>
+                        <li>App + ongoing provider messaging</li>
+                    </ul>
+                    <div class="price">Pricing: <strong>From ~$199/mo</strong> (varies by medication)</div>
+                    <!-- TODO: replace href with your Impact.com affiliate URL once approved -->
+                    <a href="https://hims.com/weight-loss" rel="sponsored nofollow noopener" target="_blank" class="cta">See Hims options →</a>
+                    <div class="cta-note">Opens hims.com</div>
+                </div>
+
+                <!-- Ro -->
+                <div class="partner-card">
+                    <div class="tag">Best for branded</div>
+                    <div class="name">Ro Body</div>
+                    <div class="tagline">Specializes in brand-name Wegovy &amp; Zepbound.</div>
+                    <ul class="bullets">
+                        <li>Doctor-led, brand-name medications</li>
+                        <li>Insurance check on signup</li>
+                        <li>Includes coaching + check-ins</li>
+                        <li>Available in all 50 states</li>
+                    </ul>
+                    <div class="price">Pricing: <strong>From ~$145/mo</strong> + medication</div>
+                    <!-- TODO: replace href with your Impact.com affiliate URL once approved -->
+                    <a href="https://ro.co/weight-loss/" rel="sponsored nofollow noopener" target="_blank" class="cta">See Ro Body options →</a>
+                    <div class="cta-note">Opens ro.co</div>
+                </div>
+
+                <!-- Found -->
+                <div class="partner-card">
+                    <div class="tag">Most personalized</div>
+                    <div class="name">Found</div>
+                    <div class="tagline">Pure GLP-1 weight-loss focus. Personalized plan.</div>
+                    <ul class="bullets">
+                        <li>Doctor + coach + dietitian team</li>
+                        <li>Custom medication match (not one-size)</li>
+                        <li>Monthly plan with no commitment</li>
+                        <li>Available in 49 states</li>
+                    </ul>
+                    <div class="price">Pricing: <strong>From ~$149/mo</strong> + medication</div>
+                    <!-- TODO: replace href with your Impact.com affiliate URL once approved -->
+                    <a href="https://www.joinfound.com/" rel="sponsored nofollow noopener" target="_blank" class="cta">See Found options →</a>
+                    <div class="cta-note">Opens joinfound.com</div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Why these three -->
+        <div class="why-section">
+            <h2>Why these three?</h2>
+            <p>There are dozens of telehealth providers offering GLP-1 evaluations. We picked these three because each operates in nearly every US state, is operated by licensed physicians, and lets you cancel anytime without long-term commitments. None of them require insurance.</p>
+            <p>HealthyOne is a nutrition tracker — not a prescriber. We don't sell, mail, or recommend specific medications. The providers listed here are licensed to do that. Your doctor decides what's right for you, not us.</p>
+        </div>
+
+        <!-- FAQ -->
+        <div class="faq-section">
+            <h2>Frequently asked questions</h2>
+
+            <details class="faq-item">
+                <summary>Is GLP-1 right for me?</summary>
+                <p>That's a medical decision and only a licensed doctor can answer it. Each provider above will evaluate your health history, current medications, BMI, and goals before deciding. GLP-1 medications aren't appropriate for everyone — for example, people with certain thyroid conditions or a personal/family history of medullary thyroid cancer should not take them.</p>
+            </details>
+
+            <details class="faq-item">
+                <summary>Do I need insurance?</summary>
+                <p>No. All three providers offer cash-pay options. Some may run an insurance check on your behalf if you'd like, but coverage for GLP-1 medications for weight loss varies widely and is often denied. Cash-pay pricing is shown on each provider's site after the initial visit.</p>
+            </details>
+
+            <details class="faq-item">
+                <summary>How does HealthyOne fit in?</summary>
+                <p>HealthyOne is the nutrition tracking layer once you're on a GLP-1. It uses voice and photo logging (most users log a meal in about 8 seconds), and it automatically adjusts your daily protein target to protect lean muscle — a known concern for people losing weight on GLP-1s. It's not a substitute for medical care.</p>
+            </details>
+
+            <details class="faq-item">
+                <summary>Is HealthyOne affiliated with these providers?</summary>
+                <p>No. HealthyOne is an independent app made by Hardaway Labs. We receive a referral fee if you sign up with one of the providers above through our links, but that fee does not change your price and does not influence our editorial choices. We do not have access to your medical information at any provider.</p>
+            </details>
+
+            <details class="faq-item">
+                <summary>What if I'm already on a GLP-1?</summary>
+                <p>Then you don't need this page — you need the app. <a href="https://apps.apple.com/app/healthyone-nutrition-tracker/id6757052428" style="color: var(--primary-dark); font-weight: 600;">Download HealthyOne</a> to start tracking your meals, your daily protein, and your progress while on medication.</p>
+            </details>
+
+            <details class="faq-item">
+                <summary>How do you choose which providers to list?</summary>
+                <p>Three criteria: (1) licensed physicians in nearly every US state, (2) public pricing with no hidden fees, (3) a real ability to cancel anytime. We do not list compounding pharmacies or "GLP-1 lookalike" products that aren't FDA-approved.</p>
+            </details>
+        </div>
+
+        <!-- App CTA -->
+        <div class="app-cta">
+            <h2>Already prescribed? Download HealthyOne.</h2>
+            <p>Voice meal logging, automatic GLP-1 protein protection, and a 7-day free trial. Built for people on Ozempic, Wegovy, Mounjaro, and Zepbound.</p>
+            <div class="cta-buttons">
+                <a href="https://apps.apple.com/app/healthyone-nutrition-tracker/id6757052428" class="btn-primary" target="_blank" rel="noopener">Download for iOS</a>
+                <a href="https://play.google.com/store/apps/details?id=com.hardawaylabs.healthyone" class="btn-secondary" target="_blank" rel="noopener">Get on Google Play</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Full disclaimer -->
+    <div class="full-disclaimer">
+        <div class="full-disclaimer-container">
+            <p><strong>Medical disclaimer:</strong> The content on this page is for informational purposes only and is not medical advice. HealthyOne and Hardaway Labs are not licensed to prescribe, dispense, or recommend specific medications. Always consult a licensed healthcare provider before starting, changing, or stopping any medication. GLP-1 medications (semaglutide, tirzepatide, etc.) are FDA-approved for specific indications and may have side effects including but not limited to nausea, vomiting, pancreatitis, gallbladder disease, and thyroid concerns. The decision to prescribe is made solely by a licensed clinician based on your individual health profile.</p>
+            <p style="margin-top: 1rem;"><strong>Affiliate disclosure:</strong> HealthyOne participates in affiliate programs operated by the providers listed above. When you sign up through a link on this page, HealthyOne may earn a referral fee. This does not affect the price you pay, and it does not influence which providers we list. We list only providers we have independently vetted against our published criteria.</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section footer-brand">
+                <a href="/" class="logo" style="color: white;">
+                    <div class="logo-icon"><img src="assets/logo.png" alt="HealthyOne Logo"></div>
+                    <span>HealthyOne</span>
+                </a>
+                <div class="footer-slogan">Be In Good Health</div>
+                <p>AI-powered nutrition tracking made simple. Track your meals, discover recipes, and achieve your health goals.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="/#features">Features</a></li>
+                    <li><a href="/#pricing">Pricing</a></li>
+                    <li><a href="/#faq">FAQ</a></li>
+                    <li><a href="/glp1-doctor.html">GLP-1 Resources</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="/about.html">About Us</a></li>
+                    <li><a href="/hardawaylabs.html">Hardaway Labs</a></li>
+                    <li><a href="/privacy.html">Privacy Policy</a></li>
+                    <li><a href="/terms.html">Terms of Service</a></li>
+                    <li><a href="mailto:support@healthyoneapp.com">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Hardaway Labs LLC. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
