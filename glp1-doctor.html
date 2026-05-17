@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Talk to a Doctor About GLP-1 — HealthyOne</title>
-    <meta name="description" content="Compare licensed telehealth providers that can evaluate you for Ozempic, Wegovy, Mounjaro, or Zepbound. Online appointments, no insurance required.">
+    <title>GLP-1 + HealthyOne — Healthy Weight Loss, the 2-for-1 Way</title>
+    <meta name="description" content="Lose weight on a doctor-supervised GLP-1 program — and stay healthy doing it with HealthyOne. Voice meal logging, automatic GLP-1 protein protection, heart-health tracking. Compare four vetted telehealth partners.">
     <meta name="robots" content="index, follow">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Talk to a Doctor About GLP-1 — HealthyOne">
-    <meta property="og:description" content="Compare licensed telehealth providers that can evaluate you for GLP-1 medications.">
+    <meta property="og:title" content="GLP-1 + HealthyOne — Healthy Weight Loss, the 2-for-1 Way">
+    <meta property="og:description" content="GLP-1 medication drops the pounds. HealthyOne keeps you healthy doing it.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://healthyoneapp.com/glp1-doctor.html">
 
@@ -223,8 +223,36 @@
         }
         .partners-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 1.5rem;
+        }
+        @media (min-width: 1100px) {
+            .partners-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        /* 2-for-1 hero badge */
+        .two-for-one {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: white;
+            border: 2px solid var(--primary);
+            border-radius: 999px;
+            padding: 0.4rem 1rem 0.4rem 0.5rem;
+            margin-top: 1.25rem;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            box-shadow: 0 4px 16px rgba(78,205,196,0.18);
+        }
+        .two-for-one .pill {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 0.2rem 0.7rem;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 0.04em;
         }
         .partner-card {
             background: var(--white);
@@ -542,9 +570,10 @@
     </div>
 
     <div class="page-hero">
-        <span class="eyebrow">GLP-1 Resources</span>
-        <h1>Talk to a Licensed Doctor About <span class="highlight">GLP-1</span></h1>
-        <p class="subtitle">HealthyOne works best when you're already on Ozempic, Wegovy, Mounjaro, or Zepbound. If you're not yet — here are three telehealth providers that handle the evaluation 100% online.</p>
+        <span class="eyebrow">The 2-for-1 Approach</span>
+        <h1>Healthy Weight Loss = GLP-1 + <span class="highlight">HealthyOne</span></h1>
+        <p class="subtitle">GLP-1 medication drops the pounds. <strong>HealthyOne keeps you healthy doing it.</strong> Get a doctor-supervised prescription from a vetted partner below — then track every meal, every gram of protein, and every heart-health marker inside the app. One sustainable plan, two tools, zero guesswork.</p>
+        <div class="two-for-one"><span class="pill">2-FOR-1</span> A telehealth GLP-1 program + the #1 nutrition app for people on GLP-1</div>
     </div>
 
     <div class="content">
@@ -553,87 +582,104 @@
         <div class="how-strip">
             <div class="how-step">
                 <div class="num">1</div>
-                <h4>Pick a provider below</h4>
-                <p>Three vetted telehealth options. Each lists what it's best for.</p>
+                <h4>Pick a GLP-1 partner</h4>
+                <p>Four vetted telehealth options below. All US-licensed, no insurance required, cancel anytime.</p>
             </div>
             <div class="how-step">
                 <div class="num">2</div>
-                <h4>Complete an online visit</h4>
-                <p>15-minute health questionnaire. A licensed doctor reviews and decides if GLP-1 is right for you.</p>
+                <h4>Get evaluated &amp; prescribed</h4>
+                <p>Online visit, licensed physician, decision in 24–48 hours. Medication shipped to your door.</p>
             </div>
             <div class="how-step">
                 <div class="num">3</div>
-                <h4>Track with HealthyOne</h4>
-                <p>If prescribed, log meals by voice or photo. The app auto-adjusts your protein target for GLP-1 muscle protection.</p>
+                <h4>Stay healthy with HealthyOne</h4>
+                <p>Voice meal logging, GLP-1 protein protection, heart-health score. Free trial — make every pound count.</p>
             </div>
         </div>
 
         <!-- Partner cards -->
         <div class="partners-section">
-            <h2>Three providers worth comparing</h2>
-            <p class="lead">All three operate in most US states, offer video or messaging visits, and don't require insurance.</p>
+            <h2>Four GLP-1 partners worth comparing</h2>
+            <p class="lead">All four are US-licensed telehealth providers offering doctor-supervised GLP-1 evaluations. Cash-pay, cancel anytime, no insurance required. Pair any one with HealthyOne for the full 2-for-1.</p>
 
             <div class="partners-grid">
 
-                <!-- Hims -->
+                <!-- SkinnyRx -->
                 <div class="partner-card">
-                    <div class="tag">Most popular</div>
-                    <div class="name">Hims &amp; Hers</div>
-                    <div class="tagline">Largest telehealth brand. Fast onboarding.</div>
+                    <div class="tag">Highest payout tier</div>
+                    <div class="name">SkinnyRx</div>
+                    <div class="tagline">Tirzepatide &amp; Semaglutide pills + Affirm financing.</div>
                     <ul class="bullets">
-                        <li>15-minute online visit</li>
-                        <li>Compounded &amp; brand-name GLP-1 options</li>
-                        <li>Monthly subscription, cancel anytime</li>
-                        <li>App + ongoing provider messaging</li>
+                        <li>Tirzepatide / Semaglutide pill option (not just injection)</li>
+                        <li>Affirm financing — pay over time</li>
+                        <li>Operates in all 50 states</li>
+                        <li>Conversion-optimized signup, fast turnaround</li>
                     </ul>
-                    <div class="price">Pricing: <strong>From ~$199/mo</strong> (varies by medication)</div>
-                    <!-- TODO: replace href with your Impact.com affiliate URL once approved -->
-                    <a href="https://hims.com/weight-loss" rel="sponsored nofollow noopener" target="_blank" class="cta">See Hims options →</a>
-                    <div class="cta-note">Opens hims.com</div>
+                    <div class="price">Pricing: <strong>Plans vary</strong> — pill option available</div>
+                    <!-- TODO: replace href with Katalys tracking URL once SkinnyRx (Program 1464) approves the application -->
+                    <a href="https://skinnyrx.com" rel="sponsored nofollow noopener" target="_blank" class="cta">See SkinnyRx options →</a>
+                    <div class="cta-note">Opens skinnyrx.com</div>
                 </div>
 
-                <!-- Ro -->
+                <!-- MEDVi -->
                 <div class="partner-card">
-                    <div class="tag">Best for branded</div>
-                    <div class="name">Ro Body</div>
-                    <div class="tagline">Specializes in brand-name Wegovy &amp; Zepbound.</div>
+                    <div class="tag">Best for personalized</div>
+                    <div class="name">MEDVi</div>
+                    <div class="tagline">Telehealth + U.S. physicians. Injectable or oral.</div>
                     <ul class="bullets">
-                        <li>Doctor-led, brand-name medications</li>
-                        <li>Insurance check on signup</li>
-                        <li>Includes coaching + check-ins</li>
-                        <li>Available in all 50 states</li>
+                        <li>Online medical evaluation + virtual consult</li>
+                        <li>Compounded semaglutide &amp; tirzepatide (injection or oral)</li>
+                        <li>Unlimited provider messaging, 24/7 support</li>
+                        <li>Medication delivered to your door</li>
                     </ul>
-                    <div class="price">Pricing: <strong>From ~$145/mo</strong> + medication</div>
-                    <!-- TODO: replace href with your Impact.com affiliate URL once approved -->
-                    <a href="https://ro.co/weight-loss/" rel="sponsored nofollow noopener" target="_blank" class="cta">See Ro Body options →</a>
-                    <div class="cta-note">Opens ro.co</div>
+                    <div class="price">Pricing: <strong>Month-to-month</strong>, transparent pricing</div>
+                    <!-- TODO: replace href with Katalys tracking URL once MEDVi (Program 1265) approves the application -->
+                    <a href="https://medvi.com" rel="sponsored nofollow noopener" target="_blank" class="cta">See MEDVi options →</a>
+                    <div class="cta-note">Opens medvi.com</div>
                 </div>
 
-                <!-- Found -->
+                <!-- Bodybuilding.com Health+ -->
                 <div class="partner-card">
-                    <div class="tag">Most personalized</div>
-                    <div class="name">Found</div>
-                    <div class="tagline">Pure GLP-1 weight-loss focus. Personalized plan.</div>
+                    <div class="tag">Best for fitness focus</div>
+                    <div class="name">Bodybuilding Health+</div>
+                    <div class="tagline">GLP-1 + Longevity bundles for performance-minded users.</div>
                     <ul class="bullets">
-                        <li>Doctor + coach + dietitian team</li>
-                        <li>Custom medication match (not one-size)</li>
-                        <li>Monthly plan with no commitment</li>
-                        <li>Available in 49 states</li>
+                        <li>Compounded Semaglutide under physician supervision</li>
+                        <li>1-month, 3-month, 6-month, and 12-month bundles</li>
+                        <li>Designed for metabolic health + sustainable weight loss</li>
+                        <li>Trusted brand with science-backed messaging</li>
                     </ul>
-                    <div class="price">Pricing: <strong>From ~$149/mo</strong> + medication</div>
-                    <!-- TODO: replace href with your Impact.com affiliate URL once approved -->
-                    <a href="https://www.joinfound.com/" rel="sponsored nofollow noopener" target="_blank" class="cta">See Found options →</a>
-                    <div class="cta-note">Opens joinfound.com</div>
+                    <div class="price">Pricing: <strong>From single dose to 12-month bundles</strong></div>
+                    <!-- TODO: replace href with Katalys tracking URL once Bodybuilding.com (Program 1584) approves the application -->
+                    <a href="https://www.bodybuilding.com/health" rel="sponsored nofollow noopener" target="_blank" class="cta">See Bodybuilding Health+ options →</a>
+                    <div class="cta-note">Opens bodybuilding.com</div>
+                </div>
+
+                <!-- bmiMD -->
+                <div class="partner-card">
+                    <div class="tag">4.9★ patient rating</div>
+                    <div class="name">bmiMD</div>
+                    <div class="tagline">Same active ingredients as Wegovy &amp; Zepbound.</div>
+                    <ul class="bullets">
+                        <li>Clinically-backed Semaglutide &amp; Tirzepatide programs</li>
+                        <li>80,000+ members, 4.9★ average rating</li>
+                        <li>Virtual consultations, doorstep delivery</li>
+                        <li>Built for health, fitness &amp; wellness-minded users</li>
+                    </ul>
+                    <div class="price">Pricing: <strong>Affordable monthly plans</strong></div>
+                    <!-- TODO: replace href with Katalys tracking URL once bmiMD (Program 1332) approves the application -->
+                    <a href="https://bmimd.com" rel="sponsored nofollow noopener" target="_blank" class="cta">See bmiMD options →</a>
+                    <div class="cta-note">Opens bmimd.com</div>
                 </div>
 
             </div>
         </div>
 
-        <!-- Why these three -->
+        <!-- Why the 2-for-1 -->
         <div class="why-section">
-            <h2>Why these three?</h2>
-            <p>There are dozens of telehealth providers offering GLP-1 evaluations. We picked these three because each operates in nearly every US state, is operated by licensed physicians, and lets you cancel anytime without long-term commitments. None of them require insurance.</p>
-            <p>HealthyOne is a nutrition tracker — not a prescriber. We don't sell, mail, or recommend specific medications. The providers listed here are licensed to do that. Your doctor decides what's right for you, not us.</p>
+            <h2>Why GLP-1 + HealthyOne is a 2-for-1, not just a discount</h2>
+            <p><strong>GLP-1 medications work — but only on weight.</strong> They don't track your protein. They don't watch your sodium. They don't catch the heart-health markers that change as you lose weight quickly. <strong>HealthyOne does all three.</strong> Log a meal by voice in 8 seconds. The app automatically raises your daily protein target to protect lean muscle (a known concern on GLP-1s), flags sodium-heavy meals, and surfaces a heart-health score every week.</p>
+            <p>The four partners above are vetted, licensed, and operate in nearly every US state. HealthyOne is the nutrition layer that turns GLP-1 weight loss into <em>healthy</em> weight loss. Two tools, one outcome.</p>
         </div>
 
         <!-- FAQ -->
@@ -647,7 +693,17 @@
 
             <details class="faq-item">
                 <summary>Do I need insurance?</summary>
-                <p>No. All three providers offer cash-pay options. Some may run an insurance check on your behalf if you'd like, but coverage for GLP-1 medications for weight loss varies widely and is often denied. Cash-pay pricing is shown on each provider's site after the initial visit.</p>
+                <p>No. All four partners offer cash-pay options. Some may run an insurance check on your behalf if you'd like, but coverage for GLP-1 medications for weight loss varies widely and is often denied. Cash-pay pricing is shown on each provider's site after the initial visit.</p>
+            </details>
+
+            <details class="faq-item">
+                <summary>Why call it a 2-for-1?</summary>
+                <p>Because losing weight and staying healthy are two different problems. A GLP-1 program solves the first — it shrinks appetite and drops pounds. HealthyOne solves the second — it makes sure you're getting enough protein to protect muscle, keeps an eye on sodium and heart-health markers, and gives you a single dashboard to see where you actually are. One purchase covers prescription + clinical care. The other is the nutrition tracker free on the App Store and Google Play. Together they cost less than most weight-loss coaching programs and give you more.</p>
+            </details>
+
+            <details class="faq-item">
+                <summary>How do I pick between the four partners?</summary>
+                <p>If you want a pill option (not just injection) and Affirm financing — start with <strong>SkinnyRx</strong>. If you want unlimited provider messaging and 24/7 support — try <strong>MEDVi</strong>. If you're fitness-minded and like longer commitment bundles for better unit cost — look at <strong>Bodybuilding Health+</strong>. If patient reviews matter most to you — <strong>bmiMD</strong> has 80,000+ members and a 4.9-star average. All four are licensed, none require insurance, all can be canceled anytime.</p>
             </details>
 
             <details class="faq-item">
@@ -657,7 +713,7 @@
 
             <details class="faq-item">
                 <summary>Is HealthyOne affiliated with these providers?</summary>
-                <p>No. HealthyOne is an independent app made by Hardaway Labs. We receive a referral fee if you sign up with one of the providers above through our links, but that fee does not change your price and does not influence our editorial choices. We do not have access to your medical information at any provider.</p>
+                <p>HealthyOne is an independent app made by Hardaway Labs. We participate in affiliate programs with each of the four partners listed above through the Katalys Network. We receive a referral fee if you sign up through our links, but that fee does not change your price and does not influence which partners we list. We do not have access to your medical information at any provider, and we only list providers we have independently vetted against our criteria: US-licensed physicians, cash-pay pricing, ability to cancel anytime.</p>
             </details>
 
             <details class="faq-item">
@@ -667,7 +723,7 @@
 
             <details class="faq-item">
                 <summary>How do you choose which providers to list?</summary>
-                <p>Three criteria: (1) licensed physicians in nearly every US state, (2) public pricing with no hidden fees, (3) a real ability to cancel anytime. We do not list compounding pharmacies or "GLP-1 lookalike" products that aren't FDA-approved.</p>
+                <p>Three criteria: (1) licensed physicians operating in nearly every US state, (2) transparent cash-pay pricing with no hidden fees, (3) the ability to cancel anytime. We do not list "GLP-1 lookalike" supplements or products that aren't backed by real prescription pathways.</p>
             </details>
         </div>
 
