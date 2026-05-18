@@ -1,0 +1,13 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.hardawaylabs.healthyone",
+      "sha256_cert_fingerprints": [
+        "D5:60:97:5E:97:38:E0:89:80:1B:7D:7F:B8:38:51:24:64:52:5C:5B:AA:F8:3F:9F:A4:CA:2F:86:79:E9:97:93",
+        "A3:01:34:89:FA:D3:5B:63:77:DA:7E:A8:E9:00:7C:58:C8:F8:60:19:1C:04:87:3D:A4:2B:99:81:0D:D3:83:05"
+      ]
+    }
+  }
+]
