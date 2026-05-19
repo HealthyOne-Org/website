@@ -2242,6 +2242,7 @@
                 <li><a href="#features">Features</a></li>
                 <li><a href="#how-it-works">How It Works</a></li>
                 <li><a href="#pricing">Pricing</a></li>
+                <li><a href="/glp1-doctor.html">GLP-1</a></li>
                 <!-- Finances and Respond pages moved to separate sites to keep HealthyOne focused -->
                 <li><a href="/blog">Blog</a></li>
                 <li><a href="/hardawaylabs.html">Hardaway Labs</a></li>
@@ -3110,22 +3111,28 @@
         <a href="#early-access" class="btn-primary">Join Waitlist →</a>
     </div>
 
-    <!-- Discount Signup Popup -->
+    <!-- App Download Popup -->
     <div class="discount-popup-overlay" id="discountPopup">
         <div class="discount-popup">
             <button class="discount-popup-close" id="discountPopupClose" aria-label="Close popup">×</button>
             <span class="discount-popup-emoji">🎉</span>
             <div class="popup-slogan">Be In Good Health</div>
-            <h3>Wait! Try <span class="popup-highlight">Free for 7 Days</span></h3>
-            <p class="popup-desc">Drop your email to grab 2 free health guides and start your transformation. After your 7-day free trial, HealthyOne Plus is just $7.99/month.</p>
+            <h3>Try <span class="popup-highlight">Free for 7 Days</span></h3>
+            <p class="popup-desc">HealthyOne is live on iOS and Google Play. Download now and start your 7-day free trial — voice meal logging, GLP-1 protein protection, weekly heart-health score. $7.99/month after.</p>
             <div class="popup-price-row">
                 <span class="popup-price-new">$7.99<span>/mo</span></span>
             </div>
-            <form class="discount-popup-form" id="discountPopupForm">
-                <input type="email" placeholder="Enter your email address" required id="discountPopupEmail">
-                <button type="submit" class="popup-submit">Start My Free Trial →</button>
-            </form>
-            <p class="popup-note">🔒 No spam. Unsubscribe anytime. 7-day free trial, then $7.99/month.</p>
+            <div class="popup-store-buttons" style="display: flex; flex-direction: column; gap: 0.75rem; margin-top: 0.25rem;">
+                <a href="https://apps.apple.com/us/app/healthyone-nutrition-tracker/id6757052428?pt=128318750&ct=web_exit_popup&mt=8" target="_blank" rel="noopener" id="popup-app-store" style="display: flex; align-items: center; justify-content: center; gap: 0.6rem; background: #000; color: #fff; padding: 0.95rem 1.2rem; border-radius: 12px; text-decoration: none; font-size: 1rem; font-weight: 700; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 16px rgba(0,0,0,0.15);" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.25)';" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 16px rgba(0,0,0,0.15)';">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.08zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+                    Download on the App Store
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.hardawaylabs.healthyone&referrer=utm_source%3Dhealthyoneapp%26utm_medium%3Dweb%26utm_campaign%3Dweb_exit_popup" target="_blank" rel="noopener" id="popup-google-play" style="display: flex; align-items: center; justify-content: center; gap: 0.6rem; background: linear-gradient(135deg, #34A853, #0F9D58); color: #fff; padding: 0.95rem 1.2rem; border-radius: 12px; text-decoration: none; font-size: 1rem; font-weight: 700; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 16px rgba(52,168,83,0.25);" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 24px rgba(52,168,83,0.4)';" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 16px rgba(52,168,83,0.25)';">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 0 1 0 1.73l-2.808 1.626L15.119 12l2.579-2.491zM5.864 2.658L16.802 8.99l-2.302 2.302-8.636-8.634z"/></svg>
+                    Get on Google Play
+                </a>
+            </div>
+            <p class="popup-note">🔒 Free 7-day trial. Cancel anytime in your App Store or Google Play settings.</p>
             <div class="popup-trust">
                 <span>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
@@ -3137,7 +3144,7 @@
                 </span>
                 <span>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                    2 free health guides
+                    iOS + Android
                 </span>
             </div>
         </div>
