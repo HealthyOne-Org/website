@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eating Less Lately? You Might Be Missing Key Nutrients | HealthyOne</title>
+    <meta name="description" content="New 2026 research shows people eating significantly less — including those on GLP-1 medications — often fall short on vitamin D, iron, and B vitamins. HealthyOne tracks 50+ nutrients from a photo so you can see your gaps.">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:title" content="Eating Less Lately? You Might Be Missing Key Nutrients">
+    <meta property="og:description" content="When your appetite drops, so do the nutrients in every meal. See your gaps with HealthyOne — 50+ nutrients tracked from a photo.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://healthyoneapp.com/nutrient-gaps.html">
+
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        :root {
+            --primary: #4ECDC4;
+            --primary-dark: #3BA99C;
+            --primary-light: #A8E6CF;
+            --accent-coral: #FF6B6B;
+            --accent-purple: #B39DDB;
+            --accent-amber: #FFA726;
+            --text-dark: #1A2332;
+            --text-medium: #4A5568;
+            --text-light: #718096;
+            --white: #FFFFFF;
+            --card-radius: 24px;
+            --card-shadow: 0 4px 20px rgba(78,205,196,0.08);
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-dark);
+            line-height: 1.7;
+            background: var(--white);
+            -webkit-font-smoothing: antialiased;
+        }
+        .navbar {
+            position: sticky; top: 0; z-index: 1000;
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(78,205,196,0.1);
+            padding: 0.75rem 0;
+        }
+        .navbar-container {
+            max-width: 1200px; margin: 0 auto; padding: 0 2rem;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .logo {
+            display: flex; align-items: center; gap: 0.75rem;
+            text-decoration: none; font-weight: 800; font-size: 1.4rem;
+            color: var(--text-dark);
+        }
+        .logo-icon {
+            width: 44px; height: 44px; border-radius: 14px; overflow: hidden;
+            box-shadow: 0 2px 8px rgba(78,205,196,0.25);
+        }
+        .logo-icon img { width: 100%; height: 100%; object-fit: cover; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; list-style: none; }
+        .nav-links a {
+            text-decoration: none; color: var(--text-medium);
+            font-weight: 500; font-size: 0.95rem; transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--primary); }
+
+        .disclosure-banner {
+            background: #FFF8E6; border-bottom: 1px solid #F5E0A8;
+            padding: 0.75rem 1.5rem; text-align: center;
+            font-size: 0.85rem; color: #6B5418; line-height: 1.5;
+        }
+        .disclosure-banner strong { color: #4A3A0F; }
+
+        .page-hero {
+            background: linear-gradient(160deg, #E8FDF5 0%, #F0F9FF 30%, #F5F0FF 60%, #FFF5F0 100%);
+            padding: 4rem 2rem 3rem; text-align: center;
+            position: relative; overflow: hidden;
+        }
+        .page-hero .eyebrow {
+            display: inline-block;
+            padding: 0.3rem 0.9rem; border-radius: 999px;
+            background: rgba(78,205,196,0.15); color: var(--primary-dark);
+            font-size: 0.85rem; font-weight: 600; letter-spacing: 0.04em;
+            text-transform: uppercase; margin-bottom: 1.5rem;
+        }
+        .page-hero h1 {
+            font-size: clamp(2rem, 4vw, 3rem); font-weight: 800;
+            line-height: 1.15; max-width: 820px; margin: 0 auto 1.25rem;
+            color: var(--text-dark);
+        }
+        .page-hero p {
+            font-size: 1.1rem; max-width: 680px; margin: 0 auto 1.75rem;
+            color: var(--text-medium);
+        }
+        .hero-btn {
+            display: inline-block; padding: 1rem 2rem;
+            background: var(--primary); color: var(--white);
+            text-decoration: none; font-weight: 700; border-radius: 14px;
+            font-size: 1.05rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 6px 20px rgba(78,205,196,0.3);
+        }
+        .hero-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(78,205,196,0.4); }
+        .hero-note { display: block; margin-top: 0.85rem; font-size: 0.9rem; color: var(--text-light); }
+
+        .section { padding: 4rem 2rem; max-width: 1000px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 2.5rem; }
+        .section-header h2 {
+            font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700;
+            color: var(--text-dark); margin-bottom: 0.75rem;
+        }
+        .section-header p { color: var(--text-medium); max-width: 640px; margin: 0 auto; }
+
+        .stat-grid {
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem;
+            margin-bottom: 2rem;
+        }
+        .stat-card {
+            background: var(--white); border-radius: 18px;
+            box-shadow: var(--card-shadow); border: 1px solid rgba(78,205,196,0.12);
+            padding: 1.75rem; text-align: center;
+        }
+        .stat-card .num {
+            font-size: 2.4rem; font-weight: 800; color: var(--primary-dark);
+            line-height: 1; margin-bottom: 0.5rem;
+        }
+        .stat-card .label { color: var(--text-medium); font-size: 0.95rem; }
+
+        .pull-quote {
+            background: #F0FBF9; border-left: 4px solid var(--primary);
+            border-radius: 0 16px 16px 0; padding: 1.5rem 1.75rem;
+            font-size: 1.1rem; color: var(--text-dark); font-weight: 500;
+        }
+        .pull-quote cite {
+            display: block; margin-top: 0.75rem; font-size: 0.85rem;
+            font-style: normal; font-weight: 600; color: var(--text-light);
+        }
+
+        .feature-list { list-style: none; display: grid; gap: 1rem; max-width: 640px; margin: 0 auto; }
+        .feature-list li {
+            display: flex; gap: 0.9rem; align-items: flex-start;
+            background: var(--white); border: 1px solid rgba(78,205,196,0.12);
+            border-radius: 16px; padding: 1.1rem 1.35rem; box-shadow: var(--card-shadow);
+        }
+        .feature-list .check {
+            flex-shrink: 0; width: 26px; height: 26px; border-radius: 8px;
+            background: rgba(78,205,196,0.15); color: var(--primary-dark);
+            font-weight: 800; display: flex; align-items: center; justify-content: center;
+            font-size: 0.95rem;
+        }
+        .feature-list strong { display: block; color: var(--text-dark); }
+        .feature-list span { color: var(--text-medium); font-size: 0.95rem; }
+
+        .product-card {
+            background: var(--white); border-radius: var(--card-radius);
+            box-shadow: var(--card-shadow); padding: 2rem;
+            border: 1px solid rgba(78,205,196,0.1);
+            display: grid; grid-template-columns: 1fr auto; gap: 1.5rem;
+            align-items: center;
+        }
+        .product-card .meta { color: var(--text-light); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+        .product-card h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .product-card .why { color: var(--text-medium); font-size: 0.98rem; }
+        .cta-btn {
+            display: inline-block; padding: 0.85rem 1.5rem;
+            background: var(--primary); color: var(--white);
+            text-decoration: none; font-weight: 600; border-radius: 12px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            white-space: nowrap;
+        }
+        .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(78,205,196,0.3); }
+        .cta-btn.secondary { background: var(--white); color: var(--primary-dark); border: 2px solid var(--primary); }
+
+        @media (max-width: 700px) {
+            .stat-grid { grid-template-columns: 1fr; }
+            .product-card { grid-template-columns: 1fr; }
+            .product-card .cta-btn { width: 100%; text-align: center; }
+        }
+
+        .app-cta {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white); padding: 4rem 2rem; text-align: center;
+        }
+        .app-cta h2 { font-size: clamp(1.7rem, 3vw, 2.2rem); margin-bottom: 1rem; }
+        .app-cta p { font-size: 1.1rem; opacity: 0.95; margin-bottom: 1.75rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .app-cta .cta-btn { background: var(--white); color: var(--primary-dark); font-size: 1.05rem; padding: 1rem 2rem; }
+
+        footer {
+            background: #F9FAFB; padding: 3rem 2rem 2rem;
+            text-align: center; font-size: 0.9rem; color: var(--text-light);
+        }
+        footer a { color: var(--primary-dark); text-decoration: none; }
+        footer .links { margin-bottom: 1rem; display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+        footer .disclaimer { max-width: 640px; margin: 0 auto; }
+    </style>
+</head>
+<body>
+
+<div class="disclosure-banner">
+    <strong>Disclosure:</strong> This page summarizes published research for general education and is not medical advice. Some links are affiliate links — if you click one and make a purchase, we may earn a commission at no extra cost to you.
+</div>
+
+<nav class="navbar">
+    <div class="navbar-container">
+        <a href="index.html" class="logo">
+            <span class="logo-icon"><img src="assets/healthyone-logo.png" alt="HealthyOne" onerror="this.style.display='none'"></span>
+            HealthyOne
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#app">Get the app</a></li>
+        </ul>
+    </div>
+</nav>
+
+<header class="page-hero">
+    <span class="eyebrow">New 2026 research</span>
+    <h1>Eating less than you used to? You might be missing what your body needs.</h1>
+    <p>When your appetite drops, calories aren't the only thing that falls — so do the vitamins and minerals in every meal. Research shows it's happening to millions of people, quietly, with no obvious warning signs.</p>
+    <a href="#app" class="hero-btn">See your nutrient gaps — free</a>
+    <span class="hero-note">Tracks 50+ nutrients from a photo. 30 days free, no card.</span>
+</header>
+
+<!-- THE RESEARCH -->
+<section class="section">
+    <div class="section-header">
+        <h2>The research is clear: eating less can mean nutrient gaps</h2>
+        <p>A 2026 review in the medical journal <em>Clinical Obesity</em> pooled six studies covering 480,825 adults taking GLP-1 medications. The pattern was consistent across all of them.</p>
+    </div>
+
+    <div class="stat-grid">
+        <div class="stat-card">
+            <div class="num">13.6%</div>
+            <div class="label">developed a vitamin D deficiency within 12 months</div>
+        </div>
+        <div class="stat-card">
+            <div class="num">54%</div>
+            <div class="label">higher risk of low iron stores vs. a comparison group</div>
+        </div>
+        <div class="stat-card">
+            <div class="num">2.6%</div>
+            <div class="label">developed a B-vitamin deficiency</div>
+        </div>
+        <div class="stat-card">
+            <div class="num">480,825</div>
+            <div class="label">adults analyzed — the gaps showed up across the board</div>
+        </div>
+    </div>
+
+    <div class="pull-quote">
+        Researchers concluded that doctors should treat nutrient deficiency as &ldquo;a common consequence&rdquo; of appetite-reducing therapy — and monitor patients' nutritional status accordingly.
+        <cite>— Micronutrient and Nutritional Deficiencies Associated With GLP-1 Receptor Agonist Therapy, <em>Clinical Obesity</em>, 2026 (Urbina et al.); covered by Harvard Health and BBC Science Focus</cite>
+    </div>
+</section>
+
+<!-- WHY IT HAPPENS -->
+<section class="section" style="padding-top:1rem;">
+    <div class="section-header">
+        <h2>Why it happens — and why you can't feel it</h2>
+        <p>It's simple math. Eat roughly 30% less food and you take in roughly 30% fewer nutrients — whether the smaller appetite comes from a GLP-1 medication, a doctor-supervised program, a new eating plan, or just a busy stretch of life. The catch: a vitamin D, iron, or B12 gap has no obvious early symptoms. By the time the fatigue shows up, you've often been running short for months.</p>
+    </div>
+</section>
+
+<!-- WHAT HEALTHYONE DOES -->
+<section class="section" style="padding-top:1rem;">
+    <div class="section-header">
+        <h2>See exactly what you're missing</h2>
+        <p>Most apps just count calories. HealthyOne tracks 50+ nutrients in every meal — snap a photo and it tells you what's actually on your plate, and what isn't.</p>
+    </div>
+    <ul class="feature-list">
+        <li>
+            <span class="check">&#10003;</span>
+            <span><strong>50+ nutrients per meal</strong>Not just calories and macros — the full micronutrient picture, from a single photo.</span>
+        </li>
+        <li>
+            <span class="check">&#10003;</span>
+            <span><strong>Vitamin D, iron, B12 &amp; calcium tracking</strong>The exact nutrients the 2026 research flagged — see your levels day by day.</span>
+        </li>
+        <li>
+            <span class="check">&#10003;</span>
+            <span><strong>Protein targets that protect muscle</strong>Eating less makes it easy to lose muscle, not just fat. HealthyOne keeps your protein on track.</span>
+        </li>
+        <li>
+            <span class="check">&#10003;</span>
+            <span><strong>Heart-health dashboard</strong>Sodium, fiber, cholesterol and more — the metrics that matter as your eating changes.</span>
+        </li>
+    </ul>
+</section>
+
+<!-- APP CTA -->
+<section class="app-cta" id="app">
+    <h2>Find your nutrient gaps before they find you</h2>
+    <p>HealthyOne shows you which nutrients you're low on — so you can fix the gap with food or supplements while it's still easy. Log meals by voice, photo, or barcode. Free for 30 days, no card required.</p>
+    <a href="https://apps.apple.com/app/healthyone-nutrition-tracker/id6757052428" class="cta-btn" target="_blank" rel="noopener">Get HealthyOne free &rarr;</a>
+</section>
+
+<!-- CLOSING THE GAP — affiliate -->
+<section class="section">
+    <div class="section-header">
+        <h2>Closing the gap</h2>
+        <p>Tracking shows you the gap. If you'd rather get ahead of it, a daily protein and micronutrient routine covers most of what the research flagged.</p>
+    </div>
+    <div class="product-card">
+        <div>
+            <div class="meta">Protein &amp; micronutrient essentials</div>
+            <h3>The everyday-nutrition starter stack</h3>
+            <p class="why">A curated set of protein and key micronutrient supplements chosen for adults who are eating less than they used to. Pair it with HealthyOne so you can see the gap actually close.</p>
+        </div>
+        <a href="https://track.revoffers.com/aff_c?offer_id=1584&aff_id=12579" target="_blank" rel="noopener sponsored" class="cta-btn">Browse the essentials &rarr;</a>
+    </div>
+</section>
+
+<footer>
+    <div class="links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+    </div>
+    <p class="disclaimer">&copy; 2026 Hardaway Labs LLC. HealthyOne is a nutrition tracking app, not a medical device, and does not diagnose, treat, or prevent any condition. The research summarized here is for general education — talk to your doctor or prescribing physician before changing your diet or starting any supplement.</p>
+</footer>
+
+</body>
+</html>
