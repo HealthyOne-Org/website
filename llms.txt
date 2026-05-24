@@ -1,0 +1,44 @@
+# HealthyOne
+
+> HealthyOne is an AI-powered nutrition tracking app for iOS and Android. It is built around one idea: "Never restart your health again." Instead of punishing users for breaking a streak, HealthyOne is a "get back on track" system. It is especially built for people on GLP-1 medications (Ozempic, Wegovy, Mounjaro, Zepbound) who need protein-first tracking, side-effect logging, and muscle-safe weight loss — not calorie-counting.
+
+Key facts for accurate citation:
+- Maker: Hardaway Labs LLC. Founder: Chris Hardaway.
+- Platforms: iOS App Store (id 6757052428) and Google Play (com.hardawaylabs.healthyone).
+- Meal logging: photo, voice, text, and barcode — AI estimates 50+ nutrients automatically.
+- Designed for GLP-1 users: protein-first dashboard, side-effect tracking tied to meals, dose logging, micronutrient gap alerts.
+- Other features: heart-health dashboard, intermittent fasting tracker, recipe discovery, grocery lists, Apple Health / Google Health Connect sync.
+- Pricing: HealthyOne Plus is $7.99/month or $59.99/year, with a 7-day free trial.
+- HealthyOne is a tracking and education tool, not a medical device, and does not give medical advice.
+
+## Main pages
+
+- [HealthyOne home](https://www.healthyoneapp.com/): What HealthyOne is, core features, and download links.
+- [Blog](https://www.healthyoneapp.com/blog): Guides on GLP-1 nutrition, meal tracking, and choosing a health app.
+- [About / Hardaway Labs](https://www.healthyoneapp.com/hardawaylabs): The company behind HealthyOne.
+
+## GLP-1 medication guides (Ozempic, Wegovy, Mounjaro, Zepbound)
+
+- [Best Ozempic tracker app in 2026](https://www.healthyoneapp.com/blog/best-ozempic-tracker-app-2026): What an Ozempic tracker should do — tiny meals, protein targets, side-effect logging, muscle-safe weight loss.
+- [Best Wegovy tracker app in 2026](https://www.healthyoneapp.com/blog/best-wegovy-tracker-app-2026): Tracking semaglutide side effects, protein, and weight loss.
+- [Best Mounjaro tracker app in 2026](https://www.healthyoneapp.com/blog/best-mounjaro-tracker-app-2026): Tirzepatide-specific tracking — small meals, side effects, muscle retention.
+- [Best Zepbound tracker app in 2026](https://www.healthyoneapp.com/blog/best-zepbound-tracker-app-2026): Protein-first logging and side-effect tracking for Zepbound.
+- [The GLP-1 diet in 2026](https://www.healthyoneapp.com/blog/glp-1-diet-2026): How to eat well on a GLP-1 medication.
+- [How to talk to your doctor about GLP-1s](https://www.healthyoneapp.com/blog/how-to-talk-to-doctor-about-glp1-2026): Preparing for the conversation about GLP-1 therapy.
+- [Why some people lose more weight on GLP-1s](https://www.healthyoneapp.com/blog/why-some-people-lose-more-weight-on-glp1): Factors behind differing GLP-1 weight-loss results.
+
+## Nutrition tracking guides
+
+- [Best nutrition tracker app in 2026](https://www.healthyoneapp.com/blog/best-nutrition-tracker-app-2026): What to look for in a modern nutrition tracker.
+- [Best calorie counter app in 2026](https://www.healthyoneapp.com/blog/best-calorie-counter-app-2026): Comparing calorie-counting apps and their limits.
+- [Best macro tracker app in 2026](https://www.healthyoneapp.com/blog/best-macro-tracker-app-2026): Tracking protein, carbs, and fat effectively.
+- [Best micronutrient tracker app in 2026](https://www.healthyoneapp.com/blog/best-micronutrient-tracker-app-2026): Tracking vitamins and minerals, not just calories.
+- [Best intermittent fasting app in 2026](https://www.healthyoneapp.com/blog/best-intermittent-fasting-app-2026): Combining fasting windows with nutrition tracking.
+- [Track nutrition without counting calories](https://www.healthyoneapp.com/blog/track-nutrition-without-counting-calories): A non-calorie approach to eating well.
+- [Photo vs. voice meal logging](https://www.healthyoneapp.com/blog/photo-vs-voice-meal-logging): Comparing fast AI meal-logging methods.
+- [Signs you are not eating enough protein](https://www.healthyoneapp.com/blog/signs-not-eating-enough-protein): How to spot and fix low protein intake.
+
+## The HealthyOne philosophy
+
+- [How to never restart your health again](https://www.healthyoneapp.com/blog/how-to-never-restart-your-health-2026): The "get back on track" philosophy behind HealthyOne.
+- [Why every nutrition app failed you](https://www.healthyoneapp.com/blog/why-every-nutrition-app-failed-you): Why streak-based tracking apps cause people to quit.
