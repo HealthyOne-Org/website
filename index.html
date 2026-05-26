@@ -1576,6 +1576,13 @@
             display: none;
         }
 
+        /* Hide announcement banner on mobile — it wraps awkwardly at narrow widths and pushes the hero out of viewport */
+        @media (max-width: 600px) {
+            .beta-banner {
+                display: none;
+            }
+        }
+
         /* ===== HERO TRUST LINE ===== */
         .hero-trust-line {
             display: flex;
@@ -2417,12 +2424,12 @@
     <!-- App Store Reviews Section -->
     <section style="padding: 4rem 2rem; background: linear-gradient(135deg, #f0fdf4 0%, #f8fafc 100%);">
         <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
-            <span style="color: var(--primary); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em;">App Store Reviews</span>
+            <span style="color: var(--primary); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em;">Reviews</span>
             <h2 style="font-size: 2rem; font-weight: 800; margin: 0.5rem 0 0.5rem; color: #1a1a2e;">What Our Users Say</h2>
             <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-bottom: 2rem;">
                 <span style="color: #FFB800; font-size: 1.3rem;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
                 <span style="font-weight: 600; color: #1a1a2e;">5.0</span>
-                <span style="color: #6b7280;">on the App Store</span>
+                <span style="color: #6b7280;">average rating</span>
             </div>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; text-align: left;">
                 <!-- Review 1 -->
@@ -3554,41 +3561,6 @@
                     }
                 }
             });
-        })();
-
-        // Countdown Timer — 30 days from now (auto-renewing)
-        (function() {
-            const COUNTDOWN_KEY = 'healthyone_beta_end';
-            let endTime = localStorage.getItem(COUNTDOWN_KEY);
-            if (!endTime || parseInt(endTime) < Date.now()) {
-                endTime = Date.now() + 30 * 24 * 60 * 60 * 1000;
-                try { localStorage.setItem(COUNTDOWN_KEY, endTime); } catch(e) {}
-            } else {
-                endTime = parseInt(endTime);
-            }
-
-            function updateCountdown() {
-                const now = Date.now();
-                let diff = endTime - now;
-                if (diff < 0) diff = 0;
-
-                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                const secs = Math.floor((diff % (1000 * 60)) / 1000);
-
-                const dEl = document.getElementById('cd-days');
-                const hEl = document.getElementById('cd-hours');
-                const mEl = document.getElementById('cd-mins');
-                const sEl = document.getElementById('cd-secs');
-                if (dEl) dEl.textContent = String(days).padStart(2, '0');
-                if (hEl) hEl.textContent = String(hours).padStart(2, '0');
-                if (mEl) mEl.textContent = String(mins).padStart(2, '0');
-                if (sEl) sEl.textContent = String(secs).padStart(2, '0');
-            }
-
-            updateCountdown();
-            setInterval(updateCountdown, 1000);
         })();
 
         // ===== DISCOUNT POPUP — Triggers at 50% scroll =====
