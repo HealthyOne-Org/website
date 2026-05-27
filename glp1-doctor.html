@@ -267,6 +267,9 @@
             display: block;
             width: 100%;
             max-width: 420px;
+            aspect-ratio: 3 / 2;
+            object-fit: cover;
+            object-position: center 30%;
             margin: 1.75rem auto 0;
             border-radius: 24px;
             box-shadow: 0 12px 40px rgba(78,205,196,0.18);
@@ -276,13 +279,16 @@
         .why-photo {
             display: block;
             width: 100%;
-            max-width: 760px;
+            max-width: 560px;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+            object-position: center;
             margin: 2.25rem auto 0;
             border-radius: 20px;
             box-shadow: 0 10px 32px rgba(78,205,196,0.14);
         }
 
-        /* Mobile: tighter hero text + softer badge */
+        /* Mobile: tighter hero text + softer badge + capped photos */
         @media (max-width: 600px) {
             .page-hero h1 { font-size: 2rem; line-height: 1.15; }
             .page-hero .subtitle { font-size: 1rem; }
@@ -291,7 +297,17 @@
                 padding: 0.65rem 0.9rem;
                 font-size: 0.85rem;
             }
-            .hero-photo { max-width: 320px; border-radius: 20px; }
+            .hero-photo {
+                max-width: 280px;
+                aspect-ratio: 4 / 3;
+                border-radius: 18px;
+                margin-top: 1.25rem;
+            }
+            .why-photo {
+                max-width: 320px;
+                aspect-ratio: 4 / 3;
+                border-radius: 16px;
+            }
         }
         .partner-card {
             background: var(--white);
@@ -613,7 +629,7 @@
         <h1>Healthy Weight Loss = GLP-1 + <span class="highlight">HealthyOne</span></h1>
         <p class="subtitle">GLP-1 medication drops the pounds. <strong>HealthyOne keeps you healthy doing it.</strong> Get a doctor-supervised prescription, then track every meal, every gram of protein, and every heart-health marker inside the app. One sustainable plan, two tools, zero guesswork.</p>
         <div class="two-for-one"><span class="pill">2-FOR-1</span> Your GLP-1 program + the nutrition app built for people on GLP-1</div>
-        <img class="hero-photo" src="assets/lifestyle_plus_smile_hero.jpg" alt="Happy woman smiling outdoors — real users on a GLP-1 nutrition plan" loading="eager" width="1200" height="800">
+        <img class="hero-photo" src="assets/lifestyle_plus_smile_hero.jpg?v=2" alt="Happy woman smiling outdoors — real users on a GLP-1 nutrition plan" loading="eager" width="1200" height="800">
     </div>
 
     <div class="content">
@@ -692,7 +708,7 @@
 
             <p style="font-size: 1.1rem; max-width: 760px; margin: 0 auto 1.5rem; text-align: center; color: var(--text-dark);"><strong>A GLP-1 program drops the pounds. HealthyOne keeps you healthy doing it.</strong> Two tools, one outcome — and you genuinely need both. Here's why.</p>
 
-            <img class="why-photo" src="assets/lifestyle_plus_park_active.jpg" alt="Woman laughing on a sunny walk with a healthy drink — staying active during weight loss" loading="lazy" width="800" height="1200">
+            <img class="why-photo" src="assets/lifestyle_plus_park_active.jpg?v=2" alt="Woman laughing on a sunny walk with a healthy drink — staying active during weight loss" loading="lazy" width="800" height="1200">
 
 
             <div style="max-width: 920px; margin: 2rem auto 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem;">
