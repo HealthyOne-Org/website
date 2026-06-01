@@ -67,6 +67,11 @@
             font-weight: 500; font-size: 0.95rem; transition: color 0.3s;
         }
         .nav-links a:hover { color: var(--primary); }
+        .nav-toggle { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 44px; height: 44px; background: none; border: none; cursor: pointer; padding: 0; }
+        .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--text-dark); border-radius: 2px; margin: 0 auto; transition: transform 0.3s, opacity 0.3s; }
+        .nav-toggle.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .nav-toggle.active span:nth-child(2) { opacity: 0; }
+        .nav-toggle.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
         .disclosure-banner {
             background: #FFF8E6; border-bottom: 1px solid #F5E0A8;
@@ -130,6 +135,13 @@
         @media (max-width: 700px) {
             .product-card { grid-template-columns: 1fr; }
             .product-card .cta-btn { width: 100%; text-align: center; }
+            .navbar-container { position: relative; }
+            .nav-toggle { display: flex; }
+            .nav-links { display: none; position: absolute; top: 100%; left: 1.25rem; right: 1.25rem; flex-direction: column; align-items: stretch; gap: 0; margin-top: 0.6rem; padding: 0.5rem; background: var(--white); border: 1px solid rgba(78,205,196,0.18); border-radius: 14px; box-shadow: 0 12px 30px rgba(0,0,0,0.12); }
+            .nav-links.active { display: flex; }
+            .nav-links li { width: 100%; }
+            .nav-links a { display: block; padding: 0.85rem 1rem; border-radius: 10px; font-size: 1rem; }
+            .nav-links a:hover { background: rgba(78,205,196,0.08); }
         }
 
         .app-cta {
@@ -161,11 +173,14 @@
             <span class="logo-icon"><img src="assets/healthyone-logo.png" alt="HealthyOne" onerror="this.style.display='none'"></span>
             HealthyOne
         </a>
-        <ul class="nav-links">
+        <ul class="nav-links" id="navLinks">
             <li><a href="index.html">Home</a></li>
             <li><a href="glp1-doctor.html">Not on a GLP-1 yet?</a></li>
             <li><a href="https://apps.apple.com/app/healthyone-nutrition-tracker/id6757052428">Get the app</a></li>
         </ul>
+        <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+            <span></span><span></span><span></span>
+        </button>
     </div>
 </nav>
 
@@ -273,5 +288,14 @@
     <p>© 2026 Hardaway Labs LLC. HealthyOne is a nutrition tracking app, not a medical device. Talk to your prescribing physician before starting any supplement program.</p>
 </footer>
 
+<script>
+(function () {
+    var t = document.getElementById('navToggle'), n = document.getElementById('navLinks');
+    if (!t || !n) return;
+    function close() { n.classList.remove('active'); t.classList.remove('active'); t.setAttribute('aria-expanded', 'false'); }
+    t.addEventListener('click', function () { var open = n.classList.toggle('active'); t.classList.toggle('active', open); t.setAttribute('aria-expanded', open ? 'true' : 'false'); });
+    n.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', close); });
+})();
+</script>
 </body>
 </html>
