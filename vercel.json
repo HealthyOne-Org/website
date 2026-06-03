@@ -1,6 +1,11 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    { "source": "/home", "destination": "/", "permanent": true },
+    { "source": "/freeguide", "destination": "/assets/superfoods-guide.pdf", "permanent": true },
+    { "source": "/home/freeguide", "destination": "/assets/superfoods-guide.pdf", "permanent": true }
+  ],
   "headers": [
     {
       "source": "/.well-known/assetlinks.json",
