@@ -167,5 +167,58 @@
     </section>
 
     <footer><p>&copy; 2026 Hardaway Labs LLC. <a href="/">HealthyOne</a> &middot; <a href="/privacy.html">Privacy</a> &middot; <a href="/terms.html">Terms</a></p></footer>
+
+    <!-- ho-conv-cta: sticky download bar + conversion tracking (injected) -->
+    <div id="ho-sticky-cta" role="region" aria-label="Download HealthyOne" hidden>
+      <div class="ho-sticky-inner">
+        <span class="ho-sticky-text">Get <strong>HealthyOne</strong> free &middot; 7-day trial</span>
+        <span class="ho-sticky-btns">
+          <a class="ho-sticky-btn" data-ho-store="ios" rel="nofollow noopener" href="https://apps.apple.com/us/app/healthyone/id6757052428">App&nbsp;Store</a>
+          <a class="ho-sticky-btn" data-ho-store="android" rel="nofollow noopener" href="https://play.google.com/store/apps/details?id=com.hardawaylabs.healthyone">Google&nbsp;Play</a>
+        </span>
+        <button id="ho-sticky-close" aria-label="Dismiss">&times;</button>
+      </div>
+    </div>
+    <style>
+      #ho-sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:9999;background:#fff;border-top:1px solid #e5e7eb;box-shadow:0 -4px 20px rgba(0,0,0,.08);padding:.6rem .9rem calc(.6rem + env(safe-area-inset-bottom,0px));animation:hoSlideUp .35s ease}
+      @keyframes hoSlideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+      .ho-sticky-inner{max-width:720px;margin:0 auto;display:flex;align-items:center;gap:.6rem}
+      .ho-sticky-text{font-size:.9rem;color:#374151;flex:1;line-height:1.3}
+      .ho-sticky-text strong{color:#10b981}
+      .ho-sticky-btns{display:flex;gap:.4rem;flex-shrink:0}
+      .ho-sticky-btn{background:#10b981;color:#fff;padding:.45rem .8rem;border-radius:8px;text-decoration:none;font-weight:700;font-size:.82rem;white-space:nowrap}
+      .ho-sticky-btn[data-ho-store="android"]{background:#1a1a2e}
+      #ho-sticky-close{background:none;border:none;color:#9ca3af;font-size:1.4rem;line-height:1;cursor:pointer;padding:0 .2rem;flex-shrink:0}
+      body{padding-bottom:64px}
+      @media (max-width:520px){.ho-sticky-text{font-size:.8rem}.ho-sticky-btn{padding:.45rem .6rem;font-size:.78rem}}
+    </style>
+    <script>
+    (function(){
+      var KEY='ho_cta_dismissed', DAYS=7;
+      function path(){return location.pathname;}
+      function track(placement,store){
+        try{if(window.posthog&&posthog.capture){posthog.capture('blog_download_cta_click',{placement:placement,store:store,path:path()});}}catch(e){}
+      }
+      // Sticky bar dismiss memory
+      var bar=document.getElementById('ho-sticky-cta');
+      var until=parseInt(localStorage.getItem(KEY)||'0',10);
+      if(bar&&Date.now()>until){bar.hidden=false;}
+      var close=document.getElementById('ho-sticky-close');
+      if(close){close.addEventListener('click',function(){bar.hidden=true;localStorage.setItem(KEY,String(Date.now()+DAYS*864e5));track('sticky_dismiss','');});}
+      // Delegated click tracking for ALL download CTAs (sticky + existing inline + store section)
+      document.addEventListener('click',function(e){
+        var a=e.target.closest&&e.target.closest('a');
+        if(!a)return;
+        var href=a.getAttribute('href')||'';
+        var store=a.getAttribute('data-ho-store');
+        var placement=a.closest('#ho-sticky-cta')?'sticky':(a.closest('.cta-box')?'cta_box':(a.closest('.store-cta')?'store_section':'inline'));
+        if(store){track(placement,store);return;}
+        if(href.indexOf('apps.apple.com')>-1){track(placement,'ios');}
+        else if(href.indexOf('play.google.com')>-1){track(placement,'android');}
+        else if(href.indexOf('#download')>-1){track(placement,'download_anchor');}
+      },true);
+    })();
+    </script>
+    <!-- /ho-conv-cta -->
 </body>
 </html>
