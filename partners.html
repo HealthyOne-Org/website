@@ -172,7 +172,7 @@
         footer .footer-links { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem; }
         footer a { color: var(--primary-light); text-decoration: none; }
         footer a:hover { color: white; }
-    </style>
+    /*navfix*/.nav-toggle-cb{display:none}.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;margin-left:auto;background:none;border:none}.nav-burger span{width:24px;height:2px;background:var(--text-dark,#1a1a2e);border-radius:2px;transition:.25s}.nav-toggle-cb:checked~.nav-burger span:nth-child(1){transform:translateY(7px) rotate(45deg)}.nav-toggle-cb:checked~.nav-burger span:nth-child(2){opacity:0}.nav-toggle-cb:checked~.nav-burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}@media(max-width:768px){.navbar-container{flex-wrap:wrap}.nav-burger{display:flex}.nav-links{display:none!important;flex-direction:column;align-items:flex-start;width:100%;gap:0;margin-top:.5rem}.nav-toggle-cb:checked~.nav-links{display:flex!important}.nav-links li{width:100%;list-style:none}.nav-links a{display:block;padding:.7rem 0;width:100%;border-top:1px solid #f0f0f0}.nav-links a.cta-button{border-top:none;margin-top:.5rem;display:inline-block;width:auto}}</style>
 
     <!-- Microsoft Clarity -->
     <script type="text/javascript">
@@ -195,6 +195,8 @@
                 <img src="/assets/logo.png" alt="HealthyOne">
                 <span>HealthyOne</span>
             </a>
+                        <input type="checkbox" id="navToggle" class="nav-toggle-cb" aria-hidden="true">
+            <label for="navToggle" class="nav-burger" aria-label="Toggle menu"><span></span><span></span><span></span></label>
             <ul class="nav-links">
                 <li><a href="/#features">Features</a></li>
                 <li><a href="/#how-it-works">How It Works</a></li>
