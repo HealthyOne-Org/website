@@ -1681,6 +1681,17 @@
             }
         }
 
+        /* Compact GLP-1 partner cards on phones so they aren't tall skinny ribbons */
+        @media (max-width: 768px) {
+            .glp1-grid { gap: 0.7rem !important; }
+            .glp1-card { padding: 1.05rem !important; }
+            .glp1-card h3 { font-size: 1rem !important; margin-bottom: 0.3rem !important; }
+            .glp1-card > div:first-child { font-size: 0.6rem !important; padding: 0.22rem 0.5rem !important; margin-bottom: 0.55rem !important; }
+            .glp1-card p { font-size: 0.8rem !important; line-height: 1.4 !important; margin-bottom: 0.7rem !important; }
+            .glp1-card .home-affiliate-cta { font-size: 0.82rem !important; padding: 0.6rem 0.4rem !important; white-space: nowrap; }
+            .glp1-card > span:last-child { font-size: 0.66rem !important; margin-top: 0.4rem !important; }
+        }
+
         @media (max-width: 768px) {
             .hamburger {
                 display: flex;
@@ -2246,15 +2257,14 @@
             </a>
 
             <ul class="nav-links" id="navLinks">
-                <li><a href="#features">Features</a></li>
-                <li><a href="#how-it-works">How It Works</a></li>
-                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="/#features">Features</a></li>
+                <li><a href="/#how-it-works">How It Works</a></li>
+                <li><a href="/#pricing">Pricing</a></li>
                 <li><a href="/glp1-doctor.html">GLP-1</a></li>
                 <li><a href="/partners.html">Partners</a></li>
-                <!-- Finances and Respond pages moved to separate sites to keep HealthyOne focused -->
                 <li><a href="/blog">Blog</a></li>
                 <li><a href="/hardawaylabs.html">Hardaway Labs</a></li>
-                <li><a href="#download" class="cta-button">Start Free Trial</a></li>
+                <li><a href="/#download" class="cta-button">Start Free Trial</a></li>
             </ul>
 
             <div class="hamburger" id="hamburger">
@@ -2385,23 +2395,23 @@
                 <p style="color: var(--text-medium); font-size: 1.05rem; max-width: 640px; margin: 0 auto; line-height: 1.7;">GLP-1 medication drops the pounds. HealthyOne keeps you healthy doing it. Start with a vetted telehealth partner below, then track every meal, gram of protein, and heart-health marker in the app.</p>
             </div>
 
-            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; margin-bottom: 1.25rem;">
+            <div class="glp1-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; margin-bottom: 1.25rem;">
 
                 <!-- Bodybuilding Health+ — Katalys Program 1584 -->
-                <div style="background: var(--white); border: 1px solid rgba(78,205,196,0.2); border-radius: var(--card-radius); padding: 1.75rem; box-shadow: 0 8px 28px rgba(78,205,196,0.1); display: flex; flex-direction: column;">
+                <div class="glp1-card" style="background: var(--white); border: 1px solid rgba(78,205,196,0.2); border-radius: var(--card-radius); padding: 1.75rem; box-shadow: 0 8px 28px rgba(78,205,196,0.1); display: flex; flex-direction: column;">
                     <div style="display: inline-block; align-self: flex-start; background: rgba(78,205,196,0.1); color: var(--primary-dark); font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.3rem 0.75rem; border-radius: 999px; margin-bottom: 0.85rem;">GLP-1 + Longevity bundles</div>
                     <h3 style="font-size: 1.2rem; font-weight: 800; color: var(--text-dark); margin-bottom: 0.4rem;">Bodybuilding Health+</h3>
                     <p style="color: var(--text-medium); font-size: 0.92rem; line-height: 1.6; margin-bottom: 1rem; flex-grow: 1;">Compounded Semaglutide for sustainable weight loss + metabolic health. Licensed physicians, online evaluation, 1–12 month bundles. Cash-pay.</p>
-                    <a href="https://track.revoffers.com/aff_c?offer_id=1584&aff_id=12579" rel="sponsored nofollow noopener" target="_blank" class="home-affiliate-cta" data-partner="Bodybuilding Health+" style="display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: #fff; padding: 0.8rem 1.25rem; border-radius: var(--btn-radius); text-decoration: none; font-weight: 700; font-size: 0.92rem; box-shadow: 0 4px 15px rgba(78,205,196,0.3);">See Bodybuilding Health+ options →</a>
+                    <a href="https://track.revoffers.com/aff_c?offer_id=1584&aff_id=12579" rel="sponsored nofollow noopener" target="_blank" class="home-affiliate-cta" data-partner="Bodybuilding Health+" style="display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: #fff; padding: 0.8rem 1.25rem; border-radius: var(--btn-radius); text-decoration: none; font-weight: 700; font-size: 0.92rem; box-shadow: 0 4px 15px rgba(78,205,196,0.3);">See plans →</a>
                     <span style="color: var(--text-light); font-size: 0.75rem; margin-top: 0.5rem; text-align: center;">Opens bbhealthplus.com</span>
                 </div>
 
                 <!-- SHED (ShedRx) — Katalys Program 1516 -->
-                <div style="background: var(--white); border: 1px solid rgba(78,205,196,0.2); border-radius: var(--card-radius); padding: 1.75rem; box-shadow: 0 8px 28px rgba(78,205,196,0.1); display: flex; flex-direction: column;">
+                <div class="glp1-card" style="background: var(--white); border: 1px solid rgba(78,205,196,0.2); border-radius: var(--card-radius); padding: 1.75rem; box-shadow: 0 8px 28px rgba(78,205,196,0.1); display: flex; flex-direction: column;">
                     <div style="display: inline-block; align-self: flex-start; background: rgba(179,157,219,0.15); color: #6B4FA0; font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.3rem 0.75rem; border-radius: 999px; margin-bottom: 0.85rem;">Coaching + injections</div>
                     <h3 style="font-size: 1.2rem; font-weight: 800; color: var(--text-dark); margin-bottom: 0.4rem;">SHED (ShedRx)</h3>
                     <p style="color: var(--text-medium); font-size: 0.92rem; line-height: 1.6; margin-bottom: 1rem; flex-grow: 1;">Semaglutide AND Tirzepatide with ongoing health coaching included. Supplement stack for metabolic + cardiovascular support. All 50 states, cash-pay.</p>
-                    <a href="https://track.revoffers.com/SH5Vu" rel="sponsored nofollow noopener" target="_blank" class="home-affiliate-cta" data-partner="SHED (ShedRx)" style="display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: #fff; padding: 0.8rem 1.25rem; border-radius: var(--btn-radius); text-decoration: none; font-weight: 700; font-size: 0.92rem; box-shadow: 0 4px 15px rgba(78,205,196,0.3);">See SHED options →</a>
+                    <a href="https://track.revoffers.com/SH5Vu" rel="sponsored nofollow noopener" target="_blank" class="home-affiliate-cta" data-partner="SHED (ShedRx)" style="display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: #fff; padding: 0.8rem 1.25rem; border-radius: var(--btn-radius); text-decoration: none; font-weight: 700; font-size: 0.92rem; box-shadow: 0 4px 15px rgba(78,205,196,0.3);">See plans →</a>
                     <span style="color: var(--text-light); font-size: 0.75rem; margin-top: 0.5rem; text-align: center;">Opens shedrx.com</span>
                 </div>
 

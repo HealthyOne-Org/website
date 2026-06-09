@@ -12,6 +12,18 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+        /* Unified nav CTA button (added for cross-page nav consistency) */
+        .nav-links a.cta-button {
+            background: linear-gradient(135deg, var(--primary, #4ECDC4) 0%, var(--primary-dark, #1A9E94) 100%);
+            color: #fff !important;
+            padding: 0.6rem 1.3rem;
+            border-radius: var(--btn-radius, 12px);
+            text-decoration: none;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(78,205,196,0.3);
+        }
+        .nav-links a.cta-button::after { display: none !important; }
+
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
 
@@ -300,11 +312,13 @@
             </a>
             <ul class="nav-links">
                 <li><a href="/#features">Features</a></li>
+                <li><a href="/#how-it-works">How It Works</a></li>
                 <li><a href="/#pricing">Pricing</a></li>
-                <li><a href="/about.html">About</a></li>
+                <li><a href="/glp1-doctor.html">GLP-1</a></li>
+                <li><a href="/partners.html">Partners</a></li>
+                <li><a href="/blog">Blog</a></li>
                 <li><a href="/hardawaylabs.html">Hardaway Labs</a></li>
-                <li><a href="/privacy.html">Privacy</a></li>
-                <li><a href="/security.html" style="color: var(--primary-dark);">Security</a></li>
+                <li><a href="/#download" class="cta-button">Start Free Trial</a></li>
             </ul>
         </div>
     </nav>
