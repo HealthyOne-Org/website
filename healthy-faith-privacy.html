@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthy Faith &mdash; Privacy Policy</title>
+    <meta name="description" content="What Healthy Faith: Bible Study stores, what never leaves your phone, who processes it, and how to delete it.">
+    <link rel="canonical" href="https://healthyoneapp.com/healthy-faith-privacy">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        :root {
+            --primary: #4ECDC4;
+            --primary-dark: #3BA99C;
+            --primary-light: #A8E6CF;
+            --text-dark: #1A2332;
+            --text-medium: #4A5568;
+            --text-light: #718096;
+            --white: #FFFFFF;
+            --card-radius: 24px;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-dark);
+            line-height: 1.7;
+            background: var(--white);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(78,205,196,0.1);
+            padding: 0.75rem 0;
+        }
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.4rem;
+            color: var(--text-dark);
+        }
+        .logo-icon {
+            width: 44px; height: 44px;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(78,205,196,0.25);
+        }
+        .logo-icon img { width: 100%; height: 100%; object-fit: cover; }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            list-style: none;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-medium);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--primary); }
+
+        .page-hero {
+            background: linear-gradient(160deg, #E8FDF5 0%, #F0F9FF 30%, #F5F0FF 60%, #FFF5F0 100%);
+            padding: 4rem 2rem 3rem;
+            text-align: center;
+        }
+        .page-hero h1 {
+            font-size: 2.75rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            letter-spacing: -0.02em;
+            margin-bottom: 0.75rem;
+        }
+        .page-hero .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 640px;
+            margin: 0 auto 1rem;
+        }
+        .page-hero .meta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(78,205,196,0.1);
+            border: 1px solid rgba(78,205,196,0.2);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--primary-dark);
+            font-weight: 600;
+        }
+
+        .content {
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 3rem 2rem 5rem;
+        }
+
+        .lead {
+            font-size: 1rem;
+            color: var(--text-medium);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .section {
+            margin-bottom: 2.25rem;
+            padding-bottom: 2.25rem;
+            border-bottom: 1px solid #EDF2F7;
+        }
+        .section:last-child { border-bottom: none; }
+        .section h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+        .section h2 .num {
+            color: var(--primary-dark);
+            margin-right: 0.4rem;
+        }
+        .section h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-top: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+        .section p {
+            font-size: 0.97rem;
+            color: var(--text-medium);
+            margin-bottom: 0.85rem;
+            line-height: 1.8;
+        }
+        .section ol, .section ul {
+            margin-bottom: 0.85rem;
+            padding-left: 1.5rem;
+        }
+        .section li {
+            font-size: 0.97rem;
+            color: var(--text-medium);
+            margin-bottom: 0.55rem;
+            line-height: 1.7;
+        }
+        .section strong {
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+        .section a {
+            color: var(--primary-dark);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .section a:hover { text-decoration: underline; }
+
+        .callout {
+            background: #F7FFFE;
+            border: 1px solid rgba(78,205,196,0.25);
+            border-radius: 16px;
+            padding: 1.25rem 1.5rem;
+            margin: 1rem 0 1.5rem;
+        }
+        .callout h4 {
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+        }
+        .callout p { font-size: 0.93rem; margin-bottom: 0.5rem; }
+        .callout p:last-child { margin-bottom: 0; }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--primary);
+            color: white !important;
+            padding: 0.85rem 1.5rem;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-decoration: none !important;
+            box-shadow: 0 4px 12px rgba(78,205,196,0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 0.5rem;
+        }
+        .cta-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(78,205,196,0.4);
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.5rem 0 1rem;
+            font-size: 0.93rem;
+        }
+        .data-table th, .data-table td {
+            text-align: left;
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid #EDF2F7;
+        }
+        .data-table th {
+            background: #F7FFFE;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+        .data-table td {
+            color: var(--text-medium);
+        }
+
+        footer {
+            background: linear-gradient(160deg, #1A2332 0%, #0F1923 100%);
+            color: white;
+            padding: 3rem 2rem 2rem;
+        }
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+        .footer-section ul { list-style: none; }
+        .footer-section ul li { margin-bottom: 0.6rem; }
+        .footer-section a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+        .footer-section a:hover { color: var(--primary); }
+        .footer-brand p {
+            color: rgba(255,255,255,0.5);
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        .footer-slogan {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-top: 0.5rem;
+        }
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 1.5rem;
+            text-align: center;
+            color: rgba(255,255,255,0.4);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .page-hero { padding: 3rem 1.5rem 2rem; }
+            .page-hero h1 { font-size: 2rem; }
+            .content { padding: 2rem 1.25rem 3rem; }
+            .navbar-container { padding: 0 1.25rem; }
+            .nav-links { gap: 1rem; }
+            .nav-links a { font-size: 0.85rem; }
+            .footer-container { grid-template-columns: 1fr; gap: 2rem; }
+            .data-table th, .data-table td { padding: 0.6rem 0.75rem; font-size: 0.85rem; }
+        }
+    /*navfix*/.nav-toggle-cb{display:none}.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;margin-left:auto;background:none;border:none}.nav-burger span{width:24px;height:2px;background:var(--text-dark,#1a1a2e);border-radius:2px;transition:.25s}.nav-toggle-cb:checked~.nav-burger span:nth-child(1){transform:translateY(7px) rotate(45deg)}.nav-toggle-cb:checked~.nav-burger span:nth-child(2){opacity:0}.nav-toggle-cb:checked~.nav-burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}@media(max-width:768px){.navbar-container{flex-wrap:wrap}.nav-burger{display:flex}.nav-links{display:none!important;flex-direction:column;align-items:flex-start;width:100%;gap:0;margin-top:.5rem}.nav-toggle-cb:checked~.nav-links{display:flex!important}.nav-links li{width:100%;list-style:none}.nav-links a{display:block;padding:.7rem 0;width:100%;border-top:1px solid #f0f0f0}.nav-links a.cta-button{border-top:none;margin-top:.5rem;display:inline-block;width:auto}}</style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="/" class="logo">
+                <div class="logo-icon"><img src="assets/logo.png" alt="HealthyOne Logo"></div>
+                <span>HealthyOne</span>
+            </a>
+                        <input type="checkbox" id="navToggle" class="nav-toggle-cb" aria-hidden="true">
+            <label for="navToggle" class="nav-burger" aria-label="Toggle menu"><span></span><span></span><span></span></label>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/about.html">About</a></li>
+                <li><a href="/hardawaylabs.html">Hardaway Labs</a></li>
+                <li><a href="/terms.html">Terms</a></li>
+                <li><a href="/privacy.html">Privacy</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="page-hero">
+        <h1>Healthy Faith &mdash; Privacy Policy</h1>
+        <p class="subtitle">What Healthy Faith stores, what never leaves your phone, and who else ever sees it.</p>
+        <span class="meta">Last updated: August 2026</span>
+    </div>
+
+    <div class="content">
+
+        <p class="lead">
+            This policy covers <strong>Healthy Faith: Bible Study</strong>, published by Hardaway Labs LLC on the App Store and Google Play. It describes this app only. Other Hardaway Labs apps have their own policies.
+        </p>
+
+        <div class="callout">
+            <h4>The short version</h4>
+            <p>You can read the entire Bible, study any word, and write in the journal without an account and without sending us anything. Your prayer journal never leaves your phone. Sermon audio never leaves your phone. The only things that reach our servers are the requests you deliberately make &mdash; asking a question, playing narration, importing a sermon &mdash; and anonymous usage analytics.</p>
+        </div>
+
+        <div class="section">
+            <h2><span class="num">1</span> What stays on your device and is never uploaded</h2>
+            <p>These are stored in the app&rsquo;s private storage on your phone. There is no server copy, so we cannot read them, hand them over, or lose them in a breach.</p>
+            <table class="data-table">
+                <tr><th>What</th><th>Where it lives</th></tr>
+                <tr><td>Your journal &mdash; prayers, vision, prophecy, declarations, revelations, and anything you anchor to a verse</td><td>Device only</td></tr>
+                <tr><td>Sermon audio you record in the app</td><td>Device only &mdash; the recording is discarded after transcription and is never written to a file we can reach</td></tr>
+                <tr><td>Highlights, bookmarks, notes on verses, and reading position</td><td>Device only</td></tr>
+                <tr><td>The Bible text itself, including Strong&rsquo;s word study</td><td>Bundled in the app &mdash; the reader never touches the network</td></tr>
+                <tr><td>Downloaded chapter audio for offline listening</td><td>Device only</td></tr>
+            </table>
+            <p><strong>Microphone.</strong> The app asks for microphone permission so it can transcribe a sermon while you listen to it. Transcription runs on your device. The audio is never uploaded.</p>
+        </div>
+
+        <div class="section">
+            <h2><span class="num">2</span> What we receive, and only when you ask for it</h2>
+            <table class="data-table">
+                <tr><th>Feature</th><th>What is sent</th><th>What is kept</th></tr>
+                <tr><td><strong>Ask</strong> &mdash; a question about a word or a passage</td><td>Your question and the passage it is anchored to</td><td>We keep a usage record (timestamp, a rough category, token counts, and a truncated network address) so we can cap abuse and pay the bill. <strong>We do not store your question text or the answer.</strong></td></tr>
+                <tr><td><strong>Listen</strong> &mdash; narrated scripture</td><td>The scripture text to be spoken</td><td>The generated audio is cached on our servers so the next listener does not pay to regenerate it. Because the text is the same public scripture for everyone, this cache is not personal to you. We log the character count and a one-way hash of your network address to detect runaway cost.</td></tr>
+                <tr><td><strong>Sermon notes</strong> &mdash; from a link you paste</td><td>The link you paste. For a link, the audio is fetched and transcribed on our servers.</td><td>The transcript and generated notes are stored on our servers along with the requesting network address. See retention below.</td></tr>
+                <tr><td><strong>Reading challenges shared by code</strong></td><td>The plan you chose to share</td><td>The shared plan, so whoever you invited can open it</td></tr>
+                <tr><td><strong>Subscriptions</strong></td><td>Purchase receipts, handled by Apple or Google</td><td>Entitlement status and an anonymous subscriber ID</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2><span class="num">3</span> Accounts</h2>
+            <p>Healthy Faith works fully without an account, and the current release does not offer sign-in. If a future version adds accounts, it will collect your email address and, only if you tick the box, a marketing opt-in. This policy will be updated before that ships, and the in-app journal notice will change at the same time.</p>
+        </div>
+
+        <div class="section">
+            <h2><span class="num">4</span> Analytics and diagnostics</h2>
+            <p>We measure how the app is used so we can fix what is broken and build what people actually open. This is anonymous and pseudonymous: an app-generated random identifier, never your name or email.</p>
+            <p><strong>We never put your content into an analytics event.</strong> No verse text, no prayer text, no question text, no sermon text. Events carry references, counts, and categories &mdash; for example &ldquo;a chapter was opened&rdquo; or &ldquo;a question failed&rdquo; &mdash; never what you wrote or read.</p>
+            <p>You can turn analytics off in <strong>Settings &rarr; Privacy</strong>. When you do, the app stops sending events and clears its analytics identity.</p>
+        </div>
+
+        <div class="section">
+            <h2><span class="num">5</span> Companies that process data for us</h2>
+            <p>We use these providers strictly to deliver the features above. They act on our instructions and may not use your data for their own purposes.</p>
+            <table class="data-table">
+                <tr><th>Provider</th><th>What it does</th></tr>
+                <tr><td>Supabase</td><td>Our database, storage, and server functions</td></tr>
+                <tr><td>Google Cloud (Vertex AI)</td><td>Generates Ask answers and sermon notes</td></tr>
+                <tr><td>ElevenLabs</td><td>Generates the narration audio</td></tr>
+                <tr><td>Deepgram</td><td>Transcribes sermon audio fetched from a link you paste</td></tr>
+                <tr><td>Supadata</td><td>Retrieves transcripts for video links you paste</td></tr>
+                <tr><td>PostHog</td><td>Product analytics</td></tr>
+                <tr><td>RevenueCat</td><td>Subscription and entitlement management</td></tr>
+                <tr><td>AppsFlyer</td><td>Measures which advert an install came from, using Apple&rsquo;s privacy-preserving attribution. The app shows no tracking prompt and does not read your advertising identifier.</td></tr>
+                <tr><td>Apple / Google</td><td>Payments and app distribution</td></tr>
+            </table>
+            <p>We do not sell your data. We do not share it with advertisers. We do not use it to build a profile of you.</p>
+        </div>
+
+        <div class="section">
+            <h2><span class="num">6</span> How long we keep things</h2>
+            <table class="data-table">
+                <tr><th>What</th><th>Kept for</th></tr>
+                <tr><td>Sermon transcripts and generated notes</td><td>Until you delete them. You can remove any sermon in the app; ask us and we will delete the server copy.</td></tr>
+                <tr><td>Ask usage records (no question text)</td><td>Rolling, for abuse and cost control</td></tr>
+                <tr><td>Narration usage records (character counts, hashed address)</td><td>Rolling, for cost control</td></tr>
+                <tr><td>Generated narration audio</td><td>Indefinitely &mdash; it is public scripture, identical for every listener, and not linked to you</td></tr>
+                <tr><td>Billing records</td><td>As long as tax and accounting law requires</td></tr>
+                <tr><td>Anonymous analytics</td><td>Indefinitely, in a form that cannot be tied back to you</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2><span class="num">7</span> Your choices and your rights</h2>
+            <p><strong>Delete everything on this device.</strong> <strong>Settings &rarr; Privacy &rarr; Delete my data</strong> erases the journal, sermons, highlights, bookmarks, reading history, and challenge progress from your phone, and resets your analytics identity.</p>
+            <p><strong>Delete what we hold.</strong> See the <a href="/healthy-faith-account-deletion">Healthy Faith account &amp; data deletion page</a>, or email us. We confirm by email when it is done.</p>
+            <p><strong>Turn off analytics.</strong> Settings &rarr; Privacy.</p>
+            <p>Depending on where you live you may also have the right to access, correct, or export your data, and to object to processing. Email us and we will honour it &mdash; we do not ask which country you are in first.</p>
+        </div>
+
+        <div class="section">
+            <h2><span class="num">8</span> Children</h2>
+            <p>Healthy Faith is intended for adults. We do not knowingly collect personal information from children under 13. If you believe a child has provided us with personal information, email us and we will delete it.</p>
+        </div>
+
+        <div class="section">
+            <h2><span class="num">9</span> Spiritual and emotional content</h2>
+            <p>Healthy Faith includes guided paths for hard seasons, and the app can show crisis resources when it detects distress in something you write or ask. That detection runs to keep you safe. <strong>It is never used for advertising, recommendations, or personalization</strong>, and it is covered by the deletion options above.</p>
+            <p>The app is not counselling, therapy, or medical care, and nothing in it is a substitute for a professional or for your church.</p>
+        </div>
+
+        <div class="section">
+            <h2><span class="num">10</span> Changes</h2>
+            <p>If we change how we handle your data we will update this page and its date. Material changes &mdash; anything that means we start collecting something we did not collect before &mdash; will be announced in the app before they take effect.</p>
+        </div>
+
+        <div class="section">
+            <h2><span class="num">11</span> Contact</h2>
+            <p>Hardaway Labs LLC &mdash; <a href="mailto:support@healthyoneapp.com">support@healthyoneapp.com</a></p>
+            <p><a class="cta-btn" href="mailto:support@healthyoneapp.com?subject=Healthy%20Faith%20Privacy%20Question">Email us a privacy question</a></p>
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section footer-brand">
+                <a href="/" class="logo" style="color: white;">
+                    <div class="logo-icon"><img src="assets/logo.png" alt="HealthyOne Logo"></div>
+                    <span>HealthyOne</span>
+                </a>
+                <div class="footer-slogan">Be In Good Health</div>
+                <p>AI-powered nutrition tracking made simple. Track your meals, discover recipes, and achieve your health goals.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="/#features">Features</a></li>
+                    <li><a href="/#pricing">Pricing</a></li>
+                    <li><a href="/#faq">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="/about.html">About Us</a></li>
+                    <li><a href="/hardawaylabs.html">Hardaway Labs</a></li>
+                    <li><a href="/privacy.html">Privacy Policy</a></li>
+                    <li><a href="/terms.html">Terms of Service</a></li>
+                    <li><a href="/security.html">Security</a></li>
+                    <li><a href="/account-deletion.html">Delete Account</a></li>
+                    <li><a href="mailto:support@healthyoneapp.com">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Hardaway Labs LLC. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
+
+</body>
+</html>
