@@ -2,16 +2,47 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-    { "source": "/home", "destination": "/", "permanent": true },
-    { "source": "/freeguide", "destination": "/assets/superfoods-guide.pdf", "permanent": true },
-    { "source": "/home/freeguide", "destination": "/assets/superfoods-guide.pdf", "permanent": true }
+    {
+      "source": "/home",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/freeguide",
+      "destination": "/assets/superfoods-guide.pdf",
+      "permanent": true
+    },
+    {
+      "source": "/home/freeguide",
+      "destination": "/assets/superfoods-guide.pdf",
+      "permanent": true
+    }
   ],
   "headers": [
     {
       "source": "/.well-known/assetlinks.json",
       "headers": [
-        { "key": "Content-Type", "value": "application/json" },
-        { "key": "Cache-Control", "value": "public, max-age=300" }
+        {
+          "key": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=300"
+        }
+      ]
+    },
+    {
+      "source": "/.well-known/apple-app-site-association",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=300"
+        }
       ]
     }
   ]

@@ -9,5 +9,17 @@
         "A3:01:34:89:FA:D3:5B:63:77:DA:7E:A8:E9:00:7C:58:C8:F8:60:19:1C:04:87:3D:A4:2B:99:81:0D:D3:83:05"
       ]
     }
+  },
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.healthyone.healthyfaith",
+      "sha256_cert_fingerprints": [
+        "62:F1:EE:97:5E:1C:17:5D:46:60:F7:37:31:BB:FA:66:18:CC:A9:AA:35:F8:29:CF:56:7C:02:91:47:82:C2:92",
+        "D7:40:88:FF:0F:CB:FA:93:E1:D8:C0:E2:62:D5:23:06:91:DF:47:D6:49:89:4F:CD:11:58:2A:04:79:E1:98:D8",
+        "51:8D:22:30:A9:52:56:4F:70:59:6C:F3:9C:72:1E:2A:68:11:86:7F:60:8E:61:9D:6A:50:25:0F:30:4C:D3:70"
+      ]
+    }
   }
 ]

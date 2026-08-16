@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Join a reading plan &mdash; Healthy Faith</title>
+<meta name="description" content="Someone shared a Bible reading plan with you on Healthy Faith. Open it in the app, or get Healthy Faith free for iPhone or Android.">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+/* Healthy Faith tokens — docs/design-system.md. Paper, ink, one warm accent. */
+:root{
+  --bg-page:#FAF6F0; --bg-card:#FFFFFF; --bg-muted:#F2ECE2;
+  --ink-primary:#1F1A15; --ink-secondary:#6B6258; --ink-tertiary:#A39A8E;
+  --rule:#E9E1D3; --accent:#B8603C; --accent-ink:#FFFFFF;
+  --shadow:0 1px 2px rgba(31,26,21,.04),0 12px 32px rgba(31,26,21,.07);
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg-page:#1A1714; --bg-card:#241F1A; --bg-muted:#2E2822;
+    --ink-primary:#F0E8DC; --ink-secondary:#B8AEA0; --ink-tertiary:#7A7164;
+    --rule:#3A332C; --accent:#D87A5C; --accent-ink:#1A1714;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 12px 32px rgba(0,0,0,.35);
+  }
+}
+
+body{
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  background:var(--bg-page); color:var(--ink-primary);
+  line-height:1.6; -webkit-font-smoothing:antialiased;
+  min-height:100vh; display:flex; align-items:center; justify-content:center;
+  padding:1.5rem;
+}
+
+.card{
+  width:100%; max-width:29rem; background:var(--bg-card);
+  border:1px solid var(--rule); border-radius:26px;
+  box-shadow:var(--shadow); padding:2.75rem 2rem 2rem;
+}
+
+.brand{
+  display:flex; align-items:center; justify-content:center; gap:.6rem;
+  font-size:.75rem; font-weight:600; letter-spacing:.18em;
+  color:var(--ink-tertiary); text-transform:uppercase; margin-bottom:2.25rem;
+}
+.brand svg{width:22px;height:22px;fill:var(--accent);flex:none}
+
+.eyebrow{
+  font-size:.7rem; font-weight:600; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--accent); text-align:center;
+  margin-bottom:.75rem;
+}
+h1{
+  font-family:'Literata',Georgia,serif; font-weight:400;
+  font-size:2.1rem; line-height:1.2; text-align:center;
+  letter-spacing:-.01em; margin-bottom:.85rem;
+}
+.lede{
+  text-align:center; color:var(--ink-secondary);
+  font-size:1.02rem; margin-bottom:2rem;
+}
+
+.btn{
+  display:block; width:100%; text-align:center; text-decoration:none;
+  font-weight:600; font-size:1.02rem; padding:1.05rem 1.25rem;
+  border-radius:15px; border:1px solid transparent; cursor:pointer;
+  font-family:inherit; transition:transform .12s ease,opacity .12s ease;
+}
+.btn:active{transform:scale(.985)}
+.btn-primary{background:var(--accent); color:var(--accent-ink)}
+.btn-secondary{
+  background:var(--bg-muted); color:var(--ink-primary);
+  border-color:var(--rule); margin-top:.65rem;
+}
+
+.code-block{
+  margin-top:1.5rem; padding:1.1rem; border-radius:15px;
+  background:var(--bg-muted); border:1px solid var(--rule); text-align:center;
+}
+.code-label{
+  font-size:.7rem; font-weight:600; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--ink-tertiary); margin-bottom:.4rem;
+}
+.code-value{
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:1.7rem; font-weight:600; letter-spacing:.16em;
+  color:var(--ink-primary);
+}
+
+.divider{
+  display:flex; align-items:center; gap:.9rem;
+  margin:2rem 0 1.35rem; color:var(--ink-tertiary);
+  font-size:.72rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase;
+}
+.divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--rule)}
+
+.stores{display:grid;grid-template-columns:1fr 1fr;gap:.65rem}
+.store{
+  display:flex; flex-direction:column; align-items:center; gap:.3rem;
+  padding:.95rem .5rem; border-radius:14px; text-decoration:none;
+  background:var(--bg-muted); border:1px solid var(--rule);
+  color:var(--ink-primary); font-size:.95rem; font-weight:600;
+}
+.store span{font-size:.68rem;font-weight:500;color:var(--ink-tertiary)}
+
+.howto{
+  margin-top:1.5rem; padding-top:1.35rem; border-top:1px solid var(--rule);
+  font-size:.87rem; color:var(--ink-secondary);
+}
+.howto strong{color:var(--ink-primary);font-weight:600}
+
+.footer{
+  text-align:center; margin-top:1.5rem;
+  font-size:.75rem; color:var(--ink-tertiary);
+}
+.footer a{color:var(--ink-tertiary)}
+
+@media (max-width:380px){
+  .card{padding:2rem 1.35rem 1.5rem}
+  h1{font-size:1.75rem}
+  .stores{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<main class="card">
+  <div class="brand">
+    <!-- Dove, matching the app mark -->
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 4.5c-1.6.9-3.1 1.2-4.6 1-.9-.8-2-1.2-3.2-1.2C10.8 4.3 9 6.1 9 8.4c0 .3 0 .6.1.9C6.4 9.1 4.1 7.7 2.5 5.6c-.3.6-.5 1.2-.5 1.9 0 1.4.7 2.7 1.8 3.4-.6 0-1.2-.2-1.7-.5 0 2 1.4 3.6 3.2 4-.3.1-.7.2-1.1.2-.3 0-.5 0-.8-.1.5 1.6 2 2.8 3.8 2.8-1.4 1.1-3.1 1.7-5 1.7H1c1.8 1.2 4 1.9 6.3 1.9 7.5 0 11.7-6.4 11.7-12v-.5C19.8 7.6 20.5 6.9 21 6c-.7.3-1.4.5-2.2.6.8-.5 1.4-1.2 1.7-2.1z"/></svg>
+    Healthy Faith
+  </div>
+
+  <p class="eyebrow" id="eyebrow">You've been invited</p>
+  <h1 id="headline">Join the reading plan</h1>
+  <p class="lede" id="lede">Open it in Healthy Faith and the whole plan drops into your challenges.</p>
+
+  <a class="btn btn-primary" id="open-btn" href="#">Open in Healthy Faith</a>
+  <button class="btn btn-secondary" id="copy-btn" type="button">Copy invite link</button>
+
+  <div class="code-block" id="code-block" hidden>
+    <div class="code-label">Invite code</div>
+    <div class="code-value" id="code-value"></div>
+  </div>
+
+  <div class="divider">Don't have it yet?</div>
+
+  <div class="stores">
+    <a class="store" href="https://apps.apple.com/app/id6781374849?ct=challenge_invite">
+      iPhone <span>App Store</span>
+    </a>
+    <a class="store" href="https://play.google.com/store/apps/details?id=com.healthyone.healthyfaith&referrer=utm_source%3Dchallenge_invite">
+      Android <span>Google Play</span>
+    </a>
+  </div>
+
+  <p class="howto" id="howto">
+    It's free &mdash; KJV, audio Bible and Strong's. After installing, tap
+    <strong>Copy invite link</strong> above, open Healthy Faith, and go to
+    <strong>Challenges &rarr; the invite link row</strong> to paste it in.
+  </p>
+
+  <p class="footer"><a href="/privacy.html">Privacy</a> &middot; <a href="/terms.html">Terms</a></p>
+</main>
+
+<script>
+(function () {
+  // Only ever trust a code shaped like one the codec emits: the short service
+  // code (A7K9Q2) or a long inline z…/r… payload. Anything else is dropped
+  // rather than reflected into the page or a URL.
+  var raw = new URLSearchParams(window.location.search).get('c') || '';
+  var code = /^[A-Za-z0-9_-]{4,4096}$/.test(raw) ? raw : '';
+
+  var openBtn = document.getElementById('open-btn');
+  var copyBtn = document.getElementById('copy-btn');
+
+  if (!code) {
+    // Landed here without an invite — don't dangle dead controls.
+    document.getElementById('eyebrow').textContent = 'Reading plans';
+    document.getElementById('headline').textContent = 'Healthy Faith';
+    document.getElementById('lede').textContent =
+      'This page opens a shared reading plan. Ask whoever invited you to resend their link.';
+    document.getElementById('howto').innerHTML =
+      "It's free &mdash; KJV, audio Bible and Strong's.";
+    openBtn.remove();
+    copyBtn.remove();
+    return;
+  }
+
+  // The custom scheme is registered on both platforms and always reaches the
+  // app, so it works on Android whether or not App Links have verified.
+  openBtn.href = 'healthyfaith://join?c=' + encodeURIComponent(code);
+
+  // Short service codes are worth showing; a long inline payload is not.
+  if (code.length <= 12) {
+    document.getElementById('code-value').textContent = code;
+    document.getElementById('code-block').hidden = false;
+  }
+
+  // The app's paste handler parses a URL, so copy the link — not the bare code.
+  var inviteLink = 'https://healthyoneapp.com/hf/join?c=' + encodeURIComponent(code);
+  copyBtn.addEventListener('click', function () {
+    var done = function () {
+      copyBtn.textContent = 'Copied — now paste it in the app';
+      setTimeout(function () { copyBtn.textContent = 'Copy invite link'; }, 2600);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(inviteLink).then(done, fallback);
+    } else {
+      fallback();
+    }
+    function fallback() {
+      var f = document.createElement('textarea');
+      f.value = inviteLink;
+      f.setAttribute('readonly', '');
+      f.style.position = 'fixed';
+      f.style.opacity = '0';
+      document.body.appendChild(f);
+      f.select();
+      try { document.execCommand('copy'); done(); }
+      catch (e) { copyBtn.textContent = inviteLink; }
+      document.body.removeChild(f);
+    }
+  });
+})();
+</script>
+</body>
+</html>
