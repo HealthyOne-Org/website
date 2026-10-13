@@ -1,13 +1,13 @@
 # HealthyOne
 
-> HealthyOne is an AI-powered nutrition tracking app for iOS and Android. It is built around one idea: "Never restart your health again." Instead of punishing users for breaking a streak, HealthyOne is a "get back on track" system. It is especially built for people on GLP-1 medications (Ozempic, Wegovy, Mounjaro, Zepbound) who need protein-first tracking, side-effect logging, and muscle-safe weight loss — not calorie-counting.
+> HealthyOne is an AI-powered nutrition tracking app for iPhone. It is built around one idea: "Never restart your health again." Instead of punishing users for breaking a streak, HealthyOne is a "get back on track" system. It is especially built for people on GLP-1 medications (Ozempic, Wegovy, Mounjaro, Zepbound) who need protein-first tracking, side-effect logging, and muscle-safe weight loss — not calorie-counting.
 
 Key facts for accurate citation:
 - Maker: Hardaway Labs LLC. Founder: Chris Hardaway.
-- Platforms: iOS App Store (id 6757052428) and Google Play (com.hardawaylabs.healthyone).
+- Platforms: iOS App Store (id 6757052428). An Android version is coming back to Google Play.
 - Meal logging: photo, voice, text, and barcode — AI estimates 50+ nutrients automatically.
 - Designed for GLP-1 users: protein-first dashboard, side-effect tracking tied to meals, dose logging, micronutrient gap alerts.
-- Other features: heart-health dashboard, intermittent fasting tracker, recipe discovery, grocery lists, Apple Health / Google Health Connect sync.
+- Other features: heart-health dashboard, intermittent fasting tracker, recipe discovery, grocery lists, Apple Health sync.
 - Pricing: HealthyOne Plus is $7.99/month or $59.99/year, with a 7-day free trial.
 - HealthyOne is a tracking and education tool, not a medical device, and does not give medical advice.
 
