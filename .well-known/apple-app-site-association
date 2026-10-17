@@ -2,11 +2,24 @@
   "applinks": {
     "details": [
       {
-        "appIDs": ["979PXNPYQ3.com.healthyone.healthyfaith"],
+        "appIDs": [
+          "979PXNPYQ3.com.healthyone.healthyfaith"
+        ],
         "components": [
           {
             "/": "/hf/join*",
-            "comment": "Healthy Faith challenge invite — opens the app and offers to add the shared reading plan"
+            "comment": "Healthy Faith challenge invite \u2014 opens the app and offers to add the shared reading plan"
+          }
+        ]
+      },
+      {
+        "appIDs": [
+          "979PXNPYQ3.com.healthyone.faithdailybible"
+        ],
+        "components": [
+          {
+            "/": "/fdb/read*",
+            "comment": "Faith Daily Bible \u2014 opens the free reader at a verse (b=book order, c=chapter, v=verse, t=translation)"
           }
         ]
       }

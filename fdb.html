@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<title>Faith Daily Bible &mdash; the whole Bible, free. NIV, NLT, NKJV.</title>
+<meta name="description" content="Faith Daily Bible is a free Bible app with NIV, NLT, NKJV and more. Daily verse, reading plans, no ads, no account, nothing to buy. From the makers of Healthy Faith.">
+<meta property="og:title" content="Faith Daily Bible &mdash; the whole Bible, free">
+<meta property="og:description" content="NIV, NLT, NKJV and more. Daily verse and reading plans. No ads, no account, nothing to buy.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.healthyoneapp.com/fdb">
+<link rel="canonical" href="https://www.healthyoneapp.com/fdb">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+/* Healthy Faith tokens — docs/design-system.md. Paper, ink, one warm accent. */
+:root{
+  --bg-page:#FAF6F0; --bg-card:#FFFFFF; --bg-muted:#F2ECE2;
+  --ink-primary:#1F1A15; --ink-secondary:#6B6258; --ink-tertiary:#A39A8E;
+  --rule:#E9E1D3; --accent:#B8603C; --accent-ink:#FFFFFF;
+  --shadow:0 1px 2px rgba(31,26,21,.04),0 12px 32px rgba(31,26,21,.07);
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg-page:#1A1714; --bg-card:#241F1A; --bg-muted:#2E2822;
+    --ink-primary:#F0E8DC; --ink-secondary:#B8AEA0; --ink-tertiary:#7A7164;
+    --rule:#3A332C; --accent:#D87A5C; --accent-ink:#1A1714;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 12px 32px rgba(0,0,0,.35);
+  }
+}
+
+body{
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  background:var(--bg-page); color:var(--ink-primary);
+  line-height:1.6; -webkit-font-smoothing:antialiased;
+  min-height:100vh; display:flex; align-items:center; justify-content:center;
+  padding:1.5rem;
+}
+
+.card{
+  width:100%; max-width:29rem; background:var(--bg-card);
+  border:1px solid var(--rule); border-radius:26px;
+  box-shadow:var(--shadow); padding:2.75rem 2rem 2rem;
+}
+
+.brand{
+  display:flex; align-items:center; justify-content:center; gap:.6rem;
+  font-size:.75rem; font-weight:600; letter-spacing:.18em;
+  color:var(--ink-tertiary); text-transform:uppercase; margin-bottom:2.25rem;
+}
+.brand svg{width:22px;height:22px;fill:var(--accent);flex:none}
+
+.eyebrow{
+  font-size:.7rem; font-weight:600; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--accent); text-align:center;
+  margin-bottom:.75rem;
+}
+h1{
+  font-family:'Literata',Georgia,serif; font-weight:400;
+  font-size:2.1rem; line-height:1.2; text-align:center;
+  letter-spacing:-.01em; margin-bottom:.85rem;
+}
+.lede{
+  text-align:center; color:var(--ink-secondary);
+  font-size:1.02rem; margin-bottom:2rem;
+}
+
+.btn{
+  display:block; width:100%; text-align:center; text-decoration:none;
+  font-weight:600; font-size:1.02rem; padding:1.05rem 1.25rem;
+  border-radius:15px; border:1px solid transparent; cursor:pointer;
+  font-family:inherit; transition:transform .12s ease,opacity .12s ease;
+}
+.btn:active{transform:scale(.985)}
+.btn-primary{background:var(--accent); color:var(--accent-ink)}
+.btn-secondary{
+  background:var(--bg-muted); color:var(--ink-primary);
+  border-color:var(--rule); margin-top:.65rem;
+}
+
+.code-block{
+  margin-top:1.5rem; padding:1.1rem; border-radius:15px;
+  background:var(--bg-muted); border:1px solid var(--rule); text-align:center;
+}
+.code-label{
+  font-size:.7rem; font-weight:600; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--ink-tertiary); margin-bottom:.4rem;
+}
+.code-value{
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:1.7rem; font-weight:600; letter-spacing:.16em;
+  color:var(--ink-primary);
+}
+
+.divider{
+  display:flex; align-items:center; gap:.9rem;
+  margin:2rem 0 1.35rem; color:var(--ink-tertiary);
+  font-size:.72rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase;
+}
+.divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--rule)}
+
+.stores{display:grid;grid-template-columns:1fr 1fr;gap:.65rem}
+.store{
+  display:flex; flex-direction:column; align-items:center; gap:.3rem;
+  padding:.95rem .5rem; border-radius:14px; text-decoration:none;
+  background:var(--bg-muted); border:1px solid var(--rule);
+  color:var(--ink-primary); font-size:.95rem; font-weight:600;
+}
+.store span{font-size:.68rem;font-weight:500;color:var(--ink-tertiary)}
+
+.howto{
+  margin-top:1.5rem; padding-top:1.35rem; border-top:1px solid var(--rule);
+  font-size:.87rem; color:var(--ink-secondary);
+}
+.howto strong{color:var(--ink-primary);font-weight:600}
+
+.footer{
+  text-align:center; margin-top:1.5rem;
+  font-size:.75rem; color:var(--ink-tertiary);
+}
+.footer a{color:var(--ink-tertiary)}
+
+@media (max-width:380px){
+  .card{padding:2rem 1.35rem 1.5rem}
+  h1{font-size:1.75rem}
+  .stores{grid-template-columns:1fr}
+}
+</style>
+<style>
+.brand svg{fill:none;stroke:var(--accent);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.versions{display:flex;flex-wrap:wrap;gap:.45rem;justify-content:center;margin:0 0 1.75rem}
+.versions span{font-size:.72rem;font-weight:600;letter-spacing:.08em;padding:.3rem .6rem;border-radius:999px;background:var(--bg-muted);border:1px solid var(--rule);color:var(--ink-secondary)}
+.btn[aria-disabled="true"]{opacity:.55;pointer-events:none}
+.promise{margin-top:1.5rem;padding-top:1.35rem;border-top:1px solid var(--rule);font-size:.87rem;color:var(--ink-secondary)}
+.promise strong{color:var(--ink-primary);font-weight:600}
+.ref{font-family:'Literata',Georgia,serif;font-size:1.35rem;text-align:center;color:var(--ink-primary);margin:-.5rem 0 1.5rem}
+</style>
+</head>
+<body>
+<main class="card">
+  <div class="brand"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5.5c2.5-1.2 5-1.2 9 .8 4-2 6.5-2 9-.8v13c-2.5-1.2-5-1.2-9 .8-4-2-6.5-2-9-.8z"/><path d="M12 6.3v13"/></svg>Faith Daily Bible</div>
+
+  <p class="eyebrow">Free. No ads. No account.</p>
+  <h1>The whole Bible, in the translation you actually read.</h1>
+  <p class="lede">A verse for today, a chapter a day, and nothing in the way.</p>
+
+  <div class="versions">
+    <span>NIV</span><span>NLT</span><span>NKJV</span><span>BSB</span><span>KJV</span><span>RVR 1909</span>
+  </div>
+
+  <a class="btn btn-primary" id="ios-btn" href="#" aria-disabled="true">Coming soon to the App Store</a>
+  <a class="btn btn-secondary" id="android-btn" href="#" aria-disabled="true">Coming soon to Google Play</a>
+
+  <p class="promise">
+    <strong>It stays free.</strong> Faith Daily Bible is a reader, not a store. There is nothing to buy and nothing to unlock.
+    Want sermon notes, word study, Ask, and audio? Those live in <a href="/healthy-faith" style="color:var(--accent)">Healthy Faith</a>, by the same team, and the two apps hand off to each other at the verse you're on.
+  </p>
+
+  <p class="footer"><a href="/privacy.html">Privacy</a> &middot; <a href="/terms.html">Terms</a> &middot; <a href="/hardawaylabs.html">Hardaway Labs</a></p>
+</main>
+<script>
+(function () {
+  // Fill these in when the listings go live; the buttons wake up on their own.
+  var IOS = '';      // e.g. 'https://apps.apple.com/app/id0000000000?ct=web'
+  var ANDROID = '';  // e.g. 'https://play.google.com/store/apps/details?id=com.healthyone.faithdailybible'
+  function arm(id, href, label) {
+    var a = document.getElementById(id);
+    if (!href) return;
+    a.href = href; a.textContent = label; a.removeAttribute('aria-disabled');
+  }
+  arm('ios-btn', IOS, 'Download on the App Store');
+  arm('android-btn', ANDROID, 'Get it on Google Play');
+})();
+</script>
+</body>
+</html>
