@@ -163,7 +163,9 @@ h1{
 (function () {
   var BOOKS = ["Genesis", "Exodus", "Leviticus", "Numbers", "Deuteronomy", "Joshua", "Judges", "Ruth", "1 Samuel", "2 Samuel", "1 Kings", "2 Kings", "1 Chronicles", "2 Chronicles", "Ezra", "Nehemiah", "Esther", "Job", "Psalms", "Proverbs", "Ecclesiastes", "Song of Solomon", "Isaiah", "Jeremiah", "Lamentations", "Ezekiel", "Daniel", "Hosea", "Joel", "Amos", "Obadiah", "Jonah", "Micah", "Nahum", "Habakkuk", "Zephaniah", "Haggai", "Zechariah", "Malachi", "Matthew", "Mark", "Luke", "John", "Acts", "Romans", "1 Corinthians", "2 Corinthians", "Galatians", "Ephesians", "Philippians", "Colossians", "1 Thessalonians", "2 Thessalonians", "1 Timothy", "2 Timothy", "Titus", "Philemon", "Hebrews", "James", "1 Peter", "2 Peter", "1 John", "2 John", "3 John", "Jude", "Revelation"];
   var T = {niv:'NIV', nlt:'NLT', nkjv:'NKJV', bsb:'BSB', kjv:'KJV', rvr:'RVR 1909'};
-  var IOS = '';      // store link once live
+  var IOS = 'https://apps.apple.com/app/id6823939937?ct=verse_share';
+  // Flip to true the day the App Store listing is approved — the page 404s on Apple's side until then.
+  var IOS_LIVE = false;
   var ANDROID = '';
   var q = new URLSearchParams(window.location.search);
   function int(k, lo, hi) { var n = parseInt(q.get(k) || '', 10); return (n >= lo && n <= hi) ? n : 0; }
@@ -188,7 +190,7 @@ h1{
     if (!href) return;
     a.href = href; a.textContent = label; a.removeAttribute('aria-disabled');
   }
-  arm('ios-btn', IOS, 'Download on the App Store');
+  arm('ios-btn', IOS_LIVE ? IOS : '', 'Download on the App Store');
   arm('android-btn', ANDROID, 'Get it on Google Play');
 })();
 </script>
