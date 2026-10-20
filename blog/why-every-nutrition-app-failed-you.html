@@ -76,6 +76,11 @@
         posthog.init('phc_jbeSYaK5OAsl5qbZbnsJYU3N3m5258lEZbVWoLWxPWo', {api_host: 'https://us.i.posthog.com', person_profiles: 'identified_only'});
     </script>
     <!-- /PostHog Analytics -->
+
+<style>/* nav-compress: the nav needs ~1050px for its links; between the phone breakpoint (820px) and 1100px reuse the burger menu. 2026-10-19 */
+.logo{white-space:nowrap;flex-shrink:0}.nav-links a{white-space:nowrap}
+@media (max-width:1100px){.nav-burger{display:flex}.nav-links{display:none;flex-direction:column;align-items:flex-start;width:100%;gap:0;margin-top:.6rem}.nav-toggle-cb:checked~.nav-links{display:flex}.nav-links a{padding:.7rem 0;width:100%;font-size:1rem;border-top:1px solid #f0f0f0}.nav-links a.btn-primary{margin-top:.5rem;border-top:none;width:auto;text-align:center}.nav-toggle-cb:checked~.nav-burger span:nth-child(1){transform:translateY(7px) rotate(45deg)}.nav-toggle-cb:checked~.nav-burger span:nth-child(2){opacity:0}.nav-toggle-cb:checked~.nav-burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}}
+</style>
 </head>
 <body>
     <nav class="nav">
