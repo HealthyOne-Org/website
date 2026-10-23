@@ -33,6 +33,18 @@ Vercel deploys `main` automatically (1–2 min). The copy of the site inside
 the HealthyOnePlus repo (`HardawayLabs/Healthyone/website`) does **not**
 deploy — see DO-NOT-EDIT-THIS-COPY.md there.
 
+## How the scheduled task pushes (since 2026-10-23)
+The cloud session has no credential for this repo (git proxy 403), so the
+task exports the commit as a patch and pushes **from Chris's Mac**: it
+reads `GH_TOKEN` from `HardawayLabs/Keys/.env.github` with device_bash,
+clones with the token in the URL (`https://x-access-token:$T@github.com/…`;
+`-c http.extraheader` does not survive the Mac VM proxy), `git am`s the
+patch and pushes `HEAD:main`. The token never leaves the Mac. Rotating or
+revoking that token, or the Mac being offline at 8:51 AM ET, breaks
+publishing — the run then queues files under `_publish_queue/` and says why.
+Verify production with `curl -s -o /dev/null -w "%{http_code}"`, not
+`curl -sI | head -1` (that line is the proxy's CONNECT reply).
+
 ## Editorial standard (what the winners have in common)
 - Title names the drug(s) and the format: "The Wegovy Food List: What to Eat
   (and Avoid)…", "GLP-1 Snacks: 25 Snacks That…"; year in title; 55–70 chars.
