@@ -129,6 +129,15 @@
             <p>The Zepbound rule of thumb: protein first, plants second, everything else only if there's room. Your appetite is now a small budget — spend it like one.</p>
         </div>
 
+        <!-- ho-mid-cta -->
+        <div class="cta-box ho-mid-cta">
+            <h3>Turn this Zepbound food list into your daily plan</h3>
+            <p>Snap a photo of any meal from this list and HealthyOne logs it in seconds, then shows your protein against your daily target so you know what to eat next. GLP-1 mode built for Ozempic, Wegovy, Mounjaro and Zepbound users. Free for 7 days.</p>
+            <a data-ho-store="ios" rel="nofollow noopener" href="https://apps.apple.com/us/app/healthyone-nutrition-tracker/id6757052428?pt=128318750&amp;ct=web_blog_mid&amp;mt=8" style="display:inline-block;background:white;color:#059669;padding:.7rem 1.4rem;border-radius:10px;font-weight:700;text-decoration:none;margin:.3rem">App Store</a>
+            <a data-ho-store="android" rel="nofollow noopener" href="https://play.google.com/store/apps/details?id=com.hardawaylabs.healthyone&amp;referrer=utm_source%3Dweb_blog_mid" style="display:inline-block;background:white;color:#059669;padding:.7rem 1.4rem;border-radius:10px;font-weight:700;text-decoration:none;margin:.3rem">Get it on Google Play</a>
+        </div>
+        <!-- /ho-mid-cta -->
+
         <h2>Foods to Limit or Skip</h2>
 
         <p>Nothing is banned forever, but these are the most common trouble-makers, especially during dose-increase weeks:</p>
@@ -180,7 +189,8 @@
         <div class="cta-box">
             <h3>Eat like Zepbound is working with you, not against you</h3>
             <p>Photo, voice, text, or barcode meal logging in seconds. Protein-first dashboard, 50+ nutrients, GLP-1 support. 7-day free trial, then $7.99/month.</p>
-            <a href="/#download">Try HealthyOne Free</a>
+            <a data-ho-store="ios" rel="nofollow noopener" href="https://apps.apple.com/us/app/healthyone-nutrition-tracker/id6757052428?pt=128318750&amp;ct=web_blog&amp;mt=8" style="display:inline-block;background:white;color:#059669;padding:.7rem 1.4rem;border-radius:10px;font-weight:700;text-decoration:none;margin:.3rem">App Store</a>
+            <a data-ho-store="android" rel="nofollow noopener" href="https://play.google.com/store/apps/details?id=com.hardawaylabs.healthyone&amp;referrer=utm_source%3Dweb_blog" style="display:inline-block;background:white;color:#059669;padding:.7rem 1.4rem;border-radius:10px;font-weight:700;text-decoration:none;margin:.3rem">Get it on Google Play</a>
         </div>
 
         <h2>FAQ</h2>
@@ -246,7 +256,7 @@
         if(!a)return;
         var href=a.getAttribute('href')||'';
         var store=a.getAttribute('data-ho-store');
-        var placement=a.closest('#ho-sticky-cta')?'sticky':(a.closest('.cta-box')?'cta_box':(a.closest('.store-cta')?'store_section':'inline'));
+        var placement=a.closest('#ho-sticky-cta')?'sticky':a.closest('.ho-mid-cta')?'mid':(a.closest('.cta-box')?'cta_box':(a.closest('.store-cta')?'store_section':'inline'));
         if(store){track(placement,store);return;}
         if(href.indexOf('apps.apple.com')>-1){track(placement,'ios');}
         else if(href.indexOf('play.google.com')>-1){track(placement,'android');}
