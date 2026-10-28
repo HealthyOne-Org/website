@@ -125,5 +125,6 @@
         try { posthog.capture('apps_page_store_click', {app: a.getAttribute('data-app'), store: a.getAttribute('data-store'), came_from: cameFrom, ref: document.referrer, utm_source: q.get('utm_source') || ''}, {transport: 'sendBeacon'}); } catch(err) {}
     }, true);
 </script>
+<script src="/assets/helper.js" defer></script>
 </body>
 </html>
