@@ -44,8 +44,8 @@
   };
   var PRICE = {
     healthyone: "HealthyOne is free to download. HealthyOne Plus is $7.99/month or $59.99/year, and you get a 7-day free trial first.",
-    faith: "Reading, challenges and circles in Healthy Faith are always free. Premium (audio listening, Ask and sermon notes) is $3.99/month or $29.99/year with a 30-day free trial. Want a 100% free Bible? Faith Daily Bible is free with no ads.",
-    general: "Every app is free to start. HealthyOne Plus is $7.99/month with a 7-day free trial, and Healthy Faith Premium is $3.99/month with a 30-day free trial."
+    faith: "Reading, challenges and circles in Healthy Faith are always free. Premium (audio listening, Ask and sermon notes) is $3.99/month or $29.99/year with a 7-day free trial. Want a 100% free Bible? Faith Daily Bible is free with no ads.",
+    general: "Every app is free to start. HealthyOne Plus is $7.99/month with a 7-day free trial, and Healthy Faith Premium is $3.99/month with a 7-day free trial."
   };
 
   // ---------- Styles ----------
