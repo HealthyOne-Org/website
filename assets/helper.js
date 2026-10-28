@@ -50,7 +50,7 @@
 
   // ---------- Styles ----------
   var css = "\
-#hh-root{position:fixed;right:16px;bottom:16px;z-index:2147483000;font:15px/1.4 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#1A2332}\
+#hh-root{position:fixed;right:16px;bottom:calc(16px + var(--hh-off,0px));z-index:2147483000;font:15px/1.4 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#1A2332}\
 #hh-root *{box-sizing:border-box}\
 #hh-fab{width:58px;height:58px;border-radius:50%;border:0;cursor:pointer;background:#1A2332;color:#fff;box-shadow:0 0 0 4px #4ECDC4,0 8px 24px rgba(0,0,0,.25);display:flex;align-items:center;justify-content:center;margin-left:auto}\
 #hh-fab svg{width:26px;height:26px}\
@@ -76,7 +76,7 @@
 .hh-in input{flex:1;min-width:0;background:#262b33;border:1px solid #3a414c;border-radius:12px;color:#fff;padding:10px 12px;font:inherit;font-size:16px}\
 .hh-in button{background:#4ECDC4;border:0;border-radius:12px;padding:0 14px;font-weight:700;color:#10221f;cursor:pointer}\
 .hh-note{font-size:11px;color:#6b737d;text-align:center;padding:0 14px 10px}\
-@media (max-width:480px){#hh-panel{position:fixed;left:8px;right:8px;bottom:84px;width:auto;max-width:none;height:min(540px,calc(100vh - 100px))}}";
+@media (max-width:480px){#hh-panel{position:fixed;left:8px;right:8px;bottom:calc(84px + var(--hh-off,0px));width:auto;max-width:none;height:min(540px,calc(100vh - 100px))}}";
   var st = document.createElement("style"); st.textContent = css; document.head.appendChild(st);
 
   // ---------- DOM ----------
@@ -234,6 +234,21 @@
   function close() { panel.classList.remove("open"); track("helper_closed"); }
   root.querySelector("#hh-fab").onclick = function () { panel.classList.contains("open") ? close() : open(); };
   root.querySelector(".hh-x").onclick = close;
+
+  // Sit above sticky bottom bars (e.g. the homepage's "Get HealthyOne" bar).
+  var raf = 0;
+  function lift() {
+    raf = 0;
+    var off = 0, bars = document.querySelectorAll(".sticky-cta-bar,#stickyCta,[data-sticky-bottom]");
+    for (var i = 0; i < bars.length; i++) {
+      var r = bars[i].getBoundingClientRect(), cs = getComputedStyle(bars[i]);
+      if (cs.display !== "none" && cs.visibility !== "hidden" && r.height > 0 && r.top < innerHeight && r.bottom >= innerHeight - 2) off = Math.max(off, innerHeight - r.top);
+    }
+    root.style.setProperty("--hh-off", off + "px");
+  }
+  function queue() { if (!raf) raf = requestAnimationFrame(lift); }
+  addEventListener("scroll", queue, { passive: true }); addEventListener("resize", queue);
+  setInterval(queue, 1500); queue();
 
   // One gentle nudge per visitor, after 15 seconds.
   setTimeout(function () {
