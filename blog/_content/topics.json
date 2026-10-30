@@ -1,104 +1,105 @@
 [
-  {
-    "slug": "glp1-breakfast-ideas-2026",
-    "keyword": "glp-1 breakfast ideas",
-    "topic": "Breakfast on a GLP-1: 20 small, protein-first breakfasts for mornings when you have no appetite",
-    "angle": "Morning nausea and zero appetite are worst on dose-increase weeks; rank breakfasts by protein per bite, cold and warm options, 2-minute options, what to skip (pork sausage, pancakes, big smoothies).",
-    "image_from": "glp1-protein-foods-list-2026",
-    "done": "2026-10-19"
-  },
-  {
-    "slug": "glp1-7-day-meal-plan-2026",
-    "keyword": "glp-1 meal plan",
-    "topic": "A 7-day GLP-1 meal plan built on four-bite meals that still reaches 100 g of protein a day",
-    "angle": "Give a full week, each day with breakfast, lunch, snack, dinner and the protein total; every meal under a small bowl; repeat ingredients to keep groceries simple; a short grocery list at the end.",
-    "image_from": "glp1-eating-out-guide-2026",
-    "done": "2026-10-20"
-  },
-  {
-    "slug": "glp1-hair-loss-nutrition-2026",
-    "keyword": "glp-1 hair loss",
-    "topic": "Hair thinning on a GLP-1: the nutrition side (protein, iron, zinc, biotin) and what actually helps",
-    "angle": "Telogen effluvium from rapid weight loss and under-eating, not the drug itself; protein floor, iron and zinc foods, when to ask a doctor for labs; no supplement hype.",
-    "image_from": "glp1-supplements-nutrition-guide-2026",
-    "done": "2026-10-23"
-  },
-  {
-    "slug": "glp1-protein-shakes-2026",
-    "keyword": "best protein shakes for glp-1",
-    "topic": "Protein shakes on a GLP-1: how to pick one, how to drink it without nausea, and 8 simple recipes under 250 calories",
-    "angle": "Whey isolate vs plant, sip-over-an-hour rule, avoid the 600-calorie peanut-butter-banana shake, ready-to-drink options, what to look for on the label (25 g protein, under 5 g sugar).",
-    "image_from": "glp1-snacks-2026",
-    "done": "2026-10-27"
-  },
-  {
-    "slug": "zepbound-meal-plan-2026",
-    "keyword": "zepbound meal plan",
-    "topic": "Zepbound meal plan: a simple 7-day plan for tirzepatide users",
-    "angle": "Seven days of small protein-first meals sized for a shrunken appetite, with grams of protein per meal, a dose-increase-week variation for nausea, and a swap list. Links to the Zepbound food list.",
-    "image_from": "zepbound-food-list-2026"
-  },
-  {
-    "slug": "wegovy-meal-plan-2026",
-    "keyword": "wegovy meal plan",
-    "topic": "Wegovy meal plan: a simple 7-day plan for semaglutide users",
-    "angle": "Seven days of protein-first small meals with grams per meal, an easy-on-the-stomach variation for titration weeks, and what to do on low-appetite days. Links to the Wegovy food list.",
-    "image_from": "wegovy-food-list-2026"
-  },
-  {
-    "slug": "mounjaro-meal-plan-2026",
-    "keyword": "mounjaro meal plan",
-    "topic": "Mounjaro meal plan: a simple 7-day plan for tirzepatide users",
-    "angle": "Seven days of protein-first small meals with grams per meal, a nausea-week variation, and batch-prep tips for type 2 diabetes and weight-loss users. Links to the Mounjaro food list.",
-    "image_from": "mounjaro-food-list-2026"
-  },
-  {
-    "slug": "ozempic-meal-plan-2026",
-    "keyword": "ozempic meal plan",
-    "topic": "Ozempic meal plan: a simple 7-day plan for semaglutide users",
-    "angle": "Seven days of protein-first small meals with grams per meal, blood-sugar-friendly carb pairing, and a low-appetite-day fallback. Links to the Ozempic food list.",
-    "image_from": "ozempic-food-list-2026"
-  },
-  {
-    "slug": "wegovy-pill-food-list-2026",
-    "keyword": "what to eat on wegovy pill",
-    "topic": "Wegovy pill food list: what to eat (and when) on oral semaglutide",
-    "angle": "The morning routine around the pill (take it as your prescriber directs, then wait before eating), a protein-first first meal, foods to favor and limit, and how it differs from the weekly shot. Anything about dosing goes to the prescriber.",
-    "image_from": "wegovy-food-list-2026"
-  },
-  {
-    "slug": "glp1-plateau-what-to-eat-2026",
-    "keyword": "glp-1 plateau",
-    "topic": "Hit a plateau on Ozempic, Wegovy, Mounjaro or Zepbound? What to check in your food before anything else",
-    "angle": "Under-eating protein, liquid calories creeping back, snack drift, restaurant portions, hydration; a one-week audit; when the plateau is normal and when to talk to the prescriber.",
-    "image_from": "glp1-eating-out-guide-2026"
-  },
-  {
-    "slug": "glp1-dinner-ideas-2026",
-    "keyword": "glp-1 dinner ideas",
-    "topic": "15 GLP-1 dinner ideas the whole family can eat, with the four-bite version for you",
-    "angle": "Same meal for everyone, you eat the protein portion first; sheet-pan chicken, shrimp bowls, turkey chili, salmon; each with protein grams and the nausea-safe swap.",
-    "image_from": "glp1-eating-out-guide-2026"
-  },
-  {
-    "slug": "glp1-holiday-eating-2026",
-    "keyword": "glp-1 holiday eating",
-    "topic": "Thanksgiving and Christmas on a GLP-1: how to enjoy the table without the nausea and the guilt",
-    "angle": "Turkey first, small plate, skip the gravy and the second helping, dessert bite not dessert plate, what to tell relatives, the day-after recovery.",
-    "image_from": "glp1-snacks-2026"
-  },
-  {
-    "slug": "glp1-fiber-foods-2026",
-    "keyword": "glp-1 fiber foods",
-    "topic": "Fiber on a GLP-1: the gentle fiber foods that help constipation without filling your tiny appetite",
-    "angle": "Cooked over raw, chia and psyllium in small doses, soft fruits, why a giant salad backfires, the 25 g target and how to get there in small portions, water.",
-    "image_from": "glp1-protein-foods-list-2026"
-  },
-  {
-    "slug": "glp1-first-month-what-to-eat-2026",
-    "keyword": "first month on ozempic what to eat",
-    "topic": "Your first month on a GLP-1: a week-by-week guide to what to eat as the appetite drops",
-    "angle": "Week 1 normal appetite with smaller plates, week 2 to 4 appetite falls and nausea peaks; protein floor from day one; the mistakes people make in week 3; when to call the prescriber.",
-    "image_from": "glp1-snacks-2026"
-  }
+ {
+  "slug": "glp1-breakfast-ideas-2026",
+  "keyword": "glp-1 breakfast ideas",
+  "topic": "Breakfast on a GLP-1: 20 small, protein-first breakfasts for mornings when you have no appetite",
+  "angle": "Morning nausea and zero appetite are worst on dose-increase weeks; rank breakfasts by protein per bite, cold and warm options, 2-minute options, what to skip (pork sausage, pancakes, big smoothies).",
+  "image_from": "glp1-protein-foods-list-2026",
+  "done": "2026-10-19"
+ },
+ {
+  "slug": "glp1-7-day-meal-plan-2026",
+  "keyword": "glp-1 meal plan",
+  "topic": "A 7-day GLP-1 meal plan built on four-bite meals that still reaches 100 g of protein a day",
+  "angle": "Give a full week, each day with breakfast, lunch, snack, dinner and the protein total; every meal under a small bowl; repeat ingredients to keep groceries simple; a short grocery list at the end.",
+  "image_from": "glp1-eating-out-guide-2026",
+  "done": "2026-10-20"
+ },
+ {
+  "slug": "glp1-hair-loss-nutrition-2026",
+  "keyword": "glp-1 hair loss",
+  "topic": "Hair thinning on a GLP-1: the nutrition side (protein, iron, zinc, biotin) and what actually helps",
+  "angle": "Telogen effluvium from rapid weight loss and under-eating, not the drug itself; protein floor, iron and zinc foods, when to ask a doctor for labs; no supplement hype.",
+  "image_from": "glp1-supplements-nutrition-guide-2026",
+  "done": "2026-10-23"
+ },
+ {
+  "slug": "glp1-protein-shakes-2026",
+  "keyword": "best protein shakes for glp-1",
+  "topic": "Protein shakes on a GLP-1: how to pick one, how to drink it without nausea, and 8 simple recipes under 250 calories",
+  "angle": "Whey isolate vs plant, sip-over-an-hour rule, avoid the 600-calorie peanut-butter-banana shake, ready-to-drink options, what to look for on the label (25 g protein, under 5 g sugar).",
+  "image_from": "glp1-snacks-2026",
+  "done": "2026-10-27"
+ },
+ {
+  "slug": "zepbound-meal-plan-2026",
+  "keyword": "zepbound meal plan",
+  "topic": "Zepbound meal plan: a simple 7-day plan for tirzepatide users",
+  "angle": "Seven days of small protein-first meals sized for a shrunken appetite, with grams of protein per meal, a dose-increase-week variation for nausea, and a swap list. Links to the Zepbound food list.",
+  "image_from": "zepbound-food-list-2026",
+  "done": "2026-10-30"
+ },
+ {
+  "slug": "wegovy-meal-plan-2026",
+  "keyword": "wegovy meal plan",
+  "topic": "Wegovy meal plan: a simple 7-day plan for semaglutide users",
+  "angle": "Seven days of protein-first small meals with grams per meal, an easy-on-the-stomach variation for titration weeks, and what to do on low-appetite days. Links to the Wegovy food list.",
+  "image_from": "wegovy-food-list-2026"
+ },
+ {
+  "slug": "mounjaro-meal-plan-2026",
+  "keyword": "mounjaro meal plan",
+  "topic": "Mounjaro meal plan: a simple 7-day plan for tirzepatide users",
+  "angle": "Seven days of protein-first small meals with grams per meal, a nausea-week variation, and batch-prep tips for type 2 diabetes and weight-loss users. Links to the Mounjaro food list.",
+  "image_from": "mounjaro-food-list-2026"
+ },
+ {
+  "slug": "ozempic-meal-plan-2026",
+  "keyword": "ozempic meal plan",
+  "topic": "Ozempic meal plan: a simple 7-day plan for semaglutide users",
+  "angle": "Seven days of protein-first small meals with grams per meal, blood-sugar-friendly carb pairing, and a low-appetite-day fallback. Links to the Ozempic food list.",
+  "image_from": "ozempic-food-list-2026"
+ },
+ {
+  "slug": "wegovy-pill-food-list-2026",
+  "keyword": "what to eat on wegovy pill",
+  "topic": "Wegovy pill food list: what to eat (and when) on oral semaglutide",
+  "angle": "The morning routine around the pill (take it as your prescriber directs, then wait before eating), a protein-first first meal, foods to favor and limit, and how it differs from the weekly shot. Anything about dosing goes to the prescriber.",
+  "image_from": "wegovy-food-list-2026"
+ },
+ {
+  "slug": "glp1-plateau-what-to-eat-2026",
+  "keyword": "glp-1 plateau",
+  "topic": "Hit a plateau on Ozempic, Wegovy, Mounjaro or Zepbound? What to check in your food before anything else",
+  "angle": "Under-eating protein, liquid calories creeping back, snack drift, restaurant portions, hydration; a one-week audit; when the plateau is normal and when to talk to the prescriber.",
+  "image_from": "glp1-eating-out-guide-2026"
+ },
+ {
+  "slug": "glp1-dinner-ideas-2026",
+  "keyword": "glp-1 dinner ideas",
+  "topic": "15 GLP-1 dinner ideas the whole family can eat, with the four-bite version for you",
+  "angle": "Same meal for everyone, you eat the protein portion first; sheet-pan chicken, shrimp bowls, turkey chili, salmon; each with protein grams and the nausea-safe swap.",
+  "image_from": "glp1-eating-out-guide-2026"
+ },
+ {
+  "slug": "glp1-holiday-eating-2026",
+  "keyword": "glp-1 holiday eating",
+  "topic": "Thanksgiving and Christmas on a GLP-1: how to enjoy the table without the nausea and the guilt",
+  "angle": "Turkey first, small plate, skip the gravy and the second helping, dessert bite not dessert plate, what to tell relatives, the day-after recovery.",
+  "image_from": "glp1-snacks-2026"
+ },
+ {
+  "slug": "glp1-fiber-foods-2026",
+  "keyword": "glp-1 fiber foods",
+  "topic": "Fiber on a GLP-1: the gentle fiber foods that help constipation without filling your tiny appetite",
+  "angle": "Cooked over raw, chia and psyllium in small doses, soft fruits, why a giant salad backfires, the 25 g target and how to get there in small portions, water.",
+  "image_from": "glp1-protein-foods-list-2026"
+ },
+ {
+  "slug": "glp1-first-month-what-to-eat-2026",
+  "keyword": "first month on ozempic what to eat",
+  "topic": "Your first month on a GLP-1: a week-by-week guide to what to eat as the appetite drops",
+  "angle": "Week 1 normal appetite with smaller plates, week 2 to 4 appetite falls and nausea peaks; protein floor from day one; the mistakes people make in week 3; when to call the prescriber.",
+  "image_from": "glp1-snacks-2026"
+ }
 ]
