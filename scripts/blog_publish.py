@@ -23,7 +23,10 @@ JSON schema (blog/_content/<slug>.json):
   slug, title, description, keywords[], tags[], read_min, excerpt,
   cta_title, cta_text, body_html (may contain <!--MID--> where the mid image
   goes), faq[{q,a}], bottom_line,
-  optional: image_from, image_queries[hero, mid], hero_credit, mid_credit
+  optional: image_from, image_queries[hero, mid], hero_credit, mid_credit,
+            aff_top (default true: insert blog/_content/_aff_top_card.html, the
+            GLP-1 clinician affiliate card, before the 3rd <h2>; set false for
+            posts that are not about GLP-1 medications)
 """
 from __future__ import annotations
 
@@ -42,6 +45,7 @@ BLOG = ROOT / "blog"
 CONTENT = BLOG / "_content"
 IMAGES = BLOG / "images"
 TEMPLATE = CONTENT / "_template.html"
+AFF_TOP_CARD = CONTENT / "_aff_top_card.html"
 INDEX = BLOG / "index.html"
 SITEMAP = ROOT / "sitemap.xml"
 TOPICS = CONTENT / "topics.json"
@@ -87,6 +91,15 @@ def render(post: dict, date: dt.date) -> str:
             body = "".join(parts)
         else:
             body = body + "\n\n        " + mid_block
+
+    # GLP-1 clinician affiliate card (bmiMD / Embody / ShedRx / HealthRX).
+    # Shared snippet so a new partner is added in one place for future posts.
+    if post.get("aff_top", True) and AFF_TOP_CARD.exists() and "ho-aff-top" not in body:
+        card = AFF_TOP_CARD.read_text().strip()
+        parts = re.split(r"(?=<h2>)", body)
+        if len(parts) > 3:
+            parts.insert(3, card + "\n        ")
+            body = "".join(parts)
 
     faq_html = "\n\n".join(
         f"        <h3>{f['q'].strip()}</h3>\n        <p>{f['a'].strip()}</p>" for f in post["faq"])
