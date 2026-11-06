@@ -167,9 +167,8 @@ h1{
 (function () {
   // Fill these in when the listings go live; the buttons wake up on their own.
   var IOS = 'https://apps.apple.com/app/id6823939937?ct=web';
-  // Flip to true the day the App Store listing is approved — the page 404s on Apple's side until then.
-  var IOS_LIVE = false;
-  var ANDROID = '';  // e.g. 'https://play.google.com/store/apps/details?id=com.healthyone.faithdailybible'
+  var IOS_LIVE = true;  // live on the App Store since 2026-11-05
+  var ANDROID = 'https://play.google.com/store/apps/details?id=com.healthyone.faithdailybible&utm_source=web';
   function arm(id, href, label) {
     var a = document.getElementById(id);
     if (!href) return;
