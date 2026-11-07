@@ -92,7 +92,7 @@ def render(post: dict, date: dt.date) -> str:
         else:
             body = body + "\n\n        " + mid_block
 
-    # GLP-1 clinician affiliate card (bmiMD / Embody / ShedRx / HealthRX).
+    # GLP-1 clinician affiliate card (Wellmedr / Embody / bmiMD / ShedRx / HealthRX).
     # Shared snippet so a new partner is added in one place for future posts.
     if post.get("aff_top", True) and AFF_TOP_CARD.exists() and "ho-aff-top" not in body:
         card = AFF_TOP_CARD.read_text().strip()
