@@ -1,0 +1,21 @@
+{
+ "_README": "Advisors for reviewer badges (scripts/mark_reviewed.py) and the weekly review email. DRAFT on branch advisors-draft: placeholders only. Fill in real details and set \"ready\": true for an advisor ONLY after they approved scripts/CONTENT_GUIDELINES.md and agreed to be named publicly. role: nutrition | medical. job_title goes into JSON-LD reviewedBy.jobTitle. profile = a public professional profile URL (JSON-LD sameAs). Emails are NOT kept here (this file is public); the review email reads them from ~/.hermes/config/advisor_review.json on the Mac.",
+ "advisors": {
+  "dietitian": {
+   "name": "PLACEHOLDER",
+   "credential": "RD",
+   "role": "nutrition",
+   "job_title": "Registered Dietitian",
+   "profile": "",
+   "ready": false
+  },
+  "doctor": {
+   "name": "PLACEHOLDER",
+   "credential": "PLACEHOLDER (MD, DO, NP...)",
+   "role": "medical",
+   "job_title": "PLACEHOLDER",
+   "profile": "",
+   "ready": false
+  }
+ }
+}
