@@ -16,6 +16,51 @@
       "source": "/home/freeguide",
       "destination": "/assets/superfoods-guide.pdf",
       "permanent": true
+    },
+    {
+      "source": "/glp1-doctor",
+      "destination": "/blog/glp1-medications-compared-2026",
+      "permanent": true
+    },
+    {
+      "source": "/glp1-doctor.html",
+      "destination": "/blog/glp1-medications-compared-2026",
+      "permanent": true
+    },
+    {
+      "source": "/partners",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/partners.html",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/bmimd-telehealth-glp1-review",
+      "destination": "/blog/glp1-medications-compared-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/skinnyrx-tirzepatide-pills-review",
+      "destination": "/blog/glp1-medications-compared-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/bodybuilding-health-plus-glp1-bundles",
+      "destination": "/blog/glp1-medications-compared-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/_ab_backup_2026-06-10/:path*",
+      "destination": "/blog/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/blog/_aff_backup_2026-06-08/:path*",
+      "destination": "/blog/:path*",
+      "permanent": true
     }
   ],
   "headers": [
