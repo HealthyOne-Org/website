@@ -24,9 +24,16 @@ JSON schema (blog/_content/<slug>.json):
   cta_title, cta_text, body_html (may contain <!--MID--> where the mid image
   goes), faq[{q,a}], bottom_line,
   optional: image_from, image_queries[hero, mid], hero_credit, mid_credit,
-            aff_top (default true: insert blog/_content/_aff_top_card.html, the
-            GLP-1 clinician affiliate card, before the 3rd <h2>; set false for
-            posts that are not about GLP-1 medications)
+            lane (eating | movement | appetite | bridge; informational),
+            affiliate[] (Amazon search strings from blog/_content/affiliate_products.json;
+                         default: up to 3 picked by keyword match, [] = no box),
+            reviewed[] (ONLY via scripts/mark_reviewed.py, after a real advisor
+                        approved this post; never written by a post writer):
+                        [{"name", "credential", "role": "nutrition"|"medical",
+                          "date": "YYYY-MM-DD", "profile": "https://..."}]
+
+Since 2026-11-11 the GLP-1 clinician / telehealth affiliate card is gone
+(scripts/CONTENT_GUIDELINES.md); an old "aff_top" key is ignored.
 """
 from __future__ import annotations
 
@@ -45,7 +52,9 @@ BLOG = ROOT / "blog"
 CONTENT = BLOG / "_content"
 IMAGES = BLOG / "images"
 TEMPLATE = CONTENT / "_template.html"
-AFF_TOP_CARD = CONTENT / "_aff_top_card.html"
+AFFILIATES = CONTENT / "affiliate_products.json"
+ADVISORS_URL = "/advisors"
+ROLE_LABEL = {"nutrition": "Nutrition reviewed by", "medical": "Medically reviewed by"}
 INDEX = BLOG / "index.html"
 SITEMAP = ROOT / "sitemap.xml"
 TOPICS = CONTENT / "topics.json"
@@ -73,6 +82,67 @@ def img_tag(slug: str, kind: str, title: str, cls: str) -> str:
             f'loading="lazy" width="1200" height="675">')
 
 
+def affiliate_html(post: dict) -> str:
+    """Amazon Associates picks (search links + FTC disclosure) from affiliate_products.json."""
+    if not AFFILIATES.exists():
+        return ""
+    cfg = json.loads(AFFILIATES.read_text())
+    products, tag = cfg.get("products", []), cfg.get("amazon_associate_tag", "")
+    n = int(cfg.get("max_products_per_post", 3))
+    if not tag or not products:
+        return ""
+    if "affiliate" in post:
+        by = {p["search"]: p for p in products}
+        picks = [by[q] for q in post["affiliate"] if q in by][:n]
+    else:
+        hay = " ".join([post["slug"].replace("-", " "), post["title"], " ".join(post["keywords"]),
+                        " ".join(post["tags"])]).lower()
+        scored = [(sum(1 for k in p["keywords"] if k in hay), i, p) for i, p in enumerate(products)]
+        picks = [p for sc, i, p in sorted(scored, key=lambda x: (-x[0], x[1])) if sc > 0][:n]
+    if not picks:
+        return ""
+    tpl = cfg["amazon_search_url_template"]
+    items = "\n".join(
+        f'            <li><a href="{esc_attr(tpl.replace("{QUERY}", urllib.parse.quote_plus(p["search"])).replace("{TAG}", tag))}" '
+        f'data-aff="amazon_{re.sub(r"[^a-z0-9]+", "_", p["search"].lower()).strip("_")}" data-aff-variant="amazon_picks" '
+        f'rel="sponsored nofollow noopener" target="_blank">{p["title"]}</a> &mdash; {p["blurb"]}</li>' for p in picks)
+    print(f"  affiliate: {', '.join(p['title'] for p in picks)}")
+    return ('        <div class="highlight-box ho-amazon-picks" style="background:#fff;border-left:4px solid #10b981">\n'
+            '          <p style="margin:0"><strong>Helpful for this:</strong></p>\n'
+            f'          <ul>\n{items}\n          </ul>\n'
+            f'          <p style="font-size:.8rem;color:#9ca3af;font-weight:400;margin:0">{cfg["disclosure"]}</p>\n'
+            '        </div>\n')
+
+
+def check_reviewed(post: dict) -> list:
+    """Validate the optional reviewed[] list (set only by mark_reviewed.py)."""
+    revs = post.get("reviewed") or []
+    if not isinstance(revs, list):
+        die("reviewed must be a list")
+    for r in revs:
+        for k in ("name", "credential", "role", "date"):
+            if not str(r.get(k, "")).strip():
+                die(f"reviewed entry missing {k}: {r}")
+        if r["role"] not in ROLE_LABEL:
+            die(f"reviewed role must be nutrition or medical: {r['role']!r}")
+        dt.date.fromisoformat(r["date"])
+    return revs
+
+
+def reviewed_html(revs: list) -> str:
+    """Small badge under the title: 'Nutrition reviewed by Name, RD · Nov 14, 2026'."""
+    if not revs:
+        return ""
+    lines = []
+    for r in revs:
+        d = dt.date.fromisoformat(r["date"])
+        lines.append(f'{ROLE_LABEL[r["role"]]} <a href="{ADVISORS_URL}" style="color:#0c8074;font-weight:600;text-decoration:none">'
+                     f'{esc_attr(r["name"].strip())}, {esc_attr(r["credential"].strip())}</a> &middot; {d.strftime("%b")} {d.day}, {d.year}')
+    return ('        <div class="reviewed-by" style="margin:-1.75rem 0 2rem;font-size:.85rem;color:#065f46;'
+            'background:#f0fdf4;border-radius:10px;padding:.55rem .9rem">'
+            + "<br>".join(lines) + "</div>\n")
+
+
 def render(post: dict, date: dt.date) -> str:
     tpl = TEMPLATE.read_text()
     slug, title = post["slug"], post["title"].strip()
@@ -92,19 +162,12 @@ def render(post: dict, date: dt.date) -> str:
         else:
             body = body + "\n\n        " + mid_block
 
-    # GLP-1 clinician affiliate card (Wellmedr / Embody / bmiMD / ShedRx / HealthRX).
-    # Shared snippet so a new partner is added in one place for future posts.
-    if post.get("aff_top", True) and AFF_TOP_CARD.exists() and "ho-aff-top" not in body:
-        card = AFF_TOP_CARD.read_text().strip()
-        parts = re.split(r"(?=<h2>)", body)
-        if len(parts) > 3:
-            parts.insert(3, card + "\n        ")
-            body = "".join(parts)
+    revs = check_reviewed(post)
 
     faq_html = "\n\n".join(
         f"        <h3>{f['q'].strip()}</h3>\n        <p>{f['a'].strip()}</p>" for f in post["faq"])
 
-    article_ld = json.dumps({
+    article = {
         "@context": "https://schema.org", "@type": "Article", "headline": title,
         "author": {"@type": "Person", "name": "Chris Hardaway"},
         "publisher": {"@type": "Organization", "name": "Hardaway Labs LLC"},
@@ -112,7 +175,20 @@ def render(post: dict, date: dt.date) -> str:
         "description": post["description"].strip(),
         "image": f"{SITE}/blog/images/{slug}-hero.jpg",
         "mainEntityOfPage": f"{SITE}/blog/{slug}",
-    }, ensure_ascii=False)
+    }
+    if revs:
+        people = []
+        for r in revs:
+            person = {"@type": "Person", "name": r["name"].strip(),
+                      "jobTitle": r.get("job_title") or (
+                          "Registered Dietitian" if r["role"] == "nutrition" else r["credential"].strip()),
+                      "url": f"{SITE}{ADVISORS_URL}"}
+            if r.get("profile"):
+                person["sameAs"] = r["profile"]
+            people.append(person)
+        article["reviewedBy"] = people if len(people) > 1 else people[0]
+        article["lastReviewed"] = max(r["date"] for r in revs)
+    article_ld = json.dumps(article, ensure_ascii=False)
     faq_ld = json.dumps({
         "@context": "https://schema.org", "@type": "FAQPage",
         "mainEntity": [{"@type": "Question", "name": re.sub(r"<[^>]+>", "", f["q"]).strip(),
@@ -126,6 +202,8 @@ def render(post: dict, date: dt.date) -> str:
               .replace("{{BODY}}", body)
               .replace("{{FAQ_HTML}}", faq_html)
               .replace("{{BOTTOM_LINE}}", post["bottom_line"].strip())
+              .replace("{{AFFILIATE}}", affiliate_html(post))
+              .replace("{{REVIEWED}}", reviewed_html(revs))
               .replace("{{CTA_TITLE}}", post["cta_title"].strip())
               .replace("{{CTA_TEXT}}", post["cta_text"].strip())
               .replace("{{KEYWORDS}}", ", ".join(post["keywords"]))

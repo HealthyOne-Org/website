@@ -1,0 +1,25 @@
+{
+ "_README": "Amazon Associates picks for HealthyOne blog posts (natural-first since 2026-11-11). scripts/blog_publish.py picks up to 3 products per post by keyword match against the post's slug, title, keywords and tags, or uses the post JSON's optional \"affiliate\": [search, ...] list. SEARCH links on purpose so discontinued products never 404. Only products listed here are used; never invent queries or tags. Blurbs say what the thing is for, never a health claim (no 'burns fat', no cures). No prescription or telehealth offers here or anywhere on the blog (see scripts/CONTENT_GUIDELINES.md).",
+ "amazon_associate_tag": "healthyone00-20",
+ "amazon_search_url_template": "https://www.amazon.com/s?k={QUERY}&tag={TAG}",
+ "disclosure": "As an Amazon Associate, HealthyOne earns from qualifying purchases. Links on this page may earn us a small commission at no extra cost to you. We only suggest products we believe are genuinely useful.",
+ "max_products_per_post": 3,
+ "products": [
+  {"search": "digital kitchen food scale", "title": "Digital kitchen scale", "blurb": "Weighing a few meals once teaches you what a real portion looks like.", "keywords": ["portion", "meal plan", "protein", "fiber", "food list", "grocery", "calorie", "thanksgiving", "plate", "eating"]},
+  {"search": "glass meal prep containers", "title": "Glass meal-prep containers", "blurb": "Cook once, portion for the week, and the healthy choice is the easy one.", "keywords": ["meal plan", "meal prep", "grocery", "leftovers", "lunch", "high protein", "week"]},
+  {"search": "resistance bands set with handles", "title": "Resistance bands", "blurb": "Cheap, light and enough for every beginner strength move at home.", "keywords": ["strength", "muscle", "home workout", "exercise", "training", "resistance", "workout"]},
+  {"search": "neoprene dumbbells set", "title": "Light dumbbell set", "blurb": "A few light pairs cover rows, presses and squats while you build up.", "keywords": ["strength", "muscle", "home workout", "exercise", "training", "dumbbell"]},
+  {"search": "thick exercise mat", "title": "Exercise mat", "blurb": "A cushioned spot for floor moves like glute bridges and dead bugs.", "keywords": ["strength", "home workout", "exercise", "stretch", "beginner", "workout"]},
+  {"search": "walking pad under desk treadmill", "title": "Under-desk walking pad", "blurb": "Adds steps on cold or busy days without leaving the house.", "keywords": ["walking", "steps", "walk", "winter", "holiday", "movement", "exercise"]},
+  {"search": "step counter pedometer", "title": "Simple step counter", "blurb": "Shows your daily steps so you can add a little each week.", "keywords": ["walking", "steps", "walk", "movement", "habit"]},
+  {"search": "whey protein powder", "title": "Whey protein powder", "blurb": "A quick way to add protein to breakfast oats, yogurt or a smoothie.", "keywords": ["protein", "high protein", "muscle", "breakfast", "cravings", "meal plan"]},
+  {"search": "pea protein powder unflavored", "title": "Plant protein powder", "blurb": "A dairy-free option for adding protein to meals and smoothies.", "keywords": ["protein", "high protein", "plant", "vegetarian", "breakfast"]},
+  {"search": "chia seeds", "title": "Chia seeds", "blurb": "About 10 g of fiber in two tablespoons; stir into yogurt or oats.", "keywords": ["fiber", "high fiber", "cravings", "breakfast", "snack", "food list"]},
+  {"search": "old fashioned rolled oats", "title": "Rolled oats", "blurb": "A cheap, filling, fiber-rich breakfast base.", "keywords": ["fiber", "high fiber", "breakfast", "meal plan", "grocery", "pantry"]},
+  {"search": "dried lentils", "title": "Dried lentils", "blurb": "Protein and fiber in one pantry staple; great for soups and batch cooking.", "keywords": ["fiber", "high fiber", "protein", "meal plan", "grocery", "pantry", "soup"]},
+  {"search": "air fryer", "title": "Air fryer", "blurb": "Crispy chicken, fish and vegetables with very little oil.", "keywords": ["cooking", "dinner", "meal plan", "recipes", "eating", "high protein"]},
+  {"search": "insulated water bottle 32 oz", "title": "32 oz water bottle", "blurb": "Makes it easy to drink enough water, especially as you add fiber.", "keywords": ["fiber", "water", "walking", "cravings", "hydration", "habit"]},
+  {"search": "sleep mask contoured", "title": "Contoured sleep mask", "blurb": "A dark room helps you get the 7+ hours that keep hunger in check.", "keywords": ["sleep", "night", "rest", "cravings at night"]},
+  {"search": "sunrise alarm clock", "title": "Sunrise alarm clock", "blurb": "A gentler wake-up that makes a steady sleep schedule easier to keep.", "keywords": ["sleep", "routine", "night", "habit"]}
+ ]
+}
