@@ -72,38 +72,99 @@
   "done": "2026-11-10"
  },
  {
-  "slug": "glp1-plateau-what-to-eat-2026",
-  "keyword": "glp-1 plateau",
-  "topic": "Hit a plateau on Ozempic, Wegovy, Mounjaro or Zepbound? What to check in your food before anything else",
-  "angle": "Under-eating protein, liquid calories creeping back, snack drift, restaurant portions, hydration; a one-week audit; when the plateau is normal and when to talk to the prescriber.",
+  "slug": "healthy-thanksgiving-plate-2026",
+  "lane": "eating",
+  "keyword": "healthy thanksgiving plate for weight loss",
+  "topic": "How to build a Thanksgiving plate that fits weight loss: what to fill up on, what to take a small spoon of, and how to enjoy dessert",
+  "angle": "Plate map with portions (turkey palm-size ~30 g protein, half plate vegetables, one starch spoon, one dessert slice), the order to eat, a short walk after the meal, the leftovers plan, what to tell relatives, and how to get back to normal the next day without 'making up for it'. Natural-first per scripts/CONTENT_GUIDELINES.md; don't name GLP-1 drugs in the title.",
   "image_from": "glp1-eating-out-guide-2026"
  },
  {
-  "slug": "glp1-dinner-ideas-2026",
-  "keyword": "glp-1 dinner ideas",
-  "topic": "15 GLP-1 dinner ideas the whole family can eat, with the four-bite version for you",
-  "angle": "Same meal for everyone, you eat the protein portion first; sheet-pan chicken, shrimp bowls, turkey chili, salmon; each with protein grams and the nausea-safe swap.",
+  "slug": "walking-plan-to-lose-weight-2026",
+  "lane": "movement",
+  "keyword": "walking plan to lose weight",
+  "topic": "A 6-week walking plan for weight loss that starts at 10 minutes a day",
+  "angle": "Week-by-week table (minutes per day, a brisk-pace cue, one longer weekend walk), a 10-minute walk after meals, cold-weather and indoor options (mall, treadmill, walking pad), shoes, how to track it; start easy and check with your doctor first if you have heart, joint or other health conditions. No calorie-burn promises beyond rough, well-known ranges. Natural-first per scripts/CONTENT_GUIDELINES.md; don't name GLP-1 drugs in the title.",
+  "image_from": "how-to-never-restart-your-health-2026"
+ },
+ {
+  "slug": "how-to-stop-sugar-cravings-at-night-2026",
+  "lane": "appetite",
+  "keyword": "how to stop sugar cravings at night",
+  "topic": "How to stop sugar cravings at night: 12 habits that work without willpower",
+  "angle": "Protein at breakfast and dinner, a fiber-rich dinner, not under-eating during the day, a planned evening snack list with portions (Greek yogurt + berries, apple + peanut butter), sleep and stress, keeping sweets out of sight, brushing teeth as an end-of-eating cue; well-established effects only, no supplements. Natural-first per scripts/CONTENT_GUIDELINES.md; don't name GLP-1 drugs in the title.",
+  "image_from": "glp1-snacks-2026"
+ },
+ {
+  "slug": "high-protein-meal-plan-for-weight-loss-2026",
+  "lane": "eating",
+  "keyword": "high protein meal plan for weight loss",
+  "topic": "A 7-day high-protein meal plan for weight loss (100–120 g a day, simple groceries)",
+  "angle": "Each day with breakfast, lunch, snack and dinner plus protein grams and rough calories, repeated ingredients, a grocery list, swaps for vegetarians, and how to size protein for your body (general ranges, ask a dietitian for medical diets or kidney disease). Natural-first per scripts/CONTENT_GUIDELINES.md; don't name GLP-1 drugs in the title.",
+  "image_from": "glp1-7-day-meal-plan-2026"
+ },
+ {
+  "slug": "how-to-keep-weight-off-after-ozempic-2026",
+  "lane": "bridge",
+  "keyword": "how to keep weight off after ozempic",
+  "topic": "How to keep weight off after Ozempic or Wegovy: the habits to build while you're still on it",
+  "angle": "For people whose prescriber is tapering or stopping the medication, or who are planning ahead: protein and fiber at every meal, strength training to keep muscle, a walking habit, sleep, planned meals for when appetite returns, weekly weigh-ins and a 'return range'. Never advise stopping or changing a dose. Link to /blog/glp-1-weight-maintenance-2026 and add new, more practical detail rather than repeating it. Bridge lane per scripts/CONTENT_GUIDELINES.md: GLP-1 drugs may be named, but never advise stopping, skipping or changing a medication; every medication decision goes to 'talk to your prescriber'.",
+  "image_from": "glp-1-weight-maintenance-2026"
+ },
+ {
+  "slug": "how-to-not-gain-weight-over-the-holidays-2026",
+  "lane": "appetite",
+  "keyword": "how to not gain weight over the holidays",
+  "topic": "How to not gain weight over the holidays: a simple plan for Thanksgiving to New Year's",
+  "angle": "The 'maintain, don't lose' goal for six weeks, protein-first party eating, one drink rule and alcohol calories, a daily walk, sleep, keeping 3 normal days between events, a 2-minute weigh-in check; no detoxes or cleanses. Natural-first per scripts/CONTENT_GUIDELINES.md; don't name GLP-1 drugs in the title.",
+  "image_from": "glp1-snacks-2026"
+ },
+ {
+  "slug": "beginner-strength-training-at-home-2026",
+  "lane": "movement",
+  "keyword": "beginner strength training at home for weight loss",
+  "topic": "Beginner strength training at home for weight loss: a 3-day plan with no gym",
+  "angle": "Six moves (sit-to-stand squat, wall or counter push-up, glute bridge, band or backpack row, step-ups, dead bug) with sets and reps, how to progress over 8 weeks, what 'hard enough' feels like, rest days, protein to support muscle; start easy, stop if anything hurts, check with your doctor first if you have heart, joint or other health conditions. Natural-first per scripts/CONTENT_GUIDELINES.md; don't name GLP-1 drugs in the title.",
+  "image_from": "glp-1-weight-maintenance-2026"
+ },
+ {
+  "slug": "high-fiber-foods-list-2026",
+  "lane": "eating",
+  "keyword": "high fiber foods list for weight loss",
+  "topic": "High-fiber foods list for weight loss: 30 foods ranked by fiber per serving",
+  "angle": "Grams of fiber per normal serving (beans, lentils, raspberries, pears, oats, chia, broccoli, whole-grain bread), the general daily targets (about 25 g for women, 38 g for men), how to add it slowly with water to avoid bloating, easy swaps, and a one-day 30 g example. Natural-first per scripts/CONTENT_GUIDELINES.md; don't name GLP-1 drugs in the title.",
+  "image_from": "track-nutrition-without-counting-calories"
+ },
+ {
+  "slug": "sleep-and-weight-loss-2026",
+  "lane": "appetite",
+  "keyword": "does lack of sleep cause weight gain",
+  "topic": "Sleep and weight loss: how short sleep drives hunger, and a 7-night reset",
+  "angle": "What is well established (short sleep raises hunger and cravings and lowers activity the next day), the 7+ hours adult guideline, a bedtime routine, caffeine and alcohol timing, late-night eating, when to see a doctor (snoring, sleep apnea signs). No supplements or melatonin advice. Natural-first per scripts/CONTENT_GUIDELINES.md; don't name GLP-1 drugs in the title.",
+  "image_from": "how-to-never-restart-your-health-2026"
+ },
+ {
+  "slug": "how-to-eat-healthy-at-christmas-parties-2026",
+  "lane": "eating",
+  "keyword": "how to eat healthy at christmas parties",
+  "topic": "How to eat healthy at Christmas parties: what to pick at the buffet, the bar and the dessert table",
+  "angle": "Eat a protein snack before you go, a buffet ranking with portions (shrimp cocktail, turkey, veggie tray first; dips and pastries small), drink swaps, one dessert you love, how to say no politely, the next-morning plan. Natural-first per scripts/CONTENT_GUIDELINES.md; don't name GLP-1 drugs in the title.",
   "image_from": "glp1-eating-out-guide-2026"
  },
  {
-  "slug": "glp1-holiday-eating-2026",
-  "keyword": "glp-1 holiday eating",
-  "topic": "Thanksgiving and Christmas on a GLP-1: how to enjoy the table without the nausea and the guilt",
-  "angle": "Turkey first, small plate, skip the gravy and the second helping, dessert bite not dessert plate, what to tell relatives, the day-after recovery.",
-  "image_from": "glp1-snacks-2026"
+  "slug": "how-to-lose-fat-without-losing-muscle-2026",
+  "lane": "movement",
+  "keyword": "how to lose fat without losing muscle",
+  "topic": "How to lose fat without losing muscle: protein, strength training and a slow pace",
+  "angle": "Strength training 2–3 days a week, protein spread across meals (general per-body-weight ranges), a moderate deficit instead of crash dieting, steps, sleep, how to tell muscle from fat loss (waist, strength, photos), extra caution for older adults; nothing about drugs. Natural-first per scripts/CONTENT_GUIDELINES.md; don't name GLP-1 drugs in the title.",
+  "image_from": "glp-1-muscle-loss-2026"
  },
  {
-  "slug": "glp1-fiber-foods-2026",
-  "keyword": "glp-1 fiber foods",
-  "topic": "Fiber on a GLP-1: the gentle fiber foods that help constipation without filling your tiny appetite",
-  "angle": "Cooked over raw, chia and psyllium in small doses, soft fruits, why a giant salad backfires, the 25 g target and how to get there in small portions, water.",
-  "image_from": "glp1-protein-foods-list-2026"
- },
- {
-  "slug": "glp1-first-month-what-to-eat-2026",
-  "keyword": "first month on ozempic what to eat",
-  "topic": "Your first month on a GLP-1: a week-by-week guide to what to eat as the appetite drops",
-  "angle": "Week 1 normal appetite with smaller plates, week 2 to 4 appetite falls and nausea peaks; protein floor from day one; the mistakes people make in week 3; when to call the prescriber.",
-  "image_from": "glp1-snacks-2026"
+  "slug": "how-to-lose-weight-without-ozempic-2026",
+  "lane": "bridge",
+  "keyword": "how to lose weight without ozempic",
+  "topic": "How to lose weight without Ozempic: the food, movement and sleep habits that do the work",
+  "angle": "For readers deciding whether medication is for them or who can't get it: protein and fiber to manage hunger, a walking and strength routine, sleep, a realistic pace, tracking. Honest, no 'natural Ozempic' or supplement claims, no attacks on people who use medication; anyone with obesity-related health conditions should talk to their doctor about every option. Never advise stopping a prescription. Bridge lane per scripts/CONTENT_GUIDELINES.md: GLP-1 drugs may be named, but never advise stopping, skipping or changing a medication; every medication decision goes to 'talk to your prescriber'.",
+  "image_from": "nutrition-guide-2026"
  }
 ]

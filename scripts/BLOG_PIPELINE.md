@@ -1,5 +1,48 @@
 # HealthyOne blog pipeline
 
+## DIRECTION 2026-11-11 (Chris) — overrides the publisher task's instructions where they conflict
+
+Chris, 2026-11-11: steer away from GLP-1 drugs (side effects) and toward
+natural results, whole-food eating and exercise. If the "HealthyOne blog
+publisher" task's own instructions, or anything lower in this file, say
+"GLP-1 only", "name the drug in the title" or similar, **this section wins.**
+
+- **`scripts/CONTENT_GUIDELINES.md` is binding.** Read it before writing.
+  It sets the four lanes, the medication rules and what we never claim.
+- **Every new post is natural-first**, in one of four lanes (the topic's
+  `"lane"` field in `blog/_content/topics.json`): `eating`, `movement`,
+  `appetite`, or `bridge` (life after GLP-1 / keeping weight off without
+  medication; at most about 1 post in 5).
+- **Title rule:** name GLP-1 drugs (Ozempic, Wegovy, Mounjaro, Zepbound,
+  semaglutide, tirzepatide, "GLP-1") in the title **only in `bridge` posts**.
+  Other posts use the natural search phrase ("walking plan to lose weight").
+  In non-bridge posts, don't mention the drugs in the body either, except
+  in an internal link to an older post if it truly helps.
+- **CTA text:** mention HealthyOne's GLP-1 mode only in bridge posts.
+- **Medication:** never tell anyone to start, stop, skip or change a
+  medication; always "talk to your prescriber".
+- **No supplement cure claims:** no "natural Ozempic", "nature's Ozempic",
+  berberine, detox or cleanse. Natural means food, movement, sleep and habits.
+- **No invented studies or statistics.** General, well-known facts only.
+- **No reviewer field:** never add `"reviewed"` to a post JSON yourself.
+  Reviewer badges are added later with `scripts/mark_reviewed.py`, only after
+  a real advisor approves that post.
+- **No telehealth / prescription affiliate cards** in new posts. Amazon
+  picks come from `blog/_content/affiliate_products.json` only.
+- **Existing GLP-1 posts stay live and unchanged** (they bring most readers).
+  Link to them from bridge posts; don't rewrite or delete them.
+- **Refilling the queue:** when fewer than 3 topics are left, add 10 in the
+  same shape (`slug` ending in -2026, `lane`, `keyword`, `topic`, `angle`,
+  `image_from` = an existing post slug whose hero and mid images exist),
+  spread across the lanes, at most 2 of the 10 in `bridge`. Real search
+  phrases; never a "best app" comparison, a supplement topic or a slug that
+  already exists.
+
+The rest of this file is the older GLP-1-era manual. It still describes the
+files, the build and the push correctly; its topic and title rules are
+replaced by the section above.
+
+
 Two posts a week (Tue + Fri, 8:51 AM ET) are written and published by the
 scheduled task **"HealthyOne blog publisher"**. This file is the operator's
 manual; the task prompt follows it.
@@ -46,8 +89,8 @@ Verify production with `curl -s -o /dev/null -w "%{http_code}"`, not
 `curl -sI | head -1` (that line is the proxy's CONNECT reply).
 
 ## Editorial standard (what the winners have in common)
-- Title names the drug(s) and the format: "The Wegovy Food List: What to Eat
-  (and Avoid)…", "GLP-1 Snacks: 25 Snacks That…"; year in title; 55–70 chars.
+- Title = the search phrase + the format + "(2026)", 55–70 chars. (Since
+  2026-11-11 drug names only in bridge posts; see the DIRECTION section.)
 - 1,300–1,800 words. Numbered or tiered lists with protein grams per item.
   A "what to avoid" section. A short "why a printed list isn't enough" bridge
   into HealthyOne, never a hard sell.
