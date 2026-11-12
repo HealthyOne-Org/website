@@ -1,5 +1,24 @@
 # HealthyOne blog pipeline
 
+<!-- blog_learner: read-first -->
+> **Read `scripts/WHAT_WORKS.md` first.** `blog_learner.py` rewrites it every Sunday from the last 28 days of
+> traffic: the winning posts and why, the losers, and 3 instructions for this week's posts. Follow them unless
+> they conflict with the rules in this file.
+
+## Refresh entries (`"lane": "refresh"`, added by blog_learner.py)
+
+A refresh entry's slug is an EXISTING post that is winning but getting old. It is not a new post.
+- Update `blog/<slug>.html` in place, and `blog/_content/<slug>.json` too if it exists, so a later rebuild
+  keeps the change. Keep the URL, the slug and the title's search phrase. Do not run `blog_publish.py` for it
+  (that would add a second index card and sitemap entry) and do not change `datePublished`.
+- Do what the entry's `angle` says: fix anything stale, add the missing section or FAQ searchers want, add
+  links to newer related posts. Keep the page's shape; that shape is why it wins.
+- Bump `dateModified` in the JSON-LD to today, and the post's `<lastmod>` in `sitemap.xml`.
+- Mark the entry `done` like any other. Commit message: `Blog refresh: <title>`.
+- The Monday `blog_weekly.py` skips refresh entries; the Tue/Fri publisher does them.
+- HealthyOne: on an old GLP-1 post keep its topic and title (the DIRECTION section still applies); refresh facts and add a short next-step section linking to natural-first and bridge posts.
+
+
 ## DIRECTION 2026-11-11 (Chris) — overrides the publisher task's instructions where they conflict
 
 Chris, 2026-11-11: steer away from GLP-1 drugs (side effects) and toward

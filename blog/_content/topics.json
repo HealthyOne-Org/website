@@ -88,6 +88,45 @@
   "image_from": "how-to-never-restart-your-health-2026"
  },
  {
+  "slug": "easy-to-digest-protein-foods-2026",
+  "lane": "eating",
+  "keyword": "easy to digest protein foods",
+  "topic": "Easy-to-digest protein foods for sensitive stomachs or tiny appetites",
+  "angle": "A list of 20-30 high-protein foods that are gentle on the stomach, focusing on lean meats, fish, eggs, dairy, and plant-based options like tofu/lentils, with portion sizes suitable for reduced appetite. Emphasize cooking methods (steamed, baked) and avoiding common irritants. Link to /blog/glp1-protein-foods-list-2026 and /blog/glp1-nausea-what-to-eat-2026.",
+  "image_from": "glp1-protein-foods-list-2026",
+  "source": "learner",
+  "sibling_of": "zepbound-food-list-2026"
+ },
+ {
+  "slug": "how-to-track-protein-intake-2026",
+  "lane": "eating",
+  "keyword": "how to track protein intake",
+  "topic": "How to track protein intake for muscle and satiety without counting calories",
+  "angle": "Explain why tracking protein is important (satiety, muscle), simple methods (palm-size portions), and how a photo/voice tracker like HealthyOne simplifies it. Focus on the benefits of tracking for protein goals. Include a clear call to action for the HealthyOne app.",
+  "image_from": "best-photo-food-tracker-app-2026",
+  "source": "learner",
+  "sibling_of": "best-intermittent-fasting-app-2026"
+ },
+ {
+  "slug": "managing-appetite-on-glp1-2026",
+  "lane": "bridge",
+  "keyword": "managing appetite on glp-1",
+  "topic": "Managing appetite changes on GLP-1s: Building habits for long-term weight management",
+  "angle": "Discuss how GLP-1s change appetite, the importance of protein and fiber for satiety, mindful eating techniques, recognizing true hunger vs. habit, small frequent meals, planning for when appetite returns. Frame it as building sustainable habits while on the medication to prepare for life after. Emphasize natural-first principles. Link to /blog/glp-1-weight-maintenance-2026.",
+  "image_from": "glp1-eating-out-guide-2026",
+  "source": "learner",
+  "sibling_of": "zepbound-food-list-2026"
+ },
+ {
+  "slug": "zepbound-food-list-2026",
+  "lane": "refresh",
+  "keyword": "zepbound food list",
+  "topic": "Refresh (update in place): Zepbound Food List 2026: What to Eat on Tirzepatide",
+  "angle": "Update this food list to further emphasize protein and fiber content, include more practical portion size guidance for reduced appetite, and link to newer, relevant posts like /blog/zepbound-meal-plan-2026 and /blog/glp1-protein-foods-list-2026. Last 28 days: 185 visitors, 3 app taps.",
+  "source": "learner",
+  "image_from": "zepbound-food-list-2026"
+ },
+ {
   "slug": "health-news-1",
   "lane": "current_events",
   "keyword": "(choose from the story)",
