@@ -47,6 +47,19 @@ Two posts a week (Tue + Fri, 8:51 AM ET) are written and published by the
 scheduled task **"HealthyOne blog publisher"**. This file is the operator's
 manual; the task prompt follows it.
 
+### Health-news posts (Chris 11-12: "research current events and news ... so blogs are relevant and popular search results")
+Queue entries with `"lane": "current_events"` (`health-news-N`) are written ONLY by the Tue/Fri Claude publisher (it can search the
+web); the Monday Gemini script skips them.
+- Research first: the health/food story of the last 7 days people are searching most (new nutrition or exercise study, a food recall,
+  a viral diet trend, a new guideline, a seasonal health story). Read 3+ reputable sources (the study itself or a major outlet,
+  FDA/USDA/CDC/NIH for recalls and guidance).
+- Rename the slug and set `keyword` to what people search before building.
+- Structure: what happened (plain facts, linked sources) → what it means for a regular person → the natural-first takeaway (food,
+  movement, sleep, habits) → one thing to do this week → where HealthyOne helps.
+- Rules: CONTENT_GUIDELINES.md applies in full; describe a study's real size and limits ("in 300 adults over 12 weeks"), never "cures";
+  food recalls name the brand/lot exactly as the FDA/USDA notice says and link it; never tell anyone to stop a medication; no fear-mongering.
+  If no story fits, write the next queue entry instead.
+
 ## What drives the topic choice
 - PostHog web analytics for healthyoneapp.com: the GLP-1 food-list posts
   (Wegovy / Zepbound / Mounjaro food lists) are 55%+ of visitors and bounce

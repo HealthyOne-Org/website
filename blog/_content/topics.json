@@ -88,6 +88,14 @@
   "image_from": "how-to-never-restart-your-health-2026"
  },
  {
+  "slug": "health-news-1",
+  "lane": "current_events",
+  "keyword": "(choose from the story)",
+  "topic": "This week's biggest health or food news story and what it means for eating well and moving more. Pick the story at write time.",
+  "angle": "Health-news lane (scripts/BLOG_PIPELINE.md, current_events). RESEARCH FIRST with web search: the health or food story of the last 7 days most people are searching (a new nutrition or exercise study, a food recall, a viral diet trend, a new guideline). RENAME the slug to fit the story before building. Follow the lane rules and CONTENT_GUIDELINES.md.",
+  "image_from": "healthy-thanksgiving-plate-2026"
+ },
+ {
   "slug": "how-to-stop-sugar-cravings-at-night-2026",
   "lane": "appetite",
   "keyword": "how to stop sugar cravings at night",
@@ -102,6 +110,14 @@
   "topic": "A 7-day high-protein meal plan for weight loss (100–120 g a day, simple groceries)",
   "angle": "Each day with breakfast, lunch, snack and dinner plus protein grams and rough calories, repeated ingredients, a grocery list, swaps for vegetarians, and how to size protein for your body (general ranges, ask a dietitian for medical diets or kidney disease). Natural-first per scripts/CONTENT_GUIDELINES.md; don't name GLP-1 drugs in the title.",
   "image_from": "glp1-7-day-meal-plan-2026"
+ },
+ {
+  "slug": "health-news-2",
+  "lane": "current_events",
+  "keyword": "(choose from the story)",
+  "topic": "This week's biggest health or food news story and what it means for eating well and moving more. Pick the story at write time.",
+  "angle": "Health-news lane (scripts/BLOG_PIPELINE.md, current_events). RESEARCH FIRST with web search: the health or food story of the last 7 days most people are searching (a new nutrition or exercise study, a food recall, a viral diet trend, a new guideline). RENAME the slug to fit the story before building. Follow the lane rules and CONTENT_GUIDELINES.md.",
+  "image_from": "healthy-thanksgiving-plate-2026"
  },
  {
   "slug": "how-to-keep-weight-off-after-ozempic-2026",
@@ -120,6 +136,14 @@
   "image_from": "glp1-snacks-2026"
  },
  {
+  "slug": "health-news-3",
+  "lane": "current_events",
+  "keyword": "(choose from the story)",
+  "topic": "This week's biggest health or food news story and what it means for eating well and moving more. Pick the story at write time.",
+  "angle": "Health-news lane (scripts/BLOG_PIPELINE.md, current_events). RESEARCH FIRST with web search: the health or food story of the last 7 days most people are searching (a new nutrition or exercise study, a food recall, a viral diet trend, a new guideline). RENAME the slug to fit the story before building. Follow the lane rules and CONTENT_GUIDELINES.md.",
+  "image_from": "healthy-thanksgiving-plate-2026"
+ },
+ {
   "slug": "beginner-strength-training-at-home-2026",
   "lane": "movement",
   "keyword": "beginner strength training at home for weight loss",
@@ -134,6 +158,14 @@
   "topic": "High-fiber foods list for weight loss: 30 foods ranked by fiber per serving",
   "angle": "Grams of fiber per normal serving (beans, lentils, raspberries, pears, oats, chia, broccoli, whole-grain bread), the general daily targets (about 25 g for women, 38 g for men), how to add it slowly with water to avoid bloating, easy swaps, and a one-day 30 g example. Natural-first per scripts/CONTENT_GUIDELINES.md; don't name GLP-1 drugs in the title.",
   "image_from": "track-nutrition-without-counting-calories"
+ },
+ {
+  "slug": "health-news-4",
+  "lane": "current_events",
+  "keyword": "(choose from the story)",
+  "topic": "This week's biggest health or food news story and what it means for eating well and moving more. Pick the story at write time.",
+  "angle": "Health-news lane (scripts/BLOG_PIPELINE.md, current_events). RESEARCH FIRST with web search: the health or food story of the last 7 days most people are searching (a new nutrition or exercise study, a food recall, a viral diet trend, a new guideline). RENAME the slug to fit the story before building. Follow the lane rules and CONTENT_GUIDELINES.md.",
+  "image_from": "healthy-thanksgiving-plate-2026"
  },
  {
   "slug": "sleep-and-weight-loss-2026",
@@ -152,6 +184,14 @@
   "image_from": "glp1-eating-out-guide-2026"
  },
  {
+  "slug": "health-news-5",
+  "lane": "current_events",
+  "keyword": "(choose from the story)",
+  "topic": "This week's biggest health or food news story and what it means for eating well and moving more. Pick the story at write time.",
+  "angle": "Health-news lane (scripts/BLOG_PIPELINE.md, current_events). RESEARCH FIRST with web search: the health or food story of the last 7 days most people are searching (a new nutrition or exercise study, a food recall, a viral diet trend, a new guideline). RENAME the slug to fit the story before building. Follow the lane rules and CONTENT_GUIDELINES.md.",
+  "image_from": "healthy-thanksgiving-plate-2026"
+ },
+ {
   "slug": "how-to-lose-fat-without-losing-muscle-2026",
   "lane": "movement",
   "keyword": "how to lose fat without losing muscle",
@@ -166,5 +206,13 @@
   "topic": "How to lose weight without Ozempic: the food, movement and sleep habits that do the work",
   "angle": "For readers deciding whether medication is for them or who can't get it: protein and fiber to manage hunger, a walking and strength routine, sleep, a realistic pace, tracking. Honest, no 'natural Ozempic' or supplement claims, no attacks on people who use medication; anyone with obesity-related health conditions should talk to their doctor about every option. Never advise stopping a prescription. Bridge lane per scripts/CONTENT_GUIDELINES.md: GLP-1 drugs may be named, but never advise stopping, skipping or changing a medication; every medication decision goes to 'talk to your prescriber'.",
   "image_from": "nutrition-guide-2026"
+ },
+ {
+  "slug": "health-news-6",
+  "lane": "current_events",
+  "keyword": "(choose from the story)",
+  "topic": "This week's biggest health or food news story and what it means for eating well and moving more. Pick the story at write time.",
+  "angle": "Health-news lane (scripts/BLOG_PIPELINE.md, current_events). RESEARCH FIRST with web search: the health or food story of the last 7 days most people are searching (a new nutrition or exercise study, a food recall, a viral diet trend, a new guideline). RENAME the slug to fit the story before building. Follow the lane rules and CONTENT_GUIDELINES.md.",
+  "image_from": "healthy-thanksgiving-plate-2026"
  }
 ]
