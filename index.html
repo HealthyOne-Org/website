@@ -3374,10 +3374,11 @@
             let lastScrollY = 0;
             window.addEventListener('scroll', () => {
                 const scrollY = window.scrollY;
-                const pricingTop = pricingSection ? pricingSection.getBoundingClientRect().top : Infinity;
-
-                // Show after scrolling 500px, hide when near pricing section
-                if (scrollY > 500 && pricingTop > 200) {
+                // Show after scrolling 500px. Hide only while the pricing section (which has its own buttons) is on
+                // screen; it comes back below it, so the bottom of the page has a download button too (11-12).
+                const r = pricingSection ? pricingSection.getBoundingClientRect() : null;
+                const pricingOnScreen = r ? (r.top < window.innerHeight - 120 && r.bottom > 120) : false;
+                if (scrollY > 500 && !pricingOnScreen) {
                     stickyCta.classList.add('visible');
                 } else {
                     stickyCta.classList.remove('visible');
