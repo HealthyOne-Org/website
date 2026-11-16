@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hardaway Labs apps</title>
+    <title>Get HealthyOne | AI nutrition tracker</title>
     <meta name="description" content="Every Hardaway Labs app in one place: HealthyOne, Healthy Faith, Faith Daily Bible, Budget Shield, Recipella, Healthy Relationships and Healthy Bump. Tap to download.">
     <meta name="robots" content="noindex">
     <link rel="canonical" href="https://www.healthyoneapp.com/apps">
@@ -36,6 +36,14 @@
         .btn svg { width:14px; height:14px; }
         .btn.play { background:#2E9C94; }
         .btn.soon { background:#E9EEF3; color:#718096; }
+        .hero { background:#fff; border-radius:22px; padding:1.1rem; box-shadow:0 10px 28px rgba(26,35,50,.10); border:1px solid rgba(26,35,50,.05); display:grid; gap:.6rem; margin-bottom:1.6rem; }
+        .hero .d { color:var(--mid); font-size:.95rem; line-height:1.45; text-align:center; margin-bottom:.2rem; }
+        .btn.big { font-size:1rem; padding:.9rem 1rem; border-radius:14px; }
+        .label { color:var(--light); font-size:.8rem; font-weight:700; text-transform:uppercase; letter-spacing:.05em; margin:0 0 .6rem .2rem; }
+        .more { margin-top:1.4rem; }
+        .more summary { cursor:pointer; color:var(--teal-dark); font-weight:700; font-size:.92rem; text-align:center; padding:.6rem; list-style:none; }
+        .more summary::-webkit-details-marker { display:none; }
+        .more .list { margin-top:.6rem; }
         .foot { text-align:center; color:var(--light); font-size:.82rem; margin-top:2rem; }
         .foot a { color:var(--teal-dark); text-decoration:none; font-weight:600; }
         @media (max-width:380px) { .app .d { display:none; } }
@@ -45,20 +53,18 @@
 <div class="wrap">
     <div class="top">
         <img src="assets/apps/healthyone/icon.png" alt="HealthyOne">
-        <h1>Seven apps, <em>one tap away.</em></h1>
-        <p>From the team behind @healthyoneapp. All free to start.</p>
+        <h1>Snap your plate. <em>Know what you ate.</em></h1>
+        <p>HealthyOne, the AI nutrition tracker behind @healthyoneapp. Free to start.</p>
     </div>
 
-    <div class="list">
-        <div class="app">
-            <img src="assets/apps/healthyone/icon.png" alt="">
-            <div class="t"><div class="n">HealthyOne</div><div class="d">Snap a photo, get calories, protein and 50+ nutrients. Built for GLP-1.</div></div>
-            <div class="btns">
-                <a class="btn" href="https://apps.apple.com/us/app/healthyone-nutrition-tracker/id6757052428?pt=128318750&amp;ct=tiktok_healthyone&amp;mt=8" data-app="healthyone" data-store="ios">iPhone</a>
-                <a class="btn play" href="https://play.google.com/store/apps/details?id=com.hardawaylabs.healthyone&amp;referrer=utm_source%3Dtiktok%26utm_medium%3Dbio" data-app="healthyone" data-store="android">Android</a>
-            </div>
-        </div>
+    <div class="hero">
+        <div class="d">Snap a photo or say what you ate: calories, protein and 50+ nutrients in seconds. Built for GLP-1.</div>
+        <a class="btn big" href="https://apps.apple.com/us/app/healthyone-nutrition-tracker/id6757052428?pt=128318750&amp;ct=tiktok_healthyone&amp;mt=8" data-app="healthyone" data-store="ios" data-slot="hero">Download on iPhone</a>
+        <a class="btn big play" href="https://play.google.com/store/apps/details?id=com.hardawaylabs.healthyone&amp;referrer=utm_source%3Dtiktok%26utm_medium%3Dbio" data-app="healthyone" data-store="android" data-slot="hero">Get it on Android</a>
+    </div>
 
+    <p class="label">Save the recipes from our videos</p>
+    <div class="list">
         <div class="app">
             <img src="assets/apps/recipella/icon.png" alt="">
             <div class="t"><div class="n">Recipella</div><div class="d">Paste a TikTok recipe, get a clean recipe card and grocery list.</div></div>
@@ -67,7 +73,11 @@
                 <a class="btn play" href="https://play.google.com/store/apps/details?id=com.hardawaylabs.recipella&amp;referrer=utm_source%3Dtiktok%26utm_medium%3Dbio" data-app="recipella" data-store="android">Android</a>
             </div>
         </div>
+    </div>
 
+    <details class="more">
+        <summary>More apps from Hardaway Labs</summary>
+        <div class="list">
         <div class="app">
             <img src="assets/apps/healthyfaith/icon.png" alt="">
             <div class="t"><div class="n">Healthy Faith</div><div class="d">Record the sermon, keep the notes. Bible reader with Listen.</div></div>
@@ -76,7 +86,6 @@
                 <a class="btn play" href="https://play.google.com/store/apps/details?id=com.healthyone.healthyfaith&amp;referrer=utm_source%3Dtiktok%26utm_medium%3Dbio" data-app="healthyfaith" data-store="android">Android</a>
             </div>
         </div>
-
         <div class="app">
             <img src="assets/apps/faithdailybible/icon.png" alt="">
             <div class="t"><div class="n">Faith Daily Bible</div><div class="d">The whole Bible, free. NIV, NLT, NKJV and reading plans.</div></div>
@@ -85,25 +94,23 @@
                 <span class="btn soon">iPhone soon</span>
             </div>
         </div>
-
         <a class="app" href="https://apps.apple.com/us/app/budget-shield/id6766591206?pt=128318750&amp;ct=tiktok_budgetshield&amp;mt=8" data-app="budgetshield" data-store="ios">
             <img src="assets/apps/budgetshield/icon.png" alt="">
             <div class="t"><div class="n">Budget Shield</div><div class="d">One safe-to-spend number before payday. Texts you before a bill bounces.</div></div>
             <div class="btns"><span class="btn">iPhone</span></div>
         </a>
-
         <a class="app" href="https://apps.apple.com/us/app/healthy-relationships-pause/id6760955630?pt=128318750&amp;ct=tiktok_anger&amp;mt=8" data-app="healthyanger" data-store="ios">
             <img src="assets/apps/healthyanger/icon.png" alt="">
             <div class="t"><div class="n">Healthy Relationships</div><div class="d">Respond, don't react. Tap when tension rises.</div></div>
             <div class="btns"><span class="btn">iPhone</span></div>
         </a>
-
         <a class="app" href="https://apps.apple.com/us/app/healthy-bump/id6781695243?pt=128318750&amp;ct=tiktok_healthybump&amp;mt=8" data-app="healthybump" data-store="ios">
             <img src="assets/apps/healthybump/icon.png" alt="">
             <div class="t"><div class="n">Healthy Bump</div><div class="d">Pregnancy nutrition made simple. 15 nutrients, scored daily.</div></div>
             <div class="btns"><span class="btn">iPhone</span></div>
         </a>
-    </div>
+        </div>
+    </details>
 
     <p class="foot">More about us at <a href="/hardawaylabs">Hardaway Labs</a> &middot; <a href="/blog">GLP-1 food guides</a></p>
 </div>
