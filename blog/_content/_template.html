@@ -131,7 +131,7 @@
         if(!a)return;
         var href=a.getAttribute('href')||'';
         var store=a.getAttribute('data-ho-store');
-        var placement=a.closest('#ho-sticky-cta')?'sticky':(a.closest('.cta-box')?'cta_box':(a.closest('.store-cta')?'store_section':'inline'));
+        var placement=a.closest('#ho-sticky-cta')?'sticky':a.closest('.ho-mid-cta')?'mid':(a.closest('.cta-box')?'cta_box':(a.closest('.store-cta')?'store_section':'inline'));
         if(store){track(placement,store);return;}
         if(href.indexOf('apps.apple.com')>-1){track(placement,'ios');}
         else if(href.indexOf('play.google.com')>-1){track(placement,'android');}

@@ -112,6 +112,15 @@
 
         <p>Mounjaro and Ozempic are priced and covered as diabetes drugs. If you have type 2 diabetes, they are usually the easiest to get covered. If you do not, Zepbound and Wegovy are the same molecules with the label your insurer wants to see.</p>
 
+        <!-- ho-mid-cta -->
+        <div class="cta-box ho-mid-cta">
+            <h3>Whichever GLP-1 you take, every bite has to count</h3>
+            <p>A smaller appetite means less room for protein. Snap a photo of a meal and HealthyOne logs it in seconds, shows your protein against your daily target, and lets you log side effects next to meals. GLP-1 mode built for Ozempic, Wegovy, Mounjaro and Zepbound users. Free for 7 days.</p>
+            <a data-ho-store="ios" rel="nofollow noopener" href="https://apps.apple.com/us/app/healthyone-nutrition-tracker/id6757052428?pt=128318750&amp;ct=web_blog_mid&amp;mt=8" style="display:inline-block;background:white;color:#059669;padding:.7rem 1.4rem;border-radius:10px;font-weight:700;text-decoration:none;margin:.3rem">App Store</a>
+            <a data-ho-store="android" rel="nofollow noopener" href="https://play.google.com/store/apps/details?id=com.hardawaylabs.healthyone&amp;referrer=utm_source%3Dweb_blog_mid" style="display:inline-block;background:white;color:#059669;padding:.7rem 1.4rem;border-radius:10px;font-weight:700;text-decoration:none;margin:.3rem">Get it on Google Play</a>
+        </div>
+        <!-- /ho-mid-cta -->
+
         <h2>Side Effects, Briefly</h2>
 
         <p>Every drug here shares the same list: nausea, constipation, diarrhea, reflux, fatigue, and a loss of appetite that can tip into under-eating. They are worst in the weeks after a dose increase and they are mostly managed with food, which is what the rest of this site is about. Start with <a href="/blog/glp1-nausea-what-to-eat-2026">what to eat for GLP-1 nausea</a> and <a href="/blog/glp1-constipation-2026">GLP-1 constipation</a>. Anything beyond that, including whether to pause or change dose, is a question for your prescriber, not a blog.</p>
@@ -224,7 +233,7 @@
         if(!a)return;
         var href=a.getAttribute('href')||'';
         var store=a.getAttribute('data-ho-store');
-        var placement=a.closest('#ho-sticky-cta')?'sticky':(a.closest('.cta-box')?'cta_box':(a.closest('.store-cta')?'store_section':'inline'));
+        var placement=a.closest('#ho-sticky-cta')?'sticky':a.closest('.ho-mid-cta')?'mid':(a.closest('.cta-box')?'cta_box':(a.closest('.store-cta')?'store_section':'inline'));
         if(store){track(placement,store);return;}
         if(href.indexOf('apps.apple.com')>-1){track(placement,'ios');}
         else if(href.indexOf('play.google.com')>-1){track(placement,'android');}
