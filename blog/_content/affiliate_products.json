@@ -5,21 +5,442 @@
  "disclosure": "As an Amazon Associate, HealthyOne earns from qualifying purchases. Links on this page may earn us a small commission at no extra cost to you. We only suggest products we believe are genuinely useful.",
  "max_products_per_post": 3,
  "products": [
-  {"search": "digital kitchen food scale", "title": "Digital kitchen scale", "blurb": "Weighing a few meals once teaches you what a real portion looks like.", "keywords": ["portion", "meal plan", "protein", "fiber", "food list", "grocery", "calorie", "thanksgiving", "plate", "eating"]},
-  {"search": "glass meal prep containers", "title": "Glass meal-prep containers", "blurb": "Cook once, portion for the week, and the healthy choice is the easy one.", "keywords": ["meal plan", "meal prep", "grocery", "leftovers", "lunch", "high protein", "week"]},
-  {"search": "resistance bands set with handles", "title": "Resistance bands", "blurb": "Cheap, light and enough for every beginner strength move at home.", "keywords": ["strength", "muscle", "home workout", "exercise", "training", "resistance", "workout"]},
-  {"search": "neoprene dumbbells set", "title": "Light dumbbell set", "blurb": "A few light pairs cover rows, presses and squats while you build up.", "keywords": ["strength", "muscle", "home workout", "exercise", "training", "dumbbell"]},
-  {"search": "thick exercise mat", "title": "Exercise mat", "blurb": "A cushioned spot for floor moves like glute bridges and dead bugs.", "keywords": ["strength", "home workout", "exercise", "stretch", "beginner", "workout"]},
-  {"search": "walking pad under desk treadmill", "title": "Under-desk walking pad", "blurb": "Adds steps on cold or busy days without leaving the house.", "keywords": ["walking", "steps", "walk", "winter", "holiday", "movement", "exercise"]},
-  {"search": "step counter pedometer", "title": "Simple step counter", "blurb": "Shows your daily steps so you can add a little each week.", "keywords": ["walking", "steps", "walk", "movement", "habit"]},
-  {"search": "whey protein powder", "title": "Whey protein powder", "blurb": "A quick way to add protein to breakfast oats, yogurt or a smoothie.", "keywords": ["protein", "high protein", "muscle", "breakfast", "cravings", "meal plan"]},
-  {"search": "pea protein powder unflavored", "title": "Plant protein powder", "blurb": "A dairy-free option for adding protein to meals and smoothies.", "keywords": ["protein", "high protein", "plant", "vegetarian", "breakfast"]},
-  {"search": "chia seeds", "title": "Chia seeds", "blurb": "About 10 g of fiber in two tablespoons; stir into yogurt or oats.", "keywords": ["fiber", "high fiber", "cravings", "breakfast", "snack", "food list"]},
-  {"search": "old fashioned rolled oats", "title": "Rolled oats", "blurb": "A cheap, filling, fiber-rich breakfast base.", "keywords": ["fiber", "high fiber", "breakfast", "meal plan", "grocery", "pantry"]},
-  {"search": "dried lentils", "title": "Dried lentils", "blurb": "Protein and fiber in one pantry staple; great for soups and batch cooking.", "keywords": ["fiber", "high fiber", "protein", "meal plan", "grocery", "pantry", "soup"]},
-  {"search": "air fryer", "title": "Air fryer", "blurb": "Crispy chicken, fish and vegetables with very little oil.", "keywords": ["cooking", "dinner", "meal plan", "recipes", "eating", "high protein"]},
-  {"search": "insulated water bottle 32 oz", "title": "32 oz water bottle", "blurb": "Makes it easy to drink enough water, especially as you add fiber.", "keywords": ["fiber", "water", "walking", "cravings", "hydration", "habit"]},
-  {"search": "sleep mask contoured", "title": "Contoured sleep mask", "blurb": "A dark room helps you get the 7+ hours that keep hunger in check.", "keywords": ["sleep", "night", "rest", "cravings at night"]},
-  {"search": "sunrise alarm clock", "title": "Sunrise alarm clock", "blurb": "A gentler wake-up that makes a steady sleep schedule easier to keep.", "keywords": ["sleep", "routine", "night", "habit"]}
- ]
+  {
+   "search": "digital kitchen food scale",
+   "title": "Digital kitchen scale",
+   "blurb": "Weighing a few meals once teaches you what a real portion looks like.",
+   "keywords": [
+    "portion",
+    "meal plan",
+    "protein",
+    "fiber",
+    "food list",
+    "grocery",
+    "calorie",
+    "thanksgiving",
+    "plate",
+    "eating"
+   ]
+  },
+  {
+   "search": "glass meal prep containers",
+   "title": "Glass meal-prep containers",
+   "blurb": "Cook once, portion for the week, and the healthy choice is the easy one.",
+   "keywords": [
+    "meal plan",
+    "meal prep",
+    "grocery",
+    "leftovers",
+    "lunch",
+    "high protein",
+    "week"
+   ]
+  },
+  {
+   "search": "resistance bands set with handles",
+   "title": "Resistance bands",
+   "blurb": "Cheap, light and enough for every beginner strength move at home.",
+   "keywords": [
+    "strength",
+    "muscle",
+    "home workout",
+    "exercise",
+    "training",
+    "resistance",
+    "workout"
+   ]
+  },
+  {
+   "search": "neoprene dumbbells set",
+   "title": "Light dumbbell set",
+   "blurb": "A few light pairs cover rows, presses and squats while you build up.",
+   "keywords": [
+    "strength",
+    "muscle",
+    "home workout",
+    "exercise",
+    "training",
+    "dumbbell"
+   ]
+  },
+  {
+   "search": "thick exercise mat",
+   "title": "Exercise mat",
+   "blurb": "A cushioned spot for floor moves like glute bridges and dead bugs.",
+   "keywords": [
+    "strength",
+    "home workout",
+    "exercise",
+    "stretch",
+    "beginner",
+    "workout"
+   ]
+  },
+  {
+   "search": "walking pad under desk treadmill",
+   "title": "Under-desk walking pad",
+   "blurb": "Adds steps on cold or busy days without leaving the house.",
+   "keywords": [
+    "walking",
+    "steps",
+    "walk",
+    "winter",
+    "holiday",
+    "movement",
+    "exercise"
+   ]
+  },
+  {
+   "search": "step counter pedometer",
+   "title": "Simple step counter",
+   "blurb": "Shows your daily steps so you can add a little each week.",
+   "keywords": [
+    "walking",
+    "steps",
+    "walk",
+    "movement",
+    "habit"
+   ]
+  },
+  {
+   "search": "whey protein powder",
+   "title": "Whey protein powder",
+   "blurb": "A quick way to add protein to breakfast oats, yogurt or a smoothie.",
+   "keywords": [
+    "protein",
+    "high protein",
+    "muscle",
+    "breakfast",
+    "cravings",
+    "meal plan"
+   ]
+  },
+  {
+   "search": "pea protein powder unflavored",
+   "title": "Plant protein powder",
+   "blurb": "A dairy-free option for adding protein to meals and smoothies.",
+   "keywords": [
+    "protein",
+    "high protein",
+    "plant",
+    "vegetarian",
+    "breakfast"
+   ]
+  },
+  {
+   "search": "chia seeds",
+   "title": "Chia seeds",
+   "blurb": "About 10 g of fiber in two tablespoons; stir into yogurt or oats.",
+   "keywords": [
+    "fiber",
+    "high fiber",
+    "cravings",
+    "breakfast",
+    "snack",
+    "food list"
+   ]
+  },
+  {
+   "search": "old fashioned rolled oats",
+   "title": "Rolled oats",
+   "blurb": "A cheap, filling, fiber-rich breakfast base.",
+   "keywords": [
+    "fiber",
+    "high fiber",
+    "breakfast",
+    "meal plan",
+    "grocery",
+    "pantry"
+   ]
+  },
+  {
+   "search": "dried lentils",
+   "title": "Dried lentils",
+   "blurb": "Protein and fiber in one pantry staple; great for soups and batch cooking.",
+   "keywords": [
+    "fiber",
+    "high fiber",
+    "protein",
+    "meal plan",
+    "grocery",
+    "pantry",
+    "soup"
+   ]
+  },
+  {
+   "search": "air fryer",
+   "title": "Air fryer",
+   "blurb": "Crispy chicken, fish and vegetables with very little oil.",
+   "keywords": [
+    "cooking",
+    "dinner",
+    "meal plan",
+    "recipes",
+    "eating",
+    "high protein"
+   ]
+  },
+  {
+   "search": "insulated water bottle 32 oz",
+   "title": "32 oz water bottle",
+   "blurb": "Makes it easy to drink enough water, especially as you add fiber.",
+   "keywords": [
+    "fiber",
+    "water",
+    "walking",
+    "cravings",
+    "hydration",
+    "habit"
+   ]
+  },
+  {
+   "search": "sleep mask contoured",
+   "title": "Contoured sleep mask",
+   "blurb": "A dark room helps you get the 7+ hours that keep hunger in check.",
+   "keywords": [
+    "sleep",
+    "night",
+    "rest",
+    "cravings at night"
+   ]
+  },
+  {
+   "search": "sunrise alarm clock",
+   "title": "Sunrise alarm clock",
+   "blurb": "A gentler wake-up that makes a steady sleep schedule easier to keep.",
+   "keywords": [
+    "sleep",
+    "routine",
+    "night",
+    "habit"
+   ]
+  }
+ ],
+ "partners": {
+  "diet_direct": {
+   "_README": "Diet Direct (WonderSlim) via Impact, partner 7664692, approved 2026-11-16. Deep links allowed; NO paid-search bidding on Diet Direct / WonderSlim trademarks. Blurbs are product facts from dietdirect.com (protein g, calories) only; never repeat the brand's 'fat loss' / 'curbs cravings' claims. Never add the GLP-UP supplement (content guidelines: no GLP-1 'support' pills). Picks per post: post JSON \"diet_direct\": [handle, ...] ([] = none), else post_picks[slug], else up to max_per_post by keyword match. glp1-supplements-nutrition-guide-2026 has a hand-placed product-card (marker ho-dd-manual), not the generic card.",
+   "label": "Diet Direct",
+   "tracking_base": "https://dietdirect.pxf.io/c/7664692/3873036/51854",
+   "site": "https://www.dietdirect.com",
+   "max_per_post": 2,
+   "heading": "Want a protein shortcut?",
+   "disclosure": "Sold by Diet Direct. HealthyOne earns a commission if you buy through these links, at no extra cost to you.",
+   "products": [
+    {
+     "handle": "meal-replacement-shakes-7ct",
+     "title": "WonderSlim protein shakes",
+     "blurb": "15 g protein and 100 calories a packet; mixes with water or milk.",
+     "keywords": [
+      "protein shake",
+      "shake",
+      "smoothie",
+      "muscle",
+      "protein",
+      "macros",
+      "meal plan",
+      "maintenance",
+      "hair loss",
+      "food list"
+     ]
+    },
+    {
+     "handle": "protein-fiber-bars-7ct",
+     "title": "WonderSlim protein and fiber bars",
+     "blurb": "15 g protein and up to 8 g fiber in a gluten-free bar for your bag.",
+     "keywords": [
+      "snack",
+      "bar",
+      "fiber",
+      "on the go",
+      "grocery",
+      "eating out",
+      "constipation",
+      "food list",
+      "protein"
+     ]
+    },
+    {
+     "handle": "instant-protein-oatmeal-7ct",
+     "title": "WonderSlim protein oatmeal",
+     "blurb": "15 g protein in a 100-calorie instant bowl for busy mornings.",
+     "keywords": [
+      "breakfast",
+      "oatmeal",
+      "oats",
+      "morning",
+      "meal plan"
+     ]
+    },
+    {
+     "handle": "high-protein-breakfast-pancake-and-waffle-mix-7ct",
+     "title": "WonderSlim protein pancake and waffle mix",
+     "blurb": "15 g protein and 110 calories or less a serving.",
+     "keywords": [
+      "breakfast",
+      "pancake",
+      "waffle",
+      "weekend"
+     ]
+    },
+    {
+     "handle": "protein-soup-7ct",
+     "title": "WonderSlim protein soup",
+     "blurb": "Up to 15 g protein; just add hot water for a light, warm meal.",
+     "keywords": [
+      "soup",
+      "nausea",
+      "light meal",
+      "winter",
+      "lunch",
+      "calorie"
+     ]
+    },
+    {
+     "handle": "protein-pretzel-snacks-7ct",
+     "title": "WonderSlim protein pretzels",
+     "blurb": "12 g protein and 4 g fiber in a 120-calorie crunchy snack.",
+     "keywords": [
+      "snack",
+      "salty",
+      "crunchy",
+      "pretzel"
+     ]
+    },
+    {
+     "handle": "high-protein-pudding-mix-7ct",
+     "title": "WonderSlim protein pudding",
+     "blurb": "12 g protein in a single-serve sweet treat.",
+     "keywords": [
+      "dessert",
+      "sweet",
+      "pudding",
+      "night"
+     ]
+    },
+    {
+     "handle": "cappuccino-and-hot-chocolate-protein-drink-7ct",
+     "title": "WonderSlim protein hot chocolate and cappuccino",
+     "blurb": "12 g protein and 80 calories or less a mug.",
+     "keywords": [
+      "hot chocolate",
+      "coffee",
+      "holiday",
+      "thanksgiving",
+      "winter",
+      "christmas"
+     ]
+    }
+   ],
+   "post_picks": {
+    "glp1-protein-shakes-2026": [
+     "meal-replacement-shakes-7ct",
+     "cappuccino-and-hot-chocolate-protein-drink-7ct"
+    ],
+    "glp1-snacks-2026": [
+     "protein-fiber-bars-7ct",
+     "protein-pretzel-snacks-7ct"
+    ],
+    "glp1-breakfast-ideas-2026": [
+     "instant-protein-oatmeal-7ct",
+     "high-protein-breakfast-pancake-and-waffle-mix-7ct"
+    ],
+    "glp1-protein-foods-list-2026": [
+     "meal-replacement-shakes-7ct",
+     "protein-fiber-bars-7ct"
+    ],
+    "signs-not-eating-enough-protein": [
+     "meal-replacement-shakes-7ct",
+     "protein-fiber-bars-7ct"
+    ],
+    "glp-1-muscle-loss-2026": [
+     "meal-replacement-shakes-7ct"
+    ],
+    "glp-1-macros-2026": [
+     "meal-replacement-shakes-7ct",
+     "protein-fiber-bars-7ct"
+    ],
+    "glp-1-calorie-goal-2026": [
+     "meal-replacement-shakes-7ct",
+     "protein-soup-7ct"
+    ],
+    "glp-1-diet-2026": [
+     "meal-replacement-shakes-7ct",
+     "protein-soup-7ct"
+    ],
+    "glp-1-food-list-2026": [
+     "meal-replacement-shakes-7ct",
+     "protein-fiber-bars-7ct"
+    ],
+    "ozempic-food-list-2026": [
+     "meal-replacement-shakes-7ct",
+     "protein-fiber-bars-7ct"
+    ],
+    "wegovy-food-list-2026": [
+     "meal-replacement-shakes-7ct",
+     "protein-fiber-bars-7ct"
+    ],
+    "mounjaro-food-list-2026": [
+     "meal-replacement-shakes-7ct",
+     "protein-fiber-bars-7ct"
+    ],
+    "zepbound-food-list-2026": [
+     "meal-replacement-shakes-7ct",
+     "protein-fiber-bars-7ct"
+    ],
+    "wegovy-pill-food-list-2026": [
+     "meal-replacement-shakes-7ct",
+     "protein-fiber-bars-7ct"
+    ],
+    "glp-1-grocery-list-2026": [
+     "protein-fiber-bars-7ct",
+     "instant-protein-oatmeal-7ct"
+    ],
+    "glp1-7-day-meal-plan-2026": [
+     "meal-replacement-shakes-7ct",
+     "instant-protein-oatmeal-7ct"
+    ],
+    "ozempic-meal-plan-2026": [
+     "meal-replacement-shakes-7ct",
+     "instant-protein-oatmeal-7ct"
+    ],
+    "wegovy-meal-plan-2026": [
+     "meal-replacement-shakes-7ct",
+     "instant-protein-oatmeal-7ct"
+    ],
+    "mounjaro-meal-plan-2026": [
+     "meal-replacement-shakes-7ct",
+     "instant-protein-oatmeal-7ct"
+    ],
+    "zepbound-meal-plan-2026": [
+     "meal-replacement-shakes-7ct",
+     "instant-protein-oatmeal-7ct"
+    ],
+    "glp1-nausea-what-to-eat-2026": [
+     "protein-soup-7ct"
+    ],
+    "glp1-constipation-2026": [
+     "protein-fiber-bars-7ct"
+    ],
+    "glp1-hair-loss-nutrition-2026": [
+     "meal-replacement-shakes-7ct"
+    ],
+    "glp1-eating-out-guide-2026": [
+     "protein-fiber-bars-7ct"
+    ],
+    "glp-1-weight-maintenance-2026": [
+     "meal-replacement-shakes-7ct",
+     "protein-fiber-bars-7ct"
+    ],
+    "healthy-thanksgiving-plate-2026": [
+     "cappuccino-and-hot-chocolate-protein-drink-7ct"
+    ],
+    "nutrition-guide-2026": [
+     "protein-fiber-bars-7ct"
+    ],
+    "why-some-people-lose-more-weight-on-glp1": [
+     "meal-replacement-shakes-7ct"
+    ]
+   }
+  }
+ }
 }

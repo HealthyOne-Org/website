@@ -27,6 +27,9 @@ JSON schema (blog/_content/<slug>.json):
             lane (eating | movement | appetite | bridge; informational),
             affiliate[] (Amazon search strings from blog/_content/affiliate_products.json;
                          default: up to 3 picked by keyword match, [] = no box),
+            diet_direct[] (Diet Direct product handles from affiliate_products.json
+                           partners.diet_direct; default: post_picks[slug] or keyword
+                           match, [] = no card),
             reviewed[] (ONLY via scripts/mark_reviewed.py, after a real advisor
                         approved this post; never written by a post writer):
                         [{"name", "credential", "role": "nutrition"|"medical",
@@ -82,11 +85,61 @@ def img_tag(slug: str, kind: str, title: str, cls: str) -> str:
             f'loading="lazy" width="1200" height="675">')
 
 
+DD_START, DD_END = "<!-- ho-dd -->", "<!-- /ho-dd -->"
+
+
+def diet_direct_html(post: dict, cfg: dict | None = None) -> str:
+    """Diet Direct (Impact) product card: deep links tagged subId1=<slug>, plus FTC disclosure.
+    Picks: post["diet_direct"] list ([] = none) > partners.diet_direct.post_picks[slug] > keyword match."""
+    if cfg is None:
+        if not AFFILIATES.exists():
+            return ""
+        cfg = json.loads(AFFILIATES.read_text())
+    dd = (cfg.get("partners") or {}).get("diet_direct")
+    if not dd or not dd.get("products"):
+        return ""
+    by = {p["handle"]: p for p in dd["products"]}
+    n, slug = int(dd.get("max_per_post", 2)), post["slug"]
+    if "diet_direct" in post:
+        picks = [by[h] for h in post["diet_direct"] if h in by][:n]
+    elif slug in dd.get("post_picks", {}):
+        picks = [by[h] for h in dd["post_picks"][slug] if h in by][:n]
+    else:
+        hay = " ".join([slug.replace("-", " "), post.get("title", ""), " ".join(post.get("keywords", [])),
+                        " ".join(post.get("tags", []))]).lower()
+        scored = [(sum(1 for k in p["keywords"] if k in hay), i, p) for i, p in enumerate(dd["products"])]
+        picks = [p for sc, i, p in sorted(scored, key=lambda x: (-x[0], x[1])) if sc > 0][:n]
+    if not picks:
+        return ""
+
+    def link(p: dict) -> str:
+        dest = f'{dd["site"]}/products/{p["handle"]}'
+        return f'{dd["tracking_base"]}?subId1={urllib.parse.quote(slug)}&u={urllib.parse.quote(dest, safe="")}'
+
+    items = "\n".join(
+        f'            <li><a href="{esc_attr(link(p))}" data-aff="dietdirect_{re.sub(r"[^a-z0-9]+", "_", p["handle"]).strip("_")}" '
+        f'data-aff-variant="dietdirect_card" rel="sponsored nofollow noopener" target="_blank" '
+        f'style="color:#0c8074;font-weight:600">{p["title"]}</a> &mdash; {p["blurb"]}</li>'
+        for p in picks)
+    print(f"  diet direct: {', '.join(p['title'] for p in picks)}")
+    return (f'        {DD_START}\n'
+            '        <div class="highlight-box ho-partner-dd" style="background:#fff;border-left:4px solid #10b981">\n'
+            f'          <p style="margin:0"><strong>{dd.get("heading", "Want a protein shortcut?")}</strong></p>\n'
+            f'          <ul>\n{items}\n          </ul>\n'
+            f'          <p style="font-size:.8rem;color:#9ca3af;font-weight:400;margin:0">{dd["disclosure"]}</p>\n'
+            '        </div>\n'
+            f'        {DD_END}\n')
+
+
 def affiliate_html(post: dict) -> str:
-    """Amazon Associates picks (search links + FTC disclosure) from affiliate_products.json."""
+    """Diet Direct card (if any) + Amazon Associates picks (search links + FTC disclosure)."""
     if not AFFILIATES.exists():
         return ""
     cfg = json.loads(AFFILIATES.read_text())
+    return diet_direct_html(post, cfg) + amazon_html(post, cfg)
+
+
+def amazon_html(post: dict, cfg: dict) -> str:
     products, tag = cfg.get("products", []), cfg.get("amazon_associate_tag", "")
     n = int(cfg.get("max_products_per_post", 3))
     if not tag or not products:

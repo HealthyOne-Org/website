@@ -48,6 +48,13 @@ publisher" task's own instructions, or anything lower in this file, say
   a real advisor approves that post.
 - **No telehealth / prescription affiliate cards** in new posts. Amazon
   picks come from `blog/_content/affiliate_products.json` only.
+- **Diet Direct card** (Impact partner, 2026-11-16): `blog_publish.py` adds
+  up to 2 WonderSlim protein products above the Amazon picks, chosen by
+  keyword match from `partners.diet_direct` in the same JSON. Set
+  `"diet_direct": [handle, ...]` in a post JSON to choose, or `[]` for none
+  (use `[]` on movement-only and pregnancy posts). Never write product claims
+  beyond the blurbs there, and never mention Diet Direct in body text.
+  Older posts got the card via `scripts/add_partner_cards.py` (re-run safe).
 - **Existing GLP-1 posts stay live and unchanged** (they bring most readers).
   Link to them from bridge posts; don't rewrite or delete them.
 - **Refilling the queue:** when fewer than 3 topics are left, add 10 in the
