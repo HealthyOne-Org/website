@@ -100,7 +100,9 @@ def diet_direct_html(post: dict, cfg: dict | None = None) -> str:
         return ""
     by = {p["handle"]: p for p in dd["products"]}
     n, slug = int(dd.get("max_per_post", 2)), post["slug"]
-    if "diet_direct" in post:
+    if dd.get("point_all_to") in by and post.get("diet_direct") != []:
+        picks = [by[dd["point_all_to"]]]
+    elif "diet_direct" in post:
         picks = [by[h] for h in post["diet_direct"] if h in by][:n]
     elif slug in dd.get("post_picks", {}):
         picks = [by[h] for h in dd["post_picks"][slug] if h in by][:n]
