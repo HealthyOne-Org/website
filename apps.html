@@ -36,6 +36,11 @@
         .btn svg { width:14px; height:14px; }
         .btn.play { background:#2E9C94; }
         .btn.soon { background:#E9EEF3; color:#718096; }
+        .tips { text-decoration:none; display:flex; align-items:center; gap:.9rem; background:var(--ink); color:#fff; border-radius:20px; padding:1rem 1.1rem; box-shadow:0 10px 26px rgba(26,35,50,.2); }
+        .tips .e { font-size:1.9rem; flex:none; }
+        .tips .n { font-weight:800; font-size:1.08rem; }
+        .tips .d { color:rgba(255,255,255,.75); font-size:.86rem; line-height:1.35; }
+        .tips .go { margin-left:auto; flex:none; background:var(--teal); color:var(--ink); font-weight:800; font-size:.8rem; padding:.5rem .8rem; border-radius:10px; white-space:nowrap; }
         .foot { text-align:center; color:var(--light); font-size:.82rem; margin-top:2rem; }
         .foot a { color:var(--teal-dark); text-decoration:none; font-weight:600; }
         @media (max-width:380px) { .app .d { display:none; } }
@@ -50,6 +55,12 @@
     </div>
 
     <div class="list">
+        <a class="tips" id="blogLink" href="/blog?utm_source=bio&amp;utm_medium=apps_page">
+            <div class="e" aria-hidden="true">🥗</div>
+            <div><div class="n">More food tips and recipes</div><div class="d">The full version of today's video, plus food lists and meal ideas. Free to read.</div></div>
+            <span class="go">Read</span>
+        </a>
+
         <div class="app">
             <img src="assets/apps/healthyone/icon.png" alt="">
             <div class="t"><div class="n">HealthyOne</div><div class="d">Snap a photo, get calories, protein and 50+ nutrients. Built for GLP-1.</div></div>
@@ -119,6 +130,13 @@
          /Pinterest/i.test(ua) ? 'pinterest' : (document.referrer ? 'referral' : 'direct'));
     posthog.register({bio_came_from: cameFrom});
     posthog.capture('bio_page_view', {came_from: cameFrom, ref: document.referrer});
+    var blogLink = document.getElementById('blogLink');
+    if (blogLink) {
+        blogLink.href = '/blog?utm_source=' + encodeURIComponent(cameFrom) + '&utm_medium=bio_page';
+        blogLink.addEventListener('click', function(){
+            try { posthog.capture('bio_blog_click', {came_from: cameFrom, ref: document.referrer}, {transport: 'sendBeacon'}); } catch(err) {}
+        });
+    }
     document.addEventListener('click', function(e){
         var a = e.target.closest && e.target.closest('a[data-app]');
         if(!a) return;
