@@ -225,7 +225,15 @@
    "max_per_post": 2,
    "heading": "Want a protein shortcut?",
    "disclosure": "Sold by Diet Direct. HealthyOne earns a commission if you buy through these links, at no extra cost to you.",
+   "point_all_to": "glp-1-companion-bundle",
+   "_point_all_to_README": "Diet Direct asked (2026-11-18) that links point to their GLP-1 Companion Bundle page. While set, every Diet Direct card shows only this product. Remove this key to go back to post_picks / keyword picks.",
    "products": [
+    {
+     "handle": "glp-1-companion-bundle",
+     "title": "WonderSlim GLP-1 Companion Bundle",
+     "blurb": "A box set of WonderSlim shakes, bars, protein hot chocolate and pretzels, all under 200 calories a serving.",
+     "keywords": []
+    },
     {
      "handle": "meal-replacement-shakes-7ct",
      "title": "WonderSlim protein shakes",
