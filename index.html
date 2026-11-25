@@ -3403,7 +3403,7 @@
             });
         });
 
-        // Form handling — HubSpot API integration
+        // Form handling — own contacts list (crm-lead), replaced HubSpot 2026-11-25
         const leadForm = document.querySelector('.lead-magnet-form');
         if (leadForm) {
             leadForm.addEventListener('submit', function(e) {
@@ -3417,26 +3417,18 @@
                 submitBtn.disabled = true;
                 submitBtn.textContent = 'Sending...';
 
-                // Submit to HubSpot Forms API
-                var hubspotData = {
-                    fields: [
-                        { name: 'email', value: email }
-                    ],
-                    context: {
-                        pageUri: window.location.href,
-                        pageName: document.title
-                    }
-                };
+                // Submit to our own contacts list
+                var leadData = { email: email, source: 'website_healthyone', page: window.location.pathname };
 
-                fetch('https://api.hsforms.com/submissions/v3/integration/submit/243149802/d2799eb0-d41e-422f-9892-32e4670ccc1a', {
+                fetch('https://raynkqardrhrmopmthcu.supabase.co/functions/v1/crm-lead', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(hubspotData)
+                    body: JSON.stringify(leadData)
                 })
                 .then(function(response) {
                     if (response.ok) {
                         // Track email signup in PostHog
-                        if (window.posthog) posthog.capture('email_signup', { email_provided: true, source: 'hubspot' });
+                        if (window.posthog) posthog.capture('email_signup', { email_provided: true, source: 'own_contacts' });
                         emailInput.value = '';
                         submitBtn.textContent = '✅ Success! Check below for your coupon & guides';
                         submitBtn.style.background = '#10B981';
@@ -3621,20 +3613,12 @@
                     submitBtn.disabled = true;
                     submitBtn.textContent = 'Sending...';
 
-                    var hubspotData = {
-                        fields: [
-                            { name: 'email', value: email }
-                        ],
-                        context: {
-                            pageUri: window.location.href,
-                            pageName: 'Discount Popup - ' + document.title
-                        }
-                    };
+                    var leadData = { email: email, source: 'website_healthyone', page: window.location.pathname };
 
-                    fetch('https://api.hsforms.com/submissions/v3/integration/submit/243149802/d2799eb0-d41e-422f-9892-32e4670ccc1a', {
+                    fetch('https://raynkqardrhrmopmthcu.supabase.co/functions/v1/crm-lead', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(hubspotData)
+                        body: JSON.stringify(leadData)
                     })
                     .then(function(response) {
                         if (response.ok) {
